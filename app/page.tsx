@@ -1,11 +1,16 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import HeroSection from '@/components/sections/HeroSection';
-import ServicesPreview from '@/components/sections/ServicesPreview';
-import AboutPreview from '@/components/sections/AboutPreview';
-import CTASection from '@/components/sections/CTASection';
-import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import { motion } from "framer-motion";
+import HeroSection from "@/components/sections/HeroSection";
+import ProblemSection from "@/components/sections/ProblemSection";
+import SolutionSection from "@/components/sections/SolutionSection";
+import BenefitsSection from "@/components/sections/BenefitsSection";
+import ProcessSection from "@/components/sections/ProcessSection";
+import FeaturesSection from "@/components/sections/FeaturesSection";
+import FAQSection from "@/components/sections/FAQSection";
+import ServicesPreview from "@/components/sections/ServicesPreview";
+import AboutPreview from "@/components/sections/AboutPreview";
+import CTASection from "@/components/sections/CTASection";
 
 export default function Home() {
   return (
@@ -22,9 +27,14 @@ export default function Home() {
         transition={{ duration: 0.8 }}
       >
         <HeroSection />
+        <ProblemSection />
+        <SolutionSection />
         <ServicesPreview />
         <AboutPreview />
-        <TestimonialsSection />
+        <BenefitsSection />
+        <ProcessSection />
+        <FeaturesSection />
+        <FAQSection />
         <CTASection />
       </motion.div>
     </div>
