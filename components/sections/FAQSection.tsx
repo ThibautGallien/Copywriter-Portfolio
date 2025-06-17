@@ -1,92 +1,79 @@
+// components/sections/FAQSection.tsx
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { useState } from "react";
 
-export default function FAQSection() {
+const FAQSection = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   const faqs = [
     {
-      question: "Question 1",
+      question: "Que fait exactement un copywriter ?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+        "Un copywriter crée du contenu persuasif qui pousse à l'action : pages de vente, emails, publicités, landing pages... L'objectif est de transformer vos prospects en clients payants grâce au pouvoir des mots.",
     },
     {
-      question: "Question 2",
+      question:
+        "Comment puis-je savoir que j'aurai un retour sur investissement ?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+        "Chaque projet est basé sur des métriques mesurables : taux de conversion, revenus générés, ROI... Je fournis des rapports détaillés et ma garantie résultat vous protège entièrement.",
     },
     {
-      question: "Question 3",
+      question: "Travaillez-vous avec des grandes ou petites entreprises ?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+        "Je travaille principalement avec des entrepreneurs et PME (1M€ à 50M€ de CA) qui veulent scaler rapidement. Mon approche s'adapte à votre taille et vos objectifs.",
     },
     {
-      question: "Question 4",
+      question: "Pourquoi choisir Thibaut comme copywriter ?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+        "Contrairement aux autres, je combine copywriting de persuasion + automatisation marketing + stratégie business. Vous n'avez qu'un seul interlocuteur pour tout votre écosystème de vente.",
     },
     {
-      question: "Question 5",
+      question: "Pouvez-vous garantir des résultats ?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+        "Oui ! Ma triple garantie couvre les délais, les résultats et votre satisfaction. Si vous n'êtes pas 100% satisfait, vous êtes remboursé intégralement.",
     },
     {
-      question: "Question 6",
+      question: "Qu'est-ce qui est inclus dans le copywriting ?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+        "Selon votre besoin : research + avatar client, headlines magnétiques, structure de vente, emails de suivi, optimisations A/B, formation de votre équipe, et suivi des performances.",
     },
   ];
 
   return (
-    <section className="py-24 relative">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="inline-block mb-4">
-            <span className="text-[#FFD400] font-bold text-sm tracking-wider uppercase">
-              ❓ FAQ
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk text-white mb-8">
-            Frequently Asked Questions
+    <section className="py-20 bg-gray-800">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-white text-center mb-4">
+            VOUS AVEZ DES QUESTIONS,
+            <br />
+            NOUS AVONS DES RÉPONSES.
           </h2>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
-        >
-          <Accordion type="single" collapsible className="space-y-4">
+          <div className="space-y-4 mt-12">
             {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="bg-gray-900/50 border border-gray-800 hover:border-gray-700 transition-colors duration-300 rounded-lg px-6 py-2"
-              >
-                <AccordionTrigger className="text-left font-medium text-white hover:no-underline hover:text-[#9B5DE5] transition-colors duration-300">
+              <div key={index} className="bg-gray-700 rounded-lg">
+                <button
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
+                  className="w-full text-left p-6 text-white font-semibold text-lg hover:bg-gray-600 transition-colors rounded-lg flex justify-between items-center"
+                >
                   {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-300 pt-2">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+                  <span className="text-2xl">
+                    {openIndex === index ? "−" : "+"}
+                  </span>
+                </button>
+                {openIndex === index && (
+                  <div className="px-6 pb-6 text-gray-300">{faq.answer}</div>
+                )}
+              </div>
             ))}
-          </Accordion>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default FAQSection;

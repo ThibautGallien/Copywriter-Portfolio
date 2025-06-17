@@ -1,42 +1,38 @@
+// app/page.tsx
 "use client";
 
-import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
-import ProblemSection from "@/components/sections/ProblemSection";
-import SolutionSection from "@/components/sections/SolutionSection";
-import BenefitsSection from "@/components/sections/BenefitsSection";
+import ConceptSlider from "@/components/sections/ConceptSlider";
+import ServicesSection from "@/components/sections/ServicesSection";
 import ProcessSection from "@/components/sections/ProcessSection";
-import FeaturesSection from "@/components/sections/FeaturesSection";
+import ROICalculator from "@/components/sections/Calculator";
+import BenefitsSection from "@/components/sections/BenefitsSection";
+import TripleGuarantee from "@/components/sections/TripleGuarantee";
+import AboutSection from "@/components/sections/AboutSection";
+import ReassuranceSection from "@/components/sections/ReassuranceSection";
+import FreeBookSection from "@/components/sections/FreeBookSection";
 import FAQSection from "@/components/sections/FAQSection";
-import ServicesPreview from "@/components/sections/ServicesPreview";
-import AboutPreview from "@/components/sections/AboutPreview";
-import CTASection from "@/components/sections/CTASection";
+import FinalCTA from "@/components/sections/FinalCTA";
+import { Footer } from "react-day-picker";
+import SalesPage from "@/components/sections/SalesPage";
 
 export default function Home() {
   return (
-    <div className="relative">
-      {/* Background elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-[#9B5DE5] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
-        <div className="absolute top-3/4 -right-32 w-64 h-64 bg-[#3A86FF] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <HeroSection />
-        <ProblemSection />
-        <SolutionSection />
-        <ServicesPreview />
-        <AboutPreview />
-        <BenefitsSection />
-        <ProcessSection />
-        <FeaturesSection />
-        <FAQSection />
-        <CTASection />
-      </motion.div>
-    </div>
+    <main className="min-h-screen bg-gray-900">
+      <HeroSection />
+      <ConceptSlider />
+      <SalesPage />
+      <ServicesSection />
+      <ProcessSection />
+      <ROICalculator />
+      <BenefitsSection />
+      <TripleGuarantee />
+      <AboutSection />
+      <ReassuranceSection />
+      <FreeBookSection />
+      <FAQSection />
+      <FinalCTA />
+      <Footer />
+    </main>
   );
 }
