@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Zap, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -52,13 +52,10 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Zap className="w-5 h-5 text-white" />
-            </div>
-            <div className="hidden sm:block">
-              <span className="text-xl font-bold font-space-grotesk">
-                Thibaut
+          <Link href="/" className="flex items-center group">
+            <div>
+              <span className="text-lg md:text-xl font-bold font-space-grotesk">
+                Thibaut Gallien
               </span>
               <div className="text-xs text-gray-400 -mt-1">Copywriter</div>
             </div>
