@@ -120,11 +120,16 @@ export default function TripleGuarantee() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity text-lg px-8"
+                  className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity text-sm sm:text-lg px-4 sm:px-8 py-3 sm:py-4"
                 >
                   <Link href="https://calendly.com/hello-thibautgallien/30min">
-                    Je réserve mon appel gratuit de 30 minutes
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                    <span className="hidden sm:inline">
+                      Je réserve mon appel gratuit de 30 minutes
+                    </span>
+                    <span className="sm:hidden">
+                      Réserver mon appel gratuit
+                    </span>
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 flex-shrink-0" />
                   </Link>
                 </Button>
               </div>

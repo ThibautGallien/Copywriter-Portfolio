@@ -98,25 +98,29 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mt-12"
+            className="flex flex-col gap-4 justify-center mt-12 w-full max-w-md mx-auto sm:max-w-none sm:flex-row"
           >
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity px-8"
+              className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity px-4 sm:px-8 text-sm sm:text-base w-full sm:w-auto"
             >
               <Link href="https://calendly.com/hello-thibautgallien/30min">
-                Travailler avec moi
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <span className="hidden sm:inline">Travailler avec moi</span>
+                <span className="sm:hidden">Travailler ensemble</span>
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 flex-shrink-0" />
               </Link>
             </Button>
             <Button
               asChild
               variant="outline"
               size="lg"
-              className="border-gray-700 hover:border-[#9B5DE5] hover:text-[#9B5DE5] transition-colors px-8"
+              className="border-gray-700 hover:border-[#9B5DE5] hover:text-[#9B5DE5] transition-colors px-4 sm:px-8 text-sm sm:text-base w-full sm:w-auto"
             >
-              <Link href="/services">Voir mes services</Link>
+              <Link href="/services">
+                <span className="hidden sm:inline">Voir mes services</span>
+                <span className="sm:hidden">Mes services</span>
+              </Link>
             </Button>
           </motion.div>
         </div>

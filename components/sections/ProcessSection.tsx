@@ -24,6 +24,7 @@ const steps = [
     icon: Settings,
     color: "from-[#3A86FF] to-[#0EA5E9]",
     highlight: "Stratégie sur-mesure",
+    highlightMobile: "Sur-mesure",
   },
   {
     number: "03",
@@ -74,7 +75,7 @@ export default function ProcessTimeline() {
                 <div className="absolute left-6 top-24 w-0.5 h-32 bg-gradient-to-b from-[#9B5DE5] to-[#3A86FF] z-0"></div>
               )}
 
-              <div className="flex gap-8 mb-12 relative z-10">
+              <div className="flex gap-4 sm:gap-8 mb-12 relative z-10">
                 {/* Timeline node */}
                 <div className="flex-shrink-0">
                   <div
@@ -92,21 +93,26 @@ export default function ProcessTimeline() {
                 </div>
 
                 {/* Content */}
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <Card className="bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-colors duration-300">
-                    <CardContent className="p-6">
-                      <div className="flex items-start justify-between mb-4">
-                        <h3 className="text-xl font-bold font-space-grotesk text-white leading-tight">
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="flex items-start justify-between mb-4 gap-2">
+                        <h3 className="text-lg sm:text-xl font-bold font-space-grotesk text-white leading-tight flex-1 pr-2">
                           {step.title}
                         </h3>
                         <span
-                          className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${step.color} text-white whitespace-nowrap ml-4`}
+                          className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${step.color} text-white flex-shrink-0`}
                         >
-                          {step.highlight}
+                          <span className="hidden sm:inline">
+                            {step.highlight}
+                          </span>
+                          <span className="sm:hidden">
+                            {step.highlightMobile || step.highlight}
+                          </span>
                         </span>
                       </div>
 
-                      <p className="text-gray-300 leading-relaxed">
+                      <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
                         {step.description}
                       </p>
                     </CardContent>
@@ -126,7 +132,7 @@ export default function ProcessTimeline() {
           className="text-center mt-16"
         >
           <Card className="bg-gradient-to-r from-[#9B5DE5]/10 to-[#3A86FF]/10 border border-[#9B5DE5]/30 max-w-2xl mx-auto">
-            <CardContent className="p-8">
+            <CardContent className="p-6 sm:p-8">
               <h3 className="text-xl font-bold font-space-grotesk text-white mb-4">
                 Prêt à transformer votre email en machine de vente ?
               </h3>
@@ -137,28 +143,31 @@ export default function ProcessTimeline() {
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity px-8"
+                className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity px-4 sm:px-8 text-sm sm:text-base w-full sm:w-auto"
               >
                 <Link href="https://calendly.com/hello-thibautgallien/30min">
-                  Réserver mon appel stratégique gratuit
+                  <span className="hidden sm:inline">
+                    Réserver mon appel stratégique gratuit
+                  </span>
+                  <span className="sm:hidden">Réserver mon appel gratuit</span>
                 </Link>
               </Button>
 
-              <div className="grid grid-cols-3 gap-6 text-center mt-6 pt-6 border-t border-gray-700">
+              <div className="grid grid-cols-3 gap-3 sm:gap-6 text-center mt-6 pt-6 border-t border-gray-700">
                 <div>
-                  <div className="text-lg font-bold text-[#9B5DE5] font-space-grotesk">
+                  <div className="text-base sm:text-lg font-bold text-[#9B5DE5] font-space-grotesk">
                     30 min
                   </div>
                   <div className="text-xs text-gray-400">Appel gratuit</div>
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-[#3A86FF] font-space-grotesk">
+                  <div className="text-base sm:text-lg font-bold text-[#3A86FF] font-space-grotesk">
                     0€
                   </div>
                   <div className="text-xs text-gray-400">Aucun engagement</div>
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-[#FFD400] font-space-grotesk">
+                  <div className="text-base sm:text-lg font-bold text-[#FFD400] font-space-grotesk">
                     100%
                   </div>
                   <div className="text-xs text-gray-400">Actionnable</div>

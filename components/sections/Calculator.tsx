@@ -415,10 +415,13 @@ export default function EmailROICalculator() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity text-lg px-8"
+                  className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity text-sm sm:text-lg px-4 sm:px-8 py-3 sm:py-4 w-full sm:w-auto"
                 >
                   <Link href="https://calendly.com/hello-thibautgallien/30min">
-                    Je veux ces résultats pour mon business
+                    <span className="hidden sm:inline">
+                      Je veux ces résultats pour mon business
+                    </span>
+                    <span className="sm:hidden">Je veux ces résultats</span>
                   </Link>
                 </Button>
 

@@ -236,16 +236,21 @@ function ValuePropositionSection() {
             </div>
 
             <div className="pt-8">
-              <Button
-                asChild
-                size="lg"
-                className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity text-lg px-8"
-              >
-                <Link href="https://calendly.com/hello-thibautgallien/30min">
-                  Découvrir comment ça marche
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
+              <div className="pt-8 text-center sm:text-left">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity text-sm sm:text-lg px-4 sm:px-8 py-3 sm:py-4 w-full sm:w-auto"
+                >
+                  <Link href="https://calendly.com/hello-thibautgallien/30min">
+                    <span className="hidden sm:inline">
+                      Découvrir comment ça marche
+                    </span>
+                    <span className="sm:hidden">Comment ça marche</span>
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 flex-shrink-0" />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </motion.div>
         </div>

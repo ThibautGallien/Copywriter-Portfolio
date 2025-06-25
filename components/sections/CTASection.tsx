@@ -74,12 +74,15 @@ export default function CTASection() {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-all duration-300 text-xl px-12 py-8 group shadow-2xl"
+              className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-all duration-300 text-lg sm:text-xl px-8 sm:px-12 py-6 sm:py-8 group shadow-2xl text-center"
             >
               <Link href="https://calendly.com/hello-thibautgallien/30min">
-                <Zap className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
-                Je veux rentabiliser mes emails
-                <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+                <Zap className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
+                <span className="hidden sm:inline">
+                  Je veux rentabiliser mes emails
+                </span>
+                <span className="sm:hidden">Rentabiliser mes emails</span>
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" />
               </Link>
             </Button>
           </motion.div>
