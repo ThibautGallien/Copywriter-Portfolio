@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, Star } from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
@@ -18,20 +18,6 @@ export default function HeroSection() {
 
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-block mb-6"
-          >
-            <div className="bg-gradient-to-r from-[#9B5DE5]/20 to-[#3A86FF]/20 border border-[#9B5DE5]/30 rounded-full px-6 py-2">
-              <span className="text-[#FFD400] font-bold text-sm tracking-wider">
-                ⚡ COPYWRITER FREELANCE
-              </span>
-            </div>
-          </motion.div>
-
           {/* Main heading */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -105,22 +91,24 @@ export default function HeroSection() {
             *Mais c'est 100% légal (promis juré)
           </motion.p>
 
-          {/* Social proof */}
-          <motion.div
+          {/* 
+            Social proof
+            <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
             className="flex items-center justify-center space-x-2"
-          >
+            >
             <div className="flex text-[#FFD400]">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={20} fill="currentColor" />
+              <Star key={i} size={20} fill="currentColor" />
               ))}
             </div>
             <span className="text-gray-300 font-medium">
               4.9 étoiles sur 150+ projets
             </span>
-          </motion.div>
+            </motion.div>
+            */}
 
           {/* CTA Buttons */}
           <motion.div

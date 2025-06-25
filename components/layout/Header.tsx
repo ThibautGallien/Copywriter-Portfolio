@@ -11,15 +11,10 @@ const navItems = [
   { href: "/", label: "Accueil" },
   {
     href: "/services",
-    label: "Services",
-    submenu: [
-      { href: "/services/newsletter", label: "Newsletter" },
-      { href: "/services/landing-pages", label: "Landing Pages" },
-      { href: "/services/email-marketing", label: "Email Marketing" },
-    ],
+    label: "Service",
   },
-  { href: "/about", label: "À propos" },
   { href: "/blog", label: "Blog" },
+  { href: "/about", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];
 

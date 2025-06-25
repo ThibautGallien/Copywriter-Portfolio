@@ -7,35 +7,41 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const faqs = [
   {
-    question: "Que fait exactement un copywriter ?",
+    question: "Pourquoi prendre un freelance plutôt qu'une agence ?",
     answer:
-      "Un copywriter crée du contenu persuasif qui pousse à l'action : pages de vente, emails, publicités, landing pages... L'objectif est de transformer vos prospects en clients payants grâce au pouvoir des mots.",
+      "Un freelance s’implique personnellement. Vous avez un seul interlocuteur, disponible, réactif, qui connaît votre dossier dans les moindres détails — pas un compte perdu au milieu de dizaines d’autres.",
+  },
+  {
+    question: "Combien ça coûte ?",
+    answer:
+      "L’audit est gratuit. Ensuite, le tarif dépend de la complexité du projet. Mais une chose est sûre : chaque euro investi doit vous rapporter au moins deux fois plus. Sinon, je continue à travailler gratuitement.",
+  },
+  {
+    question: "Est-ce que je garde le contrôle sur ce qu'il se passe ?",
+    answer:
+      "Oui. Vous validez chaque livrable, chaque email, chaque décision stratégique. Vous avez la vision, je m’occupe de l’exécution.",
   },
   {
     question:
-      "Comment puis-je savoir que j'aurai un retour sur investissement ?",
+      "Et si j’ai une petite liste, est-ce que ça vaut vraiment le coup ?",
     answer:
-      "Chaque projet est basé sur des métriques mesurables : taux de conversion, revenus générés, ROI... Je fournis des rapports détaillés et ma garantie résultat vous protège entièrement.",
+      "Justement. Une petite liste bien activée peut générer plus qu’une grosse liste mal utilisée. Tout est dans la qualité, pas la taille.",
   },
   {
-    question: "Travaillez-vous avec des grandes ou petites entreprises ?",
+    question:
+      "Est-ce que ça va vraiment fonctionner pour mon type de business ?",
     answer:
-      "Je travaille principalement avec des entrepreneurs et PME (1M€ à 50M€ de CA) qui veulent scaler rapidement. Mon approche s'adapte à votre taille et vos objectifs.",
+      "Si vous avez une offre, des clients, et une audience — même modeste — alors oui, l’email peut devenir un levier puissant pour vous.",
   },
   {
-    question: "Pourquoi choisir Thibaut comme copywriter ?",
+    question: "Et si je ne suis pas à l’aise avec la technique ?",
     answer:
-      "Contrairement aux autres, je combine copywriting de persuasion + automatisation marketing + stratégie business. Vous n'avez qu'un seul interlocuteur pour tout votre écosystème de vente.",
+      "Aucun souci. Je gère toute la partie technique : outils, automatisations, intégrations. Vous restez concentré sur votre cœur de métier.",
   },
   {
-    question: "Pouvez-vous garantir des résultats ?",
+    question: "Combien de temps avant de voir les premiers résultats ?",
     answer:
-      "Oui ! Ma triple garantie couvre les délais, les résultats et votre satisfaction. Si vous n'êtes pas 100% satisfait, vous êtes remboursé intégralement.",
-  },
-  {
-    question: "Qu'est-ce qui est inclus dans le copywriting ?",
-    answer:
-      "Selon votre besoin : research + avatar client, headlines magnétiques, structure de vente, emails de suivi, optimisations A/B, formation de votre équipe, et suivi des performances.",
+      "Dès les premières semaines, vous commencez à voir les premiers effets. Et les résultats s’amplifient au fil des optimisations mensuelles.",
   },
 ];
 
@@ -58,22 +64,13 @@ export default function FAQSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-block mb-4">
-            <span className="text-[#FFD400] font-bold text-sm tracking-wider uppercase">
-              ❓ FAQ
-            </span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk text-white mb-4">
-            VOUS AVEZ DES QUESTIONS,
+            VOUS AVEZ ENCORE DES QUESTIONS ?
             <br />
             <span className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
-              NOUS AVONS DES RÉPONSES.
+              JE VOUS RÉPONDS
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Toutes les réponses aux questions les plus fréquentes sur mes
-            services de copywriting.
-          </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
