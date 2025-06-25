@@ -193,11 +193,112 @@ export default function ImprovedAboutPage() {
           ))}
         </motion.div>
 
-        {/* Timeline */}
+        {/* Profile Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Photo */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative">
+                {/* Conteneur rond - plus grand que l'image pour contenir les animations */}
+                <div className="w-[400px] h-[400px] bg-gradient-to-br from-[#9B5DE5]/20 to-[#3A86FF]/20 rounded-full flex items-center justify-center border border-gray-800 relative overflow-hidden mx-auto">
+                  {/* Avatar rond - plus petit que le conteneur */}
+                  <div className="w-[350px] h-[350px] bg-gradient-to-br from-[#9B5DE5] to-[#3A86FF] rounded-full flex items-center justify-center shadow-2xl relative z-10">
+                    <img
+                      src="/profile-pic.webp"
+                      alt="Thibaut Gallien - Copywriter"
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
+
+                  {/* Animations qui restent dans le conteneur rond */}
+                  <div className="absolute inset-0">
+                    {/* Floating elements repositionnés pour rester dans le cercle */}
+                    <div className="absolute top-1/4 left-1/4 w-6 h-6 bg-[#FFD400] rounded-full animate-bounce flex items-center justify-center">
+                      <span className="text-black font-bold text-xs">📧</span>
+                    </div>
+                    <div className="absolute bottom-1/3 right-1/4 w-5 h-5 bg-[#9B5DE5] rounded-full animate-pulse"></div>
+
+                    {/* Cercles décoratifs supplémentaires */}
+                    <div className="absolute top-1/3 right-1/6 w-4 h-4 bg-[#3A86FF]/50 rounded-full animate-pulse"></div>
+                    <div className="absolute bottom-1/2 left-1/3 w-3 h-3 bg-[#FFD400]/60 rounded-full animate-bounce"></div>
+                  </div>
+                </div>
+
+                {/* Éléments flottants externes */}
+                <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-[#9B5DE5] rounded-full animate-pulse shadow-lg"></div>
+              </div>
+            </motion.div>
+
+            {/* Right Side - Bio */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-4">
+                  Salut ! Moi c'est{" "}
+                  <span className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
+                    Thibaut
+                  </span>
+                </h2>
+                <p className="text-xl text-gray-300 leading-relaxed">
+                  Le copywriter qui transforme vos listes mails en machine à
+                  convertir
+                </p>
+              </div>
+
+              <div className="space-y-4 text-gray-300 leading-relaxed">
+                <p>
+                  Entrepreneur depuis 2020, ex-community manager chez Tugan.ai,
+                  créateur de funnels qui convertissent. Avec 5 ans d'expérience
+                  en copywriting, j'ai une obsession : faire de vos emails votre
+                  canal de vente le plus fiable.
+                </p>
+
+                <p>
+                  Mon truc ? Combiner l'efficacité du copywriting avec un style
+                  narratif qui marque les esprits. Résultat : vos prospects
+                  attendent vos emails comme le prochain épisode de leur série
+                  préférée.
+                </p>
+              </div>
+
+              <div className="pt-4">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity"
+                >
+                  <Link href="https://calendly.com/hello-thibautgallien/30min">
+                    Prendre un café virtuel
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Timeline */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
           viewport={{ once: true }}
           className="mb-20"
         >
@@ -263,7 +364,7 @@ export default function ImprovedAboutPage() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
           viewport={{ once: true }}
           className="mb-20"
         >
@@ -315,7 +416,7 @@ export default function ImprovedAboutPage() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
           viewport={{ once: true }}
           className="mb-20"
         >
@@ -405,7 +506,7 @@ export default function ImprovedAboutPage() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.8 }}
+          transition={{ duration: 0.8, delay: 1.6 }}
           viewport={{ once: true }}
           className="text-center"
         >
@@ -424,11 +525,14 @@ export default function ImprovedAboutPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity px-8 text-lg"
+                className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity px-4 md:px-8 text-sm md:text-lg w-full sm:w-auto"
               >
                 <Link href="https://calendly.com/hello-thibautgallien/30min">
-                  Je réserve mon appel stratégique
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <span className="hidden sm:inline">
+                    Je réserve mon appel stratégique
+                  </span>
+                  <span className="sm:hidden">Réserver un appel</span>
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
                 </Link>
               </Button>
               <p className="text-sm text-gray-400 mt-4">
