@@ -1,31 +1,35 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, TrendingUp, CheckCircle, Shield } from "lucide-react";
+import { TrendingUp, CheckCircle, Eye, Shield, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 
 const guarantees = [
   {
-    icon: Clock,
-    title: "Garantie Délai",
-    description:
-      "Vos projets livrés dans les temps convenus ou remboursement intégral.",
-    color: "from-[#9B5DE5] to-[#7C3AED]",
-  },
-  {
     icon: TrendingUp,
-    title: "Garantie Résultat",
+    title: "Garantie résultats",
     description:
-      "Amélioration mesurable de vos conversions ou nous reprenons tout gratuitement.",
-    color: "from-[#3A86FF] to-[#0EA5E9]",
+      "Si le système mis en place ne génère pas au moins deux fois le tarif investi en chiffre d'affaires dans les 60 jours, je continue à travailler gratuitement jusqu'à ce que ce soit le cas.",
+    color: "from-[#9B5DE5] to-[#7C3AED]",
+    highlight: "ROI x2 minimum",
   },
   {
     icon: CheckCircle,
-    title: "Garantie Satisfaction",
-    description: "100% satisfait ou remboursé, sans question ni justification.",
+    title: "Garantie satisfaction",
+    description:
+      "Chaque livrable est validé par vous. Si quelque chose ne vous convient pas, on le revoit ensemble jusqu'à ce que ce soit parfaitement aligné avec votre vision.",
+    color: "from-[#3A86FF] to-[#0EA5E9]",
+    highlight: "Révisions illimitées",
+  },
+  {
+    icon: Eye,
+    title: "Garantie clarté",
+    description:
+      "Vous savez exactement ce qui est fait, pourquoi, et avec quels résultats. Pas de jargon, pas de zones floues, pas de dépendance technique.",
     color: "from-[#FFD400] to-[#F59E0B]",
+    highlight: "Transparence totale",
   },
 ];
 
@@ -43,22 +47,13 @@ export default function TripleGuarantee() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-block mb-4">
-            <span className="text-[#FFD400] font-bold text-sm tracking-wider uppercase">
-              🛡️ GARANTIES
-            </span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk text-white mb-4">
-            MA TRIPLE
             <span className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
-              {" "}
-              GARANTIE
+              Je prends tous les risques
             </span>
+            <br />
+            <span className="text-white">pour vous</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Parce que votre succès est ma priorité absolue. Travaillez avec moi
-            en toute sérénité.
-          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
@@ -72,17 +67,24 @@ export default function TripleGuarantee() {
             >
               <Card className="bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 h-full group">
                 <CardHeader className="text-center pb-4">
-                  <div
-                    className={`w-20 h-20 mx-auto rounded-2xl bg-gradient-to-r ${guarantee.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <guarantee.icon className="w-10 h-10 text-white" />
+                  <div className="relative mb-4">
+                    <div
+                      className={`w-20 h-20 mx-auto rounded-2xl bg-gradient-to-r ${guarantee.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <guarantee.icon className="w-10 h-10 text-white" />
+                    </div>
+                    <div
+                      className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${guarantee.color} text-white whitespace-nowrap`}
+                    >
+                      {guarantee.highlight}
+                    </div>
                   </div>
                   <CardTitle className="text-xl font-space-grotesk text-white">
                     {guarantee.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed text-left">
                     {guarantee.description}
                   </p>
                 </CardContent>
@@ -104,50 +106,53 @@ export default function TripleGuarantee() {
               <div className="flex items-center justify-center mb-6">
                 <Shield className="w-12 h-12 text-[#FFD400] mr-4" />
                 <h3 className="text-2xl md:text-3xl font-bold font-space-grotesk text-white">
-                  Travaillez sans risque
+                  Travaillez en toute sérénité
                 </h3>
               </div>
 
               <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                Ma triple garantie vous protège entièrement. Votre
+                Ces trois garanties vous protègent entièrement. Votre
                 investissement est sécurisé, vos résultats sont assurés, et
                 votre satisfaction est garantie.
               </p>
 
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#9B5DE5] font-space-grotesk">
-                    24h
+              <div className="mb-8">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity text-lg px-8"
+                >
+                  <Link href="https://calendly.com/hello-thibautgallien/30min">
+                    Je réserve mon appel gratuit de 30 minutes
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-[#9B5DE5] font-space-grotesk">
+                    ROI x2
                   </div>
-                  <div className="text-sm text-gray-400">Délai de réponse</div>
+                  <div className="text-sm text-gray-400">Minimum garanti</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#3A86FF] font-space-grotesk">
-                    7j
+                <div>
+                  <div className="text-2xl font-bold text-[#3A86FF] font-space-grotesk">
+                    60j
                   </div>
                   <div className="text-sm text-gray-400">
-                    Garantie satisfaction
+                    Délai de résultats
                   </div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#FFD400] font-space-grotesk">
+                <div>
+                  <div className="text-2xl font-bold text-[#FFD400] font-space-grotesk">
                     100%
                   </div>
                   <div className="text-sm text-gray-400">
-                    Remboursement possible
+                    Satisfaction garantie
                   </div>
                 </div>
               </div>
-
-              <Button
-                asChild
-                size="lg"
-                className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity text-lg px-8"
-              >
-                <Link href="/contact">
-                  Réserver un appel stratégique gratuit
-                </Link>
-              </Button>
             </CardContent>
           </Card>
         </motion.div>

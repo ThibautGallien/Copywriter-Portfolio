@@ -1,28 +1,30 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { ArrowRight, Zap, Mail, Calendar } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import Link from 'next/link';
+import { motion } from "framer-motion";
+import { ArrowRight, Zap, Mail, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 const ctaOptions = [
   {
     icon: Mail,
-    title: 'Brief Express',
-    description: 'Envoyez-moi votre projet, je vous réponds sous 24h',
-    action: 'Envoyer mon brief',
-    href: '/contact',
-    color: 'from-[#9B5DE5] to-[#7C3AED]'
+    title: "Brief Express",
+    description:
+      "Décrivez-moi votre situation email actuelle, je vous réponds sous 24h",
+    action: "J'envoie mon brief",
+    href: "/contact",
+    color: "from-[#9B5DE5] to-[#7C3AED]",
   },
   {
     icon: Calendar,
-    title: 'Appel Stratégique',
-    description: 'Discutons de votre projet en direct (30 min gratuit)',
-    action: 'Réserver un créneau',
-    href: '/contact',
-    color: 'from-[#3A86FF] to-[#0EA5E9]'
-  }
+    title: "Appel Stratégique",
+    description:
+      "Échangeons 30 minutes sur vos opportunités email (diagnostic gratuit, aucun engagement)",
+    action: "Je réserve mon créneau",
+    href: "/contact",
+    color: "from-[#3A86FF] to-[#0EA5E9]",
+  },
 ];
 
 export default function CTASection() {
@@ -30,7 +32,7 @@ export default function CTASection() {
     <section className="py-24 relative">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#9B5DE5]/5 to-transparent"></div>
-      
+
       <div className="container mx-auto px-4 relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -46,18 +48,19 @@ export default function CTASection() {
               </span>
             </div>
           </div>
-          
+
           <h2 className="text-4xl md:text-6xl font-bold font-space-grotesk mb-6">
-            Transformons vos mots
+            Transformons votre liste email
             <br />
             <span className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
-              en machine à cash
+              en votre meilleure source de revenus
             </span>
           </h2>
-          
+
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
-            Vous avez un projet ? Une idée ? Un défi copywriting ? 
-            Parlons-en et voyons comment mon style narratif peut booster vos conversions.
+            Votre liste email dort ? Vos taux d'ouverture stagnent ? Vos emails
+            ne convertissent pas ? Parlons-en et identifions ensemble vos
+            opportunités concrètes.
           </p>
 
           {/* Main CTA */}
@@ -68,14 +71,14 @@ export default function CTASection() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <Button 
-              asChild 
-              size="lg" 
+            <Button
+              asChild
+              size="lg"
               className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-all duration-300 text-xl px-12 py-8 group shadow-2xl"
             >
-              <Link href="/contact">
+              <Link href="https://calendly.com/hello-thibautgallien/30min">
                 <Zap className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
-                Travailler avec moi
+                Je veux rentabiliser mes emails
                 <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
@@ -101,7 +104,9 @@ export default function CTASection() {
               <Card className="bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 group cursor-pointer">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${option.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                    <div
+                      className={`w-12 h-12 rounded-lg bg-gradient-to-r ${option.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                    >
                       <option.icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
@@ -111,9 +116,9 @@ export default function CTASection() {
                       <p className="text-sm text-gray-300 mb-4 leading-relaxed">
                         {option.description}
                       </p>
-                      <Button 
-                        asChild 
-                        variant="outline" 
+                      <Button
+                        asChild
+                        variant="outline"
                         size="sm"
                         className="border-gray-700 hover:border-[#9B5DE5] hover:text-[#9B5DE5] transition-colors duration-300"
                       >
@@ -141,16 +146,22 @@ export default function CTASection() {
           <div className="bg-gradient-to-r from-gray-900/50 to-gray-800/30 rounded-2xl p-6 border border-gray-800 max-w-2xl mx-auto">
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-2xl font-bold text-[#9B5DE5] font-space-grotesk">24h</div>
+                <div className="text-2xl font-bold text-[#9B5DE5] font-space-grotesk">
+                  24h
+                </div>
                 <div className="text-xs text-gray-400">Réponse garantie</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-[#3A86FF] font-space-grotesk">7j</div>
-                <div className="text-xs text-gray-400">Garantie satisfaction</div>
+                <div className="text-2xl font-bold text-[#3A86FF] font-space-grotesk">
+                  30 min
+                </div>
+                <div className="text-xs text-gray-400">Appel gratuit</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-[#FFD400] font-space-grotesk">150+</div>
-                <div className="text-xs text-gray-400">Projets réalisés</div>
+                <div className="text-2xl font-bold text-[#FFD400] font-space-grotesk">
+                  ROI x2
+                </div>
+                <div className="text-xs text-gray-400">Minimum garanti</div>
               </div>
             </div>
           </div>

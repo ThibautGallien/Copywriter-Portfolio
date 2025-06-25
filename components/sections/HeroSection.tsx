@@ -25,7 +25,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl font-black font-space-grotesk mb-6 leading-tight"
           >
-            COMME DES{" "}
+            CHAQUE SEMAINE, UNE DOSE DE{" "}
             <span className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
               STÉROÏDES*
             </span>
@@ -40,10 +40,10 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
           >
-            Faire croître un business c'est dur. Je le rends beaucoup plus
-            facile, plus prévisible, moins stressant et plus fun avec mon{" "}
+            Chaque semaine, des conseils pour écrire des emails qui vendent,
+            fidélisent et automatisent votre croissance…{" "}
             <span className="text-[#FFD400] font-semibold">
-              style narratif unique
+              pendant que vous vous concentrez sur ce que vous faites de mieux
             </span>
             .
           </motion.p>
@@ -60,7 +60,8 @@ export default function HeroSection() {
                 <div className="flex items-center justify-center mb-4">
                   <Zap className="text-[#9B5DE5] mr-2" size={24} />
                   <span className="text-gray-300 font-medium">
-                    Entrez votre email et recevez de la 'magie'...
+                    Entrez votre email et recevez votre première dose dès
+                    aujourd'hui.
                   </span>
                 </div>
                 <div className="flex flex-col md:flex-row gap-4">
@@ -71,9 +72,9 @@ export default function HeroSection() {
                   />
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity px-8"
+                    className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity px-8 py-4"
                   >
-                    C'est parti
+                    Rejoindre la newsletter
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </div>
@@ -88,27 +89,9 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="text-sm text-gray-400 mb-6"
           >
-            *Mais c'est 100% légal (promis juré)
+            *100% légal. Même si les effets secondaires incluent des pics de
+            chiffre d'affaires.
           </motion.p>
-
-          {/* 
-            Social proof
-            <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="flex items-center justify-center space-x-2"
-            >
-            <div className="flex text-[#FFD400]">
-              {[...Array(5)].map((_, i) => (
-              <Star key={i} size={20} fill="currentColor" />
-              ))}
-            </div>
-            <span className="text-gray-300 font-medium">
-              4.9 étoiles sur 150+ projets
-            </span>
-            </motion.div>
-            */}
 
           {/* CTA Buttons */}
           <motion.div
@@ -122,7 +105,7 @@ export default function HeroSection() {
               size="lg"
               className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity px-8"
             >
-              <Link href="/contact">
+              <Link href="https://calendly.com/hello-thibautgallien/30min">
                 Travailler avec moi
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>

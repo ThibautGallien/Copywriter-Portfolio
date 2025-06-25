@@ -1,26 +1,29 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { ArrowRight, BookOpen, Target, Zap } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { motion } from "framer-motion";
+import { ArrowRight, Settings, Mail, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const highlights = [
   {
-    icon: BookOpen,
-    title: 'Style Narratif',
-    description: 'Inspiré des codes manga pour créer des textes impossibles à ignorer'
+    icon: Settings,
+    title: "Approche Systémique",
+    description:
+      "Pas de coups de chance, mais des systèmes éprouvés qui génèrent des résultats constants",
   },
   {
-    icon: Target,
-    title: 'Orienté Résultats',
-    description: 'Chaque mot est choisi pour maximiser vos conversions'
+    icon: Mail,
+    title: "Architecte Email",
+    description:
+      "Conception de systèmes email qui créent une relation durable avec votre audience",
   },
   {
-    icon: Zap,
-    title: 'Approche Unique',
-    description: 'Fini le copywriting fade, place au storytelling qui marque'
-  }
+    icon: TrendingUp,
+    title: "Résultats Prévisibles",
+    description:
+      "Chiffre d'affaires généré semaine après semaine grâce à une stratégie structurée",
+  },
 ];
 
 export default function AboutPreview() {
@@ -40,15 +43,23 @@ export default function AboutPreview() {
               <div className="w-full max-w-md mx-auto h-[400px] bg-gradient-to-br from-[#9B5DE5]/20 to-[#3A86FF]/20 rounded-3xl flex items-center justify-center border border-gray-800">
                 {/* Avatar placeholder */}
                 <div className="w-48 h-48 bg-gradient-to-br from-[#9B5DE5] to-[#3A86FF] rounded-full flex items-center justify-center">
-                  <span className="text-6xl font-bold text-white font-space-grotesk">T</span>
+                  <span className="text-6xl font-bold text-white font-space-grotesk">
+                    T
+                  </span>
                 </div>
               </div>
-              
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#FFD400] rounded-full animate-bounce"></div>
+
+              {/* Floating elements with email theme */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#FFD400] rounded-full animate-bounce flex items-center justify-center">
+                <Mail className="w-4 h-4 text-black" />
+              </div>
               <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-[#9B5DE5] rounded-full animate-pulse"></div>
-              <div className="absolute top-1/2 -left-8 text-[#FFD400] text-2xl animate-bounce">⚡</div>
-              <div className="absolute bottom-1/4 -right-8 text-[#3A86FF] text-xl animate-pulse">💥</div>
+              <div className="absolute top-1/2 -left-8 text-[#FFD400] text-2xl animate-bounce">
+                📧
+              </div>
+              <div className="absolute bottom-1/4 -right-8 text-[#3A86FF] text-xl animate-pulse">
+                ⚙️
+              </div>
             </div>
           </motion.div>
 
@@ -61,38 +72,41 @@ export default function AboutPreview() {
             className="space-y-8"
           >
             <div>
-              <div className="inline-block mb-4">
-                <span className="text-[#FFD400] font-bold text-sm tracking-wider uppercase">
-                  🎯 QUI SUIS-JE
-                </span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                Thibaut,
+              <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6 leading-tight">
+                Thibaut.
                 <br />
                 <span className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
-                  Copywriter Narratif
+                  Copywriter & Architecte Email
                 </span>
               </h2>
             </div>
 
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
-                Depuis 5 ans, je transforme des mots en euros pour mes clients. 
-                Mais pas n'importe comment : avec un{' '}
-                <span className="text-[#9B5DE5] font-semibold">style narratif inspiré des codes manga</span>{' '}
-                qui fait que vos prospects ne peuvent pas s'arrêter de lire.
+                Avant de me spécialiser dans l'email, j'avais une conviction
+                simple : les meilleurs résultats viennent toujours d'un{" "}
+                <span className="text-[#9B5DE5] font-semibold">système</span>.
               </p>
 
               <p>
-                Là où d'autres copywriters recyclent les mêmes formules, 
-                moi je raconte des histoires. Là où ils alignent des bullet points, 
-                moi je construis des{' '}
-                <span className="text-[#FFD400] font-semibold">arcs narratifs qui mènent à l'achat.</span>
+                Pas d'un coup de chance, pas d'un éclair de génie isolé. Mais
+                d'un système.
               </p>
 
-              <p className="text-[#3A86FF] font-medium">
-                Ma mission ? Faire en sorte que vos clients attendent vos emails 
-                comme le prochain épisode de leur série préférée.
+              <p>
+                C'est cette logique que j'applique au copywriting. Je ne me
+                contente pas d'écrire de bons emails. Je conçois des{" "}
+                <span className="text-[#FFD400] font-semibold">
+                  systèmes qui créent une relation solide
+                </span>{" "}
+                avec votre audience et génèrent du chiffre d'affaires, semaine
+                après semaine.
+              </p>
+
+              <p className="text-[#3A86FF] font-medium text-lg">
+                Mon objectif : que vos prospects ouvrent vos mails avec autant
+                d'envie qu'un message perso… et qu'ils finissent par cliquer et
+                acheter sans même s'en rendre compte.
               </p>
             </div>
 
@@ -123,16 +137,25 @@ export default function AboutPreview() {
             </div>
 
             {/* CTA */}
-            <div className="flex gap-4 pt-4">
-              <Button 
-                asChild 
-                size="lg" 
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Button
+                asChild
+                size="lg"
                 className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity"
               >
-                <Link href="/about">
-                  En savoir plus sur moi
+                <Link href="/services">
+                  Comment je peux vous aider
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-gray-700 hover:border-[#9B5DE5] hover:text-[#9B5DE5] transition-colors"
+              >
+                <Link href="/about">En savoir plus sur moi</Link>
               </Button>
             </div>
           </motion.div>

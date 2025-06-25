@@ -9,6 +9,7 @@ import TripleGuarantee from "@/components/sections/TripleGuarantee";
 import AboutPreview from "@/components/sections/AboutPreview";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
+import ValuePropositionSection from "@/components/sections/ValuePropositionSection";
 
 export default function Home() {
   // Supprime les attributs ajoutés par les extensions navigateur
@@ -29,10 +30,11 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#0D0D0D]">
       <HeroSection />
-      <ProcessSection />
-      <ROICalculator />
-      <TripleGuarantee />
       <AboutPreview />
+      <ValuePropositionSection />
+      <ROICalculator />
+      <ProcessSection />
+      <TripleGuarantee />
       <FAQSection />
       <CTASection />
     </main>
