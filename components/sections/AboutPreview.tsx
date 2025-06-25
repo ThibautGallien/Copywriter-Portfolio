@@ -35,31 +35,41 @@ export default function AboutPreview() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
             className="relative"
           >
             <div className="relative">
-              <div className="w-full max-w-md mx-auto h-[400px] bg-gradient-to-br from-[#9B5DE5]/20 to-[#3A86FF]/20 rounded-3xl flex items-center justify-center border border-gray-800">
-                {/* Avatar placeholder */}
-                <div className="w-48 h-48 bg-gradient-to-br from-[#9B5DE5] to-[#3A86FF] rounded-full flex items-center justify-center">
-                  <span className="text-6xl font-bold text-white font-space-grotesk">
-                    T
-                  </span>
+              {/* Conteneur rond - plus grand que l'image pour contenir les animations */}
+              <div className="w-[500px] h-[500px] bg-gradient-to-br from-[#9B5DE5]/20 to-[#3A86FF]/20 rounded-full flex items-center justify-center border border-gray-800 relative overflow-hidden mx-auto">
+                {/* Avatar rond - plus petit que le conteneur */}
+                <div className="w-[420px] h-[420px] bg-gradient-to-br from-[#9B5DE5] to-[#3A86FF] rounded-full flex items-center justify-center shadow-2xl relative z-10">
+                  <img
+                    src="/profile-pic.webp"
+                    alt="Thibaut"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
+
+                {/* Animations qui restent dans le conteneur rond */}
+                <div className="absolute inset-0">
+                  {/* Floating elements repositionnés pour rester dans le cercle */}
+                  <div className="absolute top-1/4 left-1/4 w-6 h-6 bg-[#FFD400] rounded-full animate-bounce flex items-center justify-center">
+                    <span className="text-black font-bold text-xs">📧</span>
+                  </div>
+                  <div className="absolute bottom-1/3 right-1/4 w-5 h-5 bg-[#9B5DE5] rounded-full animate-pulse"></div>
+
+                  {/* Cercles décoratifs supplémentaires */}
+                  <div className="absolute top-1/3 right-1/6 w-4 h-4 bg-[#3A86FF]/50 rounded-full animate-pulse"></div>
+                  <div className="absolute bottom-1/2 left-1/3 w-3 h-3 bg-[#FFD400]/60 rounded-full animate-bounce"></div>
                 </div>
               </div>
 
-              {/* Floating elements with email theme */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#FFD400] rounded-full animate-bounce flex items-center justify-center">
-                <Mail className="w-4 h-4 text-black" />
+              {/* Éléments flottants externes (optionnels - en dehors du conteneur rond) */}
+              <div className="absolute -top-8 -right-8 w-10 h-10 bg-[#FFD400] rounded-full animate-bounce flex items-center justify-center shadow-lg">
+                <span className="text-black font-bold text-sm">✨</span>
               </div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-[#9B5DE5] rounded-full animate-pulse"></div>
-              <div className="absolute top-1/2 -left-8 text-[#FFD400] text-2xl animate-bounce">
-                📧
-              </div>
-              <div className="absolute bottom-1/4 -right-8 text-[#3A86FF] text-xl animate-pulse">
-                ⚙️
-              </div>
+              <div className="absolute -bottom-8 -left-8 w-8 h-8 bg-[#9B5DE5] rounded-full animate-pulse shadow-lg"></div>
             </div>
           </motion.div>
 
