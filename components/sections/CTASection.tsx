@@ -41,14 +41,6 @@ export default function CTASection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-block mb-6">
-            <div className="bg-gradient-to-r from-[#9B5DE5]/20 to-[#3A86FF]/20 border border-[#9B5DE5]/30 rounded-full px-6 py-2">
-              <span className="text-[#FFD400] font-bold text-sm tracking-wider">
-                🚀 PRÊT À DÉMARRER ?
-              </span>
-            </div>
-          </div>
-
           <h2 className="text-4xl md:text-6xl font-bold font-space-grotesk mb-6">
             Transformons votre liste email
             <br />

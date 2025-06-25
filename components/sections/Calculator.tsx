@@ -153,11 +153,6 @@ export default function EmailROICalculator() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-block mb-4">
-            <span className="text-[#FFD400] font-bold text-sm tracking-wider uppercase">
-              📊 SIMULATEUR
-            </span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk text-white mb-4">
             Calculez le potentiel de
             <span className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
