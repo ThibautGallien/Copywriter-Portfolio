@@ -1,4 +1,5 @@
 // Services Component
+import { Mail, TrendingUp, Users, CheckCircle } from "lucide-react";
 const ServicesSection = () => {
   const services = [
     {
