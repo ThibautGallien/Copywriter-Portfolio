@@ -81,7 +81,7 @@ export default function Header() {
               size="sm"
               className="hidden sm:flex bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity"
             >
-              <Link href="/contact">
+              <Link href="https://calendly.com/hello-thibautgallien/30min">
                 <span className="hidden lg:inline">Travailler avec moi</span>
                 <span className="lg:hidden">Travailler ensemble</span>
                 <ArrowRight className="w-4 h-4 ml-2 flex-shrink-0" />
@@ -146,7 +146,7 @@ export default function Header() {
                     className="w-full bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity"
                     onClick={() => setIsOpen(false)}
                   >
-                    <Link href="/contact">
+                    <Link href="https://calendly.com/hello-thibautgallien/30min">
                       <span className="truncate">Travailler avec moi</span>
                       <ArrowRight className="w-4 h-4 ml-2 flex-shrink-0" />
                     </Link>
@@ -173,7 +173,7 @@ export default function Header() {
               size="lg"
               className="w-full bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity shadow-2xl text-sm sm:text-base px-4"
             >
-              <Link href="/contact">
+              <Link href="https://calendly.com/hello-thibautgallien/30min">
                 <span className="truncate">Travailler avec moi</span>
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 flex-shrink-0" />
               </Link>

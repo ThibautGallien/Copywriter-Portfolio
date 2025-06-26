@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { ArrowRight, Mail, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import Link from "next/link";
 
 const footerLinks = {
@@ -24,12 +26,53 @@ const socialLinks = [
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "/https://www.linkedin.com/in/thibaut-gallien/",
+    href: "https://www.linkedin.com/in/thibaut-gallien/",
   },
-  { icon: Twitter, label: "Twitter", href: "//https://x.com/Thibaut_gallien" },
+  {
+    icon: Twitter,
+    label: "Twitter",
+    href: "https://x.com/Thibaut_gallien",
+  },
 ];
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Inscription réussie !", {
+          description:
+            "Vous recevrez bientôt votre première dose de conseils 🎯",
+        });
+        setEmail("");
+      } else {
+        throw new Error(data.error || "Erreur lors de l'inscription");
+      }
+    } catch (error) {
+      console.error("Erreur newsletter:", error);
+      toast.error("Erreur lors de l'inscription", {
+        description: "Veuillez réessayer ou me contacter directement.",
+      });
+    }
+
+    setIsSubmitting(false);
+  };
+
   return (
     <footer className="bg-gray-900/50 border-t border-gray-800">
       <div className="container mx-auto px-4">
@@ -62,6 +105,8 @@ export default function Footer() {
                   <motion.a
                     key={social.label}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-[#9B5DE5] transition-colors duration-300 group"
@@ -108,23 +153,37 @@ export default function Footer() {
                 Newsletter Copywriting
               </h3>
               <p className="text-sm text-gray-300 mb-4 leading-relaxed">
-                Recevez chaque semaine, votre dose de conseils et techniques de
-                copywriting directement par email.
+                Recevez chaque semaine, votre dose de copywriting sous stéroïdes
+                directement par email.
               </p>
-              <div className="space-y-3">
+              <form onSubmit={handleNewsletterSubmit} className="space-y-3">
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="votre@email.com"
+                  required
                   className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:border-[#9B5DE5] focus:outline-none text-white placeholder-gray-400 text-sm"
                 />
                 <Button
+                  type="submit"
                   size="sm"
+                  disabled={isSubmitting}
                   className="w-full bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity"
                 >
-                  S'abonner
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  {isSubmitting ? (
+                    <>
+                      Inscription...
+                      <div className="w-3 h-3 ml-2 border border-white border-t-transparent rounded-full animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      S'abonner
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </>
+                  )}
                 </Button>
-              </div>
+              </form>
               <p className="text-xs text-gray-400 mt-2">
                 Pas de spam. Désinscription en 1 clic.
               </p>
@@ -144,7 +203,7 @@ export default function Footer() {
             <div className="flex items-center gap-1 text-sm text-gray-400">
               <span>
                 © 2025 Thibaut Gallien Copywriter. Créé avec beaucoup d'eau, de
-                la musique et trop peu de temps (et oui, je sais aussi coder).
+                la musique et trop peu de temps pour coder tout ça.
               </span>
             </div>
             <div className="flex gap-6">

@@ -1,12 +1,51 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { ArrowRight, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { toast } from "sonner";
 import Link from "next/link";
 
 export default function HeroSection() {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Inscription réussie !", {
+          description:
+            "Vous recevrez bientôt votre première dose de conseils 🎯",
+        });
+        setEmail("");
+      } else {
+        throw new Error(data.error || "Erreur lors de l'inscription");
+      }
+    } catch (error) {
+      console.error("Erreur newsletter:", error);
+      toast.error("Erreur lors de l'inscription", {
+        description: "Veuillez réessayer ou me contacter directement.",
+      });
+    }
+
+    setIsSubmitting(false);
+  };
+
   return (
     <section className="min-h-screen bg-[#0D0D0D] text-white relative overflow-hidden flex items-center">
       {/* Background gradients */}
@@ -48,7 +87,7 @@ export default function HeroSection() {
             .
           </motion.p>
 
-          {/* Email capture */}
+          {/* Email capture with Brevo integration */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,20 +103,37 @@ export default function HeroSection() {
                     aujourd'hui.
                   </span>
                 </div>
-                <div className="flex flex-col md:flex-row gap-4">
+                <form
+                  onSubmit={handleNewsletterSubmit}
+                  className="flex flex-col md:flex-row gap-4"
+                >
                   <input
                     type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="votre.email@exemple.com"
+                    required
                     className="flex-1 px-6 py-4 bg-gray-800/50 border border-gray-700 rounded-lg text-white text-lg focus:border-[#9B5DE5] focus:outline-none placeholder-gray-400"
                   />
                   <Button
+                    type="submit"
                     size="lg"
+                    disabled={isSubmitting}
                     className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity px-8 py-4"
                   >
-                    Rejoindre la newsletter
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                    {isSubmitting ? (
+                      <>
+                        Inscription...
+                        <div className="w-4 h-4 ml-2 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      </>
+                    ) : (
+                      <>
+                        Rejoindre la newsletter
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </>
+                    )}
                   </Button>
-                </div>
+                </form>
               </CardContent>
             </Card>
           </motion.div>
