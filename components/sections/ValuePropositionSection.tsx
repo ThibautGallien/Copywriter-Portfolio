@@ -194,7 +194,7 @@ function ValuePropositionSection() {
 
               <div className="space-y-4 text-left">
                 <div className="flex items-start gap-3">
-                  <span className="text-[#9B5DE5] font-bold text-xl">•</span>
+                  <span className="text-[#06D6A0] font-bold text-xl">•</span>
                   <p className="text-gray-300">
                     <strong className="text-white">
                       Qui attire les bons prospects
@@ -224,7 +224,7 @@ function ValuePropositionSection() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="text-[#06D6A0] font-bold text-xl">•</span>
+                  <span className="text-[#3A86FF] font-bold text-xl">•</span>
                   <p className="text-gray-300">
                     <strong className="text-white">
                       Et qui continue de s'améliorer

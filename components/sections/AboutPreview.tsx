@@ -8,9 +8,9 @@ import Link from "next/link";
 const highlights = [
   {
     icon: Settings,
-    title: "Approche Systémique",
+    title: "Approche Strétégique",
     description:
-      "Pas de coups de chance, mais des systèmes éprouvés qui génèrent des résultats constants",
+      "Pas de coups de chance, mais une stratégie éprouvée qui génère des résultats constants",
   },
   {
     icon: Mail,
@@ -22,7 +22,7 @@ const highlights = [
     icon: TrendingUp,
     title: "Résultats Prévisibles",
     description:
-      "Chiffre d'affaires généré semaine après semaine grâce à une stratégie structurée",
+      "Chiffre d'affaires généré semaine après semaine grâce à une stratégie structurée et qui s'améliore en continu",
   },
 ];
 
@@ -66,8 +66,8 @@ export default function AboutPreview() {
               </div>
 
               {/* Éléments flottants externes (optionnels - en dehors du conteneur rond) */}
-              <div className="absolute -top-8 -right-8 w-10 h-10 bg-[#FFD400] rounded-full animate-bounce flex items-center justify-center shadow-lg">
-                <span className="text-black font-bold text-sm">✨</span>
+              <div className="absolute -top-8 -right-8 w-10 h-10 bg-[#9B5DE5] rounded-full animate-bounce flex items-center justify-center shadow-lg">
+                <span className="text-black font-bold text-sm">👉</span>
               </div>
               <div className="absolute -bottom-8 -left-8 w-8 h-8 bg-[#9B5DE5] rounded-full animate-pulse shadow-lg"></div>
             </div>

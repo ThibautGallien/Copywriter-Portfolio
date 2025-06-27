@@ -11,7 +11,7 @@ const timelineEvents = [
     year: "2019-2021",
     title: "La gastronomie et mes débuts dans l'entreprenariat",
     description:
-      "Gestion de business d'infoproduits et copywriter freelance. Funnels complets, emails de vente, les formations, le design, etc... En parallèle de mes études à l'Institut Paul Bocuse parce que j'aime les défis impossibles. Finalement le COVID aura eu raison de ma santé mentale et j'ai arrêté mes études.",
+      "Gestion de business d'infoproduits et copywriter freelance. Funnels complets, emails de vente, les formations, le design, etc... En parallèle de mes études à l'Institut Paul Bocuse parce que j'aime les défis impossibles.",
     icon: "🚀",
   },
   {
@@ -25,7 +25,7 @@ const timelineEvents = [
     year: "2023",
     title: "Mes petites machines à cash SEO",
     description:
-      "Lancement de 2 sites d'affiliation optimisés SEO. Ils me rapportent un peu d'argent tous les mois (j'écris un article quand j'ai envie, donc c'est rare). Quelques revenus qui augmentent petit à petit avec une newsletter par semaine et des séquences mails optimisées.",
+      "Lancement de 2 sites d'affiliation optimisés SEO. Ils me rapportent un peu d'argent tous les mois qui s'améliore. Quelques revenus qui augmentent petit à petit avec une newsletter par semaine et des séquences mails optimisées.",
     icon: "💰",
   },
   {
@@ -72,7 +72,7 @@ const beliefs = [
     icon: "🎯",
   },
   {
-    title: "Transparence level : cristal",
+    title: "Transparence niveau : cristal",
     description:
       "Je vous explique ce que je fais, pourquoi je le fais, et comment. L'honnêteté, c'est rare, alors autant en profiter.",
     icon: "💎",
@@ -94,10 +94,10 @@ const beliefs = [
 const quirkyFacts = [
   "J'ai fais mes premiers € en vendant une formation sur la séduction. Je n'y connais rien, mais j'avais compris ce que mes clients souhaitaient.",
   "Je suis un grand fans de Godzilla et de Gundam (oui, j'aime les gros monstres et les gros robots).",
-  "Ma meilleure page de capture avait 60% de taux de conversion.",
+  "Ma meilleure page de capture avait 60% de taux de conversion. Franchement, c'est pas mal",
   "J'ai appris le code pas pour devenir dev, mais pour créer des SAAS (6 commencés, 0 terminé).",
-  "Je réfléchs à transformer ma newsletter en manga sur le copywriting (le grand méchant se nomme fade-sama).",
-  "J'ai commencé le japonais à 12 ans pour impressioner une fille dans ma classe. J'ai pas réussi. Mais au moins je sais où m'expatrier et j'ai l'air intelligent. ",
+  "J'ai commencé le japonais en autodidacte à 12 ans pour impressioner une fille dans ma classe. J'ai pas réussi. Mais au moins je sais où m'expatrier et j'ai l'air intelligent. ",
+  "J'aime très fort ma femme (non, ce n'est pas écrit sous la contrainte).",
 ];
 
 const services = [
@@ -116,13 +116,13 @@ const services = [
   {
     title: "Setup Technique",
     description:
-      "Configuration des outils, automatisations, délivrabilité. Le côté tech, je gère (merci 2024).",
+      "Configuration des outils, automatisations, délivrabilité. Le côté tech, je gère.",
     icon: "⚙️",
   },
   {
     title: "Optimisation Continue",
     description:
-      "Tests A/B, analyse des performances, améliorations. Parce qu'un bon email, c'est un email qui s'améliore.",
+      "Tests A/B, analyse des performances, améliorations. Parce qu'un bon email, c'est un email qu'on améliore.",
     icon: "📈",
   },
 ];

@@ -10,14 +10,13 @@ const deliverables = [
   "Création ou refonte de vos pages de capture / landing pages.",
   "Élaboration de 2 à 3 séquences mail clés.",
   "Copywriting sur-mesure pour chaque séquence.",
-  "Implémentation technique dans votre outil (Brevo, ActiveCampaign, Klaviyo…) + automatisations.",
   "Plan éditorial pour vos newsletters.",
   "Création, rédaction et envoi de 1 à 2 emails par semaine.",
   "Tests A/B et réécriture des emails peu performants.",
   "Optimisation continue de vos séquences selon les performances.",
   "Rapport mensuel : KPI + recommandations.",
-  "Stratégies de réactivation des inactifs.",
   "Accompagnement et conseils personnalisés chaque mois.",
+  "Implémentation technique dans votre outil (Brevo, ActiveCampaign, Klaviyo…) + automatisations.",
 ];
 
 export default function DeliverablesSection() {

@@ -46,8 +46,8 @@ const AboutSection = () => {
                 </div>
 
                 {/* Éléments flottants externes (optionnels - en dehors du conteneur rond) */}
-                <div className="absolute -top-6 -right-6 w-8 h-8 bg-[#FFD400] rounded-full animate-bounce flex items-center justify-center shadow-lg">
-                  <span className="text-black font-bold text-xs">✨</span>
+                <div className="absolute -top-6 -right-6 w-8 h-8 bg-[#9B5DE5] rounded-full animate-bounce flex items-center justify-center shadow-lg">
+                  <span className="text-black font-bold text-xs">👉</span>
                 </div>
                 <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-[#9B5DE5] rounded-full animate-pulse shadow-lg"></div>
               </div>

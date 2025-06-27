@@ -61,8 +61,8 @@ export default function SolutionIntroSection() {
               </div>
 
               {/* Éléments flottants externes (optionnels - en dehors du conteneur rond) */}
-              <div className="absolute -top-8 -right-8 w-10 h-10 bg-[#FFD400] rounded-full animate-bounce flex items-center justify-center shadow-lg">
-                <span className="text-black font-bold text-sm">✨</span>
+              <div className="absolute -top-8 -right-8 w-10 h-10 bg-[#9B5DE5] rounded-full animate-bounce flex items-center justify-center shadow-lg">
+                <span className="text-black font-bold text-sm">👉</span>
               </div>
               <div className="absolute -bottom-8 -left-8 w-8 h-8 bg-[#9B5DE5] rounded-full animate-pulse shadow-lg"></div>
             </div>
