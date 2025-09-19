@@ -12,7 +12,8 @@ import Link from "next/link";
 const blogPosts = [
   {
     id: "1",
-    title: "7 techniques pour des emails de bienvenue qui convertissent",
+    title:
+      "Email de bienvenue : le guide complet pour convertir vos nouveaux abonnés",
     slug: "techniques-emails-bienvenue-conversion",
     excerpt:
       "Découvrez comment transformer vos nouveaux abonnés en clients fidèles dès le premier email avec ces stratégies éprouvées.",
@@ -263,8 +264,12 @@ export default function BlogPage() {
                                     key={category}
                                     className="px-3 py-1 text-xs rounded-full border"
                                     style={{
-                                      backgroundColor: `${post.categoryColors[idx] || "#9B5DE5"}20`,
-                                      borderColor: `${post.categoryColors[idx] || "#9B5DE5"}40`,
+                                      backgroundColor: `${
+                                        post.categoryColors[idx] || "#9B5DE5"
+                                      }20`,
+                                      borderColor: `${
+                                        post.categoryColors[idx] || "#9B5DE5"
+                                      }40`,
                                       color:
                                         post.categoryColors[idx] || "#9B5DE5",
                                     }}
@@ -350,8 +355,12 @@ export default function BlogPage() {
                                   key={category}
                                   className="px-2 py-1 text-xs rounded-full border"
                                   style={{
-                                    backgroundColor: `${post.categoryColors[idx] || "#9B5DE5"}20`,
-                                    borderColor: `${post.categoryColors[idx] || "#9B5DE5"}40`,
+                                    backgroundColor: `${
+                                      post.categoryColors[idx] || "#9B5DE5"
+                                    }20`,
+                                    borderColor: `${
+                                      post.categoryColors[idx] || "#9B5DE5"
+                                    }40`,
                                     color:
                                       post.categoryColors[idx] || "#9B5DE5",
                                   }}
