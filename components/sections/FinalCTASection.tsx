@@ -21,7 +21,7 @@ const guarantees = [
 
 export default function FinalCTASection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-900/20 to-[#0D0D0D] relative">
+    <section className="py-12 bg-gradient-to-b from-gray-900/20 to-[#0D0D0D] relative">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -99,17 +99,18 @@ export default function FinalCTASection() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-gradient-to-r from-[#FFD400] to-[#F59E0B] text-black font-bold hover:opacity-90 transition-opacity text-base sm:text-lg px-8 sm:px-12 py-4 sm:py-6 w-full sm:w-auto shadow-2xl"
+                  className="bg-gradient-to-r from-[#FFD400] to-[#F59E0B] text-black font-bold hover:opacity-90 transition-opacity text-sm sm:text-base md:text-lg px-4 sm:px-8 md:px-12 py-3 sm:py-4 md:py-6 w-full shadow-2xl"
                 >
                   <Link href="https://calendly.com/hello-thibautgallien/30min">
-                    <Calendar className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 flex-shrink-0" />
-                    <span className="hidden sm:inline">
+                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 flex-shrink-0" />
+                    <span className="hidden md:inline">
                       Réserver mon audit stratégique gratuit
                     </span>
-                    <span className="sm:hidden">
+                    <span className="hidden sm:inline md:hidden">
                       Réserver mon audit gratuit
                     </span>
-                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3 flex-shrink-0" />
+                    <span className="sm:hidden">Audit gratuit</span>
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 ml-2 flex-shrink-0" />
                   </Link>
                 </Button>
               </div>

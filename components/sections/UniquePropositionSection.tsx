@@ -54,7 +54,7 @@ const pricingComparison = [
   },
   {
     type: "Mon approche",
-    price: "30% du CA supplémentaire",
+    price: "20% du CA supplémentaire",
     risk: "Nul",
     guarantee: "100% résultats",
     results: "Garantis",
@@ -64,7 +64,7 @@ const pricingComparison = [
 
 export default function UniquePropositionSection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-900/20 to-[#0D0D0D] relative">
+    <section className="py-12 bg-gradient-to-b from-gray-900/20 to-[#0D0D0D] relative">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -right-32 w-64 h-64 bg-[#FFD400] rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
@@ -104,12 +104,11 @@ export default function UniquePropositionSection() {
           <Card className="bg-gradient-to-r from-[#FFD400]/10 to-[#F59E0B]/10 border-[#FFD400]/30 shadow-2xl">
             <CardContent className="p-8 md:p-12 text-center">
               <div className="flex items-center justify-center mb-6">
-                <DollarSign className="w-12 h-12 text-[#FFD400] mr-4" />
                 <h3 className="text-3xl md:text-4xl font-bold font-space-grotesk">
                   Mon modèle :
                   <span className="text-[#FFD400]">
                     {" "}
-                    30% du CA supplémentaire
+                    20% du CA supplémentaire
                   </span>
                 </h3>
               </div>
@@ -125,34 +124,50 @@ export default function UniquePropositionSection() {
                   <strong className="text-[#FFD400]">(X + Y)€ par mois</strong>.
                 </p>
                 <p>
-                  Je prends <strong className="text-[#9B5DE5]">30% de Y</strong>{" "}
+                  Je prends <strong className="text-[#9B5DE5]">20% de Y</strong>{" "}
                   (les revenus supplémentaires).
                 </p>
-                <div className="bg-gray-900/50 rounded-xl p-6 text-left max-w-2xl mx-auto">
+                <div className="bg-gray-900/50 rounded-xl p-4 sm:p-6 text-left max-w-2xl mx-auto">
                   <h4 className="font-semibold text-[#FFD400] mb-3 text-center">
                     Exemple concret :
                   </h4>
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span>Revenus email actuels :</span>
-                      <span className="text-red-400">500€/mois</span>
+                  <div className="space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-sm sm:text-base">
+                        Revenus email actuels :
+                      </span>
+                      <span className="text-red-400 font-semibold">
+                        500€/mois
+                      </span>
                     </div>
-                    <div className="flex justify-between">
-                      <span>Revenus après optimisation :</span>
-                      <span className="text-[#06D6A0]">2000€/mois</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-sm sm:text-base">
+                        Revenus après optimisation :
+                      </span>
+                      <span className="text-[#06D6A0] font-semibold">
+                        2000€/mois
+                      </span>
                     </div>
-                    <div className="border-t border-gray-700 pt-2 mt-3">
-                      <div className="flex justify-between font-semibold">
-                        <span>Revenus supplémentaires :</span>
+                    <div className="border-t border-gray-700 pt-3 mt-3">
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0 font-semibold mb-2">
+                        <span className="text-sm sm:text-base">
+                          Revenus supplémentaires :
+                        </span>
                         <span className="text-[#FFD400]">+1500€/mois</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span>Ma rémunération (30%) :</span>
-                        <span className="text-[#9B5DE5]">450€/mois</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0 mb-2">
+                        <span className="text-sm sm:text-base">
+                          Ma rémunération (20%) :
+                        </span>
+                        <span className="text-[#9B5DE5] font-semibold">
+                          300€/mois
+                        </span>
                       </div>
-                      <div className="flex justify-between font-bold text-[#06D6A0]">
-                        <span>Vous gardez :</span>
-                        <span>+1050€/mois</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0 font-bold text-[#06D6A0]">
+                        <span className="text-sm sm:text-base">
+                          Vous gardez :
+                        </span>
+                        <span>+1200€/mois</span>
                       </div>
                     </div>
                   </div>
@@ -328,11 +343,14 @@ export default function UniquePropositionSection() {
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-[#FFD400] to-[#F59E0B] text-black font-semibold hover:opacity-90 transition-opacity px-8"
+                className="bg-gradient-to-r from-[#FFD400] to-[#F59E0B] text-black font-semibold hover:opacity-90 transition-opacity px-3 sm:px-8 text-xs sm:text-base w-full"
               >
                 <Link href="https://calendly.com/hello-thibautgallien/30min">
-                  Réserver mon audit gratuit maintenant
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <span className="hidden sm:inline">
+                    Réserver mon audit gratuit maintenant
+                  </span>
+                  <span className="sm:hidden">Audit</span>
+                  <ArrowRight className="w-3 h-3 sm:w-5 sm:h-5 ml-1 sm:ml-2 flex-shrink-0" />
                 </Link>
               </Button>
               <p className="text-xs text-gray-400 mt-4">

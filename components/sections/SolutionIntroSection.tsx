@@ -5,7 +5,7 @@ import { Zap } from "lucide-react";
 
 export default function SolutionIntroSection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-900/20 to-[#0D0D0D] relative">
+    <section className="py-12 bg-gradient-to-b from-gray-900/20 to-[#0D0D0D] relative">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

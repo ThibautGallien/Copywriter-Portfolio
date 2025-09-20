@@ -29,7 +29,7 @@ const ctaOptions = [
 
 export default function CTASection() {
   return (
-    <section className="py-24 relative">
+    <section className="py-12 relative">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#9B5DE5]/5 to-transparent"></div>
 

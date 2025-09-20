@@ -28,7 +28,7 @@ const highlights = [
 
 export default function AboutPreview() {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden">
+    <section className="py-16 md:py-12 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Avatar & Visual */}

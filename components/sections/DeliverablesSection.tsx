@@ -21,7 +21,7 @@ const deliverables = [
 
 export default function DeliverablesSection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-[#0D0D0D] to-gray-900/20 relative">
+    <section className="py-12 bg-gradient-to-b from-[#0D0D0D] to-gray-900/20 relative">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

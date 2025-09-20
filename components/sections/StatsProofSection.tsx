@@ -67,7 +67,7 @@ const caseStudies = [
 
 export default function StatsProofSection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-[#0D0D0D] to-gray-900/20 relative">
+    <section className="py-12 bg-gradient-to-b from-[#0D0D0D] to-gray-900/20 relative">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-32 w-64 h-64 bg-[#FFD400] rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>

@@ -98,13 +98,13 @@ export default function SimplifiedProcessSection() {
                 <div className="flex-1 min-w-0">
                   <Card className="bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-colors duration-300">
                     <CardContent className="p-4 sm:p-6">
-                      <div className="flex items-start justify-between mb-4 gap-2">
-                        <h3 className="text-lg sm:text-xl font-bold font-space-grotesk text-white leading-tight flex-1 pr-2">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-2">
+                        <h3 className="text-lg sm:text-xl font-bold font-space-grotesk text-white leading-tight flex-1">
                           {step.title}
                         </h3>
-                        <div className="flex flex-col items-end flex-shrink-0">
+                        <div className="flex flex-col sm:items-end flex-shrink-0">
                           <span
-                            className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${step.color} text-white`}
+                            className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${step.color} text-white self-start sm:self-auto`}
                           >
                             {step.duration}
                           </span>
@@ -162,7 +162,7 @@ export default function SimplifiedProcessSection() {
                   <ul className="space-y-2 text-sm text-gray-300">
                     <li>• Taux d'ouverture : 25-35%</li>
                     <li>• Taux de clic : 3-8%</li>
-                    <li>• +30% de CA minimum</li>
+                    <li>• +20% de CA minimum</li>
                     <li>• Audience plus engagée</li>
                     <li>• Revenus prévisibles</li>
                   </ul>
