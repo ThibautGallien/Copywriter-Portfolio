@@ -6,9 +6,9 @@ import SolutionIntroSection from "@/components/sections/SolutionIntroSection";
 import WhyMeSection from "@/components/sections/WhyMeSection";
 import DeliverablesSection from "@/components/sections/DeliverablesSection";
 import TripleGuarantee from "@/components/sections/TripleGuarantee";
-import ProcessSection from "@/components/sections/ProcessSection";
+import ProcessSection from "@/components/sections/SimplifiedProcessSection";
 import ScarcitySection from "@/components/sections/ScarcitySection";
-import FAQSection from "@/components/sections/FAQSection";
+import FAQSection from "@/components/sections/FAQObjectionsSection";
 import FinalCTASection from "@/components/sections/FinalCTASection";
 
 export default function ServicesPage() {
