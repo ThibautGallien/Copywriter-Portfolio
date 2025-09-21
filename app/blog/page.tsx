@@ -9,6 +9,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 // Articles statiques pour le moment
+// Remplacer la constante blogPosts dans app/blog/page.tsx par celle-ci :
+
 const blogPosts = [
   {
     id: "1",
@@ -26,12 +28,12 @@ const blogPosts = [
   },
   {
     id: "2",
-    title: "Landing Page : Les 5 éléments qui font vendre",
-    slug: "landing-page-elements-conversion",
+    title: "Landing Page : définition, exemples et guide complet",
+    slug: "landing-page-guide-complet-conversion",
     excerpt:
-      "Analysons les composants essentiels d'une landing page qui transforme vos visiteurs en prospects qualifiés.",
+      "Apprenez à créer des landing pages qui transforment vraiment vos visiteurs en prospects qualifiés. Structure, éléments clés et erreurs à éviter.",
     publishedAt: "2024-06-20",
-    estimatedReadingTime: 6,
+    estimatedReadingTime: 10,
     categories: ["Copywriting", "Conversion"],
     categoryColors: ["#FF6B6B", "#4ECDC4"],
     author: "Thibaut Gallien",
