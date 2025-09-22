@@ -8,21 +8,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
-// Articles statiques pour le moment
-// Remplacer la constante blogPosts dans app/blog/page.tsx par celle-ci :
-
+// Articles réels basés sur votre structure
 const blogPosts = [
   {
     id: "1",
-    title:
-      "Email de bienvenue : le guide complet pour convertir vos nouveaux abonnés",
-    slug: "techniques-emails-bienvenue-conversion",
+    title: "Call to Action (CTA) : Guide complet",
+    slug: "call-to-action-guide-complet",
     excerpt:
-      "Découvrez comment transformer vos nouveaux abonnés en clients fidèles dès le premier email avec ces stratégies éprouvées.",
-    publishedAt: "2024-06-25",
-    estimatedReadingTime: 8,
-    categories: ["Email Marketing", "Conversion"],
-    categoryColors: ["#9B5DE5", "#3A86FF"],
+      "Découvrez comment créer des CTA efficaces qui boostent vos conversions. Guide complet avec exemples concrets, erreurs à éviter et checklist pratique.",
+    publishedAt: "2024-06-30",
+    estimatedReadingTime: 10,
+    categories: ["Copywriting", "Conversion"],
+    categoryColors: ["#FF6B6B", "#4ECDC4"],
     author: "Thibaut Gallien",
     featured: true,
   },
@@ -41,53 +38,15 @@ const blogPosts = [
   },
   {
     id: "3",
-    title: "Séquence email : Comment nurturing vos prospects",
-    slug: "sequence-email-nurturing-prospects",
+    title:
+      "Email de bienvenue : le guide complet pour convertir vos nouveaux abonnés",
+    slug: "techniques-emails-bienvenue-conversion",
     excerpt:
-      "Créez des séquences automatisées qui éduquent vos prospects et les accompagnent vers l'achat naturellement.",
-    publishedAt: "2024-06-15",
-    estimatedReadingTime: 10,
-    categories: ["Email Marketing", "Automation"],
-    categoryColors: ["#9B5DE5", "#FFD93D"],
-    author: "Thibaut Gallien",
-    featured: false,
-  },
-  {
-    id: "4",
-    title: "Copywriting : Écrire des CTA qui poussent à l'action",
-    slug: "copywriting-cta-efficaces",
-    excerpt:
-      "Les mots qui transforment. Apprenez à rédiger des appels à l'action irrésistibles qui génèrent plus de clics.",
-    publishedAt: "2024-06-10",
-    estimatedReadingTime: 5,
-    categories: ["Copywriting"],
-    categoryColors: ["#FF6B6B"],
-    author: "Thibaut Gallien",
-    featured: false,
-  },
-  {
-    id: "5",
-    title: "Psychologie de la vente : Les 3 triggers émotionnels",
-    slug: "psychologie-vente-triggers-emotionnels",
-    excerpt:
-      "Comprenez les mécanismes psychologiques qui poussent vos prospects à acheter et intégrez-les dans vos textes.",
-    publishedAt: "2024-06-05",
-    estimatedReadingTime: 7,
-    categories: ["Psychologie", "Copywriting"],
-    categoryColors: ["#A8E6CF", "#FF6B6B"],
-    author: "Thibaut Gallien",
-    featured: false,
-  },
-  {
-    id: "6",
-    title: "Email Marketing : Optimiser le taux d'ouverture",
-    slug: "email-marketing-taux-ouverture",
-    excerpt:
-      "Strategies avancées pour que vos emails soient ouverts, lus et génèrent l'engagement souhaité.",
-    publishedAt: "2024-05-30",
-    estimatedReadingTime: 9,
-    categories: ["Email Marketing"],
-    categoryColors: ["#9B5DE5"],
+      "Découvrez comment transformer vos nouveaux abonnés en clients fidèles dès le premier email avec ces stratégies éprouvées.",
+    publishedAt: "2024-06-25",
+    estimatedReadingTime: 8,
+    categories: ["Email Marketing", "Conversion"],
+    categoryColors: ["#9B5DE5", "#3A86FF"],
     author: "Thibaut Gallien",
     featured: false,
   },
@@ -132,6 +91,94 @@ export default function BlogPage() {
 
   const featuredPosts = filteredPosts.filter((post) => post.featured);
   const regularPosts = filteredPosts.filter((post) => !post.featured);
+
+  // Composant Card cliquable
+  const ClickableArticleCard = ({
+    post,
+    featured = false,
+  }: {
+    post: any;
+    featured?: boolean;
+  }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.1 }}
+    >
+      <Link href={`/blog/${post.slug}`} className="block h-full">
+        <Card
+          className={`overflow-hidden group transition-all duration-300 h-full cursor-pointer ${
+            featured
+              ? "bg-gradient-to-br from-gray-900/80 to-gray-800/50 border-gray-700 hover:border-[#9B5DE5]/50"
+              : "bg-gray-900/50 border-gray-800 hover:border-[#9B5DE5]/50"
+          }`}
+        >
+          <CardContent
+            className={featured ? "p-8" : "p-6 flex flex-col h-full"}
+          >
+            <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
+              <div className="flex items-center gap-1">
+                <Calendar className="w-4 h-4" />
+                {new Date(post.publishedAt).toLocaleDateString("fr-FR")}
+              </div>
+              <div className="flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                {post.estimatedReadingTime} min
+              </div>
+            </div>
+
+            <h3
+              className={`font-bold font-space-grotesk mb-4 group-hover:text-[#9B5DE5] transition-colors leading-tight ${
+                featured ? "text-2xl" : "text-xl flex-grow"
+              }`}
+            >
+              {post.title}
+            </h3>
+
+            <p
+              className={`text-gray-300 leading-relaxed mb-6 ${
+                featured ? "text-base" : "text-sm flex-grow"
+              }`}
+            >
+              {post.excerpt}
+            </p>
+
+            <div className="flex items-center justify-between mt-auto">
+              <div className="flex gap-2 flex-wrap">
+                {post.categories.map((category: string, idx: number) => (
+                  <span
+                    key={category}
+                    className="px-3 py-1 text-xs rounded-full border"
+                    style={{
+                      backgroundColor: `${
+                        post.categoryColors[idx] || "#9B5DE5"
+                      }20`,
+                      borderColor: `${post.categoryColors[idx] || "#9B5DE5"}40`,
+                      color: post.categoryColors[idx] || "#9B5DE5",
+                    }}
+                  >
+                    {category}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center text-[#9B5DE5] font-medium text-sm group-hover:text-white transition-colors ml-4">
+                Lire l'article
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </div>
+            </div>
+
+            {!featured && (
+              <div className="flex items-center gap-2 mt-4 pt-4 border-t border-gray-800">
+                <User className="w-4 h-4 text-gray-400" />
+                <span className="text-sm text-gray-400">{post.author}</span>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </Link>
+    </motion.div>
+  );
 
   return (
     <div className="min-h-screen bg-[#0D0D0D] text-white pt-24 pb-16">
@@ -229,72 +276,12 @@ export default function BlogPage() {
                     Articles en vedette
                   </h2>
                   <div className="grid md:grid-cols-2 gap-8">
-                    {featuredPosts.map((post, index) => (
-                      <motion.div
+                    {featuredPosts.map((post) => (
+                      <ClickableArticleCard
                         key={post.id}
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1 * index }}
-                      >
-                        <Card className="bg-gradient-to-br from-gray-900/80 to-gray-800/50 border-gray-700 overflow-hidden group hover:border-[#9B5DE5]/50 transition-all duration-300 h-full">
-                          <CardContent className="p-8">
-                            <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
-                              <div className="flex items-center gap-1">
-                                <Calendar className="w-4 h-4" />
-                                {new Date(post.publishedAt).toLocaleDateString(
-                                  "fr-FR"
-                                )}
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <Clock className="w-4 h-4" />
-                                {post.estimatedReadingTime} min
-                              </div>
-                            </div>
-
-                            <h3 className="text-2xl font-bold font-space-grotesk mb-4 group-hover:text-[#9B5DE5] transition-colors leading-tight">
-                              {post.title}
-                            </h3>
-
-                            <p className="text-gray-300 leading-relaxed mb-6">
-                              {post.excerpt}
-                            </p>
-
-                            <div className="flex items-center justify-between">
-                              <div className="flex gap-2 flex-wrap">
-                                {post.categories.map((category, idx) => (
-                                  <span
-                                    key={category}
-                                    className="px-3 py-1 text-xs rounded-full border"
-                                    style={{
-                                      backgroundColor: `${
-                                        post.categoryColors[idx] || "#9B5DE5"
-                                      }20`,
-                                      borderColor: `${
-                                        post.categoryColors[idx] || "#9B5DE5"
-                                      }40`,
-                                      color:
-                                        post.categoryColors[idx] || "#9B5DE5",
-                                    }}
-                                  >
-                                    {category}
-                                  </span>
-                                ))}
-                              </div>
-
-                              <Button
-                                asChild
-                                variant="ghost"
-                                className="text-[#9B5DE5] hover:text-white hover:bg-[#9B5DE5]/20 ml-4"
-                              >
-                                <Link href={`/blog/${post.slug}`}>
-                                  Lire l'article
-                                  <ArrowRight className="w-4 h-4 ml-2" />
-                                </Link>
-                              </Button>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </motion.div>
+                        post={post}
+                        featured={true}
+                      />
                     ))}
                   </div>
                 </motion.div>
@@ -306,11 +293,13 @@ export default function BlogPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              {selectedCategory === "Tous" && !searchTerm && (
-                <h2 className="text-2xl font-bold font-space-grotesk mb-8 text-center">
-                  Tous les articles
-                </h2>
-              )}
+              {selectedCategory === "Tous" &&
+                !searchTerm &&
+                featuredPosts.length > 0 && (
+                  <h2 className="text-2xl font-bold font-space-grotesk mb-8 text-center">
+                    Tous les articles
+                  </h2>
+                )}
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {(featuredPosts.length > 0 &&
@@ -318,83 +307,8 @@ export default function BlogPage() {
                 !searchTerm
                   ? regularPosts
                   : filteredPosts
-                ).map((post, index) => (
-                  <motion.div
-                    key={post.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                  >
-                    <Card className="bg-gray-900/50 border-gray-800 overflow-hidden group hover:border-[#9B5DE5]/50 transition-all duration-300 h-full">
-                      <CardContent className="p-6 flex flex-col h-full">
-                        <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
-                          <div className="flex items-center gap-1">
-                            <Calendar className="w-4 h-4" />
-                            {new Date(post.publishedAt).toLocaleDateString(
-                              "fr-FR"
-                            )}
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Clock className="w-4 h-4" />
-                            {post.estimatedReadingTime} min
-                          </div>
-                        </div>
-
-                        <h3 className="text-xl font-bold font-space-grotesk mb-3 group-hover:text-[#9B5DE5] transition-colors leading-tight flex-grow">
-                          {post.title}
-                        </h3>
-
-                        <p className="text-gray-300 text-sm leading-relaxed mb-4 flex-grow">
-                          {post.excerpt}
-                        </p>
-
-                        <div className="flex items-center justify-between mt-auto">
-                          <div className="flex gap-2 flex-wrap">
-                            {post.categories
-                              .slice(0, 2)
-                              .map((category, idx) => (
-                                <span
-                                  key={category}
-                                  className="px-2 py-1 text-xs rounded-full border"
-                                  style={{
-                                    backgroundColor: `${
-                                      post.categoryColors[idx] || "#9B5DE5"
-                                    }20`,
-                                    borderColor: `${
-                                      post.categoryColors[idx] || "#9B5DE5"
-                                    }40`,
-                                    color:
-                                      post.categoryColors[idx] || "#9B5DE5",
-                                  }}
-                                >
-                                  {category}
-                                </span>
-                              ))}
-                          </div>
-
-                          <Button
-                            asChild
-                            variant="ghost"
-                            size="sm"
-                            className="text-[#9B5DE5] hover:text-white hover:bg-[#9B5DE5]/20 ml-2"
-                          >
-                            <Link href={`/blog/${post.slug}`}>
-                              Lire
-                              <ArrowRight className="w-4 h-4 ml-1" />
-                            </Link>
-                          </Button>
-                        </div>
-
-                        {/* Auteur */}
-                        <div className="flex items-center gap-2 mt-4 pt-4 border-t border-gray-800">
-                          <User className="w-4 h-4 text-gray-400" />
-                          <span className="text-sm text-gray-400">
-                            {post.author}
-                          </span>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
+                ).map((post) => (
+                  <ClickableArticleCard key={post.id} post={post} />
                 ))}
               </div>
             </motion.div>
