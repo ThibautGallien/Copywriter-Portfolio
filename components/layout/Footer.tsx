@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const footerLinks = {
   company: [
-    { label: "Services", href: "/services" },
+    { label: "Services", href: "/gratuit" },
     { label: "À propos", href: "/about" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
@@ -21,7 +21,7 @@ const socialLinks = [
   {
     icon: Mail,
     label: "Email",
-    href: "https://calendly.com/hello-thibautgallien/30min",
+    href: "mailto:hello@thibautgallien.com",
   },
   {
     icon: Linkedin,
@@ -57,7 +57,7 @@ export default function Footer() {
       if (response.ok) {
         toast.success("Inscription réussie !", {
           description:
-            "Vous recevrez bientôt votre première dose de conseils 🎯",
+            "Tu recevras bientôt ta première dose de tips marketing 🎯",
         });
         setEmail("");
       } else {
@@ -66,7 +66,7 @@ export default function Footer() {
     } catch (error) {
       console.error("Erreur newsletter:", error);
       toast.error("Erreur lors de l'inscription", {
-        description: "Veuillez réessayer ou me contacter directement.",
+        description: "Réessaye ou contacte-moi directement.",
       });
     }
 
@@ -92,13 +92,11 @@ export default function Footer() {
                   <span className="text-xl font-bold font-space-grotesk">
                     Thibaut Gallien
                   </span>
-                  <div className="text-xs text-gray-400 -mt-1">Copywriter</div>
+                  <div className="text-xs text-gray-400 -mt-1">Optimiseur de funnels</div>
                 </div>
               </Link>
               <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                Copywriter freelance spécialisé dans l'email marketing et les
-                systèmes de conversion. Je transforme vos listes email en
-                machines de vente automatisées.
+                Je trouve où tu perds de l&apos;argent dans ton funnel et je le fixe. Diagnostic, implémentation, tracking. Pas de bullshit, juste des chiffres.
               </p>
               <div className="flex gap-3">
                 {socialLinks.map((social, index) => (
@@ -125,7 +123,7 @@ export default function Footer() {
               viewport={{ once: true }}
             >
               <h3 className="font-semibold font-space-grotesk mb-4 text-[#FFD400]">
-                Entreprise
+                Navigation
               </h3>
               <ul className="space-y-3">
                 {footerLinks.company.map((link) => (
@@ -150,18 +148,17 @@ export default function Footer() {
               className="lg:col-span-1"
             >
               <h3 className="font-semibold font-space-grotesk mb-4 text-[#FFD400]">
-                Newsletter Copywriting
+                Newsletter Marketing
               </h3>
               <p className="text-sm text-gray-300 mb-4 leading-relaxed">
-                Recevez chaque semaine, votre dose de copywriting sous stéroïdes
-                directement par email.
+                Reçois mes meilleurs tips marketing chaque semaine. 1 email, tips actionnables, 0 spam.
               </p>
               <form onSubmit={handleNewsletterSubmit} className="space-y-3">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="votre@email.com"
+                  placeholder="ton@email.com"
                   required
                   className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:border-[#9B5DE5] focus:outline-none text-white placeholder-gray-400 text-sm"
                 />
@@ -178,7 +175,7 @@ export default function Footer() {
                     </>
                   ) : (
                     <>
-                      S'abonner
+                      S&apos;inscrire
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </>
                   )}
@@ -202,8 +199,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-1 text-sm text-gray-400">
               <span>
-                © 2025 Thibaut Gallien Copywriter. Créé avec beaucoup d'eau, de
-                la musique et trop peu de temps pour coder tout ça.
+                © 2025 Thibaut Gallien. Tous droits réservés.
               </span>
             </div>
             <div className="flex gap-6">

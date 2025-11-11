@@ -16,21 +16,31 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Thibaut Gallien - Copywriter Email Marketing | Newsletter & Séquences qui Vendent",
-  description:
-    "Copywriter spécialisé en email marketing. Je transforme vos emails en machine à vendre avec des newsletters et séquences d'automation qui convertissent. ROI x2 garanti.",
-  keywords: [
-    "copywriter email marketing",
-    "newsletter qui vend",
-    "séquence email automation",
-    "email marketing freelance",
-    "copywriting conversion",
-    "rédacteur web emails",
-    "marketing automation",
-    "email sequences",
-    "newsletter copywriter",
-    "email sales funnel",
+title: "Thibaut Gallien - Optimisation Funnel | Je truouve où tu perds de l'argent",
+
+description: "J'analyse tes funnels (ads, landing, emails, checkout) pour trouver où tu perds de l'argent. Diagnostic complet + implémentation + tracking. 3 audits gratuits disponibles.",
+
+keywords: [
+  "optimisation funnel",
+  "audit funnel gratuit",
+  "conversion funnel",
+  "optimisation taux de conversion",
+  "analyse funnel marketing",
+  "CRO conversion rate optimization",
+  "freelance optimisation funnel",
+  "audit marketing digital",
+  "analyste funnel",
+  "optimisation landing page",
+  "améliorer conversion site",
+  "diagnostic funnel",
+  "consultant funnel marketing",
+  "optimisation checkout",
+  "audit ads facebook",
+  "améliorer ROI publicité",
+  "funnel marketing ecommerce",
+  "optimisation funnel infoproduit",
+  "audit email marketing",
+  "séquence email conversion"
   ].join(", "),
   authors: [{ name: "Thibaut Gallien", url: "https://thibautgallien.com" }],
   creator: "Thibaut Gallien",
@@ -47,16 +57,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     url: "https://thibautgallien.com",
-    title: "Thibaut Gallien - Expert Email Marketing & Copywriting",
+    title: "Thibaut Gallien - Optimisation Funnel | Je truouve où tu perds de l'argent",
     description:
-      "Spécialiste email marketing qui transforme vos newsletters en machine à vendre. Séquences d'automation, copywriting haute conversion. ROI x2 garanti en 60 jours.",
-    siteName: "Thibaut Gallien - Copywriter",
+      "J'analyse tes funnels (ads, landing, emails, checkout) pour trouver où tu perds de l'argent. Diagnostic complet + implémentation + tracking. 3 audits gratuits disponibles.",
+    siteName: "Thibaut Gallien - Optimisation Funnel",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Thibaut Gallien - Expert Email Marketing & Copywriting",
+        alt: "Thibaut Gallien - Optimisation Funnel | Je truouve où tu perds de l'argent",
       },
     ],
   },
@@ -64,9 +74,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@thibautgallien",
     creator: "@thibautgallien",
-    title: "Thibaut Gallien - Expert Email Marketing & Copywriting",
+    title: "Thibaut Gallien - Optimisation Funnel | Je truouve où tu perds de l'argent",
     description:
-      "Spécialiste email marketing qui transforme vos newsletters en machine à vendre. Séquences d'automation, copywriting haute conversion.",
+      "J'analyse tes funnels (ads, landing, emails, checkout) pour trouver où tu perds de l'argent. Diagnostic complet + implémentation + tracking. 3 audits gratuits disponibles.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -114,9 +124,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Thibaut Gallien",
-              jobTitle: "Copywriter Email Marketing",
+              jobTitle: "Optimiseur de funnels marketing",
               description:
-                "Expert en email marketing et copywriting, spécialisé dans les newsletters et séquences d'automation qui convertissent.",
+                "J'analyse tes funnels (ads, landing, emails, checkout) pour trouver où tu perds de l'argent. Diagnostic complet + implémentation + tracking. 3 audits gratuits disponibles.",
               url: "https://thibautgallien.com",
               sameAs: [
                 "https://www.linkedin.com/in/thibaut-gallien",
@@ -126,7 +136,7 @@ export default function RootLayout({
                 "@type": "Offer",
                 category: "Service",
                 description:
-                  "Services de copywriting email marketing avec garantie ROI x2",
+                  "J'optimise tes funnels marketing pour maximiser les conversions et les revenus.",
               },
               address: {
                 "@type": "PostalAddress",

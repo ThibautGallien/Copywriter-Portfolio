@@ -35,5 +35,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+        {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/blog/call-to-action-guide-complet`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+        {
+      url: `${baseUrl}/blog/landing-page-guide-complet-conversion`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+        {
+      url: `${baseUrl}/blog/techniques-emails-bienvenue-conversion`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
   ];
 }

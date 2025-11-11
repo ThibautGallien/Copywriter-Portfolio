@@ -129,16 +129,26 @@ const beliefs = [
 const quirkyFacts = [
   "J'ai fait mes premiers € en vendant une formation sur la séduction. Je n'y connais rien, mais j'avais compris ce que mes clients voulaient. Résultat : ça a cartonné.",
   "Je suis un grand fan de Godzilla et de Gundam (oui, j'aime les gros monstres et les gros robots). Si jamais tu veux qu'on parle de ça pendant un call, je suis partant.",
-  "Ma meilleure landing page avait 60% de taux de conversion. Franchement, c'est pas mal. Et c'est pour un site d'affiliation qui tourne encore aujourd'hui.",
+  "Ma meilleure landing page avait 30% de taux de conversion. Franchement, c'est pas mal. Et c'est pour un site d'affiliation qui tourne encore aujourd'hui.",
   "J'ai appris le code pas pour devenir dev, mais pour créer des SaaS (6 commencés, 0 terminé). Mais au moins je peux maintenant implémenter mes optimisations moi-même sans dépendre d'un dev.",
-  "J'ai commencé le japonais en autodidacte à 12 ans pour impressionner une fille dans ma classe. J'ai pas réussi.",
+  "J'ai commencé le japonais en autodidacte à 12 ans pour impressionner une fille dans ma classe. J'ai pas réussi. Mais au moins je sais où m'expatrier et j'ai l'air intelligent.",
   "J'aime très fort ma femme (non, ce n'est pas écrit sous la contrainte). Elle supporte mes idées et mes horaires de fou. C'est une sainte.",
-  ,
+  "Je suis chauve et j'assume. Pas de complexe, pas de chapeau, pas de Photoshop. C'est moi. Ça fait partie du package.",
 ];
 
 export default function ImprovedAboutPage() {
   // Composant pour l'affichage des learnings/échecs
-  const LearningBlock = ({ icon: Icon, title, content, colorClass }) => (
+  const LearningBlock = ({ 
+    icon: Icon, 
+    title, 
+    content, 
+    colorClass 
+  }: { 
+    icon: React.ComponentType<{ className?: string }>;
+    title: string;
+    content: string;
+    colorClass: string;
+  }) => (
     <div className={`flex items-start gap-2 p-3 rounded-lg border ${colorClass} bg-opacity-10 mt-3`}>
       <Icon className={`w-4 h-4 mt-0.5 flex-shrink-0 ${colorClass}`} />
       <p className="text-sm font-semibold leading-relaxed">
@@ -179,7 +189,7 @@ export default function ImprovedAboutPage() {
             size="lg"
             className="bg-gradient-to-r from-[#FFD400] to-[#FF9900] text-black hover:opacity-90 transition-opacity font-bold"
           >
-            <Link href="https://calendly.com/hello-thibautgallien/30min">
+            <Link href="/gratuit">
               Je veux corriger ma fuite de cash !
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
@@ -275,7 +285,7 @@ export default function ImprovedAboutPage() {
             >
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-4">
-                  📊 Salut ! Moi c'est{" "}
+                  📊 Salut ! Moi c&apos;est{" "}
                   <span className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
                     Thibaut
                   </span>
@@ -291,8 +301,8 @@ export default function ImprovedAboutPage() {
                   créateur de funnels qui convertissent.
                 </p>
                 <p>
-                  Avec 5 ans d'expérience en marketing digital, j'ai une obsession :
-                  trouver où tu perds de l'argent entre le clic et le paiement, et
+                  Avec 5 ans d&apos;expérience en marketing digital, j&apos;ai une obsession :
+                  trouver où tu perds de l&apos;argent entre le clic et le paiement, et
                   fixer ça.
                 </p>
                 <p>
@@ -302,7 +312,7 @@ export default function ImprovedAboutPage() {
                 </p>
                 <p className="font-bold">
                   Pas de bullshit. Pas de promesses de 10K€ en 30 jours. Juste de
-                  l'analyse, de l'exécution, et des chiffres qui prouvent que ça
+                  l&apos;analyse, de l&apos;exécution, et des chiffres qui prouvent que ça
                   marche.
                 </p>
               </div>
@@ -313,7 +323,7 @@ export default function ImprovedAboutPage() {
                   size="lg"
                   className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity"
                 >
-                  <Link href="https://calendly.com/hello-thibautgallien/30min">
+                  <Link href="/gratuit">
                     Discutons de ton business
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
@@ -337,7 +347,7 @@ export default function ImprovedAboutPage() {
               <span className="text-[#9B5DE5]"> (Version Non-Romancée)</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Spoiler alert : c'est parti dans tous les sens, mais au final ça
+              Spoiler alert : c&apos;est parti dans tous les sens, mais au final ça
               donne un profil plutôt sympa.
             </p>
           </div>
@@ -424,7 +434,7 @@ export default function ImprovedAboutPage() {
               <span className="text-[#FFD400]"> Je Fais Quoi ?</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Je trouve où tu perds de l'argent dans ton funnel. Et je fixe.
+              Je trouve où tu perds de l&apos;argent dans ton funnel. Et je fixe.
             </p>
             
             {/* Bannière d'offre gratuite */}
@@ -435,13 +445,13 @@ export default function ImprovedAboutPage() {
                 viewport={{ once: true }}
                 className="my-6 max-w-2xl mx-auto shadow-xl"
             >
-                <Link href="/contact" className="block">
+                <Link href="/gratuit" className="block">
                     <div className="p-4 md:p-6 bg-red-900/50 border border-red-700 rounded-xl hover:bg-red-800/60 transition-colors cursor-pointer">
                         <div className="flex items-center justify-center gap-3">
                             <h3 className="text-xl md:text-2xl font-bold text-[#FFD400] mb-0 leading-tight">🔥 OFFRE LANCEMENT : 3 PLACES GRATUITES !</h3>
                         </div>
                         <p className="text-red-300 font-semibold mt-2">
-                            Pour les <strong>3 premiers, Diagnostic + Implémentation GRATUITE</strong> en échange d'un Case Study.
+                            Pour les <strong>3 premiers, Diagnostic + Implémentation GRATUITE</strong> en échange d&apos;un Case Study.
                         </p>
                         <p className="text-sm text-red-300/80 mt-1">
                             Clique ici pour postuler et valider votre éligibilité.
@@ -451,7 +461,7 @@ export default function ImprovedAboutPage() {
             </motion.div>
 
             <p className="text-gray-300 max-w-2xl mx-auto mt-2 font-semibold">
-              Je m'occupe de tout. Tu te concentres sur ce qui apporte de la valeur à ton business.
+              Je m&apos;occupe de tout. Tu te concentres sur ce qui apporte de la valeur à ton business.
             </p>
           </div>
 
@@ -495,7 +505,7 @@ export default function ImprovedAboutPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-4">
               Ma Philosophie
-              <span className="text-[#9B5DE5]"> (Que J'Assume)</span>
+              <span className="text-[#9B5DE5]"> (Que J&apos;Assume)</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
               Quelques trucs auxquels je crois dur comme fer. Ça te donne une
@@ -587,10 +597,10 @@ export default function ImprovedAboutPage() {
               <p className="text-gray-300 mb-8 text-lg">
                 Seules les <strong>3 premières personnes</strong> à réserver un appel
                 stratégique peuvent bénéficier de mon service complet (Diagnostic +
-                Implémentation) <strong>gratuitement</strong> en échange d'un témoignage honnête.
+                Implémentation) <strong>gratuitement</strong> en échange d&apos;un témoignage honnête.
               </p>
               <p className="text-gray-300 mb-8 text-lg font-bold">
-                Même si l'offre est passée, l'appel est 100% gratuit et tu repars avec des conseils actionnables.
+                Même si l&apos;offre est passée, l&apos;appel est 100% gratuit et tu repars avec des conseils actionnables.
               </p>
               <Button
                 asChild
@@ -598,11 +608,11 @@ export default function ImprovedAboutPage() {
                 // Je change la couleur du CTA pour qu'elle corresponde à l'offre urgente (jaune/orange)
                 className="bg-gradient-to-r from-[#FFD400] to-[#FF9900] text-black hover:opacity-90 transition-opacity px-4 md:px-8 text-sm md:text-lg w-full sm:w-auto font-bold shadow-2xl shadow-yellow-500/50"
               >
-                <Link href="/contact">
+                <Link href="/gratuit">
                   <span className="hidden sm:inline">
-                    Je postule pour l'offre et mon premier diagnostic
+                    Je postule pour l&apos;offre et mon premier diagnostic
                   </span>
-                  <span className="sm:hidden">Postuler pour l'offre</span>
+                  <span className="sm:hidden">Postuler pour l&apos;offre</span>
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
                 </Link>
               </Button>
