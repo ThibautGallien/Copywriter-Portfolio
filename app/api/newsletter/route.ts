@@ -2,17 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
+/**
+ * Gère l'inscription à la newsletter via l'API Brevo (Sendinblue).
+ */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { email, name } = body;
 
-    // Validation basique
+    // 1. Validation basique
     if (!email) {
       return NextResponse.json({ error: "Email requis" }, { status: 400 });
     }
 
-    // Vérification de la clé API Brevo
+    // 2. Vérification de la clé API Brevo
     if (!process.env.BREVO_API_KEY) {
       console.error("Clé API Brevo manquante");
       return NextResponse.json(
@@ -21,19 +24,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Appel à l'API Brevo pour ajouter le contact
+    // 3. Appel à l'API Brevo pour ajouter le contact
     const brevoResponse = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "api-key": process.env.BREVO_API_KEY,
+        // IMPORTANT: Utiliser la clé API Brevo (Sendinblue)
+        "api-key": process.env.BREVO_API_KEY, 
       },
       body: JSON.stringify({
         email: email,
         attributes: {
-          FIRSTNAME: name || "",
+          FIRSTNAME: name || "", // Ajoute le prénom comme attribut
         },
-        listIds: [3], // ID de ta liste (tu peux le modifier)
+        listIds: [3], // ID de ta liste Brevo (à modifier si besoin)
         updateEnabled: true, // Met à jour si le contact existe déjà
       }),
     });
@@ -48,7 +52,7 @@ export async function POST(request: NextRequest) {
       const errorData = await brevoResponse.json();
       console.error("❌ Erreur Brevo:", errorData);
 
-      // Si le contact existe déjà, on considère que c'est un succès
+      // 4. Gestion du cas 'déjà inscrit' (Brevo renvoie une erreur 'duplicate_parameter')
       if (errorData.code === "duplicate_parameter") {
         return NextResponse.json({
           success: true,
@@ -56,7 +60,8 @@ export async function POST(request: NextRequest) {
         });
       }
 
-      throw new Error("Erreur lors de l'ajout à Brevo");
+      // Projeter une erreur pour le bloc catch
+      throw new Error(`Erreur lors de l'ajout à Brevo: ${errorData.message}`);
     }
   } catch (error) {
     console.error("Erreur API newsletter:", error);

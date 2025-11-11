@@ -6,31 +6,51 @@ export const dynamic = "force-dynamic";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, company, budget, message, newsletter } = body;
+    const { 
+      name, 
+      email, 
+      company, 
+      businessType, 
+      caMonthly, 
+      trafficMonthly, 
+      problem, // Renommé de 'message' à 'problem'
+      budget, 
+      analyticsAccess, 
+      newsletter 
+    } = body;
 
-    // Validation basique
-    if (!name || !email || !message) {
+    // Validation basique (on utilise 'problem' au lieu de 'message')
+    if (!name || !email || !problem || !businessType || !caMonthly || !trafficMonthly || !budget || !analyticsAccess) {
       return NextResponse.json(
-        { error: "Nom, email et message sont requis" },
+        { error: "Tous les champs obligatoires du formulaire de contact sont requis." },
         { status: 400 }
       );
     }
 
-    // Construction du message pour Telegram
-    const telegramMessage = `🔥 NOUVEAU CONTACT DEPUIS LE SITE 🔥
+    // Construction du message pour Telegram avec tous les détails
+    const telegramMessage = `
+🔥 NOUVEAU BRIEF DE CONTACT 🔥
 
 👤 **Nom/Prénom :** ${name}
 📧 **Email :** ${email}
-${company ? `🏢 **Entreprise :** ${company}` : ""}
-💰 **Budget :** ${budget || "Non spécifié"}
-
-📝 **Message :**
-${message}
-
-📧 **Newsletter :** ${newsletter ? "Oui" : "Non"}
+${company ? `🏢 **Entreprise/Projet :** ${company}` : ""}
+---
+📈 **INFO BUSINESS**
+⚙️ **Type de Business :** ${businessType}
+💶 **CA Mensuel Actuel :** ${caMonthly}
+📊 **Trafic Mensuel :** ${trafficMonthly}
+🔗 **Accès Analytics :** ${analyticsAccess}
+---
+🎯 **LA PROBLÉMATIQUE**
+${problem}
+---
+💰 **BUDGET & NEWSLETTER**
+💸 **Budget Envisagé :** ${budget}
+📧 **Newsletter :** ${newsletter ? "Oui, inscrit" : "Non, pas inscrit"}
 
 ---
-⏰ ${new Date().toLocaleString("fr-FR")}`;
+⏰ **Reçu le :** ${new Date().toLocaleString("fr-FR")}
+    `;
 
     // Si les variables Telegram ne sont pas configurées, on log juste
     if (!process.env.TELEGRAM_BOT_TOKEN || !process.env.TELEGRAM_CHAT_ID) {
