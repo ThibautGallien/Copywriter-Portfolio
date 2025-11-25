@@ -4,6 +4,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Toaster } from "sonner";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,31 +17,33 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-title: "Thibaut Gallien - Optimisation Funnel | Je truouve où tu perds de l'argent",
+  title:
+    "Thibaut Gallien - Optimisation Funnel | Je truouve où tu perds de l'argent",
 
-description: "J'analyse tes funnels (ads, landing, emails, checkout) pour trouver où tu perds de l'argent. Diagnostic complet + implémentation + tracking. 3 audits gratuits disponibles.",
+  description:
+    "J'analyse tes funnels (ads, landing, emails, checkout) pour trouver où tu perds de l'argent. Diagnostic complet + implémentation + tracking. 3 audits gratuits disponibles.",
 
-keywords: [
-  "optimisation funnel",
-  "audit funnel gratuit",
-  "conversion funnel",
-  "optimisation taux de conversion",
-  "analyse funnel marketing",
-  "CRO conversion rate optimization",
-  "freelance optimisation funnel",
-  "audit marketing digital",
-  "analyste funnel",
-  "optimisation landing page",
-  "améliorer conversion site",
-  "diagnostic funnel",
-  "consultant funnel marketing",
-  "optimisation checkout",
-  "audit ads facebook",
-  "améliorer ROI publicité",
-  "funnel marketing ecommerce",
-  "optimisation funnel infoproduit",
-  "audit email marketing",
-  "séquence email conversion"
+  keywords: [
+    "optimisation funnel",
+    "audit funnel gratuit",
+    "conversion funnel",
+    "optimisation taux de conversion",
+    "analyse funnel marketing",
+    "CRO conversion rate optimization",
+    "freelance optimisation funnel",
+    "audit marketing digital",
+    "analyste funnel",
+    "optimisation landing page",
+    "améliorer conversion site",
+    "diagnostic funnel",
+    "consultant funnel marketing",
+    "optimisation checkout",
+    "audit ads facebook",
+    "améliorer ROI publicité",
+    "funnel marketing ecommerce",
+    "optimisation funnel infoproduit",
+    "audit email marketing",
+    "séquence email conversion",
   ].join(", "),
   authors: [{ name: "Thibaut Gallien", url: "https://thibautgallien.com" }],
   creator: "Thibaut Gallien",
@@ -57,7 +60,8 @@ keywords: [
     type: "website",
     locale: "fr_FR",
     url: "https://thibautgallien.com",
-    title: "Thibaut Gallien - Optimisation Funnel | Je truouve où tu perds de l'argent",
+    title:
+      "Thibaut Gallien - Optimisation Funnel | Je truouve où tu perds de l'argent",
     description:
       "J'analyse tes funnels (ads, landing, emails, checkout) pour trouver où tu perds de l'argent. Diagnostic complet + implémentation + tracking. 3 audits gratuits disponibles.",
     siteName: "Thibaut Gallien - Optimisation Funnel",
@@ -74,7 +78,8 @@ keywords: [
     card: "summary_large_image",
     site: "@thibautgallien",
     creator: "@thibautgallien",
-    title: "Thibaut Gallien - Optimisation Funnel | Je truouve où tu perds de l'argent",
+    title:
+      "Thibaut Gallien - Optimisation Funnel | Je truouve où tu perds de l'argent",
     description:
       "J'analyse tes funnels (ads, landing, emails, checkout) pour trouver où tu perds de l'argent. Diagnostic complet + implémentation + tracking. 3 audits gratuits disponibles.",
     images: ["/og-image.jpg"],
@@ -158,6 +163,9 @@ export default function RootLayout({
           expand={true}
           duration={5000}
         />
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   );

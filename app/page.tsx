@@ -3,14 +3,21 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ArrowRight, X, TrendingUp, Edit3, Target, BookOpen } from "lucide-react";
+import { ArrowRight, X, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 import Link from "next/link";
+import { trackNewsletterSignup } from "@/lib/analytics";
 
 // Newsletter modal component
-function NewsletterModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+function NewsletterModal({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,6 +34,9 @@ function NewsletterModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
       });
 
       if (response.ok) {
+        // Track l'inscription newsletter
+        trackNewsletterSignup("homepage_modal");
+
         toast.success("Bienvenue !", {
           description: "Vérifie ta boîte mail (et les spams) 📧",
         });
@@ -70,7 +80,8 @@ function NewsletterModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
             Reçois Mes Meilleurs Tips Marketing
           </h2>
           <p className="text-gray-300 mb-6">
-            1 email par semaine. Tips actionnables. Pas de spam. Désabonne-toi quand tu veux.
+            1 email par semaine. Tips actionnables. Pas de spam. Désabonne-toi
+            quand tu veux.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -112,17 +123,20 @@ export default function HomePage() {
   const blogPosts = [
     {
       title: "Comment J'ai Doublé Le Taux De Conversion D'Une Landing Page",
-      excerpt: "L'histoire d'un audit qui a révélé 3 leaks majeurs et comment je les ai corrigés en 2 semaines.",
+      excerpt:
+        "L'histoire d'un audit qui a révélé 3 leaks majeurs et comment je les ai corrigés en 2 semaines.",
       slug: "doubler-taux-conversion",
     },
     {
       title: "Les 5 Erreurs Qui Tuent Ton Funnel (Et Comment Les Éviter)",
-      excerpt: "Si tu perds de l'argent sur ton funnel, il y a de fortes chances que tu fasses au moins une de ces erreurs.",
+      excerpt:
+        "Si tu perds de l'argent sur ton funnel, il y a de fortes chances que tu fasses au moins une de ces erreurs.",
       slug: "5-erreurs-funnel",
     },
     {
       title: "Pourquoi Tes Emails Ne Convertissent Pas",
-      excerpt: "Spoiler : ce n'est pas ton taux d'ouverture le problème. C'est ce qui vient après.",
+      excerpt:
+        "Spoiler : ce n'est pas ton taux d'ouverture le problème. C'est ce qui vient après.",
       slug: "emails-conversion",
     },
   ];
@@ -147,11 +161,12 @@ export default function HomePage() {
                 transition={{ duration: 0.8 }}
               >
                 <h1 className="text-4xl md:text-6xl font-black font-space-grotesk mb-6 leading-tight">
-                 Je trouve où les business en ligne perdent de l'argent
+                  Je trouve où les business en ligne perdent de l'argent
                 </h1>
 
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  Entrepreneur, copywriter, optimiseur de funnels. J'analyse, je fixe, je track. 5 ans d'expérience, 0 bullshit.
+                  Entrepreneur, copywriter, optimiseur de funnels. J'analyse, je
+                  fixe, je track. 5 ans d'expérience, 0 bullshit.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -220,21 +235,24 @@ export default function HomePage() {
               {
                 icon: "📊",
                 title: "Audit & Optimisation Complète",
-                description: "Je trouve les 2-3 endroits où tu perds de l'argent (ads, landing, emails, checkout). Je fixe. On mesure.",
+                description:
+                  "Je trouve les 2-3 endroits où tu perds de l'argent (ads, landing, emails, checkout). Je fixe. On mesure.",
                 ctaText: "Voir l'offre gratuite",
                 ctaLink: "/gratuit",
               },
               {
                 icon: "✍️",
                 title: "Copywriting Qui Convertit",
-                description: "Emails, pages de vente, landing pages. Du copy qui vend, pas du blabla qui endort.",
+                description:
+                  "Emails, pages de vente, landing pages. Du copy qui vend, pas du blabla qui endort.",
                 ctaText: "Me contacter",
                 ctaLink: "/contact",
               },
               {
                 icon: "🎯",
                 title: "Conseil Ponctuel",
-                description: "Tu as une question précise ? Un problème urgent ? On en parle, je te guide.",
+                description:
+                  "Tu as une question précise ? Un problème urgent ? On en parle, je te guide.",
                 ctaText: "Réserver un call",
                 ctaLink: "/contact",
               },
@@ -249,7 +267,9 @@ export default function HomePage() {
                 <Card className="bg-gray-900/50 border-gray-800 h-full hover:border-gray-700 transition-colors">
                   <CardContent className="p-6 flex flex-col h-full">
                     <div className="text-5xl mb-4">{service.icon}</div>
-                    <h3 className="font-bold text-xl text-white mb-3">{service.title}</h3>
+                    <h3 className="font-bold text-xl text-white mb-3">
+                      {service.title}
+                    </h3>
                     <p className="text-gray-300 leading-relaxed mb-6 flex-grow">
                       {service.description}
                     </p>
@@ -259,7 +279,8 @@ export default function HomePage() {
                       className="text-[#9B5DE5] hover:text-[#7C3AED] p-0 h-auto justify-start"
                     >
                       <Link href={service.ctaLink}>
-                        {service.ctaText} <ArrowRight className="w-4 h-4 ml-1" />
+                        {service.ctaText}{" "}
+                        <ArrowRight className="w-4 h-4 ml-1" />
                       </Link>
                     </Button>
                   </CardContent>
@@ -346,13 +367,16 @@ export default function HomePage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
               <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
-                  Entrepreneur depuis 2020, ex-CM Tugan.ai, créateur de funnels qui convertissent. 5 ans d'expérience en marketing digital.
+                  Entrepreneur depuis 2020, ex-CM Tugan.ai, créateur de funnels
+                  qui convertissent. 5 ans d'expérience en marketing digital.
                 </p>
                 <p>
-                  J'ai réussi des trucs. J'ai foiré des trucs. J'ai appris des deux.
+                  J'ai réussi des trucs. J'ai foiré des trucs. J'ai appris des
+                  deux.
                 </p>
                 <p>
-                  Aujourd'hui, j'aide des business à trouver où ils perdent de l'argent et à fixer ça.
+                  Aujourd'hui, j'aide des business à trouver où ils perdent de
+                  l'argent et à fixer ça.
                 </p>
                 <p className="text-[#9B5DE5] font-semibold text-lg">
                   Pas de bullshit, juste des chiffres.
@@ -414,7 +438,8 @@ export default function HomePage() {
                 </h2>
 
                 <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-                  1 email par semaine. Tips actionnables. Pas de spam. Désabonne-toi quand tu veux.
+                  1 email par semaine. Tips actionnables. Pas de spam.
+                  Désabonne-toi quand tu veux.
                 </p>
 
                 <Button

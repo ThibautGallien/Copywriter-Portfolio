@@ -2,15 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import {
-  ArrowRight,
-  CheckCircle2,
-  DollarSign,
-  Zap,
-  BarChart,
-  Lightbulb,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, Zap, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -31,6 +23,7 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
+import { trackContactForm } from "@/lib/analytics";
 
 // --- Données du formulaire ---
 const businessTypes = [
@@ -111,7 +104,10 @@ export default function ContactPage() {
   };
 
   // Gère les changements des autres inputs
-  const handleInputChange = (field: keyof FormData, value: string | boolean) => {
+  const handleInputChange = (
+    field: keyof FormData,
+    value: string | boolean
+  ) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -159,6 +155,13 @@ export default function ContactPage() {
       const result = await response.json();
 
       if (response.ok && result.success) {
+        // Track la conversion dans Google Analytics
+        trackContactForm({
+          form_location: "contact_page",
+          form_type: "contact",
+          service_interest: formData.businessType,
+        });
+
         toast.success("Demande envoyée avec succès !", {
           description:
             "J'ai bien reçu ton brief. Je te réponds sous 24h. Surveille ta boîte mail ! 📧",
@@ -181,7 +184,9 @@ export default function ContactPage() {
         // Gérer les erreurs de la route API
         console.error("Erreur API:", result.error || "Réponse non OK");
         toast.error("Erreur lors de l'envoi de ta demande", {
-          description: result.error || "Une erreur serveur est survenue. Veuillez réessayer.",
+          description:
+            result.error ||
+            "Une erreur serveur est survenue. Veuillez réessayer.",
         });
       }
     } catch (error) {
@@ -220,8 +225,8 @@ export default function ContactPage() {
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Raconte-moi où tu en es : je te guide pour trouver où tu perds de
-            l'argent et comment le récupérer. Même si tu ne sais pas exactement ce
-            qui cloche.
+            l'argent et comment le récupérer. Même si tu ne sais pas exactement
+            ce qui cloche.
           </p>
         </motion.div>
 
@@ -258,7 +263,8 @@ export default function ContactPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#9B5DE5]" />
-                  Transparence totale sur ce que je peux ou ne peux pas faire pour toi
+                  Transparence totale sur ce que je peux ou ne peux pas faire
+                  pour toi
                 </li>
               </ul>
             </motion.div>
@@ -276,13 +282,13 @@ export default function ContactPage() {
               <ul className="space-y-2 text-sm text-gray-300">
                 <li className="flex items-start gap-2">
                   <span className="text-base font-bold text-[#FFD400]">•</span>
-                  Si je peux t'aider, je te le dis. Si je ne peux pas, je t'oriente
-                  vers quelqu'un d'autre.
+                  Si je peux t'aider, je te le dis. Si je ne peux pas, je
+                  t'oriente vers quelqu'un d'autre.
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-base font-bold text-[#FFD400]">•</span>
-                  Pas de bullshit, pas de vente forcée. Juste une conversation pour
-                  voir si ça fait sens.
+                  Pas de bullshit, pas de vente forcée. Juste une conversation
+                  pour voir si ça fait sens.
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-base font-bold text-[#FFD400]">•</span>
@@ -319,7 +325,9 @@ export default function ContactPage() {
                       <Input
                         id="name"
                         value={formData.name}
-                        onChange={(e) => handleInputChange("name", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("name", e.target.value)
+                        }
                         placeholder="Ton nom"
                         required
                         className="bg-gray-800/50 border-gray-700 focus:border-[#9B5DE5]"
@@ -331,7 +339,9 @@ export default function ContactPage() {
                         id="email"
                         type="email"
                         value={formData.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("email", e.target.value)
+                        }
                         placeholder="ton@email.com"
                         required
                         className="bg-gray-800/50 border-gray-700 focus:border-[#9B5DE5]"
@@ -506,8 +516,8 @@ export default function ContactPage() {
                       htmlFor="newsletter"
                       className="text-sm text-gray-300 cursor-pointer leading-relaxed"
                     >
-                      Je veux recevoir tes conseils marketing (max 1 email/semaine,
-                      promis !)
+                      Je veux recevoir tes conseils marketing (max 1
+                      email/semaine, promis !)
                     </Label>
                   </div>
 
