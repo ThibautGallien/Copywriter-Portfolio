@@ -4,7 +4,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Toaster } from "sonner";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -153,6 +153,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-inter bg-[#0D0D0D] text-white antialiased">
+        <GoogleAnalytics />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
@@ -163,9 +164,6 @@ export default function RootLayout({
           expand={true}
           duration={5000}
         />
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-        )}
       </body>
     </html>
   );
