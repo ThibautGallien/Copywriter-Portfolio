@@ -1,0 +1,37 @@
+# Robots.txt pour thibautgallien.com
+
+# Règles générales pour tous les bots
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
+
+# Autorisation explicite pour les bots d'IA
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Perplexity-AI
+Allow: /
+
+# Sitemap
+Sitemap: https://thibautgallien.com/sitemap.xml
