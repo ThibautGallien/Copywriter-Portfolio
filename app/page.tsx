@@ -3,7 +3,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ArrowRight, X, BookOpen } from "lucide-react";
+import { ArrowRight, X, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
@@ -34,9 +34,7 @@ function NewsletterModal({
       });
 
       if (response.ok) {
-        // Track l'inscription newsletter
         trackNewsletterSignup("homepage_modal");
-
         toast.success("Bienvenue !", {
           description: "Vérifie ta boîte mail (et les spams) 📧",
         });
@@ -119,7 +117,6 @@ function NewsletterModal({
 export default function HomePage() {
   const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
 
-  // Tu devras remplacer ceci par tes vrais articles du blog
   const blogPosts = [
     {
       title: "Comment J'ai Doublé Le Taux De Conversion D'Une Landing Page",
@@ -150,147 +147,167 @@ export default function HomePage() {
       </div>
 
       <div className="container mx-auto px-4 relative">
-        {/* HERO SECTION */}
+        {/* BLOC 1 : HERO */}
         <section className="min-h-screen flex items-center justify-center py-20">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left - Copy */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <h1 className="text-4xl md:text-6xl font-black font-space-grotesk mb-6 leading-tight">
-                  Je trouve où les business en ligne perdent de l'argent
-                </h1>
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black font-space-grotesk mb-8 leading-tight">
+                J'augmente le CA des business en ligne en trouvant les 2-3
+                endroits où ils perdent de l'argent
+              </h1>
 
-                <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  Entrepreneur, copywriter, optimiseur de funnels. J'analyse, je
-                  fixe, je track. 5 ans d'expérience, 0 bullshit.
-                </p>
+              <p className="text-xl md:text-2xl text-gray-300 mb-6 leading-relaxed max-w-3xl mx-auto">
+                Analyse data → Fixes concrets → Résultats mesurables
+              </p>
 
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity"
-                  >
-                    <Link href="/gratuit">
-                      Postuler pour un audit gratuit
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </Link>
-                  </Button>
+              <p className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">
+                5 ans d'expérience. 0 bullshit. Juste des chiffres.
+              </p>
 
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="lg"
-                    className="border-gray-700 hover:border-[#9B5DE5] hover:text-[#9B5DE5] transition-colors"
-                  >
-                    <Link href="/blog">
-                      Lire le blog
-                      <BookOpen className="w-5 h-5 ml-2" />
-                    </Link>
-                  </Button>
-                </div>
-              </motion.div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity text-lg px-8 py-6"
+                >
+                  <Link href="/services">
+                    Postuler pour un audit gratuit (3 places)
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
 
-              {/* Right - Photo */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
-              >
-                <div className="w-full max-w-[450px] mx-auto aspect-square bg-gradient-to-br from-[#9B5DE5]/20 to-[#3A86FF]/20 rounded-full flex items-center justify-center border border-gray-800 relative overflow-hidden">
-                  <div className="w-[90%] aspect-square bg-gradient-to-br from-[#9B5DE5] to-[#3A86FF] rounded-full flex items-center justify-center shadow-2xl">
-                    <img
-                      src="/profile-pic.webp"
-                      alt="Moi, après le coiffeur"
-                      className="w-full h-full object-cover rounded-full"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-gray-700 hover:border-[#9B5DE5] hover:text-[#9B5DE5] transition-colors text-lg px-8 py-6"
+                >
+                  <a href="#solution">
+                    Voir comment ça marche
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </a>
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* SECTION : CE QUE JE FAIS */}
+        {/* BLOC 2 : PROBLÈME */}
         <section className="py-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center mb-16"
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl md:text-5xl font-bold font-space-grotesk mb-6">
-              Comment je peux t'aider
-            </h2>
-          </motion.div>
+            <div className="bg-gradient-to-br from-red-900/20 to-orange-900/20 border border-red-800/30 rounded-2xl p-8 md:p-12">
+              <h2 className="text-3xl md:text-5xl font-bold font-space-grotesk mb-8 text-center">
+                Tu as du trafic. Tu as une offre qui fonctionne. Mais ton CA
+                stagne.
+              </h2>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                icon: "📊",
-                title: "Audit & Optimisation Complète",
-                description:
-                  "Je trouve les 2-3 endroits où tu perds de l'argent (ads, landing, emails, checkout). Je fixe. On mesure.",
-                ctaText: "Voir l'offre gratuite",
-                ctaLink: "/gratuit",
-              },
-              {
-                icon: "✍️",
-                title: "Copywriting Qui Convertit",
-                description:
-                  "Emails, pages de vente, landing pages. Du copy qui vend, pas du blabla qui endort.",
-                ctaText: "Me contacter",
-                ctaLink: "/contact",
-              },
-              {
-                icon: "🎯",
-                title: "Conseil Ponctuel",
-                description:
-                  "Tu as une question précise ? Un problème urgent ? On en parle, je te guide.",
-                ctaText: "Réserver un call",
-                ctaLink: "/contact",
-              },
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="bg-gray-900/50 border-gray-800 h-full hover:border-gray-700 transition-colors">
-                  <CardContent className="p-6 flex flex-col h-full">
-                    <div className="text-5xl mb-4">{service.icon}</div>
-                    <h3 className="font-bold text-xl text-white mb-3">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed mb-6 flex-grow">
-                      {service.description}
-                    </p>
-                    <Button
-                      asChild
-                      variant="link"
-                      className="text-[#9B5DE5] hover:text-[#7C3AED] p-0 h-auto justify-start"
-                    >
-                      <Link href={service.ctaLink}>
-                        {service.ctaText}{" "}
-                        <ArrowRight className="w-4 h-4 ml-1" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+              <div className="space-y-6 text-lg md:text-xl text-gray-300 leading-relaxed">
+                <p>
+                  Quelque part entre tes ads et ta page de remerciement, tu
+                  perds trop de monde. Et tu ne sais pas exactement où.
+                </p>
+                <p>
+                  Tu sens que tu as atteint un plafond de verre. Tes taux de
+                  conversion sont moyens, mais tu ne sais pas comment les
+                  améliorer.
+                </p>
+
+                <p>
+                  Résultat : tu balances{" "}
+                  <span className="text-red-400 font-semibold">
+                    500-2000€/mois en pub
+                  </span>{" "}
+                  pour des résultats qui ne suivent pas.
+                </p>
+
+                <p className="text-xl font-semibold text-white">
+                  Tu sens qu'il y a un problème. Mais impossible de mettre le
+                  doigt dessus.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </section>
 
-        {/* SECTION : DERNIERS ARTICLES */}
+        {/* BLOC 3 : SOLUTION */}
+        <section id="solution" className="py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-5xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold font-space-grotesk mb-16 text-center">
+              Voilà comment je fixe ça
+            </h2>
+
+            <div className="space-y-8">
+              {[
+                {
+                  number: "1",
+                  title: "J'analyse ta data",
+                  description:
+                    "Je passe 6-8h à décortiquer ton funnel (ads, landing, emails, checkout, page de vente, upsells, homepage, offre, avatar). Je trouve les 2-3 fuites majeures.",
+                },
+                {
+                  number: "2",
+                  title: "Je fixe",
+                  description:
+                    "J'implémente les changements (copy, structure, automatisations). On se met d'accord puis j'exécute.",
+                },
+                {
+                  number: "3",
+                  title: "On mesure",
+                  description:
+                    "Tracking rigoureux pendant 60 jours. On compare avant/après tous les 15 jours. Si ça ne marche pas, je corrige.",
+                },
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="bg-gray-900/50 border-gray-800 hover:border-[#9B5DE5]/50 transition-colors">
+                    <CardContent className="p-8">
+                      <div className="flex items-start gap-6">
+                        <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-[#9B5DE5] to-[#3A86FF] flex items-center justify-center text-3xl font-bold">
+                          {step.number}
+                        </div>
+                        <div className="flex-grow">
+                          <h3 className="text-2xl font-bold text-white mb-3">
+                            {step.title}
+                          </h3>
+                          <p className="text-lg text-gray-300 leading-relaxed">
+                            {step.description}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            <p className="text-center text-xl text-[#9B5DE5] font-semibold mt-12">
+              Pas de théorie. Pas d'intuition. Juste des chiffres.
+            </p>
+          </motion.div>
+        </section>
+
+        {/* BLOC 4 : PREUVES */}
         <section className="py-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -299,9 +316,245 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="max-w-5xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-12 text-center">
-              Derniers articles de blog
+            <h2 className="text-3xl md:text-5xl font-bold font-space-grotesk mb-12 text-center">
+              Pourquoi tu devrais m'écouter
             </h2>
+
+            <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 md:p-12 mb-12">
+              <div className="space-y-4 text-lg text-gray-300 leading-relaxed mb-8">
+                <p className="text-xl font-semibold text-white">
+                  Mes résultats :
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-6 h-6 text-[#9B5DE5] flex-shrink-0 mt-1" />
+                    <span>
+                      Landing page qui convertit à{" "}
+                      <span className="text-white font-semibold">30%</span>
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-6 h-6 text-[#9B5DE5] flex-shrink-0 mt-1" />
+                    <span>
+                      Emails qui ouvrent à{" "}
+                      <span className="text-white font-semibold">45%</span> sur
+                      liste froide (6 mois sans envoi)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-6 h-6 text-[#9B5DE5] flex-shrink-0 mt-1" />
+                    <span>
+                      Funnel séduction qui a cartonné (sans connaissance du
+                      secteur au départ)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-6 h-6 text-[#9B5DE5] flex-shrink-0 mt-1" />
+                    <span>
+                      <span className="text-white font-semibold">
+                        5 ans d'expérience
+                      </span>
+                      , 100+ funnels analysés
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="border-t border-gray-800 pt-8 space-y-4 text-lg text-gray-300">
+                <p>
+                  J'ai réussi des trucs. J'ai foiré des trucs. J'ai appris des
+                  deux.
+                </p>
+                <p>
+                  Aujourd'hui, j'aide des business à trouver où ils perdent de
+                  l'argent et à fixer ça.{" "}
+                  <span className="text-white font-semibold">
+                    Pas de PowerPoint. Pas de PDF de 150 pages. Juste de
+                    l'implémentation.
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <Button
+                asChild
+                size="lg"
+                className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 text-lg px-8 py-6"
+              >
+                <Link href="/about">
+                  En savoir plus sur mon parcours
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* BLOC 5 : QUALIFICATION */}
+        <section className="py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold font-space-grotesk mb-12 text-center">
+              C'est pour toi si...
+            </h2>
+
+            <Card className="bg-gradient-to-br from-[#9B5DE5]/10 to-[#3A86FF]/10 border-[#9B5DE5]/30">
+              <CardContent className="p-8 md:p-12">
+                <div className="space-y-4">
+                  {[
+                    "Tu fais minimum 5k€/mois de CA",
+                    "Tu as déjà des clients (offre validée)",
+                    "Tu as du trafic mais ton CA stagne",
+                    "Tu veux des résultats mesurables, pas du blabla, un pdf un peu vague, ou des réunions sans fin",
+                    "Tu es prêt à implémenter mes recommandations",
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-start gap-4"
+                    >
+                      <CheckCircle2 className="w-7 h-7 text-[#9B5DE5] flex-shrink-0 mt-0.5" />
+                      <span className="text-lg text-white">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <p className="text-gray-300 text-lg mt-8 text-center">
+                  Peu importe que tu vendes du coaching, de la formation, du
+                  e-commerce ou du SaaS.
+                </p>
+
+                <p className="text-white text-xl font-semibold mt-6 text-center">
+                  Si tu corresponds à ces critères, lis la suite.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </section>
+
+        {/* BLOC 6 : OFFRE PRINCIPALE */}
+        <section className="py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-[#9B5DE5] border-2">
+              <CardContent className="p-8 md:p-12">
+                <div className="text-center mb-8">
+                  <div className="inline-block bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] text-white px-6 py-2 rounded-full text-sm font-semibold mb-6">
+                    3 PLACES GRATUITES
+                  </div>
+
+                  <h2 className="text-3xl md:text-5xl font-bold font-space-grotesk mb-6">
+                    Audit Complet + Implémentation + Tracking
+                  </h2>
+
+                  <div className="space-y-3 text-lg text-gray-300 mb-8">
+                    <p>Diagnostic en 48-72h (rapport 5-8 pages)</p>
+                    <p className="text-[#9B5DE5]">↓</p>
+                    <p>Call de validation 30 min (on choisit quoi fixer)</p>
+                    <p className="text-[#9B5DE5]">↓</p>
+                    <p>Implémentation de 3 semaines maximum (je fixe tout)</p>
+                    <p className="text-[#9B5DE5]">↓</p>
+                    <p>Tracking 60 jours (on mesure l'avant/après)</p>
+                  </div>
+
+                  <div className="bg-gray-800/50 rounded-xl p-6 mb-8">
+                    <p className="text-2xl font-bold text-white mb-2">
+                      Valeur normale : 2000€
+                    </p>
+                    <p className="text-3xl font-black text-[#9B5DE5]">
+                      Pour toi : 0€
+                    </p>
+                    <p className="text-sm text-gray-400 mt-3">
+                      En échange : témoignage + case study avec résultats réels
+                    </p>
+                  </div>
+
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 text-xl px-10 py-7 mb-6"
+                  >
+                    <Link href="/services">
+                      Postuler maintenant
+                      <ArrowRight className="w-6 h-6 ml-2" />
+                    </Link>
+                  </Button>
+
+                  <p className="text-sm text-gray-400">
+                    3 places seulement. Sélection sous 48h.
+                  </p>
+                </div>
+
+                <div className="border-t border-gray-700 pt-8">
+                  <p className="text-lg font-semibold text-white mb-3">
+                    Pourquoi gratuit ?
+                  </p>
+                  <p className="text-gray-300 leading-relaxed">
+                    Je n'ai jamais vendu ce service officiellement. J'ai
+                    optimisé mes propres funnels avec succès, mais je n'ai aucun
+                    case study client. Je veux prouver que je peux trouver et
+                    fixer les problèmes de quelqu'un d'autre. Ensuite, je vends
+                    à 2000€.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Mention de l'offre audit seul */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="text-center mt-8"
+            >
+              <p className="text-gray-400 mb-4">
+                Ou commence par un Diagnostic Complet (sans implémentation) pour
+                800€
+              </p>
+              <Button
+                asChild
+                variant="outline"
+                className="border-gray-700 hover:border-[#9B5DE5] hover:text-[#9B5DE5]"
+              >
+                <Link href="/services">
+                  En savoir plus sur l'offre Diagnostic
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
+        </section>
+
+        {/* BLOC 7 : PORTES DE SORTIE - BLOG */}
+        <section className="py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-5xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-4 text-center">
+              Pas encore prêt ?
+            </h2>
+            <p className="text-xl text-gray-400 mb-12 text-center">
+              Explore le reste
+            </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               {blogPosts.map((post, index) => (
@@ -344,78 +597,6 @@ export default function HomePage() {
               >
                 <Link href="/blog">
                   Voir tous les articles
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* SECTION : POURQUOI MOI */}
-        <section className="py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="max-w-5xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-12 text-center">
-              Pourquoi tu devrais m'étouter
-            </h2>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
-              <div className="space-y-4 text-gray-300 leading-relaxed">
-                <p>
-                  Entrepreneur depuis 2020, ex-CM Tugan.ai, créateur de funnels
-                  qui convertissent. 5 ans d'expérience en marketing digital.
-                </p>
-                <p>
-                  J'ai réussi des trucs. J'ai foiré des trucs. J'ai appris des
-                  deux.
-                </p>
-                <p>
-                  Aujourd'hui, j'aide des business à trouver où ils perdent de
-                  l'argent et à fixer ça.
-                </p>
-                <p className="text-[#9B5DE5] font-semibold text-lg">
-                  Pas de bullshit, juste des chiffres.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-6">
-                {[
-                  { number: "2020", label: "Année où j'ai commencé" },
-                  { number: "+100", label: "Funnels analysés" },
-                  { number: "5 ans", label: "D'expérience" },
-                  { number: "60%", label: "Conversion sur ma meilleure LP" },
-                ].map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="bg-gradient-to-br from-[#9B5DE5]/10 to-[#3A86FF]/10 border-[#9B5DE5]/30 text-center p-6">
-                      <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                        {stat.number}
-                      </div>
-                      <div className="text-sm text-gray-300">{stat.label}</div>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            <div className="text-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90"
-              >
-                <Link href="/about">
-                  En savoir plus sur moi
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>

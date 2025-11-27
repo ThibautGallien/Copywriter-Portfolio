@@ -310,7 +310,7 @@ export default function StepsSection() {
           </div>
         </div>
 
-        <Highlight className="mt-8">
+        <Highlight>
           Une landing page, ce n&apos;est jamais &quot;fini&quot;. Les
           meilleures convertissent à 15%+ après 6-12 mois d&apos;optimisation
           continue.

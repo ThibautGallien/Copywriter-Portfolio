@@ -49,7 +49,9 @@ export default function Header() {
                 <span className="text-lg md:text-xl font-bold font-space-grotesk">
                   Thibaut Gallien
                 </span>
-                <div className="text-xs text-gray-400 -mt-1">Optimiseur de funnels</div>
+                <div className="text-xs text-gray-400 -mt-1">
+                  Optimiseur de funnels
+                </div>
               </div>
             </Link>
 
@@ -82,7 +84,7 @@ export default function Header() {
                 size="sm"
                 className="hidden sm:flex bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity"
               >
-                <Link href="https://calendly.com/hello-thibautgallien/30min">
+                <Link href="https://www.thibautgallien.com/contact">
                   <span className="hidden lg:inline">Travailler avec moi</span>
                   <span className="lg:hidden">Travailler ensemble</span>
                   <ArrowRight className="w-4 h-4 ml-2 flex-shrink-0" />
