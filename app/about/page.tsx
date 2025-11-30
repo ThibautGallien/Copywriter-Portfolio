@@ -10,8 +10,6 @@ import {
   Check,
   X,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 
 // --- Constantes de données : Mises à jour ---
@@ -65,25 +63,25 @@ const personalStats = [
     icon: TrendingUp,
     stat: "60%",
     label: "Conversion sur ma meilleure landing page",
-    color: "text-[#06D6A0]",
+    color: "text-emerald-600",
   },
   {
     icon: LineChart,
     stat: "45%",
     label: "Taux d'ouverture email (liste froide, 6 mois sans envoi)",
-    color: "text-[#9B5DE5]",
+    color: "text-emerald-600",
   },
   {
     icon: Target,
     stat: "100+",
     label: "Funnels analysés et optimisés",
-    color: "text-[#3A86FF]",
+    color: "text-emerald-600",
   },
   {
     icon: Calendar,
     stat: "5 ans",
     label: "D'expérience terrain (pas de théorie)",
-    color: "text-[#FFD400]",
+    color: "text-emerald-600",
   },
 ];
 
@@ -156,135 +154,138 @@ const quirkyFacts = [
   "J'aime très fort ma femme (non, ce n'est pas écrit sous la contrainte). Elle supporte mes idées et mes horaires de fou. C'est une sainte.",
 ];
 
-export default function ImprovedAboutPage() {
-  // Composant pour l'affichage des learnings/échecs
-  const LearningBlock = ({
-    icon: Icon,
-    title,
-    content,
-    colorClass,
-  }: {
-    icon: React.ComponentType<{ className?: string }>;
-    title: string;
-    content: string;
-    colorClass: string;
-  }) => (
-    <div
-      className={`flex items-start gap-2 p-3 rounded-lg border ${colorClass} bg-opacity-10 mt-3`}
-    >
-      <Icon className={`w-4 h-4 mt-0.5 flex-shrink-0 ${colorClass}`} />
-      <p className="text-sm font-semibold leading-relaxed">
-        {title} : <span className="font-normal text-gray-300">{content}</span>
-      </p>
-    </div>
-  );
-
+// Composant FadeIn réutilisable
+function FadeIn({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   return (
-    <div className="relative pt-24 pb-16">
-      {/* Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-32 -left-64 w-96 h-96 bg-[#9B5DE5] rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
-        <div className="absolute bottom-32 -right-64 w-96 h-96 bg-[#3A86FF] rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
-      </div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
-      <div className="container mx-auto px-4 relative">
+// Composant pour l'affichage des learnings/échecs
+const LearningBlock = ({
+  icon: Icon,
+  title,
+  content,
+  colorClass,
+  bgClass,
+  borderClass,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  content: string;
+  colorClass: string;
+  bgClass: string;
+  borderClass: string;
+}) => (
+  <div
+    className={`flex items-start gap-3 p-4 rounded-xl border ${borderClass} ${bgClass} mt-4`}
+  >
+    <Icon className={`w-5 h-5 mt-0.5 flex-shrink-0 ${colorClass}`} />
+    <p className="text-sm leading-relaxed">
+      <span className="font-semibold text-neutral-900">{title} : </span>
+      <span className="text-neutral-600">{content}</span>
+    </p>
+  </div>
+);
+
+export default function ImprovedAboutPage() {
+  return (
+    <div className="relative pt-24 pb-20 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold font-space-grotesk mb-8 leading-tight">
+        <FadeIn className="text-center mb-20">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-sora mb-6 leading-[1.1] text-neutral-900">
             5 ans à créer des funnels,
             <br />
-            <span className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
+            <span className="text-emerald-600">
               foirer, réussir, et recommencer
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-4">
+          <p className="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed mb-4">
             Maintenant je trouve où TU perds de l'argent.
           </p>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-neutral-500 max-w-2xl mx-auto mb-8">
             Entrepreneur depuis 2020, ex-CM Tugan.ai, créateur de funnels qui
             convertissent.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-gradient-to-r from-[#FFD400] to-[#FF9900] text-black hover:opacity-90 transition-opacity font-bold"
+          <motion.a
+            href="/gratuit"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 text-white font-semibold rounded-full hover:bg-emerald-500 transition-colors"
           >
-            <Link href="/gratuit">
-              Je veux corriger ma fuite de cash !
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </Button>
-        </motion.div>
+            Je veux corriger ma fuite de cash !
+            <ArrowRight className="w-5 h-5" />
+          </motion.a>
+        </FadeIn>
 
         {/* Personal Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="grid md:grid-cols-4 gap-6 mb-20"
-        >
-          <div className="text-center md:col-span-4 mb-4">
-            <h2 className="text-2xl font-bold font-space-grotesk text-white">
+        <FadeIn delay={0.1} className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-sora text-neutral-900 mb-2">
               Les Chiffres{" "}
-              <span className="text-[#FFD400]">
+              <span className="text-emerald-600">
                 (Parce Que Tout Le Monde Aime Les Chiffres)
               </span>
             </h2>
           </div>
-          {personalStats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <Card className="bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-colors duration-300">
-                <CardContent className="p-6">
-                  <div className="flex justify-center mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-gray-800 to-gray-700 flex items-center justify-center">
-                      <stat.icon className={`w-6 h-6 ${stat.color}`} />
-                    </div>
+          <div className="grid md:grid-cols-4 gap-6">
+            {personalStats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                className="text-center p-6 rounded-2xl bg-neutral-50 border border-neutral-200 cursor-default"
+              >
+                <div className="flex justify-center mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+                    <stat.icon className={`w-6 h-6 ${stat.color}`} />
                   </div>
-                  <div
-                    className={`text-3xl font-bold font-space-grotesk mb-2 ${stat.color}`}
-                  >
-                    {stat.stat}
-                  </div>
-                  <div className="text-sm text-gray-300">{stat.label}</div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+                </div>
+                <div
+                  className={`text-3xl font-bold font-sora mb-2 ${stat.color}`}
+                >
+                  {stat.stat}
+                </div>
+                <div className="text-sm text-neutral-500">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </FadeIn>
 
         {/* Profile Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
+        <FadeIn delay={0.2} className="mb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Photo */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               className="relative"
             >
               <div className="relative">
-                <div className="w-[400px] h-[400px] bg-gradient-to-br from-[#9B5DE5]/20 to-[#3A86FF]/20 rounded-full flex items-center justify-center border border-gray-800 relative overflow-hidden mx-auto">
-                  <div className="w-[350px] h-[350px] bg-gradient-to-br from-[#9B5DE5] to-[#3A86FF] rounded-full flex items-center justify-center shadow-2xl relative z-10">
+                <div className="w-[400px] h-[400px] bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-full flex items-center justify-center border-2 border-emerald-200 relative overflow-hidden mx-auto">
+                  <div className="w-[350px] h-[350px] bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center shadow-2xl relative z-10">
                     <img
                       src="/profile-pic.webp"
                       alt="Thibaut Gallien - Funnel Optimizer"
@@ -292,15 +293,29 @@ export default function ImprovedAboutPage() {
                     />
                   </div>
                   <div className="absolute inset-0">
-                    <div className="absolute top-1/4 left-1/4 w-6 h-6 bg-[#FFD400] rounded-full animate-bounce flex items-center justify-center">
-                      <span className="text-black font-bold text-xs">📧</span>
-                    </div>
-                    <div className="absolute bottom-1/3 right-1/4 w-5 h-5 bg-[#9B5DE5] rounded-full animate-pulse"></div>
-                    <div className="absolute top-1/3 right-1/6 w-4 h-4 bg-[#3A86FF]/50 rounded-full animate-pulse"></div>
-                    <div className="absolute bottom-1/2 left-1/3 w-3 h-3 bg-[#FFD400]/60 rounded-full animate-bounce"></div>
+                    <motion.div
+                      animate={{ y: [0, -10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="absolute top-1/4 left-1/4 w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center shadow-lg"
+                    >
+                      <span className="text-white font-bold text-xs">📧</span>
+                    </motion.div>
+                    <motion.div
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="absolute bottom-1/3 right-1/4 w-6 h-6 bg-emerald-400 rounded-full"
+                    />
+                    <motion.div
+                      animate={{ scale: [1, 1.3, 1] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: 0.5,
+                      }}
+                      className="absolute top-1/3 right-1/6 w-5 h-5 bg-emerald-300 rounded-full"
+                    />
                   </div>
                 </div>
-                <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-[#9B5DE5] rounded-full animate-pulse shadow-lg"></div>
               </div>
             </motion.div>
 
@@ -308,24 +323,22 @@ export default function ImprovedAboutPage() {
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               className="space-y-6"
             >
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold font-sora mb-4 text-neutral-900">
                   📊 Salut ! Moi c&apos;est{" "}
-                  <span className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
-                    Thibaut
-                  </span>
+                  <span className="text-emerald-600">Thibaut</span>
                 </h2>
-                <p className="text-xl text-gray-300 leading-relaxed">
+                <p className="text-xl text-neutral-600 leading-relaxed">
                   Le mec qui trouve les trous dans ton business et qui les
                   colmate
                 </p>
               </div>
 
-              <div className="space-y-4 text-gray-300 leading-relaxed">
+              <div className="space-y-4 text-neutral-600 leading-relaxed">
                 <p>
                   Entrepreneur depuis 2020, ex-community manager chez Tugan.ai,
                   créateur de funnels qui convertissent.
@@ -340,43 +353,34 @@ export default function ImprovedAboutPage() {
                   endroits où ton funnel fuit, et implémenter les fixes qui
                   changent vraiment tes résultats.
                 </p>
-                <p className="font-bold text-white">
+                <p className="font-bold text-neutral-900">
                   Pas de bullshit. Pas de promesses de 10K€ en 30 jours. Juste
                   de l&apos;analyse, de l&apos;exécution, et des chiffres qui
                   prouvent que ça marche.
                 </p>
               </div>
 
-              <div className="pt-4">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity"
-                >
-                  <Link href="/gratuit">
-                    Discutons de ton business
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
-                </Button>
-              </div>
+              <motion.a
+                href="/gratuit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white font-semibold rounded-full hover:bg-neutral-800 transition-colors"
+              >
+                Discutons de ton business
+                <ArrowRight className="w-5 h-5" />
+              </motion.a>
             </motion.div>
           </div>
-        </motion.div>
+        </FadeIn>
 
         {/* Timeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
+        <FadeIn delay={0.3} className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-sora mb-4 text-neutral-900">
               Mon Parcours
-              <span className="text-[#9B5DE5]"> (Version Non-Romancée)</span>
+              <span className="text-emerald-600"> (Version Non-Romancée)</span>
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-neutral-600 max-w-2xl mx-auto">
               Spoiler alert : c&apos;est parti dans tous les sens, mais au final
               ça donne un profil plutôt sympa.
             </p>
@@ -386,117 +390,123 @@ export default function ImprovedAboutPage() {
             {timelineEvents.map((event, index) => (
               <motion.div
                 key={event.year}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className="relative"
               >
                 {/* Timeline line */}
                 {index < timelineEvents.length - 1 && (
-                  <div className="absolute left-8 top-16 w-0.5 h-full bg-gradient-to-b from-[#9B5DE5] to-[#3A86FF] z-0"></div>
+                  <div className="absolute left-8 top-16 w-0.5 h-full bg-gradient-to-b from-emerald-500 to-emerald-300 z-0" />
                 )}
 
                 <div className="flex gap-6 mb-8 relative z-10">
                   {/* Timeline node */}
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] flex items-center justify-center shadow-lg">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-lg"
+                    >
                       <span className="text-2xl">{event.icon}</span>
-                    </div>
+                    </motion.div>
                   </div>
 
                   {/* Content */}
                   <div className="flex-1">
-                    <Card className="bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-colors duration-300">
-                      <CardContent className="p-6">
-                        <div className="flex items-center gap-3 mb-3">
-                          <span className="text-lg font-bold text-[#FFD400] font-space-grotesk">
-                            {event.year}
-                          </span>
-                          <h3 className="text-xl font-bold font-space-grotesk text-white">
-                            {event.title}
-                          </h3>
-                        </div>
-                        <p className="text-gray-300 leading-relaxed text-base">
-                          {event.description}
-                        </p>
+                    <motion.div
+                      whileHover={{ y: -4 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="p-6 rounded-2xl bg-white border border-neutral-200 hover:border-emerald-200 transition-colors"
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-lg font-bold text-emerald-600 font-sora">
+                          {event.year}
+                        </span>
+                        <h3 className="text-xl font-bold font-sora text-neutral-900">
+                          {event.title}
+                        </h3>
+                      </div>
+                      <p className="text-neutral-600 leading-relaxed text-base mb-4">
+                        {event.description}
+                      </p>
 
-                        {/* Bloc Learned */}
-                        {event.learned && (
-                          <LearningBlock
-                            icon={Check}
-                            title="Ce que j'ai appris"
-                            content={event.learned}
-                            colorClass="text-green-400 border-green-700"
-                          />
-                        )}
+                      {/* Bloc Learned */}
+                      {event.learned && (
+                        <LearningBlock
+                          icon={Check}
+                          title="Ce que j'ai appris"
+                          content={event.learned}
+                          colorClass="text-emerald-600"
+                          bgClass="bg-emerald-50"
+                          borderClass="border-emerald-200"
+                        />
+                      )}
 
-                        {/* Bloc Failed */}
-                        {event.failed && (
-                          <LearningBlock
-                            icon={X}
-                            title="Ce que j'ai foiré"
-                            content={event.failed}
-                            colorClass="text-red-400 border-red-700"
-                          />
-                        )}
-                      </CardContent>
-                    </Card>
+                      {/* Bloc Failed */}
+                      {event.failed && (
+                        <LearningBlock
+                          icon={X}
+                          title="Ce que j'ai foiré"
+                          content={event.failed}
+                          colorClass="text-red-600"
+                          bgClass="bg-red-50"
+                          borderClass="border-red-200"
+                        />
+                      )}
+                    </motion.div>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </FadeIn>
 
         {/* What I Actually Do */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
+        <FadeIn delay={0.4} className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-sora mb-4 text-neutral-900">
               Concrètement,
-              <span className="text-[#FFD400]"> Je Fais Quoi ?</span>
+              <span className="text-emerald-600"> Je Fais Quoi ?</span>
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-neutral-600 max-w-2xl mx-auto mb-6">
               Je trouve où tu perds de l&apos;argent dans ton funnel. Et je
               fixe.
             </p>
 
             {/* Bannière d'offre gratuite */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.4 }}
               viewport={{ once: true }}
-              className="my-6 max-w-2xl mx-auto shadow-xl"
+              className="my-8 max-w-3xl mx-auto"
             >
-              <Link href="/gratuit" className="block">
-                <div className="p-4 md:p-6 bg-red-900/50 border border-red-700 rounded-xl hover:bg-red-800/60 transition-colors cursor-pointer">
-                  <div className="flex items-center justify-center gap-3">
-                    <h3 className="text-xl md:text-2xl font-bold text-[#FFD400] mb-0 leading-tight">
+              <Link href="/gratuit">
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  className="p-6 bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl hover:border-red-300 transition-colors cursor-pointer"
+                >
+                  <div className="flex items-center justify-center gap-3 mb-3">
+                    <h3 className="text-2xl md:text-3xl font-bold text-red-600 leading-tight">
                       🔥 OFFRE LANCEMENT : 3 PLACES GRATUITES !
                     </h3>
                   </div>
-                  <p className="text-red-300 font-semibold mt-2">
+                  <p className="text-red-700 font-semibold">
                     Pour les{" "}
                     <strong>
                       3 premiers, Diagnostic + Implémentation GRATUITE
                     </strong>{" "}
                     en échange d&apos;un Case Study.
                   </p>
-                  <p className="text-sm text-red-300/80 mt-1">
+                  <p className="text-sm text-red-600 mt-2">
                     Clique ici pour postuler et valider ton éligibilité.
                   </p>
-                </div>
+                </motion.div>
               </Link>
             </motion.div>
 
-            <p className="text-gray-300 max-w-2xl mx-auto mt-2 font-semibold">
+            <p className="text-neutral-600 max-w-2xl mx-auto font-semibold">
               Je m&apos;occupe de tout. Tu te concentres sur ce qui apporte de
               la valeur à ton business.
             </p>
@@ -508,43 +518,36 @@ export default function ImprovedAboutPage() {
                 key={service.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -4 }}
               >
-                <Card className="bg-gray-900/50 border-gray-800 hover:border-[#9B5DE5]/30 transition-colors duration-300 h-full">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="text-3xl">{service.icon}</div>
-                      <div>
-                        <h3 className="font-semibold font-space-grotesk mb-3 text-white">
-                          {service.title}
-                        </h3>
-                        <p className="text-gray-300 text-sm leading-relaxed">
-                          {service.description}
-                        </p>
-                      </div>
+                <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200 hover:border-emerald-200 transition-colors h-full">
+                  <div className="flex items-start gap-4">
+                    <div className="text-3xl flex-shrink-0">{service.icon}</div>
+                    <div>
+                      <h3 className="font-semibold font-sora mb-3 text-neutral-900">
+                        {service.title}
+                      </h3>
+                      <p className="text-neutral-600 text-sm leading-relaxed">
+                        {service.description}
+                      </p>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </FadeIn>
 
         {/* Beliefs */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
+        <FadeIn delay={0.5} className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-sora mb-4 text-neutral-900">
               Ma Philosophie
-              <span className="text-[#9B5DE5]"> (Que J&apos;Assume)</span>
+              <span className="text-emerald-600"> (Que J&apos;Assume)</span>
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-neutral-600 max-w-2xl mx-auto">
               Quelques trucs auxquels je crois dur comme fer. Ça te donne une
               idée de comment je bosse.
             </p>
@@ -556,112 +559,90 @@ export default function ImprovedAboutPage() {
                 key={belief.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -4 }}
               >
-                <Card className="bg-gray-900/50 border-gray-800 hover:border-[#9B5DE5]/30 transition-colors duration-300 h-full">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div>
-                        <h3 className="font-semibold font-space-grotesk mb-3 text-white">
-                          {belief.title}
-                        </h3>
-                        <p className="text-gray-300 text-sm leading-relaxed">
-                          {belief.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200 hover:border-emerald-200 transition-colors h-full">
+                  <h3 className="font-semibold font-sora mb-3 text-neutral-900">
+                    {belief.title}
+                  </h3>
+                  <p className="text-neutral-600 text-sm leading-relaxed">
+                    {belief.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </FadeIn>
 
         {/* Quirky Facts */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <Card className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border-gray-800">
-            <CardContent className="p-8 md:p-12">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold font-space-grotesk mb-4">
-                  Anecdotes
-                  <span className="text-[#FFD400]"> Parfaitement Inutiles</span>
-                </h2>
-              </div>
+        <FadeIn delay={0.6} className="mb-20">
+          <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-neutral-50 to-emerald-50 border border-neutral-200">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold font-sora mb-2 text-neutral-900">
+                Anecdotes
+                <span className="text-emerald-600"> Parfaitement Inutiles</span>
+              </h2>
+            </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {quirkyFacts.map((fact, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-start gap-3 p-4 bg-gray-800/30 rounded-lg"
-                  >
-                    <span className="text-[#FFD400] font-bold text-lg">•</span>
-                    <p className="text-gray-300 text-sm leading-relaxed">
-                      {fact}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {quirkyFacts.map((fact, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  className="flex items-start gap-3 p-4 bg-white rounded-xl border border-neutral-200"
+                >
+                  <span className="text-emerald-600 font-bold text-lg flex-shrink-0">
+                    •
+                  </span>
+                  <p className="text-neutral-600 text-sm leading-relaxed">
+                    {fact}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
 
         {/* CTA Final */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <Card className="bg-gradient-to-r from-[#9B5DE5]/10 to-[#3A86FF]/10 border-[#9B5DE5]/30 max-w-3xl mx-auto">
-            <CardContent className="p-8 md:p-12">
-              <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-6">
-                Prêt à trouver où tu perds de l'argent ?
-              </h2>
-              <p className="text-gray-300 mb-6 text-lg">
-                Si tu fais 5K€/mois ou plus avec du trafic mais que ton CA
-                stagne, il y a forcément des trous dans ton funnel.
-              </p>
-              <p className="text-white mb-8 text-xl font-bold">
-                Je les trouve. Je les fixe. On mesure.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity font-bold"
-                >
-                  <Link href="/services">
-                    Voir mes offres
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-[#FFD400] text-[#FFD400] hover:bg-[#FFD400] hover:text-black font-bold"
-                >
-                  <Link href="/gratuit">
-                    Postuler (3 places gratuites)
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
+        <FadeIn delay={0.7} className="text-center">
+          <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-200 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold font-sora mb-6 text-neutral-900">
+              Prêt à trouver où tu perds de l'argent ?
+            </h2>
+            <p className="text-neutral-600 mb-4 text-lg">
+              Si tu fais 5K€/mois ou plus avec du trafic mais que ton CA stagne,
+              il y a forcément des trous dans ton funnel.
+            </p>
+            <p className="text-neutral-900 mb-8 text-xl font-bold">
+              Je les trouve. Je les fixe. On mesure.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.a
+                href="/services"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-emerald-600 text-white font-semibold rounded-full hover:bg-emerald-500 transition-colors"
+              >
+                Voir mes offres
+                <ArrowRight className="w-5 h-5" />
+              </motion.a>
+              <motion.a
+                href="/gratuit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-emerald-600 font-semibold rounded-full border-2 border-emerald-600 hover:bg-emerald-50 transition-colors"
+              >
+                Postuler (3 places gratuites)
+                <ArrowRight className="w-5 h-5" />
+              </motion.a>
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </div>
   );

@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { ArticleSection } from "@/components/blog/BlogComponents";
 
 export default function ConversionSection() {
@@ -17,65 +16,73 @@ export default function ConversionSection() {
         transition={{ duration: 0.6 }}
       >
         {/* Problème */}
-        <Card className="bg-red-900/20 border-red-500/50 mb-8">
-          <CardContent className="p-6">
-            <p className="text-lg mb-4">
-              Ton taux de conversion stagne à 1,8%. Tu as du trafic, mais 98
-              visiteurs sur 100 repartent sans acheter.
-            </p>
-            <p className="text-gray-300">
-              Le problème ? <strong>Tu es trop proche de ton produit</strong>.
-              Tu parles caractéristiques quand tes prospects cherchent des
-              bénéfices. Tu oublies les 5 vraies objections qui les empêchent
-              d&apos;acheter. Et tu testes au hasard sans méthode.
-            </p>
-          </CardContent>
-        </Card>
+        <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-6 mb-8">
+          <p className="text-lg mb-4 text-neutral-900">
+            Ton taux de conversion stagne à 1,8%. Tu as du trafic, mais 98
+            visiteurs sur 100 repartent sans acheter.
+          </p>
+          <p className="text-neutral-600">
+            Le problème ?{" "}
+            <strong className="text-neutral-900">
+              Tu es trop proche de ton produit
+            </strong>
+            . Tu parles caractéristiques quand tes prospects cherchent des
+            bénéfices. Tu oublies les 5 vraies objections qui les empêchent
+            d&apos;acheter. Et tu testes au hasard sans méthode.
+          </p>
+        </div>
 
         {/* Solution */}
-        <Card className="bg-purple-900/20 border-purple-500/50 mb-8">
-          <CardContent className="p-6">
-            <p className="text-lg font-bold mb-4 text-purple-300">
-              Voici comment je booste tes conversions :
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                <p>
-                  <strong>J&apos;audite ton funnel complet</strong> en 48h et
-                  j&apos;identifie les 3 à 5 points de friction qui te coûtent
-                  le plus de conversions
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                <p>
-                  <strong>Je réécris tes éléments critiques</strong> (titres,
-                  CTA, emails, pages) avec la méthode qui a généré +127% de
-                  conversions sur 23 funnels
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                <p>
-                  <strong>Tu reçois un plan d&apos;action priorisé</strong> avec
-                  les copies réécrites prêtes à déployer immédiatement
-                </p>
-              </div>
+        <div className="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-6 mb-8">
+          <p className="text-lg font-bold mb-4 text-emerald-700">
+            Voici comment je booste tes conversions :
+          </p>
+          <div className="space-y-4">
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+              <p className="text-neutral-600">
+                <strong className="text-neutral-900">
+                  J&apos;audite ton funnel complet
+                </strong>{" "}
+                en 48h et j&apos;identifie les 3 à 5 points de friction qui te
+                coûtent le plus de conversions
+              </p>
             </div>
-          </CardContent>
-        </Card>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+              <p className="text-neutral-600">
+                <strong className="text-neutral-900">
+                  Je réécris tes éléments critiques
+                </strong>{" "}
+                (titres, CTA, emails, pages) avec la méthode qui a généré +127%
+                de conversions sur 23 funnels
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+              <p className="text-neutral-600">
+                <strong className="text-neutral-900">
+                  Tu reçois un plan d&apos;action priorisé
+                </strong>{" "}
+                avec les copies réécrites prêtes à déployer immédiatement
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <a>
+          <motion.a
             href="https://calendly.com/hello-thibautgallien/30min"
-            target="_blank" rel="noopener noreferrer" className="inline-block
-            bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] text-white font-bold
-            py-4 px-8 rounded-lg hover:opacity-90 transition-opacity text-lg"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-block bg-emerald-600 text-white font-bold py-4 px-8 rounded-full hover:bg-emerald-500 transition-colors text-lg"
+          >
             Réserve ton audit conversion gratuit (30 min)
-          </a>
-          <p className="text-gray-400 text-sm mt-4">
+          </motion.a>
+          <p className="text-neutral-500 text-sm mt-4">
             On analyse ton funnel ensemble, je te montre les 3 quick wins qui
             peuvent doubler tes conversions
           </p>

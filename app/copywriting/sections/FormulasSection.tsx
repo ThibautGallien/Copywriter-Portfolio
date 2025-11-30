@@ -1,7 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { ArticleSection, Highlight } from "@/components/blog/BlogComponents";
 
 const aidaExample = [
@@ -43,16 +43,16 @@ export default function FormulasSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        <p className="text-gray-300 leading-relaxed mb-8">
+        <p className="text-neutral-600 leading-relaxed mb-8">
           Parlons formules. AIDA, PAS, BAB. Tu les as déjà vues 50 fois. Mais
           voilà ce que personne ne t'explique : pourquoi elles marchent.
         </p>
 
-        <h3 className="text-2xl font-bold text-[#9B5DE5] mb-4">
+        <h3 className="text-2xl font-bold text-emerald-600 mb-4">
           AIDA : la base incontournable
         </h3>
 
-        <p className="text-gray-300 leading-relaxed mb-6">
+        <p className="text-neutral-600 leading-relaxed mb-6">
           AIDA = Attention, Intérêt, Désir, Action. C'est la progression
           naturelle de décision d'achat. Pourquoi ça marche ? Parce que ça suit
           le chemin neurologique de décision. Le cerveau humain fonctionne comme
@@ -60,27 +60,28 @@ export default function FormulasSection() {
           l'accompagner.
         </p>
 
-        <Card className="bg-gray-900/50 border-gray-800 mb-8">
-          <CardContent className="p-6">
-            <h4 className="font-bold text-[#FFD400] mb-4">Exemple email</h4>
-            <div className="space-y-3">
-              {aidaExample.map((item, index) => (
-                <div key={index} className="bg-gray-800/50 rounded p-3">
-                  <span className="text-[#9B5DE5] font-semibold text-sm">
-                    {item.label} :
-                  </span>
-                  <p className="text-gray-300 text-sm mt-1">"{item.text}"</p>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+        <div className="bg-white rounded-2xl p-6 border border-neutral-200 mb-8">
+          <h4 className="font-bold text-emerald-600 mb-4">Exemple email</h4>
+          <div className="space-y-3">
+            {aidaExample.map((item, index) => (
+              <div
+                key={index}
+                className="bg-neutral-50 rounded-xl p-3 border border-neutral-200"
+              >
+                <span className="text-emerald-600 font-semibold text-sm">
+                  {item.label} :
+                </span>
+                <p className="text-neutral-600 text-sm mt-1">"{item.text}"</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
-        <h3 className="text-2xl font-bold text-[#9B5DE5] mb-4">
+        <h3 className="text-2xl font-bold text-emerald-600 mb-4">
           PAS : pour les problèmes douloureux
         </h3>
 
-        <p className="text-gray-300 leading-relaxed mb-6">
+        <p className="text-neutral-600 leading-relaxed mb-6">
           PAS = Problem, Agitate, Solve. Tu identifies un problème. Tu
           l'amplifies (tu "agites" la douleur). Puis tu apportes la solution.
           C'est brutal. Ça exploite le biais d'aversion à la perte, documenté
@@ -88,66 +89,62 @@ export default function FormulasSection() {
           perte qu'à gagner un bénéfice équivalent.
         </p>
 
-        <Card className="bg-gray-900/50 border-gray-800 mb-8">
-          <CardContent className="p-6">
-            <h4 className="font-bold text-[#FFD400] mb-4">
-              Exemple page de vente (logiciel de compta)
-            </h4>
-            <div className="space-y-3">
-              {pasExample.map((item, index) => (
-                <div key={index} className="bg-gray-800/50 rounded p-3">
-                  <span className="text-[#3A86FF] font-semibold text-sm">
-                    {item.label} :
-                  </span>
-                  <p className="text-gray-300 text-sm mt-1">"{item.text}"</p>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+        <div className="bg-white rounded-2xl p-6 border border-neutral-200 mb-8">
+          <h4 className="font-bold text-emerald-600 mb-4">
+            Exemple page de vente (logiciel de compta)
+          </h4>
+          <div className="space-y-3">
+            {pasExample.map((item, index) => (
+              <div
+                key={index}
+                className="bg-neutral-50 rounded-xl p-3 border border-neutral-200"
+              >
+                <span className="text-blue-600 font-semibold text-sm">
+                  {item.label} :
+                </span>
+                <p className="text-neutral-600 text-sm mt-1">"{item.text}"</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
-        <Highlight
-          color="from-[#9B5DE5]/20 to-[#3A86FF]/20"
-          borderColor="border-[#9B5DE5]/30"
-        >
+        <Highlight>
           La différence entre AIDA et PAS ? AIDA part du positif (opportunité).
           PAS part du négatif (douleur).
-          <span className="text-[#FFD400] font-bold">
+          <span className="text-emerald-600 font-bold">
             {" "}
             Utilise PAS pour les problèmes vraiment douloureux (santé, argent,
             temps perdu). AIDA pour les opportunités de gain.
           </span>
         </Highlight>
 
-        <h3 className="text-2xl font-bold text-[#9B5DE5] mb-4 mt-8">
+        <h3 className="text-2xl font-bold text-emerald-600 mb-4 mt-8">
           La vérité sur la créativité en copywriting
         </h3>
 
-        <p className="text-gray-300 leading-relaxed mb-6">
+        <p className="text-neutral-600 leading-relaxed mb-6">
           Maintenant, parlons de l'angle controversé. Tout le monde te dit que
           le bon copywriting, c'est être créatif. Trouver l'accroche qui claque.
           Le jeu de mots génial.
         </p>
 
-        <Card className="bg-red-900/20 border border-red-500/30 mb-6">
-          <CardContent className="p-6">
-            <h4 className="font-bold text-red-400 mb-3">
-              C'est faux dans 80% des cas.
-            </h4>
-            <p className="text-gray-300">
-              Les copies qui convertissent le mieux sont souvent ennuyeuses.
-              "Comment perdre 5kg en 30 jours sans régime drastique". C'est
-              prévisible. C'est banal. Et pourtant, ce type de titre convertit
-              systématiquement mieux que les versions "créatives" avec
-              métaphores poétiques.
-            </p>
-          </CardContent>
-        </Card>
+        <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-6 mb-6">
+          <h4 className="font-bold text-red-600 mb-3">
+            C'est faux dans 80% des cas.
+          </h4>
+          <p className="text-neutral-600">
+            Les copies qui convertissent le mieux sont souvent ennuyeuses.
+            "Comment perdre 5kg en 30 jours sans régime drastique". C'est
+            prévisible. C'est banal. Et pourtant, ce type de titre convertit
+            systématiquement mieux que les versions "créatives" avec métaphores
+            poétiques.
+          </p>
+        </div>
 
-        <p className="text-gray-300 leading-relaxed">
+        <p className="text-neutral-600 leading-relaxed">
           Pourquoi ? Parce que la créativité sert ton ego, pas ton client. Ton
           client veut savoir vite si c'est pour lui.{" "}
-          <strong className="text-[#FFD400]">
+          <strong className="text-emerald-600">
             La clarté bat la créativité 8 fois sur 10.
           </strong>
         </p>

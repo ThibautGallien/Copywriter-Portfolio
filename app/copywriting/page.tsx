@@ -25,7 +25,7 @@ const articleMeta = {
   estimatedReadingTime: 8,
   author: "Thibaut Gallien",
   categories: ["Copywriting", "Conversion"],
-  categoryColors: ["#FF6B6B", "#4ECDC4"],
+  categoryColors: ["#10b981", "#059669"],
 };
 
 const keyPoints = [
@@ -204,7 +204,7 @@ export default function CopywritingPillarPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <div className="min-h-screen bg-[#0D0D0D] text-white pt-24 pb-16">
+      <div className="min-h-screen bg-white text-neutral-900 pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <ArticleHeader
             meta={articleMeta}
@@ -223,7 +223,7 @@ export default function CopywritingPillarPage() {
 
           {/* Section liens internes vers satellites */}
           <section className="my-16">
-            <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
+            <h2 className="text-3xl font-bold mb-6 text-emerald-600">
               Aller plus loin sur le copywriting
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
@@ -231,12 +231,14 @@ export default function CopywritingPillarPage() {
                 <Link
                   key={index}
                   href={article.url}
-                  className="group bg-gray-900/50 border border-gray-800 rounded-lg p-5 hover:border-[#9B5DE5]/50 transition-all"
+                  className="group bg-white border border-neutral-200 rounded-xl p-5 hover:border-emerald-200 transition-all"
                 >
-                  <h3 className="font-bold text-[#9B5DE5] group-hover:text-[#FFD400] transition-colors mb-2">
+                  <h3 className="font-bold text-emerald-600 group-hover:text-emerald-500 transition-colors mb-2">
                     {article.title}
                   </h3>
-                  <p className="text-gray-400 text-sm">{article.description}</p>
+                  <p className="text-neutral-500 text-sm">
+                    {article.description}
+                  </p>
                 </Link>
               ))}
             </div>

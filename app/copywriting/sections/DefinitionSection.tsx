@@ -1,7 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { ArticleSection, Highlight } from "@/components/blog/BlogComponents";
 
 export default function DefinitionSection() {
@@ -15,109 +15,117 @@ export default function DefinitionSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        <h3 className="text-2xl font-bold text-[#9B5DE5] mb-4">
+        <h3 className="text-2xl font-bold text-emerald-600 mb-4">
           La définition qui change tout
         </h3>
 
-        <p className="text-gray-300 leading-relaxed mb-6">
+        <p className="text-neutral-600 leading-relaxed mb-6">
           Le copywriting, c'est l'écriture publicitaire persuasive. Pas
           l'écriture "jolie" ou "intelligente". L'écriture qui vend. Chaque mot
           a un job : pousser ton lecteur vers une action spécifique. Cliquer.
           Acheter. S'inscrire. Télécharger.
         </p>
 
-        <p className="text-gray-300 leading-relaxed mb-8">
+        <p className="text-neutral-600 leading-relaxed mb-8">
           La nuance est critique. Un article de blog peut être brillant, bien
           écrit, optimisé SEO. Mais si personne ne clique sur ton CTA à la fin,
           c'est pas du copywriting. C'est de la rédaction de contenu. Les deux
           ont leur place. Mais confondre les deux, c'est perdre de l'argent.
         </p>
 
-        <h3 className="text-2xl font-bold text-[#9B5DE5] mb-4">
+        <h3 className="text-2xl font-bold text-emerald-600 mb-4">
           Copywriting vs rédaction web : la confusion mortelle
         </h3>
 
-        <p className="text-gray-300 leading-relaxed mb-8">
+        <p className="text-neutral-600 leading-relaxed mb-8">
           La confusion vient de là : les deux utilisent des mots. Mais
           l'intention est radicalement différente.
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <Card className="bg-gray-900/50 border-gray-800">
-            <CardContent className="p-6">
-              <h4 className="font-bold text-[#3A86FF] mb-3">Rédaction Web</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>
-                  • <strong>Objectif :</strong> Informer, éduquer
-                </li>
-                <li>
-                  • <strong>KPI :</strong> Trafic, temps sur page, SEO
-                </li>
-                <li>
-                  • <strong>Style :</strong> Neutre, pédagogique
-                </li>
-                <li>
-                  • <strong>Temporalité :</strong> Long terme
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+          <motion.div
+            whileHover={{ y: -4 }}
+            className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-blue-200 transition-colors"
+          >
+            <h4 className="font-bold text-blue-600 mb-3">Rédaction Web</h4>
+            <ul className="space-y-2 text-sm text-neutral-600">
+              <li>
+                • <strong className="text-neutral-900">Objectif :</strong>{" "}
+                Informer, éduquer
+              </li>
+              <li>
+                • <strong className="text-neutral-900">KPI :</strong> Trafic,
+                temps sur page, SEO
+              </li>
+              <li>
+                • <strong className="text-neutral-900">Style :</strong> Neutre,
+                pédagogique
+              </li>
+              <li>
+                • <strong className="text-neutral-900">Temporalité :</strong>{" "}
+                Long terme
+              </li>
+            </ul>
+          </motion.div>
 
-          <Card className="bg-gray-900/50 border-gray-800">
-            <CardContent className="p-6">
-              <h4 className="font-bold text-[#FFD400] mb-3">Copywriting</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>
-                  • <strong>Objectif :</strong> Convertir, vendre
-                </li>
-                <li>
-                  • <strong>KPI :</strong> Taux de conversion, CA
-                </li>
-                <li>
-                  • <strong>Style :</strong> Persuasif, émotionnel
-                </li>
-                <li>
-                  • <strong>Temporalité :</strong> Court terme, immédiat
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+          <motion.div
+            whileHover={{ y: -4 }}
+            className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-emerald-200 transition-colors"
+          >
+            <h4 className="font-bold text-emerald-600 mb-3">Copywriting</h4>
+            <ul className="space-y-2 text-sm text-neutral-600">
+              <li>
+                • <strong className="text-neutral-900">Objectif :</strong>{" "}
+                Convertir, vendre
+              </li>
+              <li>
+                • <strong className="text-neutral-900">KPI :</strong> Taux de
+                conversion, CA
+              </li>
+              <li>
+                • <strong className="text-neutral-900">Style :</strong>{" "}
+                Persuasif, émotionnel
+              </li>
+              <li>
+                • <strong className="text-neutral-900">Temporalité :</strong>{" "}
+                Court terme, immédiat
+              </li>
+            </ul>
+          </motion.div>
         </div>
 
         <Highlight>
           Un bon rédacteur web n'est pas forcément un bon copywriter. Et
           vice-versa.
-          <span className="text-[#FFD400] font-bold">
+          <span className="text-emerald-600 font-bold">
             {" "}
             Les deux compétences sont complémentaires dans une stratégie
             marketing complète.
           </span>
         </Highlight>
 
-        <h3 className="text-2xl font-bold text-[#9B5DE5] mb-4 mt-8">
+        <h3 className="text-2xl font-bold text-emerald-600 mb-4 mt-8">
           Copywriter : métier ou compétence ?
         </h3>
 
-        <p className="text-gray-300 leading-relaxed mb-6">
+        <p className="text-neutral-600 leading-relaxed mb-6">
           Tu peux être copywriter à temps plein (freelance ou agence) ou
           l'appliquer à ton business sans devenir expert. La différence ? Le
           copywriter écrit pour 15 clients différents dans 15 secteurs. Toi, tu
           écris juste pour TON business.
         </p>
 
-        <Card className="bg-gradient-to-r from-[#06D6A0]/20 to-[#059669]/20 border-[#06D6A0]/30">
-          <CardContent className="p-6">
-            <p className="text-gray-300">
-              Voilà ce que personne ne te dit : tu n'as pas besoin de devenir
-              copywriter pro pour booster tes conversions. Tu as besoin de
-              maîtriser{" "}
-              <strong className="text-[#FFD400]">
-                20% des techniques pour obtenir 80% des résultats
-              </strong>
-              .
-            </p>
-          </CardContent>
-        </Card>
+        <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-200 rounded-2xl p-6">
+          <p className="text-neutral-600">
+            Voilà ce que personne ne te dit : tu n'as pas besoin de devenir
+            copywriter pro pour booster tes conversions. Tu as besoin de
+            maîtriser{" "}
+            <strong className="text-emerald-700">
+              20% des techniques pour obtenir 80% des résultats
+            </strong>
+            .
+          </p>
+        </div>
       </motion.div>
     </ArticleSection>
   );

@@ -1,7 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { ArticleSection, Highlight } from "@/components/blog/BlogComponents";
 
 const threePlaces = [
@@ -46,122 +46,122 @@ export default function ApplicationSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        <p className="text-gray-300 leading-relaxed mb-8">
+        <p className="text-neutral-600 leading-relaxed mb-8">
           Le copywriting, c'est pas réservé aux "pros". Tu peux l'appliquer à
           ton business dès aujourd'hui. Voici où commencer.
         </p>
 
-        <h3 className="text-2xl font-bold text-[#9B5DE5] mb-6">
+        <h3 className="text-2xl font-bold text-emerald-600 mb-6">
           Les 3 endroits où ton copy tue tes conversions
         </h3>
 
         <div className="space-y-8 mb-12">
           {threePlaces.map((item, index) => (
-            <Card key={index} className="bg-gray-900/50 border-gray-800">
-              <CardContent className="p-6">
-                <h4 className="font-bold text-[#FFD400] mb-3">{item.title}</h4>
-                <p className="text-gray-300 mb-4">{item.problem}</p>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -4 }}
+              className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-emerald-200 transition-colors"
+            >
+              <h4 className="font-bold text-emerald-600 mb-3">{item.title}</h4>
+              <p className="text-neutral-600 mb-4">{item.problem}</p>
 
-                <div className="grid md:grid-cols-2 gap-4 mb-4">
-                  <div className="bg-red-900/20 rounded p-4 border border-red-500/30">
-                    <p className="text-red-400 font-semibold text-sm mb-2">
-                      ❌ Avant
-                    </p>
-                    <p className="text-gray-300 text-sm">{item.before}</p>
-                  </div>
-                  <div className="bg-green-900/20 rounded p-4 border border-green-500/30">
-                    <p className="text-green-400 font-semibold text-sm mb-2">
-                      ✅ Après
-                    </p>
-                    <p className="text-gray-300 text-sm">{item.after}</p>
-                  </div>
+              <div className="grid md:grid-cols-2 gap-4 mb-4">
+                <div className="bg-red-50 rounded-xl p-4 border border-red-200">
+                  <p className="text-red-600 font-semibold text-sm mb-2">
+                    ❌ Avant
+                  </p>
+                  <p className="text-neutral-600 text-sm">{item.before}</p>
                 </div>
+                <div className="bg-emerald-50 rounded-xl p-4 border border-emerald-200">
+                  <p className="text-emerald-600 font-semibold text-sm mb-2">
+                    ✅ Après
+                  </p>
+                  <p className="text-neutral-600 text-sm">{item.after}</p>
+                </div>
+              </div>
 
-                <p className="text-gray-400 text-sm italic">{item.insight}</p>
-              </CardContent>
-            </Card>
+              <p className="text-neutral-500 text-sm italic">{item.insight}</p>
+            </motion.div>
           ))}
         </div>
 
-        <h3 className="text-2xl font-bold text-[#9B5DE5] mb-4">
+        <h3 className="text-2xl font-bold text-emerald-600 mb-4">
           L'exercice des 10 minutes qui change tout
         </h3>
 
-        <p className="text-gray-300 leading-relaxed mb-6">
+        <p className="text-neutral-600 leading-relaxed mb-6">
           Prends un de tes titres actuels. N'importe lequel. Page d'accueil,
           page de service, landing page.
         </p>
 
-        <Card className="bg-gradient-to-r from-[#9B5DE5]/10 to-[#3A86FF]/10 border-[#9B5DE5]/30 mb-6">
-          <CardContent className="p-6">
-            <h4 className="font-bold text-[#FFD400] mb-4">
-              Applique cette formule simple :
-            </h4>
-            <p className="text-lg font-semibold text-center text-[#9B5DE5] mb-6">
-              Bénéfice + Délai + Objection levée
+        <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-200 rounded-2xl p-6 mb-6">
+          <h4 className="font-bold text-emerald-700 mb-4">
+            Applique cette formule simple :
+          </h4>
+          <p className="text-lg font-semibold text-center text-emerald-600 mb-6">
+            Bénéfice + Délai + Objection levée
+          </p>
+
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm text-neutral-500 mb-2">Avant :</p>
+              <p className="text-neutral-900 bg-white rounded-xl p-3 border border-neutral-200">
+                "Services de conseil en marketing digital"
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-neutral-500 mb-2">Après :</p>
+              <p className="text-neutral-900 bg-white rounded-xl p-3 border border-emerald-200">
+                "Triple ton trafic qualifié en 90 jours (sans dépenser plus en
+                ads)"
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 space-y-2 text-sm">
+            <p className="text-neutral-600">
+              • <strong className="text-emerald-700">Bénéfice :</strong> Triple
+              ton trafic qualifié
             </p>
-
-            <div className="space-y-4">
-              <div>
-                <p className="text-sm text-gray-400 mb-2">Avant :</p>
-                <p className="text-gray-300 bg-gray-800/50 rounded p-3">
-                  "Services de conseil en marketing digital"
-                </p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-400 mb-2">Après :</p>
-                <p className="text-gray-300 bg-gray-800/50 rounded p-3">
-                  "Triple ton trafic qualifié en 90 jours (sans dépenser plus en
-                  ads)"
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-4 space-y-2 text-sm">
-              <p className="text-gray-300">
-                • <strong className="text-[#3A86FF]">Bénéfice :</strong> Triple
-                ton trafic qualifié
-              </p>
-              <p className="text-gray-300">
-                • <strong className="text-[#FFD400]">Délai :</strong> En 90
-                jours
-              </p>
-              <p className="text-gray-300">
-                • <strong className="text-[#06D6A0]">Objection levée :</strong>{" "}
-                Sans dépenser plus en ads
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+            <p className="text-neutral-600">
+              • <strong className="text-amber-600">Délai :</strong> En 90 jours
+            </p>
+            <p className="text-neutral-600">
+              • <strong className="text-blue-600">Objection levée :</strong>{" "}
+              Sans dépenser plus en ads
+            </p>
+          </div>
+        </div>
 
         <Highlight>
           Tu veux pas devenir expert copywriter ? Pas grave. Maîtrise juste
           cette formule sur tes 5 pages principales.
-          <span className="text-[#FFD400] font-bold">
+          <span className="text-emerald-600 font-bold">
             {" "}
             Ça suffit pour débloquer 30 à 40% de conversions en plus.
           </span>
         </Highlight>
 
-        <Card className="bg-gray-900/50 border-gray-800 mt-8">
-          <CardContent className="p-6">
-            <h4 className="font-bold text-[#06D6A0] mb-3">
-              💡 Exemple concret
-            </h4>
-            <p className="text-gray-300 mb-3">
-              Un site e-commerce de compléments alimentaires que j'ai audité.
-              Titre produit initial : "Complément multivitamines bio". Nouveau
-              titre : "Retrouve ton énergie en 15 jours (sans café ni
-              excitants)".
-            </p>
-            <p className="text-[#FFD400] font-semibold">
-              Résultat : taux de clic sur la fiche produit +187% en 3 semaines.
-            </p>
-            <p className="text-gray-400 text-sm mt-2">
-              Même produit. Même prix. Juste le titre qui a changé.
-            </p>
-          </CardContent>
-        </Card>
+        <div className="bg-emerald-50 rounded-2xl p-6 border border-emerald-200 mt-8">
+          <h4 className="font-bold text-emerald-700 mb-3">
+            💡 Exemple concret
+          </h4>
+          <p className="text-neutral-600 mb-3">
+            Un site e-commerce de compléments alimentaires que j'ai audité.
+            Titre produit initial : "Complément multivitamines bio". Nouveau
+            titre : "Retrouve ton énergie en 15 jours (sans café ni excitants)".
+          </p>
+          <p className="text-emerald-700 font-semibold">
+            Résultat : taux de clic sur la fiche produit +187% en 3 semaines.
+          </p>
+          <p className="text-neutral-500 text-sm mt-2">
+            Même produit. Même prix. Juste le titre qui a changé.
+          </p>
+        </div>
       </motion.div>
     </ArticleSection>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { ArticleSection } from "@/components/blog/BlogComponents";
 
 const faqs = [
@@ -38,14 +37,20 @@ export default function FAQSection() {
       >
         <div className="space-y-6">
           {faqs.map((faq, index) => (
-            <Card key={index} className="bg-gray-900/50 border-gray-800">
-              <CardContent className="p-6">
-                <h4 className="font-semibold text-[#9B5DE5] mb-3 text-lg">
-                  {faq.question}
-                </h4>
-                <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
-              </CardContent>
-            </Card>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              whileHover={{ y: -4 }}
+              className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-emerald-200 transition-colors"
+            >
+              <h4 className="font-semibold text-emerald-600 mb-3 text-lg">
+                {faq.question}
+              </h4>
+              <p className="text-neutral-600 leading-relaxed">{faq.answer}</p>
+            </motion.div>
           ))}
         </div>
       </motion.div>

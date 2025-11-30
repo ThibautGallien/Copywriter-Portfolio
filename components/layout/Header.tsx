@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -34,72 +33,69 @@ export default function Header() {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#0D0D0D]/95 backdrop-blur-md border-b border-gray-800/50"
-            : "bg-transparent"
+            ? "bg-white/80 backdrop-blur-md border-b border-neutral-100"
+            : "bg-white/80 backdrop-blur-md border-b border-neutral-100"
         }`}
       >
-        <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center group">
-              <div>
-                <span className="text-lg md:text-xl font-bold font-space-grotesk">
-                  Thibaut Gallien
-                </span>
-                <div className="text-xs text-gray-400 -mt-1">
-                  Optimiseur de funnels
-                </div>
-              </div>
+            <Link href="/" className="group">
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                className="text-lg md:text-xl font-bold text-neutral-900"
+              >
+                Thibaut Gallien<span className="text-emerald-600">.</span>
+              </motion.span>
             </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
               {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-sm font-medium transition-colors duration-300 relative group ${
-                    pathname === item.href
-                      ? "text-[#9B5DE5]"
-                      : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                  <span
-                    className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] transition-all duration-300 group-hover:w-full ${
-                      pathname === item.href ? "w-full" : ""
+                <motion.div key={item.href} whileHover={{ y: -1 }}>
+                  <Link
+                    href={item.href}
+                    className={`text-sm font-medium transition-colors duration-300 ${
+                      pathname === item.href
+                        ? "text-emerald-600"
+                        : "text-neutral-600 hover:text-neutral-900"
                     }`}
-                  />
-                </Link>
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
             </nav>
 
             {/* Desktop CTA Button & Mobile Menu */}
             <div className="flex items-center gap-4">
-              <Button
-                asChild
-                size="sm"
-                className="hidden sm:flex bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="hidden sm:block"
               >
-                <Link href="https://www.thibautgallien.com/contact">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
+                >
                   <span className="hidden lg:inline">Travailler avec moi</span>
                   <span className="lg:hidden">Travailler ensemble</span>
-                  <ArrowRight className="w-4 h-4 ml-2 flex-shrink-0" />
+                  <ArrowRight className="w-4 h-4 flex-shrink-0" />
                 </Link>
-              </Button>
+              </motion.div>
 
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 hover:border-[#9B5DE5] transition-colors duration-300"
+                className="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-neutral-200 hover:border-neutral-300 transition-colors duration-300"
               >
                 {isOpen ? (
-                  <X className="w-5 h-5 text-white" />
+                  <X className="w-5 h-5 text-neutral-900" />
                 ) : (
-                  <Menu className="w-5 h-5 text-white" />
+                  <Menu className="w-5 h-5 text-neutral-900" />
                 )}
               </button>
             </div>
@@ -114,9 +110,9 @@ export default function Header() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-[#0D0D0D] border-t border-gray-800"
+              className="md:hidden bg-white border-t border-neutral-100"
             >
-              <div className="container mx-auto px-4 py-6">
+              <div className="max-w-6xl mx-auto px-6 py-6">
                 <nav className="flex flex-col gap-4">
                   {navItems.map((item, index) => (
                     <motion.div
@@ -130,8 +126,8 @@ export default function Header() {
                         onClick={() => setIsOpen(false)}
                         className={`block py-2 text-lg font-medium transition-colors duration-300 ${
                           pathname === item.href
-                            ? "text-[#9B5DE5]"
-                            : "text-gray-300 hover:text-white"
+                            ? "text-emerald-600"
+                            : "text-neutral-600 hover:text-neutral-900"
                         }`}
                       >
                         {item.label}
@@ -142,18 +138,16 @@ export default function Header() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
-                    className="pt-4 border-t border-gray-800"
+                    className="pt-4 border-t border-neutral-100"
                   >
-                    <Button
-                      asChild
-                      className="w-full bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-opacity transition-opacity"
+                    <Link
+                      href="/contact"
                       onClick={() => setIsOpen(false)}
+                      className="flex items-center justify-center gap-2 w-full py-3 px-6 bg-neutral-900 text-white font-semibold rounded-full hover:bg-neutral-800 transition-colors"
                     >
-                      <Link href="/contact">
-                        <span className="truncate">Travailler avec moi</span>
-                        <ArrowRight className="w-4 h-4 ml-2 flex-shrink-0" />
-                      </Link>
-                    </Button>
+                      <span className="truncate">Travailler avec moi</span>
+                      <ArrowRight className="w-4 h-4 flex-shrink-0" />
+                    </Link>
                   </motion.div>
                 </nav>
               </div>
@@ -172,16 +166,13 @@ export default function Header() {
             transition={{ duration: 0.3 }}
             className="sm:hidden fixed bottom-4 left-4 right-4 z-40"
           >
-            <Button
-              asChild
-              size="lg"
-              className="w-full bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] hover:opacity-90 transition-opacity shadow-2xl text-sm px-4 py-3"
+            <Link
+              href="/contact"
+              className="flex items-center justify-center gap-2 w-full py-4 px-6 bg-neutral-900 text-white font-semibold rounded-full hover:bg-neutral-800 transition-colors shadow-lg"
             >
-              <Link href="https://calendly.com/hello-thibautgallien/30min">
-                <span className="truncate">Travailler avec moi</span>
-                <ArrowRight className="w-4 h-4 ml-2 flex-shrink-0" />
-              </Link>
-            </Button>
+              <span className="truncate">Travailler avec moi</span>
+              <ArrowRight className="w-4 h-4 flex-shrink-0" />
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

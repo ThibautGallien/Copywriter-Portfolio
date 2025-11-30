@@ -1,18 +1,46 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArticleSection, Highlight } from "@/components/blog/BlogComponents";
 import { CheckCircle, X } from "lucide-react";
+
+// Custom useInView hook
+function useInView(ref: any, options = {}) {
+  const [isInView, setIsInView] = useState(false);
+  const { once = false, margin = "0px" }: any = options;
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          if (once) observer.disconnect();
+        } else if (!once) {
+          setIsInView(false);
+        }
+      },
+      { rootMargin: margin }
+    );
+
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [ref, once, margin]);
+
+  return isInView;
+}
 
 const characteristics = [
   {
     title: "Une formulation claire et actionnable",
     description:
-      'Votre CTA doit dire exactement ce qu\'il propose. Pas de "Cliquez ici" flou et générique.',
+      'Ton CTA doit dire exactement ce qu\'il propose. Pas de "Cliquez ici" flou et générique.',
     tips: [
-      "Utilisez des verbes d'action : Télécharger, Découvrir, S'inscrire, Demander",
-      'Encore mieux : passez à la première personne. "Je télécharge", "Je découvre"',
+      "Utilise des verbes d'action : Télécharger, Découvrir, S'inscrire, Demander",
+      'Encore mieux : passe à la première personne. "Je télécharge", "Je découvre"',
       "C'est plus engageant et ça renforce l'effet d'appropriation",
     ],
     icon: "📝",
@@ -23,7 +51,7 @@ const characteristics = [
       "Un bon CTA ne décrit pas seulement l'action. Il met en lumière le gain immédiat.",
     tips: [
       '"Télécharger le PDF" → froid et neutre',
-      '"Téléchargez la checklist pour tripler vos taux d\'ouverture" → clair, concret, orienté résultat',
+      '"Télécharge la checklist pour tripler tes taux d\'ouverture" → clair, concret, orienté résultat',
       "C'est ce bénéfice qui déclenche le clic, pas l'intitulé technique",
     ],
     icon: "🎯",
@@ -36,7 +64,7 @@ const characteristics = [
       "Au-dessus de la ligne de flottaison : pour capter ceux qui ne scrollent pas",
       "Dans le corps du texte : quand le lecteur est déjà engagé",
       "En fin de contenu : pour convertir ceux qui vont jusqu'au bout",
-      "Si vous avez plusieurs CTA, hiérarchisez : un principal, des secondaires discrets",
+      "Si tu as plusieurs CTA, hiérarchise : un principal, des secondaires discrets",
     ],
     icon: "👁️",
   },
@@ -44,9 +72,9 @@ const characteristics = [
     title: "Un design qui attire l'œil sans casser la cohérence visuelle",
     description: "Le CTA doit ressortir, pas agresser.",
     tips: [
-      "Utilisez un contraste fort avec le fond, sans trahir votre charte graphique",
-      "Assurez-vous qu'il soit parfaitement cliquable sur mobile : gros bouton, zone de clic confortable",
-      "Un bon design, c'est un CTA qu'on ne peut pas rater… mais qui reste cohérent avec votre univers de marque",
+      "Utilise un contraste fort avec le fond, sans trahir ta charte graphique",
+      "Assure-toi qu'il soit parfaitement cliquable sur mobile : gros bouton, zone de clic confortable",
+      "Un bon design, c'est un CTA qu'on ne peut pas rater... mais qui reste cohérent avec ton univers de marque",
     ],
     icon: "🎨",
   },
@@ -55,8 +83,8 @@ const characteristics = [
     description:
       "Un CTA doit parfois donner une raison d'agir maintenant plutôt que plus tard.",
     tips: [
-      '"Téléchargez maintenant"',
-      "\"Profitez de l'offre jusqu'à ce soir\"",
+      '"Télécharge maintenant"',
+      "\"Profite de l'offre jusqu'à ce soir\"",
       '"Places limitées"',
       "Attention : l'urgence factice agace. Mais quand elle est réelle, elle pousse à passer à l'action tout de suite",
     ],
@@ -85,11 +113,130 @@ const ctaExamples = [
   },
   {
     type: "Bon exemple",
-    text: "Découvrez comment doubler vos ventes en 30 jours",
+    text: "Découvre comment doubler tes ventes en 30 jours",
     reason: "Bénéfice mesurable, temporalité claire, résultat concret",
     isGood: true,
   },
 ];
+
+// Characteristic Card Component
+function CharacteristicCard({ char, index }: any) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <motion.div
+        whileHover={{ y: -4 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      >
+        <Card className="bg-white border-2 border-neutral-200 hover:border-emerald-200 transition-all h-full">
+          <CardContent className="p-8">
+            <div className="flex items-start gap-4">
+              {/* Icon */}
+              <div className="text-4xl flex-shrink-0">{char.icon}</div>
+
+              {/* Content */}
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-neutral-900 mb-3">
+                  {char.title}
+                </h3>
+                <p className="text-neutral-600 mb-5 leading-relaxed">
+                  {char.description}
+                </p>
+
+                {/* Tips */}
+                <div className="space-y-3 bg-neutral-50 rounded-xl p-5 border border-neutral-100">
+                  {char.tips.map((tip: string, tipIndex: number) => (
+                    <motion.div
+                      key={tipIndex}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ delay: index * 0.1 + tipIndex * 0.05 }}
+                      className="flex items-start gap-3"
+                    >
+                      <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-neutral-700 text-sm leading-relaxed">
+                        {tip}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+// Example Card Component
+function ExampleCard({ example, index }: any) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <motion.div
+        whileHover={{ y: -4 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      >
+        <Card
+          className={`border-2 h-full ${
+            example.isGood
+              ? "bg-emerald-50 border-emerald-200 hover:border-emerald-300"
+              : "bg-red-50 border-red-200 hover:border-red-300"
+          }`}
+        >
+          <CardContent className="p-6">
+            {/* Header */}
+            <div className="flex items-center gap-2 mb-4">
+              {example.isGood ? (
+                <div className="w-6 h-6 rounded-full bg-emerald-600 flex items-center justify-center">
+                  <CheckCircle className="w-4 h-4 text-white" />
+                </div>
+              ) : (
+                <div className="w-6 h-6 rounded-full bg-red-600 flex items-center justify-center">
+                  <X className="w-4 h-4 text-white" />
+                </div>
+              )}
+              <span
+                className={`font-bold text-sm ${
+                  example.isGood ? "text-emerald-700" : "text-red-700"
+                }`}
+              >
+                {example.type}
+              </span>
+            </div>
+
+            {/* CTA Text */}
+            <div className="bg-white rounded-xl p-4 mb-4 border border-neutral-200 shadow-sm">
+              <p className="font-semibold text-neutral-900">
+                &quot;{example.text}&quot;
+              </p>
+            </div>
+
+            {/* Reason */}
+            <p className="text-neutral-600 text-sm leading-relaxed">
+              {example.reason}
+            </p>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 export default function CaracteristiquesSection() {
   return (
@@ -100,110 +247,52 @@ export default function CaracteristiquesSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="py-12"
+        transition={{ duration: 0.6 }}
+        className="py-8"
       >
-        <p className="text-gray-300 leading-relaxed mb-8">
+        <p className="text-lg text-neutral-600 leading-relaxed mb-10">
           Un CTA n'a rien de magique. Mais quand il coche les bonnes cases, il
           peut transformer un simple lecteur en client. Voyons les cinq
           ingrédients qui font la différence.
         </p>
 
         {/* Caractéristiques principales */}
-        <div className="space-y-8 mb-12">
+        <div className="space-y-6 mb-16">
           {characteristics.map((char, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="bg-gray-900/50 border-gray-800">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="text-3xl">{char.icon}</div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-[#9B5DE5] mb-3">
-                        {char.title}
-                      </h3>
-                      <p className="text-gray-300 mb-4 leading-relaxed">
-                        {char.description}
-                      </p>
-                      <div className="space-y-2">
-                        {char.tips.map((tip, tipIndex) => (
-                          <div
-                            key={tipIndex}
-                            className="flex items-start gap-2"
-                          >
-                            <CheckCircle className="w-4 h-4 text-[#06D6A0] mt-1 flex-shrink-0" />
-                            <span className="text-gray-400 text-sm">{tip}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+            <CharacteristicCard key={index} char={char} index={index} />
           ))}
         </div>
 
         {/* Exemples pratiques */}
-        <div className="mb-8">
-          <h3 className="text-2xl font-bold font-space-grotesk mb-6 text-[#9B5DE5]">
-            Exemples concrets : bon vs mauvais CTA
-          </h3>
-          <div className="grid md:grid-cols-2 gap-4">
+        <div className="mb-10">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+            <h3 className="text-2xl md:text-3xl font-bold text-neutral-900">
+              Exemples concrets : bon vs mauvais CTA
+            </h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
             {ctaExamples.map((example, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card
-                  className={`border-2 ${
-                    example.isGood
-                      ? "bg-green-900/20 border-green-500/30"
-                      : "bg-red-900/20 border-red-500/30"
-                  }`}
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      {example.isGood ? (
-                        <CheckCircle className="w-5 h-5 text-green-400" />
-                      ) : (
-                        <X className="w-5 h-5 text-red-400" />
-                      )}
-                      <span
-                        className={`font-bold ${
-                          example.isGood ? "text-green-400" : "text-red-400"
-                        }`}
-                      >
-                        {example.type}
-                      </span>
-                    </div>
-                    <div className="bg-gray-800/50 rounded p-3 mb-3">
-                      <p className="font-mono text-sm text-white">
-                        "{example.text}"
-                      </p>
-                    </div>
-                    <p className="text-gray-400 text-sm">{example.reason}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
+              <ExampleCard key={index} example={example} index={index} />
             ))}
           </div>
         </div>
 
-        <Highlight>
-          Chaque élément d'une landing page doit répondre à une question :
-          <span className="text-[#FFD400] font-bold">
-            "Est-ce que cela rapproche le visiteur de l'action attendue ?"
-          </span>
-        </Highlight>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <Highlight>
+            Chaque élément d'une landing page doit répondre à une question :{" "}
+            <span className="text-emerald-600 font-bold">
+              &quot;Est-ce que cela rapproche le visiteur de l&apos;action
+              attendue ?&quot;
+            </span>
+          </Highlight>
+        </motion.div>
       </motion.div>
     </ArticleSection>
   );

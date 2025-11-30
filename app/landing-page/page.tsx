@@ -27,7 +27,7 @@ const articleMeta = {
   estimatedReadingTime: 12,
   author: "Thibaut Gallien",
   categories: ["Landing Page", "Conversion"],
-  categoryColors: ["#FF6B6B", "#4ECDC4"],
+  categoryColors: ["#10b981", "#06b6d4"],
 };
 
 const keyPoints = [
@@ -94,6 +94,7 @@ const relatedArticles = [
   },
 ];
 
+// Schemas restent identiques
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -244,8 +245,8 @@ export default function LandingPagePillarPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
 
-      <div className="min-h-screen bg-[#0D0D0D] text-white pt-24 pb-16">
-        <div className="container mx-auto px-4 max-w-4xl">
+      <div className="min-h-screen bg-white pt-24 pb-16">
+        <div className="container mx-auto px-6 max-w-4xl">
           <ArticleHeader
             meta={articleMeta}
             excerpt="1 847€ dépensés en Google Ads. 2 340 visiteurs. 41 conversions. Taux de conversion : 1,75%. C'est la moyenne des landing pages B2B en 2024. Mais les 10% meilleures atteignent 11,45%. Même industrie. Même budget. Même trafic. J'ai analysé 127 landing pages #1 sur Google pour comprendre pourquoi certaines convertissent à 2% et d'autres à 15%. Voici ce que j'ai découvert."
@@ -264,7 +265,7 @@ export default function LandingPagePillarPage() {
           <StepsSection />
 
           <section className="my-16">
-            <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
+            <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">
               Aller plus loin sur les landing pages
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
@@ -272,12 +273,14 @@ export default function LandingPagePillarPage() {
                 <Link
                   key={index}
                   href={article.url}
-                  className="group bg-gray-900/50 border border-gray-800 rounded-lg p-5 hover:border-[#9B5DE5]/50 transition-all"
+                  className="group bg-neutral-50 border border-neutral-200 rounded-2xl p-5 hover:border-emerald-300 transition-all"
                 >
-                  <h3 className="font-bold text-[#9B5DE5] group-hover:text-[#FFD400] transition-colors mb-2">
+                  <h3 className="font-bold text-emerald-600 group-hover:text-emerald-500 transition-colors mb-2">
                     {article.title}
                   </h3>
-                  <p className="text-gray-400 text-sm">{article.description}</p>
+                  <p className="text-neutral-600 text-sm">
+                    {article.description}
+                  </p>
                 </Link>
               ))}
             </div>

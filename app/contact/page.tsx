@@ -3,25 +3,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ArrowRight, CheckCircle2, Zap, Lightbulb } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { trackContactForm } from "@/lib/analytics";
 
@@ -81,6 +62,28 @@ type FormData = {
   newsletter: boolean;
 };
 
+// Composant FadeIn
+function FadeIn({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 // --- Composant principal ---
 export default function ContactPage() {
   const [formData, setFormData] = useState<FormData>({
@@ -111,7 +114,7 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  // Validation côté client pour les champs obligatoires (en plus de l'attribut required)
+  // Validation côté client pour les champs obligatoires
   const isFormValid = () => {
     const requiredFields: (keyof FormData)[] = [
       "name",
@@ -181,7 +184,6 @@ export default function ContactPage() {
           newsletter: false,
         });
       } else {
-        // Gérer les erreurs de la route API
         console.error("Erreur API:", result.error || "Réponse non OK");
         toast.error("Erreur lors de l'envoi de ta demande", {
           description:
@@ -201,349 +203,367 @@ export default function ContactPage() {
 
   // --- Rendu JSX ---
   return (
-    <div className="relative pt-24 pb-16">
-      {/* Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-32 -left-64 w-96 h-96 bg-[#9B5DE5] rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
-        <div className="absolute bottom-32 -right-64 w-96 h-96 bg-[#3A86FF] rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>
-      </div>
-
-      <div className="container mx-auto px-4 relative">
+    <div className="relative pt-24 pb-20 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold font-space-grotesk mb-6">
-            <span className="bg-gradient-to-r from-[#9B5DE5] to-[#3A86FF] bg-clip-text text-transparent">
-              Ton Business. Ma Méthode.
-            </span>
+        <FadeIn className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-sora mb-6 leading-[1.1] text-neutral-900">
+            <span className="text-emerald-600">Ton Business. Ma Méthode.</span>
             <br />
             Des Résultats Mesurables.
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
             Raconte-moi où tu en es : je te guide pour trouver où tu perds de
             l'argent et comment le récupérer. Même si tu ne sais pas exactement
             ce qui cloche.
           </p>
-        </motion.div>
+        </FadeIn>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {/* --- Colonne gauche --- */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-8"
-          >
+          <FadeIn delay={0.1} className="space-y-6">
             {/* Réponse Garantie */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-gradient-to-br from-[#9B5DE5]/10 to-[#3A86FF]/10 rounded-2xl p-6 border border-gray-800"
+              whileHover={{ y: -4 }}
+              className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl p-6 border border-emerald-200"
             >
-              <h3 className="font-semibold font-space-grotesk mb-3 text-[#FFD400] flex items-center gap-2">
+              <h3 className="font-semibold font-sora mb-4 text-emerald-700 flex items-center gap-2">
                 <Zap className="w-5 h-5" /> Réponse Garantie
               </h3>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#9B5DE5]" />
-                  Réponse sous 24h maximum
+              <ul className="space-y-3 text-sm text-neutral-600">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <span>Réponse sous 24h maximum</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#9B5DE5]" />
-                  Analyse gratuite de ta situation
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <span>Analyse gratuite de ta situation</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#9B5DE5]" />
-                  Conseils personnalisés (même si on ne bosse pas ensemble)
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <span>
+                    Conseils personnalisés (même si on ne bosse pas ensemble)
+                  </span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#9B5DE5]" />
-                  Transparence totale sur ce que je peux ou ne peux pas faire
-                  pour toi
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <span>
+                    Transparence totale sur ce que je peux ou ne peux pas faire
+                    pour toi
+                  </span>
                 </li>
               </ul>
             </motion.div>
 
             {/* Approche Honnête */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="bg-gradient-to-br from-[#FFD400]/10 to-[#FF9900]/10 rounded-2xl p-6 border border-gray-800"
+              whileHover={{ y: -4 }}
+              className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200"
             >
-              <h3 className="font-semibold font-space-grotesk mb-3 text-[#FFD400] flex items-center gap-2">
+              <h3 className="font-semibold font-sora mb-4 text-amber-700 flex items-center gap-2">
                 <Lightbulb className="w-5 h-5" /> Approche Honnête
               </h3>
-              <ul className="space-y-2 text-sm text-gray-300">
+              <ul className="space-y-3 text-sm text-neutral-600">
                 <li className="flex items-start gap-2">
-                  <span className="text-base font-bold text-[#FFD400]">•</span>
-                  Si je peux t'aider, je te le dis. Si je ne peux pas, je
-                  t'oriente vers quelqu'un d'autre.
+                  <span className="text-lg font-bold text-amber-600 flex-shrink-0">
+                    •
+                  </span>
+                  <span>
+                    Si je peux t'aider, je te le dis. Si je ne peux pas, je
+                    t'oriente vers quelqu'un d'autre.
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-base font-bold text-[#FFD400]">•</span>
-                  Pas de bullshit, pas de vente forcée. Juste une conversation
-                  pour voir si ça fait sens.
+                  <span className="text-lg font-bold text-amber-600 flex-shrink-0">
+                    •
+                  </span>
+                  <span>
+                    Pas de bullshit, pas de vente forcée. Juste une conversation
+                    pour voir si ça fait sens.
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-base font-bold text-[#FFD400]">•</span>
-                  Je ne devine pas, j'analyse : tout est mesurable, tout est
-                  trackable.
+                  <span className="text-lg font-bold text-amber-600 flex-shrink-0">
+                    •
+                  </span>
+                  <span>
+                    Je ne devine pas, j'analyse : tout est mesurable, tout est
+                    trackable.
+                  </span>
                 </li>
               </ul>
             </motion.div>
-          </motion.div>
+          </FadeIn>
 
           {/* --- Formulaire --- */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="lg:col-span-2"
-          >
-            <Card className="bg-gray-900/50 border-gray-800">
-              <CardHeader>
-                <CardTitle className="text-2xl font-space-grotesk">
+          <FadeIn delay={0.2} className="lg:col-span-2">
+            <div className="bg-white rounded-2xl border border-neutral-200 p-8">
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold font-sora text-neutral-900 mb-2">
                   Briefe-moi ta situation
-                </CardTitle>
-                <CardDescription>
+                </h2>
+                <p className="text-neutral-600">
                   Plus tu es précis, plus je peux t'aider efficacement.
-                </CardDescription>
-              </CardHeader>
+                </p>
+              </div>
 
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Nom / Email */}
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Nom / Prénom *</Label>
-                      <Input
-                        id="name"
-                        value={formData.name}
-                        onChange={(e) =>
-                          handleInputChange("name", e.target.value)
-                        }
-                        placeholder="Ton nom"
-                        required
-                        className="bg-gray-800/50 border-gray-700 focus:border-[#9B5DE5]"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          handleInputChange("email", e.target.value)
-                        }
-                        placeholder="ton@email.com"
-                        required
-                        className="bg-gray-800/50 border-gray-700 focus:border-[#9B5DE5]"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Entreprise / Type de business */}
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Entreprise / Projet</Label>
-                      <Input
-                        id="company"
-                        value={formData.company}
-                        onChange={(e) =>
-                          handleInputChange("company", e.target.value)
-                        }
-                        placeholder="Nom de ton projet/entreprise"
-                        className="bg-gray-800/50 border-gray-700 focus:border-[#9B5DE5]"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="businessType">Type de business *</Label>
-                      <Select
-                        value={formData.businessType}
-                        onValueChange={(value) =>
-                          handleSelectChange("businessType", value)
-                        }
-                        required
-                      >
-                        <SelectTrigger className="bg-gray-800/50 border-gray-700 focus:border-[#9B5DE5]">
-                          <SelectValue placeholder="Choisis ton secteur" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-gray-800 border-gray-700">
-                          {businessTypes.map((type) => (
-                            <SelectItem key={type} value={type}>
-                              {type}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  {/* CA / Trafic */}
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="caMonthly">
-                        Chiffre d'affaires mensuel actuel *
-                      </Label>
-                      <Select
-                        value={formData.caMonthly}
-                        onValueChange={(value) =>
-                          handleSelectChange("caMonthly", value)
-                        }
-                        required
-                      >
-                        <SelectTrigger className="bg-gray-800/50 border-gray-700 focus:border-[#9B5DE5]">
-                          <SelectValue placeholder="Ton CA/mois" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-gray-800 border-gray-700">
-                          {caRanges.map((range) => (
-                            <SelectItem key={range} value={range}>
-                              {range}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="trafficMonthly">
-                        Nombre de visiteurs/mois approximatif *
-                      </Label>
-                      <Select
-                        value={formData.trafficMonthly}
-                        onValueChange={(value) =>
-                          handleSelectChange("trafficMonthly", value)
-                        }
-                        required
-                      >
-                        <SelectTrigger className="bg-gray-800/50 border-gray-700 focus:border-[#9B5DE5]">
-                          <SelectValue placeholder="Ton trafic/mois" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-gray-800 border-gray-700">
-                          {trafficRanges.map((range) => (
-                            <SelectItem key={range} value={range}>
-                              {range}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  {/* Problématique */}
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Nom / Email */}
+                <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="problem">
-                      Ta problématique actuelle * (sois précis)
-                    </Label>
-                    <Textarea
-                      id="problem"
-                      value={formData.problem}
-                      onChange={(e) =>
-                        handleInputChange("problem", e.target.value)
-                      }
-                      placeholder={`Ex: "Mon taux d'abandon panier est de 70%" ou "Je ne sais pas où je perds de l'argent exactement"`}
-                      rows={4}
-                      required
-                      className="bg-gray-800/50 border-gray-700 focus:border-[#9B5DE5] resize-none"
-                    />
-                  </div>
-
-                  {/* Budget / Analytics */}
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="budget">Budget envisagé *</Label>
-                      <Select
-                        value={formData.budget}
-                        onValueChange={(value) =>
-                          handleSelectChange("budget", value)
-                        }
-                        required
-                      >
-                        <SelectTrigger className="bg-gray-800/50 border-gray-700 focus:border-[#9B5DE5]">
-                          <SelectValue placeholder="Ton budget estimé" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-gray-800 border-gray-700">
-                          {budgetOptions.map((option) => (
-                            <SelectItem key={option} value={option}>
-                              {option}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="analyticsAccess">
-                        As-tu accès à tes analytics ? *
-                      </Label>
-                      <Select
-                        value={formData.analyticsAccess}
-                        onValueChange={(value) =>
-                          handleSelectChange("analyticsAccess", value)
-                        }
-                        required
-                      >
-                        <SelectTrigger className="bg-gray-800/50 border-gray-700 focus:border-[#9B5DE5]">
-                          <SelectValue placeholder="Accès aux données" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-gray-800 border-gray-700">
-                          {analyticsOptions.map((option) => (
-                            <SelectItem key={option} value={option}>
-                              {option}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  {/* Newsletter */}
-                  <div className="flex items-start space-x-2 pt-4">
-                    <Checkbox
-                      id="newsletter"
-                      checked={formData.newsletter}
-                      onCheckedChange={(checked) =>
-                        handleInputChange("newsletter", checked as boolean)
-                      }
-                      className="border-gray-700 data-[state=checked]:bg-[#9B5DE5] data-[state=checked]:border-[#9B5DE5] mt-1"
-                    />
-                    <Label
-                      htmlFor="newsletter"
-                      className="text-sm text-gray-300 cursor-pointer leading-relaxed"
+                    <label
+                      htmlFor="name"
+                      className="text-sm font-medium text-neutral-700"
                     >
-                      Je veux recevoir tes conseils marketing (max 1
-                      email/semaine, promis !)
-                    </Label>
+                      Nom / Prénom *
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) =>
+                        handleInputChange("name", e.target.value)
+                      }
+                      placeholder="Ton nom"
+                      required
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 placeholder-neutral-400 transition-colors"
+                    />
                   </div>
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="email"
+                      className="text-sm font-medium text-neutral-700"
+                    >
+                      Email *
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) =>
+                        handleInputChange("email", e.target.value)
+                      }
+                      placeholder="ton@email.com"
+                      required
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 placeholder-neutral-400 transition-colors"
+                    />
+                  </div>
+                </div>
 
-                  {/* Submit */}
-                  <Button
-                    type="submit"
-                    size="lg"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[#FFD400] to-[#FF9900] text-black hover:opacity-90 transition-opacity font-bold"
+                {/* Entreprise / Type de business */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="company"
+                      className="text-sm font-medium text-neutral-700"
+                    >
+                      Entreprise / Projet
+                    </label>
+                    <input
+                      id="company"
+                      type="text"
+                      value={formData.company}
+                      onChange={(e) =>
+                        handleInputChange("company", e.target.value)
+                      }
+                      placeholder="Nom de ton projet/entreprise"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 placeholder-neutral-400 transition-colors"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="businessType"
+                      className="text-sm font-medium text-neutral-700"
+                    >
+                      Type de business *
+                    </label>
+                    <select
+                      id="businessType"
+                      value={formData.businessType}
+                      onChange={(e) =>
+                        handleSelectChange("businessType", e.target.value)
+                      }
+                      required
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 transition-colors"
+                    >
+                      <option value="">Choisis ton secteur</option>
+                      {businessTypes.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* CA / Trafic */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="caMonthly"
+                      className="text-sm font-medium text-neutral-700"
+                    >
+                      Chiffre d'affaires mensuel actuel *
+                    </label>
+                    <select
+                      id="caMonthly"
+                      value={formData.caMonthly}
+                      onChange={(e) =>
+                        handleSelectChange("caMonthly", e.target.value)
+                      }
+                      required
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 transition-colors"
+                    >
+                      <option value="">Ton CA/mois</option>
+                      {caRanges.map((range) => (
+                        <option key={range} value={range}>
+                          {range}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="trafficMonthly"
+                      className="text-sm font-medium text-neutral-700"
+                    >
+                      Nombre de visiteurs/mois approximatif *
+                    </label>
+                    <select
+                      id="trafficMonthly"
+                      value={formData.trafficMonthly}
+                      onChange={(e) =>
+                        handleSelectChange("trafficMonthly", e.target.value)
+                      }
+                      required
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 transition-colors"
+                    >
+                      <option value="">Ton trafic/mois</option>
+                      {trafficRanges.map((range) => (
+                        <option key={range} value={range}>
+                          {range}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Problématique */}
+                <div className="space-y-2">
+                  <label
+                    htmlFor="problem"
+                    className="text-sm font-medium text-neutral-700"
                   >
-                    {isSubmitting ? (
-                      <>
-                        Envoi en cours...
-                        <div className="w-4 h-4 ml-2 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                      </>
-                    ) : (
-                      <>
-                        Envoyer ma demande
-                        <ArrowRight className="w-5 h-5 ml-2" />
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
+                    Ta problématique actuelle * (sois précis)
+                  </label>
+                  <textarea
+                    id="problem"
+                    value={formData.problem}
+                    onChange={(e) =>
+                      handleInputChange("problem", e.target.value)
+                    }
+                    placeholder={`Ex: "Mon taux d'abandon panier est de 70%" ou "Je ne sais pas où je perds de l'argent exactement"`}
+                    rows={4}
+                    required
+                    className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 placeholder-neutral-400 resize-none transition-colors"
+                  />
+                </div>
+
+                {/* Budget / Analytics */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="budget"
+                      className="text-sm font-medium text-neutral-700"
+                    >
+                      Budget envisagé *
+                    </label>
+                    <select
+                      id="budget"
+                      value={formData.budget}
+                      onChange={(e) =>
+                        handleSelectChange("budget", e.target.value)
+                      }
+                      required
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 transition-colors"
+                    >
+                      <option value="">Ton budget estimé</option>
+                      {budgetOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="analyticsAccess"
+                      className="text-sm font-medium text-neutral-700"
+                    >
+                      As-tu accès à tes analytics ? *
+                    </label>
+                    <select
+                      id="analyticsAccess"
+                      value={formData.analyticsAccess}
+                      onChange={(e) =>
+                        handleSelectChange("analyticsAccess", e.target.value)
+                      }
+                      required
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 transition-colors"
+                    >
+                      <option value="">Accès aux données</option>
+                      {analyticsOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Newsletter */}
+                <div className="flex items-start space-x-3 pt-4">
+                  <input
+                    type="checkbox"
+                    id="newsletter"
+                    checked={formData.newsletter}
+                    onChange={(e) =>
+                      handleInputChange("newsletter", e.target.checked)
+                    }
+                    className="w-5 h-5 rounded border-neutral-300 text-emerald-600 focus:ring-emerald-500 focus:ring-offset-0 mt-0.5"
+                  />
+                  <label
+                    htmlFor="newsletter"
+                    className="text-sm text-neutral-600 cursor-pointer leading-relaxed"
+                  >
+                    Je veux recevoir tes conseils marketing (max 1
+                    email/semaine, promis !)
+                  </label>
+                </div>
+
+                {/* Submit */}
+                <motion.button
+                  type="submit"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-4 px-6 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? (
+                    <>
+                      Envoi en cours...
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      Envoyer ma demande
+                      <ArrowRight className="w-5 h-5" />
+                    </>
+                  )}
+                </motion.button>
+              </form>
+            </div>
+          </FadeIn>
         </div>
       </div>
     </div>

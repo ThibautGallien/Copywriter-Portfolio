@@ -108,8 +108,8 @@ export default function CTAGuideLayout({
               name: "Thibaut Gallien",
               url: "https://thibautgallien.com",
             },
-            datePublished: "2024-06-30T00:00:00.000Z",
-            dateModified: "2024-06-30T00:00:00.000Z",
+            datePublished: "2025-11-30T00:00:00.000Z",
+            dateModified: "2025-11-30T00:00:00.000Z",
             mainEntityOfPage: {
               "@type": "WebPage",
               "@id":

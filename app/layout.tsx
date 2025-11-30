@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Sora } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Toaster } from "sonner";
@@ -9,11 +9,13 @@ import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  weight: ["400", "500", "600"],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-sora",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -121,8 +123,8 @@ export const metadata: Metadata = {
   },
 
   other: {
-    "msapplication-TileColor": "#9B5DE5",
-    "theme-color": "#0D0D0D",
+    "msapplication-TileColor": "#10b981",
+    "theme-color": "#ffffff",
   },
 };
 
@@ -132,7 +134,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="fr" className={`${inter.variable} ${sora.variable}`}>
       <head>
         {/* Preconnect pour optimiser les performances */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -251,7 +253,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-inter bg-[#0D0D0D] text-white antialiased">
+      <body className="font-inter bg-white text-neutral-900 antialiased">
         <GoogleAnalytics />
         <Header />
         <main className="min-h-screen">{children}</main>
@@ -259,9 +261,17 @@ export default function RootLayout({
         <Toaster
           position="top-right"
           richColors
-          theme="dark"
+          theme="light"
           expand={true}
           duration={5000}
+          toastOptions={{
+            style: {
+              background: "white",
+              color: "#171717",
+              border: "1px solid #e5e5e5",
+              borderRadius: "12px",
+            },
+          }}
         />
       </body>
     </html>
