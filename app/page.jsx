@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { motion } from "framer-motion";
@@ -29,12 +30,6 @@ function useInView(ref, options = {}) {
 
   return isInView;
 }
-
-// ============================================
-// FONTS À AJOUTER :
-// Google Fonts: Sora (headings) + Inter (body)
-// <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-// ============================================
 
 // Animated counter hook
 function useCounter(end, duration = 2000, startOnView = true) {
@@ -202,7 +197,6 @@ function OfferCard({
         </motion.div>
       )}
 
-      {/* Level indicator */}
       <div className="flex items-center gap-3 mb-6">
         <div
           className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold ${
@@ -478,72 +472,6 @@ function SectionProgress({ sections }) {
   );
 }
 
-// Newsletter modal
-function NewsletterModal({ isOpen, onClose }) {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-
-  if (!isOpen) return null;
-
-  return (
-    <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
-        onClick={onClose}
-      />
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="bg-white rounded-3xl p-8 max-w-md w-full relative"
-        >
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full hover:bg-neutral-100 transition-colors text-neutral-400"
-          >
-            ✕
-          </button>
-
-          <h2 className="text-2xl font-bold text-neutral-900 mb-2">
-            Reçois mes meilleurs tips
-          </h2>
-          <p className="text-neutral-500 mb-6">
-            1 email par semaine. Actionnable. Pas de spam.
-          </p>
-
-          <form className="space-y-4">
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Prénom"
-              className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none transition-colors"
-            />
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none transition-colors"
-            />
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-500 transition-colors"
-            >
-              S'inscrire
-            </motion.button>
-          </form>
-        </motion.div>
-      </div>
-    </>
-  );
-}
-
 // Main button component with animation
 function Button({ children, href, variant = "primary", className = "" }) {
   const baseStyles =
@@ -612,9 +540,9 @@ export default function HomePage() {
 
               <FadeIn delay={0.1}>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-neutral-900 leading-[1.1] mb-6">
-                  J'augmente le CA des business en ligne en trouvant où ils{" "}
+                  J'aide les entreprises en ligne à identifier{" "}
                   <span className="text-emerald-600 relative">
-                    perdent de l'argent
+                    où se perdent leurs conversions
                     <motion.svg
                       initial={{ pathLength: 0 }}
                       whileInView={{ pathLength: 1 }}
@@ -638,11 +566,11 @@ export default function HomePage() {
 
               <FadeIn delay={0.2}>
                 <p className="text-lg md:text-xl text-neutral-600 leading-relaxed mb-8 max-w-2xl">
-                  Analyse data → Diagnostic précis → Fixes concrets → Résultats
-                  mesurables.
+                  Analyse de données → Diagnostic précis → Solutions concrètes →
+                  Résultats mesurables.
                   <br />
                   <span className="font-medium text-neutral-900">
-                    5 ans d'expérience. 0 bullshit.
+                    Une approche méthodique basée sur 5 ans d'expérience.
                   </span>
                 </p>
               </FadeIn>
@@ -650,7 +578,7 @@ export default function HomePage() {
               <FadeIn delay={0.3}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button href="/services">
-                    Postuler pour un audit gratuit
+                    Découvrir mes services
                     <svg
                       className="w-5 h-5"
                       fill="none"
@@ -666,7 +594,7 @@ export default function HomePage() {
                     </svg>
                   </Button>
                   <Button href="#process" variant="secondary">
-                    Voir comment ça marche
+                    Comprendre ma méthode
                   </Button>
                 </div>
               </FadeIn>
@@ -705,30 +633,86 @@ export default function HomePage() {
               <div className="max-w-3xl mx-auto text-center">
                 <motion.span
                   whileHover={{ scale: 1.05 }}
-                  className="inline-block text-sm font-semibold text-red-600 bg-red-50 px-4 py-1.5 rounded-full mb-6 cursor-default"
+                  className="inline-block text-sm font-semibold text-amber-600 bg-amber-50 px-4 py-1.5 rounded-full mb-6 cursor-default"
                 >
-                  Le problème
+                  Le défi
                 </motion.span>
                 <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6 leading-tight">
-                  Tu as du trafic, une offre qui fonctionne...
+                  Vous avez du trafic, une offre solide...
                   <br />
-                  <span className="text-red-600">mais ton CA stagne.</span>
+                  <span className="text-amber-600">
+                    mais vos conversions stagnent.
+                  </span>
                 </h2>
                 <div className="text-lg text-neutral-600 leading-relaxed space-y-4">
                   <p>
-                    Quelque part entre tes ads et ta page de remerciement, tu
-                    perds trop de monde. Et tu ne sais pas exactement où.
+                    Quelque part entre votre publicité et votre page de
+                    confirmation, vous perdez des opportunités. Et les causes
+                    exactes restent floues.
                   </p>
                   <p>
-                    Tu balances{" "}
+                    Votre investissement publicitaire de{" "}
                     <span className="font-semibold text-neutral-900">
-                      500-2000€/mois en pub
+                      500 à 2000€ par mois
                     </span>{" "}
-                    pour des résultats qui ne suivent pas.
+                    ne génère pas les résultats espérés.
                   </p>
                   <p className="font-medium text-neutral-900">
-                    Tu sens qu'il y a un problème. Impossible de mettre le doigt
-                    dessus.
+                    Vous savez qu'il y a un problème. Mais lequel exactement ?
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* ============================================ */}
+        {/* INSIGHT - L'ÉDUCATION PLUTÔT QUE LA VENTE */}
+        {/* ============================================ */}
+        <section className="py-32 bg-white">
+          <div className="max-w-4xl mx-auto px-6">
+            <FadeIn>
+              <div className="text-left space-y-8">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight max-w-3xl mx-auto">
+                  "Vous pensez avoir un problème d'acquisition.{" "}
+                  <span className="text-emerald-600">
+                    Les chiffres disent souvent le contraire.
+                  </span>
+                  "
+                </h2>
+
+                <div className="space-y-6 text-lg md:text-xl text-neutral-600 leading-relaxed max-w-2xl mx-auto pt-8">
+                  <p>
+                    Votre coût par clic augmente. Votre trafic est là. Mais
+                    votre Chiffre d'Affaires stagne.
+                  </p>
+
+                  <p className="text-neutral-700 font-medium">
+                    Le problème n'est pas votre produit. Ce n'est pas Facebook
+                    Ads.
+                  </p>
+
+                  <p className="text-neutral-900 font-semibold">
+                    Le problème, c'est ce qui se passe après le clic.
+                  </p>
+
+                  <p className="text-neutral-600">
+                    Une promesse mal alignée. Un checkout confus. Une séquence
+                    mail qui n'éduque pas.
+                  </p>
+                </div>
+
+                <div className="pt-8 border-t border-neutral-100 max-w-2xl mx-auto">
+                  <p className="text-lg text-neutral-700 leading-relaxed">
+                    Je ne suis pas une agence marketing. Je ne vends pas de
+                    "magie".
+                  </p>
+                  <p className="text-xl font-semibold text-neutral-900 mt-4">
+                    Je suis un analyste de conversion.
+                  </p>
+                  <p className="text-lg text-neutral-600 mt-4 leading-relaxed">
+                    Je regarde ce que font vos visiteurs, et je supprime les
+                    obstacles qui les empêchent d'acheter.
                   </p>
                 </div>
               </div>
@@ -750,7 +734,7 @@ export default function HomePage() {
                   La méthode
                 </motion.span>
                 <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                  Comment je fixe ça
+                  Ma démarche d'optimisation
                 </h2>
               </div>
             </FadeIn>
@@ -758,28 +742,28 @@ export default function HomePage() {
             <div className="max-w-2xl mx-auto">
               <ProcessStep
                 number="1"
-                title="J'analyse ta data"
+                title="Analyse approfondie"
                 duration="6-8h"
-                description="Je passe 6 à 8 heures à décortiquer ton funnel complet : ads, landing pages, emails, checkout, page de vente, upsells. Je trouve les 2-3 fuites majeures."
+                description="J'examine en détail votre funnel complet : publicités, pages de destination, séquences email, processus de commande, pages de vente et upsells. J'identifie les 2 à 3 points de friction majeurs."
               />
               <ProcessStep
                 number="2"
-                title="Je fixe"
+                title="Optimisation"
                 duration="3 semaines"
-                description="J'implémente les changements nécessaires : copy, structure, automatisations. On se met d'accord sur les priorités, puis j'exécute."
+                description="Je mets en place les améliorations nécessaires : contenu, structure, automatisations. Nous validons ensemble les priorités, puis je procède à l'implémentation."
               />
               <ProcessStep
                 number="3"
-                title="On mesure"
-                duration="60 jours"
-                description="Tracking rigoureux pendant 60 jours. On compare avant/après tous les 15 jours. Si ça ne marche pas comme prévu, je corrige."
+                title="Mesure des résultats"
+                duration="30 jours"
+                description="Suivi rigoureux des performances sur 30 jours. Nous comparons les données avant/après toutes les deux semaines. Si les résultats ne sont pas au rendez-vous, j'ajuste la stratégie."
                 isLast
               />
             </div>
 
             <FadeIn delay={0.4}>
               <p className="text-center text-lg font-medium text-emerald-600 mt-12">
-                Pas de théorie. Pas d'intuition. Juste des chiffres.
+                Une approche basée sur les données, pas sur l'intuition.
               </p>
             </FadeIn>
           </div>
@@ -795,12 +779,12 @@ export default function HomePage() {
                 <div className="text-center mb-12">
                   <motion.span
                     whileHover={{ scale: 1.05 }}
-                    className="inline-block text-sm font-semibold text-amber-600 bg-amber-50 px-4 py-1.5 rounded-full mb-6 cursor-default"
+                    className="inline-block text-sm font-semibold text-emerald-600 bg-emerald-50 px-4 py-1.5 rounded-full mb-6 cursor-default"
                   >
-                    C'est pour toi ?
+                    Profil idéal
                   </motion.span>
                   <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                    On travaille ensemble si...
+                    Nous pouvons collaborer si...
                   </h2>
                 </div>
 
@@ -811,11 +795,11 @@ export default function HomePage() {
                 >
                   <ul className="space-y-4">
                     {[
-                      "Tu fais minimum 5k€/mois de CA",
-                      "Tu as déjà des clients (offre validée)",
-                      "Tu as du trafic mais ton CA stagne",
-                      "Tu veux des résultats mesurables, pas du blabla",
-                      "Tu es prêt à implémenter mes recommandations",
+                      "Votre chiffre d'affaires mensuel dépasse 5 000€",
+                      "Vous avez une base de clients existante (offre validée)",
+                      "Vous générez du trafic mais vos conversions stagnent",
+                      "Vous recherchez des résultats mesurables et concrets",
+                      "Vous êtes prêt à mettre en œuvre mes recommandations",
                     ].map((item, i) => (
                       <ChecklistItem key={i} index={i}>
                         {item}
@@ -845,10 +829,10 @@ export default function HomePage() {
                   whileHover={{ scale: 1.05 }}
                   className="inline-block text-sm font-semibold text-emerald-600 bg-emerald-50 px-4 py-1.5 rounded-full mb-6 cursor-default"
                 >
-                  Les offres
+                  Les services
                 </motion.span>
                 <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                  Deux façons de travailler ensemble
+                  Deux formules d'accompagnement
                 </h2>
               </div>
             </FadeIn>
@@ -857,35 +841,35 @@ export default function HomePage() {
               <FadeIn delay={0.1}>
                 <OfferCard
                   level="01"
-                  subtitle="Niveau 1"
-                  title="Diagnostic Complet"
+                  subtitle="Formule Diagnostic"
+                  title="Audit Complet"
                   price="800€"
                   features={[
-                    "Analyse complète de ton funnel (6-8h)",
-                    "Rapport détaillé de 5-8 pages",
-                    "Call de restitution de 30min",
-                    "Roadmap de fixes priorisée",
+                    "Analyse complète de votre funnel (6-8h)",
+                    "Rapport détaillé de 5 à 8 pages",
+                    "Entretien de restitution (30min)",
+                    "Feuille de route priorisée",
                   ]}
-                  cta="Commander le diagnostic"
+                  cta="Demander un diagnostic"
                 />
               </FadeIn>
 
               <FadeIn delay={0.2}>
                 <OfferCard
                   level="02"
-                  subtitle="Niveau 2"
-                  title="Audit + Implémentation"
+                  subtitle="Formule Premium"
+                  title="Audit + Mise en œuvre"
                   price="0€"
                   originalPrice="2000€"
                   features={[
-                    "Tout le diagnostic niveau 1",
-                    "Implémentation des fixes (3 semaines)",
-                    "Tracking des résultats sur 60 jours",
+                    "Tout le diagnostic de la formule 1",
+                    "Mise en œuvre des optimisations (3 semaines)",
+                    "Suivi des résultats sur 30 jours",
                     "Ajustements inclus si nécessaire",
                   ]}
-                  cta="Postuler maintenant"
+                  cta="Candidater maintenant"
                   highlighted
-                  badge="3 places gratuites"
+                  badge="3 places offertes"
                 />
               </FadeIn>
             </div>
@@ -894,11 +878,12 @@ export default function HomePage() {
               <div className="max-w-2xl mx-auto mt-12 p-6 bg-neutral-50 rounded-2xl text-center">
                 <p className="text-neutral-600">
                   <span className="font-semibold text-neutral-900">
-                    Pourquoi gratuit ?
+                    Pourquoi cette offre gratuite ?
                   </span>{" "}
-                  Je n'ai pas encore de case study client. Je veux prouver mes
-                  résultats. En échange : un témoignage et une étude de cas avec
-                  tes vrais chiffres.
+                  Je construis actuellement mon portfolio de cas clients. En
+                  échange de cette prestation complète, je vous demande un
+                  témoignage détaillé et l'autorisation d'utiliser vos résultats
+                  en étude de cas.
                 </p>
               </div>
             </FadeIn>
@@ -913,24 +898,25 @@ export default function HomePage() {
             <FadeIn>
               <div className="max-w-3xl mx-auto text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  Pourquoi me faire confiance ?
+                  Pourquoi faire confiance à mon approche ?
                 </h2>
                 <div className="text-lg text-neutral-300 leading-relaxed space-y-4">
                   <p>
-                    J'ai réussi des trucs. J'ai foiré des trucs. J'ai appris des
-                    deux.
+                    Mon parcours m'a permis d'expérimenter différentes approches
+                    et d'en tirer des enseignements précieux.
                   </p>
                   <p>
-                    Landing page qui convertit à{" "}
+                    Pages de destination convertissant jusqu'à{" "}
                     <span className="text-emerald-400 font-semibold">30%</span>.
-                    Emails qui ouvrent à{" "}
+                    Taux d'ouverture email atteignant{" "}
                     <span className="text-emerald-400 font-semibold">45%</span>{" "}
-                    sur liste froide. 100+ funnels analysés en 5 ans.
+                    sur audience froide. Plus de 100 funnels analysés en 5 ans.
                   </p>
                   <p className="text-white font-medium">
-                    Pas de PowerPoint. Pas de PDF de 150 pages.
+                    Je privilégie l'action concrète aux présentations
+                    théoriques.
                     <br />
-                    Juste de l'implémentation.
+                    Mon focus : l'implémentation et les résultats mesurables.
                   </p>
                 </div>
                 <motion.a
@@ -938,7 +924,7 @@ export default function HomePage() {
                   whileHover={{ x: 4 }}
                   className="inline-flex items-center gap-2 mt-8 text-emerald-400 font-medium hover:text-emerald-300 transition-colors"
                 >
-                  En savoir plus sur mon parcours
+                  Découvrir mon parcours
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -966,9 +952,9 @@ export default function HomePage() {
             <FadeIn>
               <div className="text-center mb-12">
                 <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-2">
-                  Pas encore prêt ?
+                  Vous souhaitez d'abord en savoir plus ?
                 </h2>
-                <p className="text-neutral-500">Explore le blog</p>
+                <p className="text-neutral-500">Explorez mes articles</p>
               </div>
             </FadeIn>
 
@@ -976,23 +962,23 @@ export default function HomePage() {
               <FadeIn delay={0.1}>
                 <BlogCard
                   title="Comment J'ai Doublé Le Taux De Conversion D'Une Landing Page"
-                  excerpt="L'histoire d'un audit qui a révélé 3 leaks majeurs et comment je les ai corrigés en 2 semaines."
-                  tag="Case study"
+                  excerpt="Retour sur un audit qui a révélé 3 points de friction majeurs et les solutions mises en place en 2 semaines."
+                  tag="Étude de cas"
                   slug="doubler-taux-conversion"
                 />
               </FadeIn>
               <FadeIn delay={0.2}>
                 <BlogCard
-                  title="Les 5 Erreurs Qui Tuent Ton Funnel"
-                  excerpt="Si tu perds de l'argent sur ton funnel, il y a de fortes chances que tu fasses au moins une de ces erreurs."
+                  title="Les 5 Erreurs Qui Pénalisent Votre Funnel"
+                  excerpt="Si vos conversions stagnent, il y a de fortes chances que vous rencontriez au moins une de ces difficultés."
                   tag="Stratégie"
                   slug="5-erreurs-funnel"
                 />
               </FadeIn>
               <FadeIn delay={0.3}>
                 <BlogCard
-                  title="Pourquoi Tes Emails Ne Convertissent Pas"
-                  excerpt="Spoiler : ce n'est pas ton taux d'ouverture le problème. C'est ce qui vient après."
+                  title="Pourquoi Vos Emails Ne Convertissent Pas"
+                  excerpt="Spoiler : le taux d'ouverture n'est pas le véritable indicateur. C'est ce qui se passe après qui compte."
                   tag="Email"
                   slug="emails-conversion"
                 />
@@ -1002,7 +988,7 @@ export default function HomePage() {
             <FadeIn delay={0.4}>
               <div className="text-center mt-10">
                 <Button href="/blog" variant="outline">
-                  Voir tous les articles
+                  Découvrir tous les articles
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -1040,7 +1026,7 @@ export default function HomePage() {
                     >
                       <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
                       <span className="text-sm font-medium text-emerald-400">
-                        Newsletter hebdo
+                        Newsletter hebdomadaire
                       </span>
                     </motion.div>
 
@@ -1050,17 +1036,17 @@ export default function HomePage() {
                     </h2>
 
                     <p className="text-lg text-neutral-300 mb-6 leading-relaxed">
-                      Chaque semaine, je dissèque un funnel, une stratégie ou
-                      une erreur qui coûte cher. Tu repars avec un truc
-                      actionnable.
+                      Chaque semaine, j'analyse un funnel, une stratégie ou une
+                      erreur coûteuse. Vous repartez avec des insights
+                      actionnables.
                     </p>
 
                     {/* What you'll get */}
                     <div className="space-y-3">
                       {[
-                        "Analyses de vrais funnels (ce qui marche, ce qui foire)",
-                        "Templates et frameworks que j'utilise",
-                        "Erreurs à éviter (souvent les miennes)",
+                        "Analyses de funnels réels (succès et échecs)",
+                        "Templates et méthodologies éprouvés",
+                        "Erreurs à éviter (tirées de mon expérience)",
                       ].map((item, i) => (
                         <motion.div
                           key={i}
@@ -1119,10 +1105,10 @@ export default function HomePage() {
                       </div>
                       <div>
                         <p className="font-semibold text-white">
-                          Rejoins +500 marketeurs
+                          Rejoignez +500 professionnels
                         </p>
                         <p className="text-sm text-neutral-500">
-                          Gratuit, pour toujours
+                          Gratuit, sans engagement
                         </p>
                       </div>
                     </div>
@@ -1138,7 +1124,7 @@ export default function HomePage() {
                       <div>
                         <input
                           type="email"
-                          placeholder="Email"
+                          placeholder="Email professionnel"
                           className="w-full px-4 py-3 bg-neutral-900 border border-neutral-700 rounded-xl text-white placeholder-neutral-500 focus:border-emerald-500 focus:outline-none transition-colors"
                         />
                       </div>
@@ -1166,7 +1152,7 @@ export default function HomePage() {
                     </form>
 
                     <p className="text-xs text-neutral-500 text-center mt-4">
-                      Pas de spam. Désabonne-toi en 1 clic.
+                      Pas de spam. Désinscription en un clic.
                     </p>
                   </motion.div>
                 </div>
@@ -1196,7 +1182,7 @@ export default function HomePage() {
                       <span className="text-emerald-400 font-semibold">
                         5 min
                       </span>
-                      <span>de lecture max</span>
+                      <span>de lecture maximum</span>
                     </div>
                   </div>
                 </motion.div>

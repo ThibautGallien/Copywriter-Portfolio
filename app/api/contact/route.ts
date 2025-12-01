@@ -6,23 +6,35 @@ export const dynamic = "force-dynamic";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { 
-      name, 
-      email, 
-      company, 
-      businessType, 
-      caMonthly, 
-      trafficMonthly, 
+    const {
+      name,
+      email,
+      company,
+      businessType,
+      caMonthly,
+      trafficMonthly,
       problem, // Renommé de 'message' à 'problem'
-      budget, 
-      analyticsAccess, 
-      newsletter 
+      budget,
+      analyticsAccess,
+      newsletter,
     } = body;
 
     // Validation basique (on utilise 'problem' au lieu de 'message')
-    if (!name || !email || !problem || !businessType || !caMonthly || !trafficMonthly || !budget || !analyticsAccess) {
+    if (
+      !name ||
+      !email ||
+      !problem ||
+      !businessType ||
+      !caMonthly ||
+      !trafficMonthly ||
+      !budget ||
+      !analyticsAccess
+    ) {
       return NextResponse.json(
-        { error: "Tous les champs obligatoires du formulaire de contact sont requis." },
+        {
+          error:
+            "Tous les champs obligatoires du formulaire de contact sont requis.",
+        },
         { status: 400 }
       );
     }

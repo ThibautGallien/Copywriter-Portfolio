@@ -10,10 +10,6 @@ import {
   Search,
   Code,
   BarChart3,
-  AlertCircle,
-  Clock,
-  Shield,
-  TrendingUp,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -25,16 +21,16 @@ export default function GratuitPage() {
     websiteUrl: "",
     monthlyRevenue: "",
     monthlyVisitors: "",
-    businessType: "",
-    currentFunnel: "",
     problemArea: "",
-    whyApplying: "",
+    videoTestimonyCommitment: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    console.log("📤 Données du formulaire à envoyer:", formData);
 
     try {
       const response = await fetch("/api/apply", {
@@ -43,9 +39,15 @@ export default function GratuitPage() {
         body: JSON.stringify(formData),
       });
 
+      console.log(
+        "📥 Réponse du serveur:",
+        response.status,
+        response.statusText
+      );
+
       if (response.ok) {
         toast.success("Candidature envoyée !", {
-          description: "Je reviens vers toi sous 48h maximum 🚀",
+          description: "Je reviens vers vous sous 48h maximum 🚀",
         });
         setFormData({
           firstName: "",
@@ -54,17 +56,19 @@ export default function GratuitPage() {
           websiteUrl: "",
           monthlyRevenue: "",
           monthlyVisitors: "",
-          businessType: "",
-          currentFunnel: "",
           problemArea: "",
-          whyApplying: "",
+          videoTestimonyCommitment: "",
         });
       } else {
-        throw new Error("Erreur lors de l'envoi");
+        const errorData = await response.json();
+        console.error("❌ Erreur serveur:", errorData);
+        console.error("❌ Message d'erreur:", errorData.error);
+        throw new Error(errorData.error || "Erreur lors de l'envoi");
       }
     } catch (error) {
+      console.error("❌ Erreur catch:", error);
       toast.error("Erreur lors de l'envoi", {
-        description: "Réessaye ou contacte-moi directement.",
+        description: "Réessayez ou contactez-moi directement.",
       });
     }
 
@@ -101,20 +105,25 @@ export default function GratuitPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="inline-block bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 py-3 rounded-full font-bold mb-6 text-lg"
             >
-              3 PLACES GRATUITES
+              1 PLACE GRATUITE • 2 PLACES À -50%
             </motion.div>
 
             <h1 className="text-4xl md:text-6xl font-black font-sora mb-6 leading-tight text-neutral-900">
-              Je trouve ce qui bloque ton business et je le fixe en 3 semaines
+              Je cherche 1 "Succès Story" pour valider ma nouvelle méthodologie
+              Data-Driven
             </h1>
 
             <p className="text-xl md:text-2xl text-neutral-700 leading-relaxed max-w-3xl mx-auto mb-4">
-              Tu as du trafic. Tu as une offre. Mais ton CA stagne.
+              Vous avez le trafic. Vous avez l'offre. Mais votre conversion
+              plafonne.
             </p>
 
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-              Diagnostic complet + Implémentation + Tracking 60 jours. Valeur
-              2000€, gratuit pour mes 3 premiers clients.
+              Je propose une intervention complète (Audit + Fix + Tracking)
+              d'une valeur de 2 000€, entièrement{" "}
+              <span className="font-semibold text-neutral-900">OFFERTE</span>,
+              pour le business qui correspondra parfaitement à mes critères de
+              test.
             </p>
           </motion.div>
 
@@ -122,259 +131,255 @@ export default function GratuitPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            whileHover={{ y: -4 }}
+            className="space-y-6"
           >
             <div className="bg-white border border-neutral-200 rounded-2xl p-8 shadow-sm">
-              <p className="text-neutral-700 leading-relaxed mb-4">
-                Quelque part dans ton système (ads, landing page, emails,
-                checkout, offre), il y a 2-3 blocages majeurs qui te coûtent des
-                centaines, voire des milliers d'euros par mois.
+              <p className="text-neutral-600 text-sm uppercase tracking-wider font-semibold mb-4">
+                📉 Le Constat
               </p>
-              <p className="text-emerald-600 font-semibold text-lg">
-                Je les trouve avec la data. Je les fixe. On mesure. Pas de
-                bullshit, juste des chiffres.
-              </p>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* L'OFFRE EN UN COUP D'ŒIL */}
-        <section className="max-w-5xl mx-auto mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold font-sora mb-8 text-center text-neutral-900">
-              L'Offre en un Coup d'Œil
-            </h2>
-
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-200 rounded-2xl p-8"
-            >
-              <div className="text-center mb-8">
-                <p className="text-2xl text-neutral-700 mb-2">
-                  Valeur normale : <span className="line-through">2000€</span>
-                </p>
-                <p className="text-4xl font-black text-emerald-600 mb-4">
-                  Pour toi : 0€
-                </p>
-                <p className="text-neutral-600">
-                  En échange : témoignage + case study avec résultats réels
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="font-bold text-neutral-900 text-lg text-center mb-6">
-                  Ce que tu reçois :
-                </h3>
-                {[
-                  "Diagnostic complet en 48-72h avec analyse de toutes les étapes de ton funnel + rapport de 5-8 pages avec chiffres précis",
-                  "Call de validation (30 min) pour présenter les résultats et choisir ensemble ce qu'on fixe en priorité",
-                  "Implémentation totale (3 semaines) où je fixe tout ce qu'on a validé (copy, design, automatisations, structure, paramétrage ads si besoin)",
-                  "Tracking rigoureux (60 jours) avec Google Sheets des KPI, points hebdomadaires par email/Telegram, ajustements si ça ne marche pas",
-                  "Modifications illimitées : Si un fix ne fonctionne pas pendant les 60 jours, je le modifie autant de fois que nécessaire",
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-start gap-3"
-                  >
-                    <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-neutral-700">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        </section>
-
-        {/* QUI JE SUIS - VERSION COURTE */}
-        <section className="max-w-5xl mx-auto mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold font-sora mb-8 text-center text-neutral-900">
-              Qui je suis
-            </h2>
-
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="bg-white border border-neutral-200 rounded-2xl p-8 mb-8 shadow-sm"
-            >
-              <div className="space-y-4 text-neutral-700 leading-relaxed">
-                <p>
-                  Je m'appelle{" "}
-                  <span className="text-neutral-900 font-semibold">
-                    Thibaut
-                  </span>
-                  .
-                </p>
-                <p>
-                  5 ans d'expérience en marketing digital. J'ai tout testé :
-                  dropshipping, infoproduits, funnels, ads, copywriting, SEO,
-                  affiliation.
-                </p>
-                <p className="text-neutral-900 font-semibold">
-                  J'ai réussi des trucs. J'ai foiré des trucs. J'ai appris des
-                  deux.
-                </p>
-                <p>
-                  Mes résultats : landing page à 30% de conversion, emails qui
-                  ouvrent à 45% sur liste froide, funnel séduction qui a
-                  cartonné sans connaissance du secteur.
-                </p>
-                <p className="text-amber-600 font-semibold">
-                  Mais je n'ai jamais vendu ce service officiellement. Zéro case
-                  study public.
-                </p>
-                <p>
-                  C'est pour ça que je fais cette offre gratuite : je veux
-                  prouver que je peux trouver et fixer les problèmes de
-                  quelqu'un d'autre. Je veux 3 case studies solides. Ensuite, je
-                  vends à 2000€.
-                </p>
-              </div>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <motion.div
-                whileHover={{ y: -4 }}
-                className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-200 rounded-2xl p-6"
-              >
-                <h3 className="font-bold text-lg text-neutral-900 mb-4 flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-emerald-600" />
-                  Ce que j'ai réussi
-                </h3>
-                <ul className="space-y-2 text-sm text-neutral-700">
-                  <li>• Landing page à 30% de conversion</li>
-                  <li>• Emails à 45% d'ouverture (liste froide)</li>
-                  <li>• Funnel séduction qui a cartonné</li>
-                  <li>• 5 ans d'expérience, 100+ funnels analysés</li>
-                </ul>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ y: -4 }}
-                className="bg-gradient-to-br from-red-50 to-red-100/50 border border-red-200 rounded-2xl p-6"
-              >
-                <h3 className="font-bold text-lg text-neutral-900 mb-4 flex items-center gap-2">
-                  <AlertCircle className="w-5 h-5 text-red-500" />
-                  Ce que j'ai foiré
-                </h3>
-                <ul className="space-y-2 text-sm text-neutral-700">
-                  <li>• Funnel "économie d'argent" (mauvais ciblage)</li>
-                  <li>• Boutique drop streetwear (pas atteint le breakeven)</li>
-                  <li>
-                    • Infoproduits abandonnés (manque de temps à cause des
-                    études)
-                  </li>
-                </ul>
-              </motion.div>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* LE PROBLÈME */}
-        <section className="max-w-5xl mx-auto mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-6xl font-bold font-sora mb-8 text-center text-neutral-900">
-              Tu perds de l'argent. Tu le sais. Mais pas où.
-            </h2>
-
-            <div className="space-y-6 text-neutral-700 leading-relaxed mb-8">
-              <p>
-                Ton problème, ce n'est pas le trafic. Tu sais faire venir des
-                gens.
-              </p>
-              <p>
-                Ton problème, ce n'est pas ton offre. Elle est solide. Les
-                clients qui passent sont contents.
-              </p>
-              <p className="text-neutral-900 font-semibold text-xl">
-                Ton problème, c'est entre les deux.
-              </p>
-              <p>
-                Entre le moment où quelqu'un clique sur ton lien et le moment où
-                il sort sa carte bleue, il se passe 8 à 12 étapes.
-              </p>
-              <p className="text-red-600 font-semibold text-lg">
-                À chaque étape, tu perds du monde. C'est normal. Mais toi, tu
-                perds TROP de monde.
-              </p>
-            </div>
-
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="bg-amber-50 border border-amber-200 rounded-2xl p-8"
-            >
-              <h3 className="font-bold text-xl text-neutral-900 mb-4">
-                Exemple concret :
+              <h3 className="text-2xl font-bold text-neutral-900 mb-4">
+                Le problème n'est pas ce que vous gagnez. C'est ce que vous
+                perdez.
               </h3>
               <div className="space-y-4 text-neutral-700 leading-relaxed">
                 <p>
-                  Un coach fait du Fb ads. Il paye 3€ par clic. Sur 100 clics
-                  (300€), 80 personnes arrivent sur sa landing page.
+                  Vous générez déjà du chiffre d'affaires. Mais vous savez
+                  pertinemment que pour 100 visiteurs, trop repartent sans
+                  acheter. Ce n'est pas de la magie, c'est mathématique.
                 </p>
                 <p>
-                  Sur ces 80, seulement 15 s'inscrivent à son webinaire gratuit.
-                  Pourquoi ? Formulaire invisible sur mobile + sa cible ne le
-                  connaît pas.{" "}
-                  <span className="text-red-600 font-semibold">
-                    Déjà là, il vient de perdre 195€ pour rien.
+                  Entre votre publicité et votre page de remerciement, il y a
+                  des{" "}
+                  <span className="font-semibold text-neutral-900">
+                    frictions invisibles
                   </span>
+                  .
+                </p>
+                <div className="mt-6 space-y-2 text-neutral-600">
+                  <p className="flex items-start gap-2">
+                    <span className="text-neutral-400">→</span>
+                    <span>Un titre qui ne résonne pas.</span>
+                  </p>
+                  <p className="flex items-start gap-2">
+                    <span className="text-neutral-400">→</span>
+                    <span>Un checkout trop long.</span>
+                  </p>
+                  <p className="flex items-start gap-2">
+                    <span className="text-neutral-400">→</span>
+                    <span>Une séquence mail qui arrive trop tard.</span>
+                  </p>
+                </div>
+                <p className="text-emerald-600 font-semibold text-lg mt-6">
+                  Chaque friction vous coûte de la marge. Chaque jour.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* L'INSIGHT */}
+        <section className="max-w-5xl mx-auto mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 rounded-2xl p-8 md:p-12">
+              <p className="text-neutral-600 text-sm uppercase tracking-wider font-semibold mb-4 text-center">
+                📉 L'Insight
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold font-sora mb-8 text-center text-neutral-900">
+                "Vous pensez avoir un problème d'acquisition.{" "}
+                <span className="text-emerald-600">
+                  Les chiffres disent souvent le contraire.
+                </span>
+                "
+              </h2>
+              <div className="space-y-4 text-neutral-700 leading-relaxed max-w-3xl mx-auto">
+                <p>
+                  Votre coût par clic augmente. Votre trafic est là. Mais votre
+                  chiffre d'affaires stagne.
+                </p>
+                <p className="text-neutral-900 font-medium">
+                  Le problème n'est pas votre produit. Ce n'est pas Facebook
+                  Ads.
+                </p>
+                <p className="text-neutral-900 font-semibold text-lg">
+                  Le problème, c'est ce qui se passe après le clic.
                 </p>
                 <p>
-                  Puis sur les 15 inscrits, 8 viennent au webinaire. Les 7
-                  autres n'ont pas été convaincus par sa séquence mail.
+                  Une promesse mal alignée. Un checkout confus. Une séquence
+                  mail qui n'éduque pas.
                 </p>
-                <p>Sur les 8 qui viennent, 2 achètent. Conversion correcte.</p>
-                <p className="text-red-600 font-semibold">
-                  Mais il a dépensé 300€ pour faire 2 ventes à 100€. Il est à
-                  -100€.
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* L'OFFRE */}
+        <section className="max-w-5xl mx-auto mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-neutral-600 text-sm uppercase tracking-wider font-semibold mb-4 text-center">
+              🎁 L'Offre
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold font-sora mb-8 text-center text-neutral-900">
+              Ce que je mets sur la table
+            </h2>
+            <p className="text-center text-neutral-600 mb-12 text-lg">
+              Valeur : <span className="line-through">2 000€</span> →{" "}
+              <span className="font-bold text-emerald-600">OFFERT</span>
+            </p>
+
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="bg-white border border-neutral-200 rounded-2xl p-8 shadow-sm mb-8"
+            >
+              <h3 className="font-bold text-xl text-neutral-900 mb-6">
+                Je ne suis pas là pour "essayer". Je suis là pour implémenter un
+                système de correction basé sur la Data.
+              </h3>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                    <Search className="w-6 h-6 text-emerald-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-neutral-900 mb-2">
+                      L'Audit "Deep Dive" (Jours 1-3)
+                    </h4>
+                    <p className="text-neutral-700 text-sm leading-relaxed">
+                      J'analyse vos Analytics pour trouver les 3 goulots
+                      d'étranglement précis qui tuent votre rentabilité.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
+                    <Code className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-neutral-900 mb-2">
+                      La Correction Chirurgicale (Semaines 1-3)
+                    </h4>
+                    <p className="text-neutral-700 text-sm leading-relaxed">
+                      Je réécris, je restructure, je simplifie. Je fais le
+                      travail "sale" d'optimisation à votre place.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center flex-shrink-0">
+                    <BarChart3 className="w-6 h-6 text-amber-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-neutral-900 mb-2">
+                      Le Tracking de Performance (30 Jours)
+                    </h4>
+                    <p className="text-neutral-700 text-sm leading-relaxed">
+                      Je surveille les résultats quotidiennement pour m'assurer
+                      que la courbe monte.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="bg-gradient-to-br from-amber-50 to-white border border-amber-200 rounded-2xl p-8"
+            >
+              <h3 className="font-bold text-xl text-neutral-900 mb-6">
+                Ce que vous mettez sur la table
+              </h3>
+              <p className="text-neutral-700 leading-relaxed mb-4">
+                En échange de cette prestation complète, je ne demande pas
+                d'argent. Je demande de la{" "}
+                <span className="font-semibold text-neutral-900">Preuve</span>.
+              </p>
+              <ul className="space-y-3 text-neutral-700">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                  <span>Un accès transparent à vos chiffres (sous NDA)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                  <span>
+                    Un témoignage vidéo authentique à la fin du tracking
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                  <span>
+                    L'autorisation d'utiliser les résultats (avant/après) pour
+                    mon futur marketing
+                  </span>
+                </li>
+              </ul>
+            </motion.div>
+          </motion.div>
+        </section>
+
+        {/* POURQUOI C'EST GRATUIT */}
+        <section className="max-w-5xl mx-auto mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-neutral-600 text-sm uppercase tracking-wider font-semibold mb-4 text-center">
+              👤 La Vérité
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold font-sora mb-8 text-center text-neutral-900">
+              Pourquoi c'est gratuit ?
+            </h2>
+
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="bg-white border border-neutral-200 rounded-2xl p-8 shadow-sm"
+            >
+              <div className="space-y-4 text-neutral-700 leading-relaxed">
+                <p className="text-lg font-semibold text-neutral-900">
+                  "Où est l'arnaque ?"
                 </p>
-                <p className="text-neutral-900 font-semibold">
-                  Le problème ? 3 trous béants dans son funnel :
+                <p>
+                  Il n'y en a pas. Je suis Thibaut, Expert en Conversion
+                  Data-Driven. J'ai 5 ans d'expérience et j'ai analysé plus de
+                  100 funnels.
                 </p>
-                <ul className="space-y-2 ml-4">
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-600 mt-1">•</span>
-                    <span>
-                      Sa cible ne le connaît pas et propose direct un webinaire
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-600 mt-1">•</span>
-                    <span>Ses mails sont mauvais</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-600 mt-1">•</span>
-                    <span>Il n'a aucune relance post-webinaire</span>
-                  </li>
-                </ul>
-                <p className="text-emerald-600 font-semibold text-lg mt-6">
-                  Toi, c'est pareil. Tu as des trous. Tu ne sais juste pas
-                  lesquels.
+                <p>
+                  Aujourd'hui, je lance une nouvelle offre d'optimisation
+                  radicale destinée aux Infopreneurs et SaaS.
+                </p>
+                <p className="text-neutral-900 font-medium">
+                  Avant de commercialiser cette offre au grand public à 2 000€
+                  (puis 5 000€), je veux constituer un dossier de preuves "Béton
+                  Armé".
+                </p>
+                <p>
+                  Je ne cherche pas à "apprendre" sur votre business. Je cherche
+                  à démontrer l'efficacité de ma méthode sur un business qui
+                  tourne déjà.
+                </p>
+                <p className="text-emerald-600 font-semibold text-lg">
+                  C'est un échange gagnant-gagnant : Vous gagnez de la marge
+                  nette gratuite. Je gagne une étude de cas irréfutable.
                 </p>
               </div>
             </motion.div>
           </motion.div>
         </section>
 
-        {/* LA SOLUTION - 4 PHASES */}
+        {/* ÊTES-VOUS ÉLIGIBLE */}
         <section className="max-w-5xl mx-auto mb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -382,183 +387,32 @@ export default function GratuitPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold font-sora mb-8 text-center text-neutral-900">
-              La solution : je trouve tes trous. Je les bouche. On mesure.
+            <p className="text-neutral-600 text-sm uppercase tracking-wider font-semibold mb-4 text-center">
+              ✅ Le Filtre
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold font-sora mb-8 text-center text-neutral-900">
+              Êtes-vous éligible ?
             </h2>
-
-            <div className="space-y-8">
-              {/* Phase 1 */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-                className="bg-white border border-neutral-200 rounded-2xl p-8 shadow-sm"
-              >
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
-                    <Search className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold font-sora text-neutral-900 mb-2">
-                          Phase 1 : Diagnostic Complet
-                        </h3>
-                        <p className="text-neutral-700">
-                          Je passe 6-8h à analyser ton funnel complet
-                        </p>
-                      </div>
-                      <div className="text-sm text-neutral-500 whitespace-nowrap ml-4">
-                        48-72h
-                      </div>
-                    </div>
-                    <p className="text-sm text-neutral-600 mb-4">
-                      Rapport de 5-8 pages avec chiffres précis et estimation de
-                      combien chaque trou te coûte par mois
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Phase 2 */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-                className="bg-white border border-neutral-200 rounded-2xl p-8 shadow-sm"
-              >
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-2xl">02</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold font-sora text-neutral-900 mb-2">
-                          Phase 2 : Validation + Priorisation
-                        </h3>
-                        <p className="text-neutral-700">
-                          On décide ensemble ce qu'on fixe en priorité
-                        </p>
-                      </div>
-                      <div className="text-sm text-neutral-500 whitespace-nowrap ml-4">
-                        Call 30 min
-                      </div>
-                    </div>
-                    <p className="text-sm text-neutral-600">
-                      Tu choisis. Je te donne mon avis, mais c'est toi qui
-                      valides.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Phase 3 */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-                className="bg-white border border-neutral-200 rounded-2xl p-8 shadow-sm"
-              >
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
-                    <Code className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold font-sora text-neutral-900 mb-2">
-                          Phase 3 : Implémentation
-                        </h3>
-                        <p className="text-neutral-700">
-                          Je fixe tout ce qu'on a validé ensemble
-                        </p>
-                      </div>
-                      <div className="text-sm text-neutral-500 whitespace-nowrap ml-4">
-                        3 semaines
-                      </div>
-                    </div>
-                    <p className="text-sm text-neutral-600">
-                      Copy, structure, automatisations. Je te montre chaque
-                      modification avant de la mettre en ligne.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Phase 4 */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-                className="bg-white border border-neutral-200 rounded-2xl p-8 shadow-sm"
-              >
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 flex items-center justify-center flex-shrink-0">
-                    <BarChart3 className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold font-sora text-neutral-900 mb-2">
-                          Phase 4 : Tracking
-                        </h3>
-                        <p className="text-neutral-700">
-                          Suivi rigoureux pendant 60 jours
-                        </p>
-                      </div>
-                      <div className="text-sm text-neutral-500 whitespace-nowrap ml-4">
-                        60 jours
-                      </div>
-                    </div>
-                    <p className="text-sm text-neutral-600">
-                      Points hebdomadaires. Si un fix ne marche pas, je le
-                      modifie. L'objectif : que ça marche.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* CONDITIONS D'ÉLIGIBILITÉ */}
-        <section className="max-w-5xl mx-auto mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold font-sora mb-12 text-center text-neutral-900">
-              Tu es éligible si...
-            </h2>
+            <p className="text-center text-neutral-600 mb-12 max-w-2xl mx-auto">
+              Je ne peux pas aider tout le monde. Pour que ma méthode
+              fonctionne, j'ai besoin de matière.
+            </p>
 
             <div className="grid md:grid-cols-2 gap-6">
               <motion.div
                 whileHover={{ y: -4 }}
-                className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-200 rounded-2xl p-6"
+                className="bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 rounded-2xl p-6"
               >
                 <h3 className="font-bold text-lg text-neutral-900 mb-4 flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-emerald-600" />
-                  Conditions pour postuler
+                  Vous êtes le candidat idéal si :
                 </h3>
                 <ul className="space-y-3 text-sm text-neutral-700">
                   {[
-                    "Tu fais minimum 5K€/mois de CA",
-                    "Tu as minimum 500 visiteurs/mois sur ton site",
-                    "Business 100% en ligne (coaching, formation, e-commerce, affiliation, SaaS)",
-                    "Tu as déjà des clients (au moins 10-20 clients payants)",
-                    "Tu es prêt à me donner les accès pour analyser et implémenter",
-                    "Tu t'engages à suivre le process jusqu'au bout (environ 11 semaines)",
+                    "Vous générez au moins 5 000€ / mois (Idéalement 15k+)",
+                    "Vous avez un trafic constant (>500 visiteurs/mois) pour que les tests soient significatifs",
+                    "Vous vendez un produit digital (Formation, Coaching, SaaS) ou E-com à forte marge",
+                    "Vous êtes prêt à implémenter rapidement (ou à me laisser faire)",
                   ].map((item, index) => (
                     <motion.li
                       key={index}
@@ -577,17 +431,17 @@ export default function GratuitPage() {
 
               <motion.div
                 whileHover={{ y: -4 }}
-                className="bg-gradient-to-br from-red-50 to-red-100/50 border border-red-200 rounded-2xl p-6"
+                className="bg-gradient-to-br from-red-50 to-white border border-red-200 rounded-2xl p-6"
               >
                 <h3 className="font-bold text-lg text-neutral-900 mb-4 flex items-center gap-2">
                   <X className="w-5 h-5 text-red-500" />
-                  Tu N'es PAS éligible si
+                  Ne postulez pas si :
                 </h3>
                 <ul className="space-y-3 text-sm text-neutral-700">
                   {[
-                    "Tu n'as jamais vendu ton offre",
-                    "Tu n'as aucun trafic",
-                    "Tu veux juste un audit sans implémentation",
+                    "Vous lancez votre business demain (Zéro data = Zéro optimisation possible)",
+                    "Vous n'avez pas de budget pub ou de trafic organique",
+                    'Vous cherchez un "stagiaire" pour tout faire. Je suis un consultant spécialisé',
                   ].map((item, index) => (
                     <motion.li
                       key={index}
@@ -607,64 +461,6 @@ export default function GratuitPage() {
           </motion.div>
         </section>
 
-        {/* GARANTIES */}
-        <section className="max-w-5xl mx-auto mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold font-sora mb-8 text-center text-neutral-900">
-              Mes Garanties
-            </h2>
-
-            <div className="space-y-6">
-              {[
-                {
-                  number: "1",
-                  text: "Si je ne trouve pas au moins 2 problèmes majeurs (= qui te coûtent chacun 500€+/mois), je te rends tes accès et on arrête là. Tu ne me dois rien.",
-                  icon: Shield,
-                },
-                {
-                  number: "2",
-                  text: "Si mon implémentation casse quelque chose, je restore la version précédente en moins de 24h. Garantie de non-casse.",
-                  icon: Clock,
-                },
-                {
-                  number: "3",
-                  text: "Si après 60 jours, mes fixes n'ont rien amélioré (= conversion identique ou pire), je reprends tout de zéro et on continue 30 jours de plus.",
-                  icon: TrendingUp,
-                },
-              ].map((guarantee, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -4 }}
-                  className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-200 rounded-2xl p-6"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-600 flex items-center justify-center flex-shrink-0">
-                      <guarantee.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-neutral-900 mb-2">
-                        Garantie #{guarantee.number}
-                      </div>
-                      <p className="text-neutral-700 leading-relaxed">
-                        {guarantee.text}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </section>
-
         {/* FORMULAIRE */}
         <section className="max-w-3xl mx-auto mb-24" id="postuler">
           <motion.div
@@ -674,12 +470,14 @@ export default function GratuitPage() {
             viewport={{ once: true }}
           >
             <div className="text-center mb-12">
+              <p className="text-neutral-600 text-sm uppercase tracking-wider font-semibold mb-4">
+                📝 Formulaire de Candidature
+              </p>
               <h2 className="text-3xl md:text-5xl font-bold font-sora mb-6 text-neutral-900">
-                Postule Maintenant
+                Postuler maintenant
               </h2>
-              <p className="text-neutral-700">
-                3 places seulement. Sélection sous 48h après réception du
-                formulaire.
+              <p className="text-neutral-600">
+                Les candidatures incomplètes ne seront pas traitées.
               </p>
             </div>
 
@@ -725,14 +523,14 @@ export default function GratuitPage() {
                     name="telegram"
                     value={formData.telegram}
                     onChange={handleChange}
-                    placeholder="@tonpseudo"
+                    placeholder="@votrepseudo"
                     className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 placeholder-neutral-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition-all"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-neutral-900 mb-2">
-                    URL du site *
+                    URL de votre site / Funnel *
                   </label>
                   <input
                     type="url"
@@ -747,7 +545,7 @@ export default function GratuitPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-neutral-900 mb-2">
-                    CA mensuel moyen (3 derniers mois) *
+                    CA Mensuel Moyen (3 derniers mois) *
                   </label>
                   <input
                     type="text"
@@ -755,14 +553,14 @@ export default function GratuitPage() {
                     value={formData.monthlyRevenue}
                     onChange={handleChange}
                     required
-                    placeholder="Ex: 8000€"
+                    placeholder="Ex: 8 000€"
                     className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 placeholder-neutral-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition-all"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-neutral-900 mb-2">
-                    Nombre de visiteurs/mois (approximatif) *
+                    Trafic Mensuel (Visites Uniques) *
                   </label>
                   <input
                     type="text"
@@ -777,68 +575,43 @@ export default function GratuitPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-neutral-900 mb-2">
-                    Type de business *
+                    Quel est votre plus gros problème actuel ? *
                   </label>
                   <select
-                    name="businessType"
-                    value={formData.businessType}
+                    name="problemArea"
+                    value={formData.problemArea}
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition-all"
                   >
-                    <option value="">Sélectionne un type</option>
-                    <option value="coaching">Coaching</option>
-                    <option value="formation">Formation</option>
-                    <option value="ecommerce">E-commerce</option>
-                    <option value="affiliation">Affiliation</option>
-                    <option value="saas">SaaS</option>
-                    <option value="autre">Autre</option>
+                    <option value="" disabled>
+                      Sélectionnez un problème
+                    </option>
+                    <option value="acquisition">Acquisition</option>
+                    <option value="conversion">Conversion</option>
+                    <option value="retention">Rétention</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-neutral-900 mb-2">
-                    Décris ton funnel actuel en 2-3 lignes *
+                    Si je vous offre cette prestation, vous engagez-vous
+                    formellement à fournir un témoignage vidéo en cas de succès
+                    ? *
                   </label>
-                  <textarea
-                    name="currentFunnel"
-                    value={formData.currentFunnel}
+                  <select
+                    name="videoTestimonyCommitment"
+                    value={formData.videoTestimonyCommitment}
                     onChange={handleChange}
                     required
-                    rows={3}
-                    placeholder="Ex: Landing → email → vente ? Pub → page produit → checkout ?"
-                    className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 placeholder-neutral-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none resize-none transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-neutral-900 mb-2">
-                    Où penses-tu perdre de l'argent actuellement ? *
-                  </label>
-                  <textarea
-                    name="problemArea"
-                    value={formData.problemArea}
-                    onChange={handleChange}
-                    required
-                    rows={3}
-                    placeholder="Si tu le sais pas, écris 'aucune idée'"
-                    className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 placeholder-neutral-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none resize-none transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-neutral-900 mb-2">
-                    Pourquoi tu postules pour cette offre gratuite ? *
-                  </label>
-                  <textarea
-                    name="whyApplying"
-                    value={formData.whyApplying}
-                    onChange={handleChange}
-                    required
-                    rows={3}
-                    placeholder="Réponse libre, 2-3 lignes max"
-                    className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 placeholder-neutral-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none resize-none transition-all"
-                  />
+                    className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition-all"
+                  >
+                    <option value="" disabled>
+                      Sélectionnez une réponse
+                    </option>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                  </select>
                 </div>
 
                 <motion.button
@@ -850,13 +623,13 @@ export default function GratuitPage() {
                 >
                   {isSubmitting
                     ? "Envoi en cours..."
-                    : "Postuler Pour Une Place Gratuite"}
+                    : "Envoyer ma candidature"}
                   {!isSubmitting && <ArrowRight className="w-5 h-5" />}
                 </motion.button>
 
                 <p className="text-xs text-neutral-500 text-center">
-                  3 places seulement. Sélection sous 48h après réception du
-                  formulaire.
+                  Réponse sous 48h. Si vous n'êtes pas sélectionné pour la place
+                  gratuite, vous serez peut-être éligible à l'offre Bêta (-50%).
                 </p>
               </form>
             </motion.div>
@@ -871,6 +644,9 @@ export default function GratuitPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
+            <p className="text-neutral-600 text-sm uppercase tracking-wider font-semibold mb-4 text-center">
+              🛡️ FAQ Rapide
+            </p>
             <h2 className="text-3xl md:text-4xl font-bold font-sora mb-12 text-center text-neutral-900">
               Questions Fréquentes
             </h2>
@@ -878,34 +654,19 @@ export default function GratuitPage() {
             <div className="space-y-6">
               {[
                 {
-                  question: "Combien de temps ça prend vraiment ?",
+                  question: "Garantie de Sécurité",
                   answer:
-                    "Diagnostic : 48-72h. Implémentation : 3 semaines. Tracking : 60 jours en background. Total : environ 10-11 semaines du début à la fin.",
+                    "Je travaille sur des duplicatas ou des versions de pré-production quand c'est possible. Rien n'est mis en ligne sans votre validation finale.",
                 },
                 {
-                  question: "Je dois être dispo H24 ?",
+                  question: "Pourquoi 30 jours de tracking ?",
                   answer:
-                    "Non. 2 calls de 30 min + tes réponses sous 24-48h quand je te pose une question. Le reste, je gère seul.",
+                    "C'est la durée standard pour obtenir une significativité statistique sur les changements apportés. 60 jours est trop long et dilue l'impact de mon intervention.",
                 },
                 {
-                  question: "Comment tu sélectionnes vraiment ?",
+                  question: "Que se passe-t-il si ça ne marche pas ?",
                   answer:
-                    "Je regarde tes chiffres (CA, visiteurs), ton funnel, et ta motivation. Si les 3 matchent et que je suis certain à 90% de pouvoir t'aider, tu es pris.",
-                },
-                {
-                  question: "Et si tu casses mon site ?",
-                  answer:
-                    "Je ne touche jamais à la prod sans backup. Si je plante quelque chose, je restore en 10 minutes.",
-                },
-                {
-                  question: "Tu vas vraiment trouver quelque chose ?",
-                  answer:
-                    "Si tu fais 5K€/mois ou plus avec 500+ visiteurs/mois et que tu n'es pas à 5%+ de conversion globale, il y a forcément des trous. Si je ne trouve rien, je te le dis et on arrête là (cf. garantie).",
-                },
-                {
-                  question: "Pourquoi je te ferais confiance ?",
-                  answer:
-                    "Tu ne devrais pas tout de suite. C'est pour ça que le diagnostic est gratuit. Tu vois ce que je trouve, tu juges la qualité, et après tu décides. Si c'est nul, tu te barres. Aucune obligation.",
+                    "Vous ne m'avez rien payé. Vous avez perdu un peu de temps, j'ai perdu beaucoup de temps. Mais vu mes critères de sélection, le risque est minime : je ne choisis que des funnels où je vois déjà les fuites avant de commencer.",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -942,26 +703,26 @@ export default function GratuitPage() {
               className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-200 rounded-2xl p-8 md:p-12 text-center"
             >
               <h2 className="text-3xl md:text-4xl font-bold font-sora mb-6 text-neutral-900">
-                Prêt à Trouver Où Tu Perds de l'Argent ?
+                Prêt à identifier vos fuites de conversion ?
               </h2>
 
               <div className="space-y-4 text-neutral-700 leading-relaxed max-w-3xl mx-auto mb-8">
                 <p>
-                  Tu sens que ton business pourrait faire beaucoup plus avec le
-                  trafic que tu as déjà.
+                  Votre business pourrait générer significativement plus avec le
+                  trafic que vous avez déjà.
                 </p>
                 <p>
-                  Tu sais qu'il y a un problème quelque part. Mais tu ne sais
-                  pas où regarder.
+                  Vous savez qu'il y a un problème quelque part. Mais identifier
+                  précisément où demande une expertise spécifique.
                 </p>
                 <p className="text-neutral-900 font-semibold text-lg">
-                  Je peux t'aider. Gratuitement. En échange de résultats
-                  mesurables.
+                  Je peux vous aider. Gratuitement. En échange de résultats
+                  mesurables et d'un témoignage.
                 </p>
                 <p>
-                  Pas de bullshit. Pas de promesses de 10K€ en 30 jours. Juste
-                  un mec sérieux qui veut prouver qu'il peut trouver tes fuites
-                  et les colmater.
+                  Une approche professionnelle, basée sur les données. Pas de
+                  promesses irréalistes. Juste une méthodologie éprouvée pour
+                  identifier vos points de friction et les corriger.
                 </p>
               </div>
 
@@ -971,12 +732,12 @@ export default function GratuitPage() {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 px-8 rounded-full transition-all"
               >
-                Postuler Maintenant
+                Postuler maintenant
                 <ArrowRight className="w-5 h-5" />
               </motion.a>
 
               <p className="text-sm text-neutral-600 mt-4">
-                3 places seulement. Sélection sous 48h.
+                1 place gratuite • 2 places à -50% • Sélection sous 48h
               </p>
             </motion.div>
           </motion.div>
