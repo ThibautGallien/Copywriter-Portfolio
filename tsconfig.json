@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
@@ -29,7 +30,8 @@
     ".next/types/**/*.ts",
     "app/page.jsx",
     "app/gratuit/page.jsx",
-    "app/legal/page.jsx"
+    "app/legal/page.jsx",
+    ".contentlayer/generated"
   ],
   "exclude": ["node_modules"]
 }

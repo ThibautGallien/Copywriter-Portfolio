@@ -1,0 +1,208 @@
+{
+  "KeyPoint Component": {
+    "prefix": "keypoint",
+    "body": [
+      "<KeyPoint",
+      "  title=\"${1:Titre du point clé}\"",
+      "  description=\"${2:Description détaillée}\"",
+      "  icon=\"${3|check,alert,info,lightbulb|}\"",
+      "/>"
+    ],
+    "description": "Insert KeyPoint component"
+  },
+
+  "Callout Component": {
+    "prefix": "callout",
+    "body": [
+      "<Callout type=\"${1|info,warning,success,danger|}\">",
+      "  ${2:Contenu du callout}",
+      "</Callout>"
+    ],
+    "description": "Insert Callout component"
+  },
+
+  "Example Good": {
+    "prefix": "example-good",
+    "body": [
+      "<Example good={true} title=\"${1:Titre optionnel}\">",
+      "  **À faire** : ${2:Exemple de bonne pratique}",
+      "</Example>"
+    ],
+    "description": "Insert good Example component"
+  },
+
+  "Example Bad": {
+    "prefix": "example-bad",
+    "body": [
+      "<Example bad={true} title=\"${1:Titre optionnel}\">",
+      "  **À éviter** : ${2:Exemple de mauvaise pratique}",
+      "</Example>"
+    ],
+    "description": "Insert bad Example component"
+  },
+
+  "Checklist": {
+    "prefix": "checklist",
+    "body": [
+      "<ul>",
+      "  <ChecklistItem>${1:Premier élément}</ChecklistItem>",
+      "  <ChecklistItem>${2:Deuxième élément}</ChecklistItem>",
+      "  <ChecklistItem>${3:Troisième élément}</ChecklistItem>",
+      "</ul>"
+    ],
+    "description": "Insert Checklist"
+  },
+
+  "ROI Calculator": {
+    "prefix": "roi",
+    "body": [
+      "<ROICalculator",
+      "  title=\"${1:Calcule ton potentiel}\"",
+      "  fields={[",
+      "    { label: \"${2:Chiffre d'affaires mensuel}\", placeholder: \"10000\", suffix: \"€\" },",
+      "    { label: \"${3:Taux de conversion actuel}\", placeholder: \"2\", suffix: \"%\" },",
+      "  ]}",
+      "  resultLabel=\"${4:Gain potentiel par mois}\"",
+      "  resultSuffix=\"€\"",
+      "  calculate={(values) => {",
+      "    const ca = parseFloat(values[0]) || 0;",
+      "    const taux = parseFloat(values[1]) || 0;",
+      "    return Math.round(ca * (taux / 100) * 0.3); // 30% d'amélioration",
+      "  }}",
+      "/>"
+    ],
+    "description": "Insert ROI Calculator"
+  },
+
+  "Quiz": {
+    "prefix": "quiz",
+    "body": [
+      "<Quiz",
+      "  title=\"${1:Titre du quiz}\"",
+      "  questions={[",
+      "    {",
+      "      question: \"${2:Question 1}\",",
+      "      answers: [",
+      "        { text: \"${3:Réponse 1}\", score: 0 },",
+      "        { text: \"${4:Réponse 2}\", score: 1 },",
+      "        { text: \"${5:Réponse 3}\", score: 2 },",
+      "      ],",
+      "    },",
+      "  ]}",
+      "  results={[",
+      "    { min: 0, max: 1, title: \"${6:Résultat bas}\", description: \"${7:Description}\" },",
+      "    { min: 2, max: 10, title: \"${8:Résultat haut}\", description: \"${9:Description}\" },",
+      "  ]}",
+      "/>"
+    ],
+    "description": "Insert Quiz"
+  },
+
+  "Poll": {
+    "prefix": "poll",
+    "body": [
+      "<Poll",
+      "  question=\"${1:Question du sondage}\"",
+      "  options={[",
+      "    \"${2:Option 1}\",",
+      "    \"${3:Option 2}\",",
+      "    \"${4:Option 3}\",",
+      "  ]}",
+      "/>"
+    ],
+    "description": "Insert Poll"
+  },
+
+  "Reading Progress": {
+    "prefix": "progress",
+    "body": [
+      "<ReadingProgress />"
+    ],
+    "description": "Insert Reading Progress Bar"
+  },
+
+  "Inline Landing Page Full": {
+    "prefix": "lp-full",
+    "body": [
+      "<InlineLandingPage",
+      "  title=\"${1:Titre du lead magnet}\"",
+      "  description=\"${2:Description courte}\"",
+      "  leadMagnet=\"${3:nom-du-lead-magnet}\"",
+      "  ctaText=\"${4:Télécharger gratuitement}\"",
+      "  icon=\"${5|download,sparkles,check|}\"",
+      "  variant=\"${6|default,premium,urgent|}\"",
+      "/>"
+    ],
+    "description": "Insert full Inline Landing Page"
+  },
+
+  "Inline Landing Page Compact": {
+    "prefix": "lp-compact",
+    "body": [
+      "<InlineLandingPageCompact",
+      "  text=\"${1:Texte court}\"",
+      "  leadMagnet=\"${2:nom-du-lead-magnet}\"",
+      "  ctaText=\"${3:Télécharger}\"",
+      "/>"
+    ],
+    "description": "Insert compact Inline Landing Page"
+  },
+
+  "Blog Post Template": {
+    "prefix": "blog-template",
+    "body": [
+      "---",
+      "title: \"${1:Titre de l'article - 60 caractères max}\"",
+      "publishedAt: \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"",
+      "excerpt: \"${2:Description de 150-160 caractères pour le SEO et les réseaux sociaux}\"",
+      "author: \"Thibaut Gallien\"",
+      "categories: [\"${3|Copywriting,Conversion,Funnel,SEO,Email,Landing Page|}\", \"${4:Autre catégorie}\"]",
+      "estimatedReadingTime: ${5:8}",
+      "featured: ${6|false,true|}",
+      "metaTitle: \"${7:Titre SEO - si différent du titre}\"",
+      "metaDescription: \"${8:Description SEO - si différente de l'excerpt}\"",
+      "keywords: [\"${9:mot-clé-1}\", \"${10:mot-clé-2}\", \"${11:mot-clé-3}\"]",
+      "---",
+      "",
+      "<ReadingProgress />",
+      "",
+      "## ${12:Introduction}",
+      "",
+      "${13:Premier paragraphe qui accroche...}",
+      "",
+      "<KeyPoint",
+      "  title=\"${14:Ce que tu vas apprendre}\"",
+      "  description=\"${15:Liste rapide des bénéfices}\"",
+      "  icon=\"lightbulb\"",
+      "/>",
+      "",
+      "## ${16:Section Principale}",
+      "",
+      "${17:Contenu...}",
+      "",
+      "## ${18:Conclusion}",
+      "",
+      "${19:Récapitulatif et CTA...}",
+      ""
+    ],
+    "description": "Create new blog post with full template"
+  },
+
+  "Section with Example": {
+    "prefix": "section-example",
+    "body": [
+      "## ${1:Titre de la section}",
+      "",
+      "${2:Explication...}",
+      "",
+      "<Example good={true}>",
+      "  **À faire** : ${3:Bonne pratique}",
+      "</Example>",
+      "",
+      "<Example bad={true}>",
+      "  **À éviter** : ${4:Mauvaise pratique}",
+      "</Example>"
+    ],
+    "description": "Section with good/bad examples"
+  }
+}
