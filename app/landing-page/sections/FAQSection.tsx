@@ -16,14 +16,14 @@ const faqs = [
         </p>
         <ul className="space-y-2 mb-4">
           <li className="flex items-start gap-2">
-            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></span>
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
             <span>
               <strong className="text-neutral-900">800€ - 1 500€</strong> :
               Template personnalisé (Webflow, WordPress, Framer)
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></span>
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
             <span>
               <strong className="text-neutral-900">1 500€ - 3 000€</strong> :
               Design sur-mesure + copywriting optimisé
@@ -115,7 +115,7 @@ const faqs = [
                 <td className="border border-neutral-300 p-3 font-bold text-neutral-900">
                   Objectif
                 </td>
-                <td className="border border-neutral-300 p-3 bg-emerald-50 text-neutral-700">
+                <td className="border border-neutral-300 p-3 bg-blue-50 text-neutral-700">
                   1 seul : conversion (lead, vente, inscription)
                 </td>
                 <td className="border border-neutral-300 p-3 text-neutral-700">
@@ -127,7 +127,7 @@ const faqs = [
                 <td className="border border-neutral-300 p-3 font-bold text-neutral-900">
                   Navigation
                 </td>
-                <td className="border border-neutral-300 p-3 bg-emerald-50 text-neutral-700">
+                <td className="border border-neutral-300 p-3 bg-blue-50 text-neutral-700">
                   Réduite ou absente (pas de menu)
                 </td>
                 <td className="border border-neutral-300 p-3 text-neutral-700">
@@ -138,7 +138,7 @@ const faqs = [
                 <td className="border border-neutral-300 p-3 font-bold text-neutral-900">
                   CTA
                 </td>
-                <td className="border border-neutral-300 p-3 bg-emerald-50 text-neutral-700">
+                <td className="border border-neutral-300 p-3 bg-blue-50 text-neutral-700">
                   1 seul CTA répété
                 </td>
                 <td className="border border-neutral-300 p-3 text-neutral-700">
@@ -149,7 +149,7 @@ const faqs = [
                 <td className="border border-neutral-300 p-3 font-bold text-neutral-900">
                   Contenu
                 </td>
-                <td className="border border-neutral-300 p-3 bg-emerald-50 text-neutral-700">
+                <td className="border border-neutral-300 p-3 bg-blue-50 text-neutral-700">
                   Focalisé sur 1 offre/produit
                 </td>
                 <td className="border border-neutral-300 p-3 text-neutral-700">
@@ -160,7 +160,7 @@ const faqs = [
                 <td className="border border-neutral-300 p-3 font-bold text-neutral-900">
                   Trafic
                 </td>
-                <td className="border border-neutral-300 p-3 bg-emerald-50 text-neutral-700">
+                <td className="border border-neutral-300 p-3 bg-blue-50 text-neutral-700">
                   Pub Google/Facebook, email, campagne spécifique
                 </td>
                 <td className="border border-neutral-300 p-3 text-neutral-700">
@@ -188,13 +188,13 @@ const faqs = [
         </p>
         <ul className="space-y-2 mb-4">
           <li className="flex items-start gap-2">
-            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></span>
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
             <span className="text-neutral-700">
               Premiers résultats en 24-48h avec du trafic payant
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></span>
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
             <span className="text-neutral-700">
               <strong className="text-neutral-900">Minimum</strong> : 100
               visiteurs pour avoir une première idée
@@ -209,13 +209,13 @@ const faqs = [
         </p>
         <ul className="space-y-2 mb-4">
           <li className="flex items-start gap-2">
-            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></span>
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
             <span className="text-neutral-700">
               Tests A/B sur le titre, CTA, formulaire
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></span>
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
             <span className="text-neutral-700">
               <strong className="text-neutral-900">Objectif</strong> : +20-30%
               conversion en 1 mois
@@ -230,18 +230,18 @@ const faqs = [
         </p>
         <ul className="space-y-2 mb-4">
           <li className="flex items-start gap-2">
-            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></span>
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
             <span className="text-neutral-700">Taux de conversion stable</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></span>
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
             <span className="text-neutral-700">
               Focus sur l&apos;augmentation du trafic qualifié
             </span>
           </li>
         </ul>
 
-        <div className="bg-emerald-50 border-2 border-emerald-200 p-4 rounded-xl">
+        <div className="bg-blue-50 border-2 border-blue-200 p-4 rounded-xl">
           <p className="font-bold mb-2 text-neutral-900">Règle d&apos;or</p>
           <p className="text-neutral-700">
             Si après 500 visiteurs ton taux de conversion est sous 2%, le
@@ -276,7 +276,7 @@ export default function FAQSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-2xl border-2 border-neutral-200 overflow-hidden hover:border-emerald-300 transition-colors"
+              className="bg-white rounded-2xl border-2 border-neutral-200 overflow-hidden hover:border-blue-300 transition-colors"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -290,7 +290,7 @@ export default function FAQSection() {
                   transition={{ duration: 0.3 }}
                   className="flex-shrink-0"
                 >
-                  <ChevronDown className="w-6 h-6 text-emerald-600" />
+                  <ChevronDown className="w-6 h-6 text-blue-600" />
                 </motion.div>
               </button>
 
@@ -314,7 +314,7 @@ export default function FAQSection() {
         </div>
 
         {/* CTA final */}
-        <div className="mt-12 bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-200 rounded-2xl p-8 text-center">
+        <div className="mt-12 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl p-8 text-center">
           <h3 className="text-2xl font-bold mb-4 text-neutral-900">
             Une autre question ?
           </h3>
@@ -323,7 +323,7 @@ export default function FAQSection() {
           </p>
           <a
             href="http://thibautgallien.fr/contact"
-            className="inline-block bg-emerald-600 text-white px-8 py-4 rounded-full font-bold hover:bg-emerald-700 transition-colors"
+            className="inline-block bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition-colors"
           >
             Contacte-moi
           </a>

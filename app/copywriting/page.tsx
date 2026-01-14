@@ -223,7 +223,7 @@ export default function CopywritingPillarPage() {
 
           {/* Section liens internes vers satellites */}
           <section className="my-16">
-            <h2 className="text-3xl font-bold mb-6 text-emerald-600">
+            <h2 className="text-3xl font-bold mb-6 text-blue-600">
               Aller plus loin sur le copywriting
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
@@ -231,9 +231,9 @@ export default function CopywritingPillarPage() {
                 <Link
                   key={index}
                   href={article.url}
-                  className="group bg-white border border-neutral-200 rounded-xl p-5 hover:border-emerald-200 transition-all"
+                  className="group bg-white border border-neutral-200 rounded-xl p-5 hover:border-blue-200 transition-all"
                 >
-                  <h3 className="font-bold text-emerald-600 group-hover:text-emerald-500 transition-colors mb-2">
+                  <h3 className="font-bold text-blue-600 group-hover:text-blue-500 transition-colors mb-2">
                     {article.title}
                   </h3>
                   <p className="text-neutral-500 text-sm">

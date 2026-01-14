@@ -37,8 +37,8 @@ const keyPrinciples = [
     principle: "Un verbe d'action clair",
     description: "Dis exactement quoi faire",
     icon: Target,
-    color: "text-emerald-600",
-    bgColor: "bg-emerald-50",
+    color: "text-blue-600",
+    bgColor: "bg-blue-50",
   },
   {
     principle: "Un bénéfice explicite",
@@ -67,7 +67,7 @@ const finalRules = [
   {
     number: "1",
     rule: "1 page = 1 objectif = 1 action",
-    color: "from-emerald-500 to-emerald-600",
+    color: "from-blue-500 to-blue-600",
   },
   {
     number: "2",
@@ -129,7 +129,7 @@ function RuleCard({ rule, index }: any) {
       <motion.div
         whileHover={{ x: 4 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="flex items-center gap-4 p-5 bg-white rounded-xl border-2 border-neutral-200 hover:border-emerald-200 transition-all"
+        className="flex items-center gap-4 p-5 bg-white rounded-xl border-2 border-neutral-200 hover:border-blue-200 transition-all"
       >
         <div
           className={`w-12 h-12 rounded-full bg-gradient-to-r ${rule.color} flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-lg`}
@@ -199,7 +199,7 @@ export default function ConclusionSection() {
           className="my-12"
         >
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+            <div className="h-1 w-12 bg-blue-500 rounded-full" />
             <h3 className="text-2xl font-bold text-neutral-900">
               Retiens ces principes simples
             </h3>
@@ -219,19 +219,19 @@ export default function ConclusionSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="my-12"
         >
-          <div className="bg-gradient-to-br from-emerald-50 to-white rounded-2xl p-10 border-2 border-emerald-200 text-center relative overflow-hidden">
+          <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-10 border-2 border-blue-200 text-center relative overflow-hidden">
             {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-100 rounded-full blur-3xl opacity-50 -z-10" />
+            <div className="absolute top-0 right-0 w-40 h-40 bg-blue-100 rounded-full blur-3xl opacity-50 -z-10" />
             <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-100 rounded-full blur-3xl opacity-50 -z-10" />
 
             <div className="relative z-10">
-              <div className="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="w-9 h-9 text-white" />
               </div>
               <h3 className="text-3xl font-bold mb-4 text-neutral-900">
                 {ctaSuccess.title}
               </h3>
-              <p className="text-xl font-bold text-emerald-700 mb-6">
+              <p className="text-xl font-bold text-blue-700 mb-6">
                 {ctaSuccess.subtitle}
               </p>
               <p className="text-neutral-700 max-w-2xl mx-auto text-lg leading-relaxed">

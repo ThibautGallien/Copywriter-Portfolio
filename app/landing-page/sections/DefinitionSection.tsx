@@ -54,7 +54,7 @@ export default function DefinitionSection() {
           </p>
         </div>
 
-        <h3 className="text-2xl font-bold mb-4 text-emerald-600">
+        <h3 className="text-2xl font-bold mb-4 text-blue-600">
           Landing page vs Page d&apos;accueil
         </h3>
 
@@ -82,7 +82,7 @@ export default function DefinitionSection() {
                 <td className="border border-neutral-300 p-3">
                   Présenter l&apos;entreprise
                 </td>
-                <td className="border border-neutral-300 p-3 bg-emerald-50">
+                <td className="border border-neutral-300 p-3 bg-blue-50">
                   Convertir sur 1 action
                 </td>
               </tr>
@@ -93,7 +93,7 @@ export default function DefinitionSection() {
                 <td className="border border-neutral-300 p-3">
                   Menu complet, 10+ liens
                 </td>
-                <td className="border border-neutral-300 p-3 bg-emerald-50">
+                <td className="border border-neutral-300 p-3 bg-blue-50">
                   0 ou 1 lien
                 </td>
               </tr>
@@ -104,7 +104,7 @@ export default function DefinitionSection() {
                 <td className="border border-neutral-300 p-3">
                   3-5 CTA différents
                 </td>
-                <td className="border border-neutral-300 p-3 bg-emerald-50">
+                <td className="border border-neutral-300 p-3 bg-blue-50">
                   1 CTA répété 3-4 fois
                 </td>
               </tr>
@@ -117,7 +117,7 @@ export default function DefinitionSection() {
                 <td className="border border-neutral-300 p-3">
                   1-3% en moyenne
                 </td>
-                <td className="border border-neutral-300 p-3 bg-emerald-50">
+                <td className="border border-neutral-300 p-3 bg-blue-50">
                   5-15% si bien conçue
                 </td>
               </tr>
@@ -126,7 +126,7 @@ export default function DefinitionSection() {
                   <strong className="text-neutral-900">Durée de vie</strong>
                 </td>
                 <td className="border border-neutral-300 p-3">Permanente</td>
-                <td className="border border-neutral-300 p-3 bg-emerald-50">
+                <td className="border border-neutral-300 p-3 bg-blue-50">
                   Temporaire (campagne)
                 </td>
               </tr>
@@ -134,7 +134,7 @@ export default function DefinitionSection() {
           </table>
         </div>
 
-        <h3 className="text-2xl font-bold mb-4 text-emerald-600">
+        <h3 className="text-2xl font-bold mb-4 text-blue-600">
           Exemple concret
         </h3>
 
@@ -152,7 +152,7 @@ export default function DefinitionSection() {
           </p>
         </div>
 
-        <div className="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-6 mb-6">
+        <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 mb-6">
           <p className="font-bold mb-2 text-neutral-900">✅ Landing page</p>
           <p className="text-neutral-700 mb-4">
             &quot;Télécharge notre checklist 47 points pour auditer ton site en

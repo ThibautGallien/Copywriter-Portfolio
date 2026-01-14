@@ -15,7 +15,7 @@ export default function ImportanceSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
-        <h3 className="text-2xl font-bold mb-4 text-emerald-600">
+        <h3 className="text-2xl font-bold mb-4 text-blue-600">
           Donnée brutale #1 : Les entreprises avec 10-15 landing pages génèrent
           55% plus de leads
         </h3>
@@ -33,7 +33,7 @@ export default function ImportanceSection() {
           génères 155 avec 15 landing pages ciblées.
         </p>
 
-        <h3 className="text-2xl font-bold mb-4 text-emerald-600">
+        <h3 className="text-2xl font-bold mb-4 text-blue-600">
           Donnée brutale #2 : 68% des entreprises B2B n&apos;ont AUCUNE landing
           page dédiée
         </h3>
@@ -50,7 +50,7 @@ export default function ImportanceSection() {
           d&apos;accueil. Conversion moyenne : 1,8%.
         </p>
 
-        <h3 className="text-2xl font-bold mb-4 text-emerald-600">
+        <h3 className="text-2xl font-bold mb-4 text-blue-600">
           Donnée brutale #3 : Ajouter une vidéo sur ta landing page = +80% de
           conversion
         </h3>
@@ -67,7 +67,7 @@ export default function ImportanceSection() {
           lire un texte (Forrester Research).
         </p>
 
-        <h3 className="text-2xl font-bold mb-4 text-emerald-600">
+        <h3 className="text-2xl font-bold mb-4 text-blue-600">
           Ce que ça signifie pour ton business
         </h3>
 
@@ -96,25 +96,25 @@ export default function ImportanceSection() {
             </div>
           </div>
 
-          <div className="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-6">
+          <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-6">
             <h4 className="font-bold text-lg mb-4 text-neutral-900">
               Scénario 2 : Avec landing page optimisée
             </h4>
             <div className="space-y-2 text-sm text-neutral-700">
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
                 <p>Trafic pub : 2 000 visiteurs/mois</p>
               </div>
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
                 <p>Taux de conversion : 8,4% (top 25% selon Unbounce)</p>
               </div>
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
                 <p>Leads : 168</p>
               </div>
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
                 <p>Coût par lead : 10,71€</p>
               </div>
             </div>

@@ -85,9 +85,9 @@ export default function MiniAuditPage() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-full mb-6">
-            <Target className="w-4 h-4 text-emerald-600" />
-            <span className="text-sm font-semibold text-emerald-700">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full mb-6">
+            <Target className="w-4 h-4 text-blue-600" />
+            <span className="text-sm font-semibold text-blue-700">
               Mini-Audit Flash - 100% Gratuit
             </span>
           </div>
@@ -95,7 +95,7 @@ export default function MiniAuditPage() {
           <h1 className="text-4xl md:text-6xl font-extrabold text-neutral-900 leading-tight mb-6">
             Je trouve où tu perds de l'argent.
             <br />
-            <span className="text-emerald-600">En 15 minutes. Gratuitement.</span>
+            <span className="text-blue-600">En 15 minutes. Gratuitement.</span>
           </h1>
 
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
@@ -108,7 +108,7 @@ export default function MiniAuditPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-10 mb-16"
+          className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-10 mb-16"
         >
           <h2 className="text-3xl font-bold text-neutral-900 mb-8 text-center">
             Ce que tu obtiens (gratuitement)
@@ -116,8 +116,8 @@ export default function MiniAuditPage() {
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
-                <Clock className="w-6 h-6 text-emerald-600" />
+              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+                <Clock className="w-6 h-6 text-blue-600" />
               </div>
               <div>
                 <h3 className="font-bold text-neutral-900 mb-2">
@@ -130,8 +130,8 @@ export default function MiniAuditPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
-                <TrendingUp className="w-6 h-6 text-emerald-600" />
+              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+                <TrendingUp className="w-6 h-6 text-blue-600" />
               </div>
               <div>
                 <h3 className="font-bold text-neutral-900 mb-2">
@@ -144,8 +144,8 @@ export default function MiniAuditPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
-                <Target className="w-6 h-6 text-emerald-600" />
+              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+                <Target className="w-6 h-6 text-blue-600" />
               </div>
               <div>
                 <h3 className="font-bold text-neutral-900 mb-2">
@@ -158,8 +158,8 @@ export default function MiniAuditPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
-                <Shield className="w-6 h-6 text-emerald-600" />
+              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+                <Shield className="w-6 h-6 text-blue-600" />
               </div>
               <div>
                 <h3 className="font-bold text-neutral-900 mb-2">
@@ -190,7 +190,7 @@ export default function MiniAuditPage() {
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
+              <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-bold text-neutral-900 mb-1">
                   CA minimum : 5K€/mois
@@ -202,7 +202,7 @@ export default function MiniAuditPage() {
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
+              <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-bold text-neutral-900 mb-1">
                   Funnel actif avec du trafic
@@ -214,7 +214,7 @@ export default function MiniAuditPage() {
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
+              <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-bold text-neutral-900 mb-1">
                   Accès Google Analytics fourni
@@ -226,7 +226,7 @@ export default function MiniAuditPage() {
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
+              <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-bold text-neutral-900 mb-1">
                   Prêt à donner un témoignage
@@ -359,7 +359,7 @@ export default function MiniAuditPage() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full h-14 text-lg font-bold bg-emerald-600 hover:bg-emerald-500 text-white"
+              className="w-full h-14 text-lg font-bold bg-blue-600 hover:bg-blue-500 text-white"
             >
               {isSubmitting ? "Envoi en cours..." : "Envoyer ma candidature"}
             </Button>

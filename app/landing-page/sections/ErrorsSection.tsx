@@ -31,7 +31,7 @@ export default function ErrorsSection() {
             </div>
 
             <div className="mb-4">
-              <p className="text-emerald-600 mb-2 font-semibold">✅ Bon</p>
+              <p className="text-blue-600 mb-2 font-semibold">✅ Bon</p>
               <p className="text-neutral-700">
                 &quot;Livre tes projets 3x plus vite (sans faire d&apos;heures
                 sup)&quot;
@@ -67,7 +67,7 @@ export default function ErrorsSection() {
 
             <div className="space-y-2 mb-4 bg-white p-4 rounded-xl border border-red-200">
               <div className="flex items-center gap-3">
-                <span className="bg-emerald-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0">
+                <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0">
                   1
                 </span>
                 <p className="text-neutral-700">
@@ -259,7 +259,7 @@ export default function ErrorsSection() {
               rebond 78%. Conversion 0,8%.
             </p>
 
-            <div className="bg-emerald-50 border-2 border-emerald-200 p-4 rounded-xl mb-4">
+            <div className="bg-blue-50 border-2 border-blue-200 p-4 rounded-xl mb-4">
               <p className="font-bold mb-2 text-neutral-900">
                 ✅ Règle d&apos;or
               </p>

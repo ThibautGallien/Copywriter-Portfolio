@@ -143,7 +143,7 @@ function ABTestCard({ element, index }: any) {
         whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
-        <Card className="bg-white border-2 border-neutral-200 hover:border-emerald-200 transition-all h-full">
+        <Card className="bg-white border-2 border-neutral-200 hover:border-blue-200 transition-all h-full">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <span className="text-3xl flex-shrink-0">{element.icon}</span>
@@ -160,11 +160,11 @@ function ABTestCard({ element, index }: any) {
                       {element.examples[0]}
                     </p>
                   </div>
-                  <div className="bg-emerald-50 rounded-lg p-3 border border-emerald-200">
-                    <span className="text-emerald-700 text-xs font-semibold uppercase tracking-wide">
+                  <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
+                    <span className="text-blue-700 text-xs font-semibold uppercase tracking-wide">
                       Impact
                     </span>
-                    <p className="text-emerald-700 text-sm font-semibold mt-1">
+                    <p className="text-blue-700 text-sm font-semibold mt-1">
                       {element.impact}
                     </p>
                   </div>
@@ -265,10 +265,10 @@ export default function OptimisationSection() {
         {/* A/B Testing */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+            <div className="h-1 w-12 bg-blue-500 rounded-full" />
             <h3 className="text-2xl md:text-3xl font-bold text-neutral-900">
               L'A/B testing : ton{" "}
-              <span className="text-emerald-600">meilleur allié</span>
+              <span className="text-blue-600">meilleur allié</span>
             </h3>
           </div>
 
@@ -290,8 +290,8 @@ export default function OptimisationSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="mt-8"
           >
-            <div className="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-5 text-center">
-              <p className="text-emerald-800 font-semibold">
+            <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-5 text-center">
+              <p className="text-blue-800 font-semibold">
                 💡 Ces petits changements peuvent parfois doubler tes clics.
               </p>
             </div>
@@ -366,8 +366,8 @@ export default function OptimisationSection() {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl p-5 border-2 border-emerald-200">
-                  <h4 className="font-bold text-emerald-700 mb-3 text-lg">
+                <div className="bg-white rounded-xl p-5 border-2 border-blue-200">
+                  <h4 className="font-bold text-blue-700 mb-3 text-lg">
                     Version B
                   </h4>
                   <p className="text-neutral-900 mb-4 font-medium">
@@ -391,7 +391,7 @@ export default function OptimisationSection() {
                   <strong className="font-bold">Conclusion :</strong>{" "}
                   {practicalExample.conclusion}
                 </p>
-                <p className="text-emerald-700 font-semibold">
+                <p className="text-blue-700 font-semibold">
                   💡 {practicalExample.lesson}
                 </p>
               </div>
@@ -444,7 +444,7 @@ export default function OptimisationSection() {
           <Highlight>
             Et c'est cette boucle d'optimisation continue qui fait la différence
             entre un CTA moyen et un CTA qui rapporte tous les jours.
-            <span className="text-emerald-600 font-bold">
+            <span className="text-blue-600 font-bold">
               {" "}
               Les tests te montrent ce que tes visiteurs veulent vraiment, pas
               ce que tu imagines.

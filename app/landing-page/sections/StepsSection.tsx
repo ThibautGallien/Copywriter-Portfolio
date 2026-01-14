@@ -63,7 +63,7 @@ function StepCard({
         whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
-        <Card className="bg-neutral-50 border-neutral-200 hover:border-emerald-200 transition-colors">
+        <Card className="bg-neutral-50 border-neutral-200 hover:border-blue-200 transition-colors">
           <CardContent className="p-8">
             <div className="flex items-start gap-6">
               {/* Number Badge */}
@@ -76,7 +76,7 @@ function StepCard({
                   damping: 15,
                   delay: delay + 0.1,
                 }}
-                className="bg-emerald-600 text-white rounded-2xl w-14 h-14 flex items-center justify-center text-2xl font-bold flex-shrink-0"
+                className="bg-blue-600 text-white rounded-2xl w-14 h-14 flex items-center justify-center text-2xl font-bold flex-shrink-0"
               >
                 {number}
               </motion.div>
@@ -111,7 +111,7 @@ function InfoBox({
 }) {
   const variants = {
     default: "bg-neutral-100 border-neutral-200",
-    success: "bg-emerald-50 border-emerald-200",
+    success: "bg-blue-50 border-blue-200",
     warning: "bg-amber-50 border-amber-200",
     danger: "bg-red-50 border-red-200",
   };
@@ -152,8 +152,8 @@ function Comparison({ bad, good }: { bad: string; good: string }) {
         </p>
         <p className="text-neutral-600">&quot;{bad}&quot;</p>
       </div>
-      <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-        <p className="text-emerald-600 font-bold mb-2 flex items-center gap-2">
+      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <p className="text-blue-600 font-bold mb-2 flex items-center gap-2">
           <svg
             className="w-5 h-5"
             fill="none"
@@ -201,7 +201,7 @@ function ToolCard({
                 transition={{ delay: index * 0.1 }}
                 className="flex items-start gap-3"
               >
-                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0" />
+                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
                 <div>
                   <p className="font-semibold text-neutral-900">{tool.name}</p>
                   <p className="text-sm text-neutral-500">{tool.description}</p>
@@ -278,7 +278,7 @@ export default function StepsSection() {
               <div className="space-y-1">
                 <p>
                   • 3 champs ={" "}
-                  <span className="font-semibold text-emerald-600">
+                  <span className="font-semibold text-blue-600">
                     10,4% conversion
                   </span>
                 </p>
@@ -312,7 +312,7 @@ export default function StepsSection() {
             <div className="space-y-2 mb-4">
               <div className="flex items-start gap-3">
                 <svg
-                  className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -331,7 +331,7 @@ export default function StepsSection() {
               </div>
               <div className="flex items-start gap-3">
                 <svg
-                  className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -350,7 +350,7 @@ export default function StepsSection() {
               </div>
               <div className="flex items-start gap-3">
                 <svg
-                  className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -426,7 +426,7 @@ export default function StepsSection() {
         >
           <h3 className="text-3xl font-bold text-neutral-900 mb-8">
             Outils pour créer ta{" "}
-            <span className="text-emerald-600">landing page</span>
+            <span className="text-blue-600">landing page</span>
           </h3>
 
           <div className="grid md:grid-cols-2 gap-6">

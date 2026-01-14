@@ -84,8 +84,8 @@ const checklistItems = [
 const scoringGuide = {
   excellent: {
     min: 18,
-    color: "text-emerald-600",
-    bgColor: "bg-emerald-50",
+    color: "text-blue-600",
+    bgColor: "bg-blue-50",
     message: "Excellent ! Tes CTA sont optimisés",
   },
   good: {
@@ -158,7 +158,7 @@ function ChecklistCategory({ category, index }: any) {
     >
       <div className="mb-6">
         <h3 className="text-lg font-bold text-neutral-900 mb-4 flex items-center gap-2">
-          <div className="w-6 h-6 rounded-lg bg-emerald-600 flex items-center justify-center">
+          <div className="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center">
             <Target className="w-4 h-4 text-white" />
           </div>
           {category.category}
@@ -170,11 +170,11 @@ function ChecklistCategory({ category, index }: any) {
               initial={{ opacity: 0, x: -10 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: index * 0.1 + itemIndex * 0.05 }}
-              className="flex items-start gap-3 cursor-pointer group p-3 rounded-xl hover:bg-emerald-50 transition-colors"
+              className="flex items-start gap-3 cursor-pointer group p-3 rounded-xl hover:bg-blue-50 transition-colors"
             >
               <input
                 type="checkbox"
-                className="mt-0.5 w-5 h-5 text-emerald-600 bg-white border-2 border-neutral-300 rounded focus:ring-emerald-500 focus:ring-2 cursor-pointer"
+                className="mt-0.5 w-5 h-5 text-blue-600 bg-white border-2 border-neutral-300 rounded focus:ring-blue-500 focus:ring-2 cursor-pointer"
               />
               <span className="text-neutral-700 text-sm leading-relaxed group-hover:text-neutral-900 transition-colors">
                 {item}
@@ -203,11 +203,11 @@ function QuickWinCard({ win, index }: any) {
         whileHover={{ x: 4 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
-        <Card className="bg-white border-2 border-neutral-200 hover:border-emerald-200 transition-all">
+        <Card className="bg-white border-2 border-neutral-200 hover:border-blue-200 transition-all">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               {/* Number Badge */}
-              <div className="w-10 h-10 bg-emerald-600 text-white rounded-xl flex items-center justify-center font-bold text-lg flex-shrink-0">
+              <div className="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-lg flex-shrink-0">
                 {index + 1}
               </div>
 
@@ -217,7 +217,7 @@ function QuickWinCard({ win, index }: any) {
                   {win.action}
                 </h4>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-                  <div className="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
+                  <div className="inline-flex items-center gap-1.5 text-blue-700 bg-blue-50 px-3 py-1 rounded-full">
                     <Zap className="w-3.5 h-3.5" />
                     <span className="font-medium">{win.impact}</span>
                   </div>
@@ -256,7 +256,7 @@ export default function ChecklistSection() {
 
         {/* Checklist principale */}
         <div className="mb-16">
-          <Card className="bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-200">
+          <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200">
             <CardContent className="p-8">
               <div className="space-y-6">
                 {checklistItems.map((category, categoryIndex) => (
@@ -277,7 +277,7 @@ export default function ChecklistSection() {
                 className="mt-8 p-6 bg-neutral-50 rounded-xl border border-neutral-200"
               >
                 <h4 className="font-bold text-neutral-900 mb-4 flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-emerald-600" />
+                  <CheckCircle className="w-5 h-5 text-blue-600" />
                   Guide de notation
                 </h4>
                 <div className="space-y-3">
@@ -309,10 +309,10 @@ export default function ChecklistSection() {
         {/* Quick wins */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+            <div className="h-1 w-12 bg-blue-500 rounded-full" />
             <h3 className="text-2xl md:text-3xl font-bold text-neutral-900">
               5 améliorations rapides à implémenter{" "}
-              <span className="text-emerald-600">aujourd'hui</span>
+              <span className="text-blue-600">aujourd'hui</span>
             </h3>
           </div>
 
@@ -335,7 +335,7 @@ export default function ChecklistSection() {
             <CardContent className="p-8 text-center relative z-10">
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-100 rounded-full blur-3xl opacity-50 -z-10" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-emerald-100 rounded-full blur-3xl opacity-50 -z-10" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-100 rounded-full blur-3xl opacity-50 -z-10" />
 
               <div className="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-7 h-7 text-amber-600" />
@@ -346,7 +346,7 @@ export default function ChecklistSection() {
               <p className="text-neutral-700 mb-4 leading-relaxed max-w-2xl mx-auto">
                 {finalReminder.content}
               </p>
-              <p className="text-emerald-700 font-semibold">
+              <p className="text-blue-700 font-semibold">
                 {finalReminder.action}
               </p>
             </CardContent>
@@ -362,7 +362,7 @@ export default function ChecklistSection() {
           <Highlight>
             Si tu ne coches pas toutes les cases, ton CTA risque de passer
             inaperçu.
-            <span className="text-emerald-600 font-bold">
+            <span className="text-blue-600 font-bold">
               {" "}
               Si tu les coches toutes, tu poses la première brique d'un système
               qui rapporte.

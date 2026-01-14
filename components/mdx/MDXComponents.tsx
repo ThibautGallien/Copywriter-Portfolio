@@ -24,10 +24,10 @@ export function KeyPoint({
   const Icon = icons[icon];
 
   return (
-    <div className="my-6 p-6 bg-emerald-50 border-2 border-emerald-200 rounded-2xl">
+    <div className="my-6 p-6 bg-blue-50 border-2 border-blue-200 rounded-2xl">
       <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
-          <Icon className="w-6 h-6 text-emerald-600" />
+        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
+          <Icon className="w-6 h-6 text-blue-600" />
         </div>
         <div>
           <h4 className="font-bold text-neutral-900 mb-2">{title}</h4>
@@ -49,7 +49,7 @@ export function Callout({
   const styles = {
     info: "bg-blue-50 border-blue-200 text-blue-900",
     warning: "bg-amber-50 border-amber-200 text-amber-900",
-    success: "bg-emerald-50 border-emerald-200 text-emerald-900",
+    success: "bg-blue-50 border-blue-200 text-blue-900",
     danger: "bg-red-50 border-red-200 text-red-900",
   };
 
@@ -78,17 +78,17 @@ export function Example({
   bad?: boolean;
 }) {
   const borderColor = good
-    ? "border-emerald-500"
+    ? "border-blue-500"
     : bad
     ? "border-red-500"
     : "border-neutral-300";
   const bgColor = good
-    ? "bg-emerald-50"
+    ? "bg-blue-50"
     : bad
     ? "bg-red-50"
     : "bg-neutral-50";
   const badge = good ? (
-    <span className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-500 text-white text-xs font-semibold rounded-full">
+    <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full">
       <CheckCircle className="w-3 h-3" />À faire
     </span>
   ) : bad ? (
@@ -116,7 +116,7 @@ export function Example({
 export function ChecklistItem({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-3 mb-3">
-      <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+      <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
       <span className="text-neutral-700">{children}</span>
     </li>
   );
@@ -194,7 +194,7 @@ const components = {
   }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       className={cn(
-        "my-6 pl-6 border-l-4 border-emerald-500 italic text-neutral-600",
+        "my-6 pl-6 border-l-4 border-blue-500 italic text-neutral-600",
         className
       )}
       {...props}
@@ -221,7 +221,7 @@ const components = {
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <a
       className={cn(
-        "text-emerald-600 hover:text-emerald-700 underline font-medium",
+        "text-blue-600 hover:text-blue-700 underline font-medium",
         className
       )}
       {...props}

@@ -235,9 +235,9 @@ function ExampleCard({ example, index }: any) {
                 </div>
 
                 {/* Insight */}
-                <div className="bg-neutral-50 rounded-xl p-4 border-l-4 border-emerald-500">
+                <div className="bg-neutral-50 rounded-xl p-4 border-l-4 border-blue-500">
                   <p className="text-neutral-900 text-sm">
-                    <span className="font-semibold text-emerald-700">
+                    <span className="font-semibold text-blue-700">
                       💡 Pourquoi ça marche :
                     </span>{" "}
                     {example.insight}
@@ -272,10 +272,10 @@ export default function ExemplesSection() {
         {/* Exemples B2C */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+            <div className="h-1 w-12 bg-blue-500 rounded-full" />
             <h3 className="text-2xl md:text-3xl font-bold text-neutral-900">
               En B2C :{" "}
-              <span className="text-emerald-600">e-commerce et SaaS</span>
+              <span className="text-blue-600">e-commerce et SaaS</span>
             </h3>
           </div>
 
@@ -292,8 +292,8 @@ export default function ExemplesSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-8"
           >
-            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border-2 border-emerald-200 rounded-xl p-5">
-              <p className="text-emerald-800 font-medium text-center flex items-center justify-center gap-2">
+            <div className="bg-gradient-to-r from-blue-50 to-teal-50 border-2 border-blue-200 rounded-xl p-5">
+              <p className="text-blue-800 font-medium text-center flex items-center justify-center gap-2">
                 <Sparkles className="w-5 h-5" />
                 Ces CTA fonctionnent parce qu'ils sont ultra-visibles, orientés
                 bénéfice et liés à une action simple.
@@ -388,7 +388,7 @@ export default function ExemplesSection() {
           <Highlight>
             Ces exemples ont un point commun : ils ne laissent pas de place à
             l'interprétation.
-            <span className="text-emerald-600 font-bold">
+            <span className="text-blue-600 font-bold">
               {" "}
               On sait quoi faire, pourquoi le faire, et quel bénéfice immédiat
               en tirer.

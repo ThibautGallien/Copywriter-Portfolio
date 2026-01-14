@@ -45,11 +45,11 @@ export function ROICalculator({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="my-8 p-8 bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-200 rounded-2xl"
+      className="my-8 p-8 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl"
     >
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
-          <Calculator className="w-6 h-6 text-emerald-600" />
+        <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+          <Calculator className="w-6 h-6 text-blue-600" />
         </div>
         <h3 className="text-2xl font-bold text-neutral-900">{title}</h3>
       </div>
@@ -75,7 +75,7 @@ export function ROICalculator({
 
       <Button
         onClick={calculate}
-        className="w-full h-12 bg-emerald-600 hover:bg-emerald-500 text-white font-bold"
+        className="w-full h-12 bg-blue-600 hover:bg-blue-500 text-white font-bold"
       >
         Calculer
       </Button>
@@ -84,7 +84,7 @@ export function ROICalculator({
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="mt-6 p-6 bg-white border-2 border-emerald-200 rounded-xl text-center"
+          className="mt-6 p-6 bg-white border-2 border-blue-200 rounded-xl text-center"
         >
           <p className="text-sm text-neutral-600 mb-2">{resultLabel}</p>
           <p className="text-4xl font-bold text-red-600">
@@ -144,7 +144,7 @@ export function Quiz({
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="my-8 p-8 bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-200 rounded-2xl"
+        className="my-8 p-8 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl"
       >
         <div className="text-center mb-6">
           <h3 className="text-2xl font-bold text-neutral-900 mb-2">
@@ -152,7 +152,7 @@ export function Quiz({
           </h3>
           <p className="text-lg text-neutral-600">{result.description}</p>
         </div>
-        <Button onClick={reset} className="w-full bg-emerald-600 hover:bg-emerald-500">
+        <Button onClick={reset} className="w-full bg-blue-600 hover:bg-blue-500">
           Recommencer
         </Button>
       </motion.div>
@@ -181,7 +181,7 @@ export function Quiz({
                   idx === currentQuestion
                     ? "bg-blue-600"
                     : idx < currentQuestion
-                    ? "bg-emerald-500"
+                    ? "bg-blue-500"
                     : "bg-neutral-300"
                 }`}
               />
@@ -308,7 +308,7 @@ export function ReadingProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-emerald-600 z-50"
+      className="fixed top-0 left-0 right-0 h-1 bg-blue-600 z-50"
       style={{ width: `${progress}%` }}
     />
   );

@@ -73,10 +73,10 @@ const ctaAdaptation = [
     phase: "En phase de découverte",
     strategy: 'Privilégie un CTA "soft"',
     examples: ["Guide gratuit", "Checklist", "Article approfondi"],
-    color: "from-emerald-400 to-emerald-500",
-    bgColor: "bg-emerald-50",
-    borderColor: "border-emerald-200",
-    textColor: "text-emerald-700",
+    color: "from-blue-400 to-blue-500",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-200",
+    textColor: "text-blue-700",
   },
   {
     phase: "En phase avancée",
@@ -100,9 +100,9 @@ const ctaAdaptation = [
 
 const colorMap: any = {
   emerald: {
-    border: "border-emerald-500",
-    text: "text-emerald-700",
-    bg: "bg-emerald-50",
+    border: "border-blue-500",
+    text: "text-blue-700",
+    bg: "bg-blue-50",
   },
   blue: {
     border: "border-blue-500",
@@ -209,10 +209,10 @@ export default function ImportanceSection() {
         {/* Faire avancer le prospect */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+            <div className="h-1 w-12 bg-blue-500 rounded-full" />
             <h3 className="text-2xl md:text-3xl font-bold text-neutral-900">
               Faire avancer le prospect dans son{" "}
-              <span className="text-emerald-600">parcours d'achat</span>
+              <span className="text-blue-600">parcours d'achat</span>
             </h3>
           </div>
 
@@ -231,7 +231,7 @@ export default function ImportanceSection() {
             ))}
           </div>
 
-          <p className="text-neutral-900 leading-relaxed font-semibold bg-neutral-50 border-l-4 border-emerald-500 p-5 rounded-r-xl">
+          <p className="text-neutral-900 leading-relaxed font-semibold bg-neutral-50 border-l-4 border-blue-500 p-5 rounded-r-xl">
             Chaque clic rapproche le prospect de l'étape suivante.
           </p>
         </div>
@@ -241,7 +241,7 @@ export default function ImportanceSection() {
           <BenefitsList
             benefits={impactBenefits}
             title="Les bénéfices concrets d'un CTA efficace"
-            cardClassName="bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-200"
+            cardClassName="bg-gradient-to-br from-blue-50 to-teal-50 border-2 border-blue-200"
           />
         </div>
 
@@ -253,14 +253,14 @@ export default function ImportanceSection() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <Card className="bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-200 overflow-hidden relative">
+          <Card className="bg-gradient-to-br from-blue-50 to-teal-50 border-2 border-blue-200 overflow-hidden relative">
             <CardContent className="p-8 relative z-10">
               {/* Decorative elements */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-100 rounded-full blur-3xl opacity-50 -z-10" />
+              <div className="absolute top-0 right-0 w-40 h-40 bg-blue-100 rounded-full blur-3xl opacity-50 -z-10" />
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-teal-100 rounded-full blur-3xl opacity-50 -z-10" />
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-emerald-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0">
                   <TrendingUp className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -309,7 +309,7 @@ export default function ImportanceSection() {
           <Highlight>
             Un CTA peut autant servir à nurturer la relation qu'à vendre
             directement.
-            <span className="text-emerald-600 font-bold">
+            <span className="text-blue-600 font-bold">
               {" "}
               La clé : adapter l'intensité à la maturité de ton prospect.
             </span>

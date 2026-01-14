@@ -135,7 +135,7 @@ function CharacteristicCard({ char, index }: any) {
         whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
-        <Card className="bg-white border-2 border-neutral-200 hover:border-emerald-200 transition-all h-full">
+        <Card className="bg-white border-2 border-neutral-200 hover:border-blue-200 transition-all h-full">
           <CardContent className="p-8">
             <div className="flex items-start gap-4">
               {/* Icon */}
@@ -160,7 +160,7 @@ function CharacteristicCard({ char, index }: any) {
                       transition={{ delay: index * 0.1 + tipIndex * 0.05 }}
                       className="flex items-start gap-3"
                     >
-                      <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                       <span className="text-neutral-700 text-sm leading-relaxed">
                         {tip}
                       </span>
@@ -195,7 +195,7 @@ function ExampleCard({ example, index }: any) {
         <Card
           className={`border-2 h-full ${
             example.isGood
-              ? "bg-emerald-50 border-emerald-200 hover:border-emerald-300"
+              ? "bg-blue-50 border-blue-200 hover:border-blue-300"
               : "bg-red-50 border-red-200 hover:border-red-300"
           }`}
         >
@@ -203,7 +203,7 @@ function ExampleCard({ example, index }: any) {
             {/* Header */}
             <div className="flex items-center gap-2 mb-4">
               {example.isGood ? (
-                <div className="w-6 h-6 rounded-full bg-emerald-600 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center">
                   <CheckCircle className="w-4 h-4 text-white" />
                 </div>
               ) : (
@@ -213,7 +213,7 @@ function ExampleCard({ example, index }: any) {
               )}
               <span
                 className={`font-bold text-sm ${
-                  example.isGood ? "text-emerald-700" : "text-red-700"
+                  example.isGood ? "text-blue-700" : "text-red-700"
                 }`}
               >
                 {example.type}
@@ -266,7 +266,7 @@ export default function CaracteristiquesSection() {
         {/* Exemples pratiques */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+            <div className="h-1 w-12 bg-blue-500 rounded-full" />
             <h3 className="text-2xl md:text-3xl font-bold text-neutral-900">
               Exemples concrets : bon vs mauvais CTA
             </h3>
@@ -287,7 +287,7 @@ export default function CaracteristiquesSection() {
         >
           <Highlight>
             Chaque élément d'une landing page doit répondre à une question :{" "}
-            <span className="text-emerald-600 font-bold">
+            <span className="text-blue-600 font-bold">
               &quot;Est-ce que cela rapproche le visiteur de l&apos;action
               attendue ?&quot;
             </span>

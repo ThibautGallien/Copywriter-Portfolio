@@ -37,11 +37,11 @@ export function InlineLandingPage({
 
   const variants = {
     default: {
-      bg: "bg-gradient-to-br from-emerald-50 to-white",
-      border: "border-emerald-200",
-      button: "bg-emerald-600 hover:bg-emerald-500",
-      iconBg: "bg-emerald-100",
-      iconColor: "text-emerald-600",
+      bg: "bg-gradient-to-br from-blue-50 to-white",
+      border: "border-blue-200",
+      button: "bg-blue-600 hover:bg-blue-500",
+      iconBg: "bg-blue-100",
+      iconColor: "text-blue-600",
     },
     premium: {
       bg: "bg-gradient-to-br from-amber-50 to-orange-50",
@@ -223,9 +223,9 @@ export function InlineLandingPageCompact({
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="my-6 p-4 bg-emerald-50 border-2 border-emerald-200 rounded-xl text-center"
+        className="my-6 p-4 bg-blue-50 border-2 border-blue-200 rounded-xl text-center"
       >
-        <p className="text-emerald-700 font-semibold flex items-center justify-center gap-2">
+        <p className="text-blue-700 font-semibold flex items-center justify-center gap-2">
           <CheckCircle className="w-5 h-5" />
           Envoyé ! Check tes emails.
         </p>

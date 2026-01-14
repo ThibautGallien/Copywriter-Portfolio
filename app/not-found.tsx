@@ -58,7 +58,7 @@ export default function NotFoundPage() {
         >
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-emerald-600 text-white font-bold rounded-full text-lg hover:bg-emerald-500 transition-colors shadow-lg"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white font-bold rounded-full text-lg hover:bg-blue-500 transition-colors shadow-lg"
           >
             <Home className="w-5 h-5" />
             Retour à l'accueil
@@ -82,16 +82,16 @@ export default function NotFoundPage() {
         >
           <p className="text-sm text-neutral-500 mb-4">Liens rapides :</p>
           <div className="flex flex-wrap gap-4 justify-center text-sm">
-            <Link href="/services-new" className="text-emerald-600 hover:text-emerald-700 font-medium">
+            <Link href="/services-new" className="text-blue-600 hover:text-blue-700 font-medium">
               Services
             </Link>
-            <Link href="/mini-audit-gratuit" className="text-emerald-600 hover:text-emerald-700 font-medium">
+            <Link href="/mini-audit-gratuit" className="text-blue-600 hover:text-blue-700 font-medium">
               Mini-Audit Gratuit
             </Link>
-            <Link href="/blog-new" className="text-emerald-600 hover:text-emerald-700 font-medium">
+            <Link href="/blog-new" className="text-blue-600 hover:text-blue-700 font-medium">
               Blog
             </Link>
-            <Link href="/contact" className="text-emerald-600 hover:text-emerald-700 font-medium">
+            <Link href="/contact" className="text-blue-600 hover:text-blue-700 font-medium">
               Contact
             </Link>
           </div>
@@ -102,7 +102,7 @@ export default function NotFoundPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-12 p-6 bg-emerald-50 border-2 border-emerald-200 rounded-2xl"
+          className="mt-12 p-6 bg-blue-50 border-2 border-blue-200 rounded-2xl"
         >
           <p className="text-neutral-900 font-semibold mb-3">
             💡 Pendant que t'es là...
@@ -112,7 +112,7 @@ export default function NotFoundPage() {
           </p>
           <Link
             href="/mini-audit-gratuit"
-            className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-bold"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-bold"
           >
             Postuler pour un Mini-Audit Flash
             <ArrowRight className="w-4 h-4" />

@@ -180,7 +180,7 @@ Termine avec un CTA...
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-neutral-900 mb-2 flex items-center gap-3">
-            <Sparkles className="w-8 h-8 text-emerald-600" />
+            <Sparkles className="w-8 h-8 text-blue-600" />
             Admin - Créer un article
           </h1>
           <p className="text-neutral-600">
@@ -192,7 +192,7 @@ Termine avec un CTA...
           {/* Formulaire */}
           <Card className="p-6">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <FileText className="w-6 h-6 text-emerald-600" />
+              <FileText className="w-6 h-6 text-blue-600" />
               Informations de l'article
             </h2>
 
@@ -294,7 +294,7 @@ Termine avec un CTA...
                 <Button
                   onClick={downloadMDX}
                   disabled={!title || !excerpt || !categories}
-                  className="flex-1 bg-emerald-600 hover:bg-emerald-500"
+                  className="flex-1 bg-blue-600 hover:bg-blue-500"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Télécharger MDX
@@ -306,7 +306,7 @@ Termine avec un CTA...
           {/* Prévisualisation */}
           <Card className="p-6 bg-neutral-900 text-neutral-100">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <Eye className="w-6 h-6 text-emerald-400" />
+              <Eye className="w-6 h-6 text-blue-400" />
               Prévisualisation
             </h2>
 

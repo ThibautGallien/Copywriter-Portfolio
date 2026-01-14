@@ -265,7 +265,7 @@ export default function LandingPagePillarPage() {
           <StepsSection />
 
           <section className="my-16">
-            <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
               Aller plus loin sur les landing pages
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
@@ -273,9 +273,9 @@ export default function LandingPagePillarPage() {
                 <Link
                   key={index}
                   href={article.url}
-                  className="group bg-neutral-50 border border-neutral-200 rounded-2xl p-5 hover:border-emerald-300 transition-all"
+                  className="group bg-neutral-50 border border-neutral-200 rounded-2xl p-5 hover:border-blue-300 transition-all"
                 >
-                  <h3 className="font-bold text-emerald-600 group-hover:text-emerald-500 transition-colors mb-2">
+                  <h3 className="font-bold text-blue-600 group-hover:text-blue-500 transition-colors mb-2">
                     {article.title}
                   </h3>
                   <p className="text-neutral-600 text-sm">

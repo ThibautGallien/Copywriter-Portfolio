@@ -151,8 +151,8 @@ function DesignMistakeCard({ item, index }: any) {
                   {item.problem}
                 </p>
               </div>
-              <div className="bg-emerald-50 rounded-lg p-3 border border-emerald-100">
-                <p className="text-emerald-800 text-sm">
+              <div className="bg-blue-50 rounded-lg p-3 border border-blue-100">
+                <p className="text-blue-800 text-sm">
                   <strong className="font-semibold">Solution :</strong>{" "}
                   {item.solution}
                 </p>
@@ -195,7 +195,7 @@ export default function ErreursSection() {
         {/* Exemple avant/après */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+            <div className="h-1 w-12 bg-blue-500 rounded-full" />
             <h3 className="text-2xl md:text-3xl font-bold text-neutral-900">
               Exemple concret : avant vs après
             </h3>
@@ -257,29 +257,29 @@ export default function ErreursSection() {
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <Card className="bg-emerald-50 border-2 border-emerald-200 h-full">
+                  <Card className="bg-blue-50 border-2 border-blue-200 h-full">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-2 mb-4">
-                        <div className="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center">
+                        <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
                           <CheckCircle className="w-4 h-4 text-white" />
                         </div>
-                        <h4 className="font-bold text-emerald-700">
+                        <h4 className="font-bold text-blue-700">
                           {example.after.title}
                         </h4>
                       </div>
-                      <div className="bg-white rounded-xl p-4 text-sm mb-4 border border-emerald-100 shadow-sm">
+                      <div className="bg-white rounded-xl p-4 text-sm mb-4 border border-blue-100 shadow-sm">
                         <p className="text-neutral-700">
                           {example.after.content}
                         </p>
                       </div>
                       <div className="space-y-2">
-                        <p className="text-emerald-700 text-xs font-semibold uppercase tracking-wide">
+                        <p className="text-blue-700 text-xs font-semibold uppercase tracking-wide">
                           Pourquoi ça marche :
                         </p>
                         {example.after.benefits.map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0"></div>
-                            <span className="text-emerald-700 text-sm">
+                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0"></div>
+                            <span className="text-blue-700 text-sm">
                               {benefit}
                             </span>
                           </div>

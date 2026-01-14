@@ -48,7 +48,7 @@ export default function FormulasSection() {
           voilà ce que personne ne t'explique : pourquoi elles marchent.
         </p>
 
-        <h3 className="text-2xl font-bold text-emerald-600 mb-4">
+        <h3 className="text-2xl font-bold text-blue-600 mb-4">
           AIDA : la base incontournable
         </h3>
 
@@ -61,14 +61,14 @@ export default function FormulasSection() {
         </p>
 
         <div className="bg-white rounded-2xl p-6 border border-neutral-200 mb-8">
-          <h4 className="font-bold text-emerald-600 mb-4">Exemple email</h4>
+          <h4 className="font-bold text-blue-600 mb-4">Exemple email</h4>
           <div className="space-y-3">
             {aidaExample.map((item, index) => (
               <div
                 key={index}
                 className="bg-neutral-50 rounded-xl p-3 border border-neutral-200"
               >
-                <span className="text-emerald-600 font-semibold text-sm">
+                <span className="text-blue-600 font-semibold text-sm">
                   {item.label} :
                 </span>
                 <p className="text-neutral-600 text-sm mt-1">"{item.text}"</p>
@@ -77,7 +77,7 @@ export default function FormulasSection() {
           </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-emerald-600 mb-4">
+        <h3 className="text-2xl font-bold text-blue-600 mb-4">
           PAS : pour les problèmes douloureux
         </h3>
 
@@ -90,7 +90,7 @@ export default function FormulasSection() {
         </p>
 
         <div className="bg-white rounded-2xl p-6 border border-neutral-200 mb-8">
-          <h4 className="font-bold text-emerald-600 mb-4">
+          <h4 className="font-bold text-blue-600 mb-4">
             Exemple page de vente (logiciel de compta)
           </h4>
           <div className="space-y-3">
@@ -111,14 +111,14 @@ export default function FormulasSection() {
         <Highlight>
           La différence entre AIDA et PAS ? AIDA part du positif (opportunité).
           PAS part du négatif (douleur).
-          <span className="text-emerald-600 font-bold">
+          <span className="text-blue-600 font-bold">
             {" "}
             Utilise PAS pour les problèmes vraiment douloureux (santé, argent,
             temps perdu). AIDA pour les opportunités de gain.
           </span>
         </Highlight>
 
-        <h3 className="text-2xl font-bold text-emerald-600 mb-4 mt-8">
+        <h3 className="text-2xl font-bold text-blue-600 mb-4 mt-8">
           La vérité sur la créativité en copywriting
         </h3>
 
@@ -144,7 +144,7 @@ export default function FormulasSection() {
         <p className="text-neutral-600 leading-relaxed">
           Pourquoi ? Parce que la créativité sert ton ego, pas ton client. Ton
           client veut savoir vite si c'est pour lui.{" "}
-          <strong className="text-emerald-600">
+          <strong className="text-blue-600">
             La clarté bat la créativité 8 fois sur 10.
           </strong>
         </p>

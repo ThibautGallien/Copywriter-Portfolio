@@ -6,12 +6,12 @@ import { useState, useRef, useEffect } from "react";
 import {
   ArrowRight,
   CheckCircle,
-  AlertTriangle,
-  TrendingUp,
   Target,
-  Zap,
-  Users,
+  TrendingDown,
+  Search,
+  Lightbulb,
   BarChart3,
+  Mail,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -45,30 +45,6 @@ function useInView(
   return isInView;
 }
 
-// Animated counter
-function useCounter(end: number, duration = 2000) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    if (!isInView || hasAnimated.current) return;
-    hasAnimated.current = true;
-
-    let startTime: number | null = null;
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      setCount(Math.floor(progress * end));
-      if (progress < 1) requestAnimationFrame(animate);
-    };
-    requestAnimationFrame(animate);
-  }, [isInView, end, duration]);
-
-  return { count, ref };
-}
-
 // Fade in animation
 function FadeIn({
   children,
@@ -92,270 +68,204 @@ function FadeIn({
   );
 }
 
-// Metric Card
-function MetricCard({
-  value,
-  label,
-  suffix = "",
-}: {
-  value: number;
-  label: string;
-  suffix?: string;
-}) {
-  const { count, ref } = useCounter(value, 1500);
-
-  return (
-    <motion.div
-      ref={ref}
-      whileHover={{ y: -4 }}
-      className="text-center p-6 rounded-2xl bg-white border-2 border-neutral-200"
-    >
-      <div className="text-4xl md:text-5xl font-bold text-emerald-600 mb-2">
-        {count}
-        {suffix}
-      </div>
-      <div className="text-sm text-neutral-600 font-medium">{label}</div>
-    </motion.div>
-  );
-}
-
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-neutral-50">
-      {/* HERO */}
+    <div className="min-h-screen bg-white">
+      {/* HERO - Focus problème */}
       <section className="container mx-auto px-6 pt-32 pb-20">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <FadeIn>
-            <div className="text-center mb-12">
+            <div className="text-center">
+              {/* Badge subtil */}
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 border-2 border-red-200 rounded-full mb-8"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full mb-8"
               >
-                <AlertTriangle className="w-4 h-4 text-red-600" />
-                <span className="text-sm font-bold text-red-700">
-                  TON FUNNEL FUIT. JE SAIS OÙ.
+                <Target className="w-4 h-4 text-blue-600" />
+                <span className="text-sm font-medium text-blue-700">
+                  Optimisation de funnels basée sur la data
                 </span>
               </motion.div>
 
-              <h1 className="text-5xl md:text-7xl font-extrabold text-neutral-900 leading-[1.1] mb-8">
-                Je ne devine pas.
+              {/* Titre centré sur le problème */}
+              <h1 className="text-4xl md:text-6xl font-bold text-neutral-900 leading-tight mb-6">
+                Tu sens que ton funnel
                 <br />
-                <span className="text-emerald-600">Je sais.</span>
+                <span className="text-blue-600">perd des clients en route</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-neutral-700 max-w-4xl mx-auto leading-relaxed mb-4">
-                Tu perds <strong className="text-red-600">30 à 50%</strong> de tes revenus potentiels dans{" "}
-                <strong>3 à 5 endroits précis</strong> de ton funnel.
+              <p className="text-xl text-neutral-600 max-w-2xl mx-auto leading-relaxed mb-8">
+                Mais tu ne sais pas exactement <strong>où</strong> ni <strong>pourquoi</strong>.
+                <br />
+                Les visiteurs arrivent, mais trop peu achètent.
               </p>
 
-              <p className="text-2xl md:text-3xl font-bold text-neutral-900 mb-12">
-                Je les trouve. En 48h. Toujours.
+              {/* Sous-titre rassurant */}
+              <p className="text-lg text-neutral-700 mb-12">
+                C'est normal. Et c'est réparable.
               </p>
 
+              {/* CTA principal */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <motion.a
-                  href="/mini-audit-gratuit"
+                  href="https://calendly.com/hello-thibautgallien/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-5 bg-emerald-600 text-white font-bold rounded-full text-lg hover:bg-emerald-500 transition-colors shadow-xl flex items-center gap-2"
+                  className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-full text-lg hover:bg-blue-500 transition-colors shadow-lg flex items-center gap-2"
                 >
-                  Mini-Audit Gratuit (10 places/mois)
+                  Discutons de ton funnel (gratuit)
                   <ArrowRight className="w-5 h-5" />
                 </motion.a>
 
                 <motion.a
-                  href="/services-new"
+                  href="#comment-ca-marche"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-5 border-2 border-neutral-900 text-neutral-900 font-bold rounded-full text-lg hover:bg-neutral-900 hover:text-white transition-colors"
+                  className="px-8 py-4 border-2 border-neutral-300 text-neutral-700 font-semibold rounded-full text-lg hover:border-neutral-400 transition-colors"
                 >
-                  Voir mes offres
+                  Comprendre l'approche
                 </motion.a>
               </div>
-
-              <p className="text-sm text-neutral-500 mt-6">
-                Ex-CM @Tugan.ai • 127+ funnels analysés • Data {'>'} Opinions
-              </p>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* SOCIAL PROOF STATS */}
-      <section className="container mx-auto px-6 py-16">
-        <FadeIn delay={0.2}>
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-6">
-              <MetricCard value={127} label="Funnels analysés" suffix="+" />
-              <MetricCard value={94} label="Ont le même problème" suffix="%" />
-              <MetricCard value={8} label="K€/mois perdus en moyenne" suffix="" />
-            </div>
-          </div>
-        </FadeIn>
-      </section>
-
-      {/* LE PROBLÈME */}
-      <section className="container mx-auto px-6 py-20">
-        <div className="max-w-5xl mx-auto">
+      {/* LE PROBLÈME (empathie) */}
+      <section className="py-20 bg-neutral-50">
+        <div className="container mx-auto px-6">
           <FadeIn>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 mb-6">
-                Le Syndrome du Funnel Troué
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-12">
+                Le problème que tu rencontres probablement
               </h2>
-              <p className="text-xl text-neutral-600 leading-relaxed">
-                Tu génères du trafic. Tu as une offre. Mais l'argent se barre quelque part.
-                <br />
-                <strong className="text-neutral-900">Et tu ne sais pas où.</strong>
-              </p>
-            </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Problème 1 */}
-              <motion.div
-                whileHover={{ y: -4 }}
-                className="p-8 bg-red-50 border-2 border-red-200 rounded-2xl"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
-                    <AlertTriangle className="w-6 h-6 text-red-600" />
-                  </div>
-                  <div>
+              <div className="grid md:grid-cols-2 gap-6">
+                {[
+                  {
+                    icon: TrendingDown,
+                    title: "Trafic qui n'aboutit pas",
+                    description:
+                      "Tu dépenses en pub ou en SEO, mais le taux de conversion est décevant. Quelque chose bloque entre l'arrivée et l'achat.",
+                  },
+                  {
+                    icon: Search,
+                    title: "Tu ne sais pas où chercher",
+                    description:
+                      "Google Analytics te donne des chiffres, mais tu ne sais pas quoi en faire. Où est le vrai problème ?",
+                  },
+                  {
+                    icon: Mail,
+                    title: "Emails qui convertissent peu",
+                    description:
+                      "Tes emails s'ouvrent, mais peu de clics. Ou pire : les gens cliquent mais n'achètent pas derrière.",
+                  },
+                  {
+                    icon: Target,
+                    title: "Optimisations au hasard",
+                    description:
+                      "Tu testes des trucs (couleur de bouton, titre...) mais sans vraiment savoir si ça vaut le coup. C'est frustrant.",
+                  },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="p-6 bg-white rounded-xl border border-neutral-200"
+                  >
+                    <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                      <item.icon className="w-6 h-6 text-red-600" />
+                    </div>
                     <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                      "Je bosse comme un fou mais mes revenus stagnent"
+                      {item.title}
                     </h3>
-                    <p className="text-neutral-700">
-                      Tu publies, tu crées, tu marketises... mais les résultats ne suivent pas.
-                      L'impression d'être sur un hamster wheel.
+                    <p className="text-neutral-600 leading-relaxed">
+                      {item.description}
                     </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Problème 2 */}
-              <motion.div
-                whileHover={{ y: -4 }}
-                className="p-8 bg-red-50 border-2 border-red-200 rounded-2xl"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
-                    <BarChart3 className="w-6 h-6 text-red-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                      "Je ne sais pas où je perds de l'argent"
-                    </h3>
-                    <p className="text-neutral-700">
-                      Angoisse permanente de laisser du cash sur la table. Sentiment
-                      d'incompétence : "Je devrais savoir ça..."
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Problème 3 */}
-              <motion.div
-                whileHover={{ y: -4 }}
-                className="p-8 bg-red-50 border-2 border-red-200 rounded-2xl"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
-                    <Target className="w-6 h-6 text-red-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                      "J'ai tout essayé, rien ne marche"
-                    </h3>
-                    <p className="text-neutral-700">
-                      Lassitude des "nouvelles tactiques". Méfiance envers les gourous.
-                      Besoin de quelqu'un qui SAIT.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Problème 4 */}
-              <motion.div
-                whileHover={{ y: -4 }}
-                className="p-8 bg-red-50 border-2 border-red-200 rounded-2xl"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-red-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                      "Certains mois marchent, d'autres non"
-                    </h3>
-                    <p className="text-neutral-700">
-                      Pas de baseline. Pas de tracking propre. Décisions au feeling, pas à
-                      la data. Résultat : imprévisible.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* LA SOLUTION */}
-      <section className="container mx-auto px-6 py-20">
-        <div className="max-w-5xl mx-auto">
-          <FadeIn>
-            <div className="bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-200 rounded-3xl p-10 md:p-16">
-              <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 mb-6">
-                  La Solution : Data {'>'} Opinions
-                </h2>
-                <p className="text-xl text-neutral-700 leading-relaxed">
-                  Je ne te vends pas de rêve.
-                  <br />
-                  <strong className="text-neutral-900">
-                    Je te montre les chiffres qui prouvent où tu perds de l'argent.
-                  </strong>
-                </p>
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl font-bold text-emerald-600">1</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-neutral-900 mb-2">
-                    J'analyse ton funnel
-                  </h3>
-                  <p className="text-neutral-600">
-                    Google Analytics, CRM, tracking. Je plonge dans la data. Pas de
-                    feeling.
-                  </p>
-                </div>
+              <div className="mt-12 p-6 bg-blue-50 border border-blue-200 rounded-xl text-center">
+                <p className="text-lg text-neutral-700">
+                  <strong>Bonne nouvelle :</strong> Ces problèmes ont des solutions concrètes.
+                  <br />
+                  Et elles ne demandent pas de refaire tout ton funnel.
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
 
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl font-bold text-emerald-600">2</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-neutral-900 mb-2">
-                    Je trouve les fuites
-                  </h3>
-                  <p className="text-neutral-600">
-                    3 à 5 problèmes précis. Pas 50. Ceux qui te coûtent vraiment cher.
-                  </p>
-                </div>
+      {/* COMMENT ÇA MARCHE */}
+      <section id="comment-ca-marche" className="py-20">
+        <div className="container mx-auto px-6">
+          <FadeIn>
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-6">
+                Voilà comment je travaille
+              </h2>
+              <p className="text-xl text-neutral-600 text-center mb-16">
+                Approche simple, basée sur tes données réelles
+              </p>
 
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl font-bold text-emerald-600">3</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-neutral-900 mb-2">
-                    Tu récupères ton argent
-                  </h3>
-                  <p className="text-neutral-600">
-                    Plan d'action priorisé. Tu sais quoi faire, dans quel ordre, et
-                    pourquoi.
-                  </p>
-                </div>
+              <div className="space-y-12">
+                {[
+                  {
+                    number: "1",
+                    title: "J'analyse tes données",
+                    description:
+                      "Google Analytics, Clarity (heatmaps), tes campagnes pub, tes emails. Je regarde où les gens bloquent, où ils partent, ce qu'ils ne cliquent pas.",
+                    icon: BarChart3,
+                  },
+                  {
+                    number: "2",
+                    title: "Je trouve les 2-3 vrais problèmes",
+                    description:
+                      "Pas une liste de 50 trucs à changer. Les 2-3 endroits qui, si on les corrige, vont vraiment impacter tes résultats. Priorisé par impact.",
+                    icon: Search,
+                  },
+                  {
+                    number: "3",
+                    title: "Je te montre comment corriger",
+                    description:
+                      "Tu reçois un plan d'action clair avec des exemples concrets. Soit tu le fais toi-même, soit je peux m'en occuper. À toi de choisir.",
+                    icon: Lightbulb,
+                  },
+                ].map((step, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2 }}
+                    className="flex gap-6"
+                  >
+                    <div className="flex-shrink-0">
+                      <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                        {step.number}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-3 mb-3">
+                        <step.icon className="w-6 h-6 text-blue-600" />
+                        <h3 className="text-2xl font-bold text-neutral-900">
+                          {step.title}
+                        </h3>
+                      </div>
+                      <p className="text-lg text-neutral-600 leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </FadeIn>
@@ -363,140 +273,61 @@ export default function HomePage() {
       </section>
 
       {/* POURQUOI MOI */}
-      <section className="container mx-auto px-6 py-20">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-20 bg-neutral-50">
+        <div className="container mx-auto px-6">
           <FadeIn>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 mb-6">
-                Pourquoi J'ai Toujours Raison
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-12">
+                Pourquoi cette approche ?
               </h2>
-              <p className="text-xl text-neutral-600">
-                Parce que j'ai déjà vu ton problème. 127 fois.
-              </p>
-            </div>
 
-            <div className="space-y-6">
-              <motion.div
-                whileHover={{ x: 4 }}
-                className="flex items-start gap-4 p-6 bg-white border-2 border-neutral-200 rounded-2xl"
-              >
-                <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                    Ex-CM chez Tugan.ai
-                  </h3>
-                  <p className="text-neutral-700">
-                    1 an à contacter 50 personnes/jour pour des sponsos. J'ai vu
-                    l'envers du décor. Je sais ce qui convertit vraiment vs. ce qu'on
-                    croit qui convertit.
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ x: 4 }}
-                className="flex items-start gap-4 p-6 bg-white border-2 border-neutral-200 rounded-2xl"
-              >
-                <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                    127+ funnels analysés
-                  </h3>
-                  <p className="text-neutral-700">
-                    J'ai tout vu. E-commerce, infoproduits, coaching, SaaS. 94% ont le
-                    même problème. Et 94% ne le voient pas. Moi si.
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ x: 4 }}
-                className="flex items-start gap-4 p-6 bg-white border-2 border-neutral-200 rounded-2xl"
-              >
-                <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                    Je refuse les clients mal fit
-                  </h3>
-                  <p className="text-neutral-700">
-                    Si ton problème c'est ton offre (pas ton funnel), je te le dis et je
-                    refuse la mission. Je ne prends pas l'argent des gens pour rien.
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ x: 4 }}
-                className="flex items-start gap-4 p-6 bg-white border-2 border-neutral-200 rounded-2xl"
-              >
-                <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                    Garantie Clarté Absolue
-                  </h3>
-                  <p className="text-neutral-700">
-                    Si après l'audit tu ne comprends pas clairement où tu perds de
-                    l'argent et comment le récupérer, je te rembourse. 7 jours. Sans
-                    question.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* LE COÛT DE L'INACTION */}
-      <section className="container mx-auto px-6 py-20">
-        <div className="max-w-5xl mx-auto">
-          <FadeIn>
-            <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-3xl p-10 md:p-16">
-              <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 mb-6">
-                  Le Coût de l'Inaction
-                </h2>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 border-2 border-red-200 mb-8">
-                <div className="text-center space-y-6">
-                  <p className="text-xl text-neutral-700">
-                    Si tu fais <strong>20K€/mois</strong> de CA.
-                  </p>
-                  <p className="text-xl text-neutral-700">
-                    Et que ton funnel a une fuite de conversion de{" "}
-                    <strong className="text-red-600">20%</strong> (moyenne basse).
-                  </p>
-                  <div className="pt-4 border-t-2 border-red-200">
-                    <p className="text-3xl font-bold text-red-600 mb-2">
-                      Tu perds 4 000€ TOUS LES MOIS
-                    </p>
-                    <p className="text-neutral-600">Sans même le savoir.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-red-100 border-2 border-red-300 rounded-xl p-6 text-center">
-                  <div className="text-sm text-red-700 mb-2">Attendre 1 mois</div>
-                  <div className="text-4xl font-bold text-red-600">-4K€</div>
-                </div>
-                <div className="bg-red-100 border-2 border-red-300 rounded-xl p-6 text-center">
-                  <div className="text-sm text-red-700 mb-2">Attendre 3 mois</div>
-                  <div className="text-4xl font-bold text-red-600">-12K€</div>
-                </div>
-                <div className="bg-red-100 border-2 border-red-300 rounded-xl p-6 text-center">
-                  <div className="text-sm text-red-700 mb-2">Attendre 6 mois</div>
-                  <div className="text-4xl font-bold text-red-600">-24K€</div>
-                </div>
-              </div>
-
-              <div className="text-center">
-                <p className="text-2xl font-bold text-neutral-900 mb-4">
-                  Mon audit coûte 497€.
+              <div className="prose prose-lg max-w-none">
+                <p className="text-lg text-neutral-700 leading-relaxed mb-6">
+                  À la base, je voulais juste faire de l'email marketing. Mais j'étais constamment frustré :
+                  mes emails marchaient bien, mais si la landing page derrière était nulle, ou si les pubs
+                  touchaient mal, tout s'écroulait.
                 </p>
-                <p className="text-3xl font-bold text-emerald-600">
-                  Ce n'est pas une dépense. C'est un investissement.
+
+                <p className="text-lg text-neutral-700 leading-relaxed mb-6">
+                  J'avais deux options :
                 </p>
+
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                    <span className="text-lg text-neutral-700">
+                      <strong>Option 1 :</strong> Proposer de tout faire (emails, pages, pubs, etc.).
+                      Trop cher, trop long en solo.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                    <span className="text-lg text-neutral-700">
+                      <strong>Option 2 :</strong> T'aider à comprendre ce qui déconne dans ton funnel,
+                      te donner un plan d'action basé sur tes vraies données, et te laisser choisir si
+                      tu veux le faire toi-même ou que je m'en charge.
+                    </span>
+                  </li>
+                </ul>
+
+                <p className="text-lg text-neutral-700 leading-relaxed">
+                  J'ai choisi l'option 2. Parce que le vrai problème, c'est jamais "je n'ai pas assez
+                  d'outils". C'est "je ne sais pas où regarder en premier".
+                </p>
+              </div>
+
+              <div className="mt-12 p-8 bg-white border-2 border-blue-200 rounded-xl">
+                <h3 className="text-2xl font-bold text-neutral-900 mb-4">
+                  Mon parcours en bref
+                </h3>
+                <ul className="space-y-3 text-neutral-700">
+                  <li>→ Marketing depuis 2020 (infoproduits, e-commerce, SEO)</li>
+                  <li>→ Ex-Community Manager chez Tugan.ai (1 an)</li>
+                  <li>
+                    → Actuellement Responsable E-commerce (email, SEO, SEA, CRO, analytics)
+                  </li>
+                  <li>→ 127+ funnels analysés</li>
+                </ul>
               </div>
             </div>
           </FadeIn>
@@ -504,47 +335,72 @@ export default function HomePage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="container mx-auto px-6 py-20">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-20">
+        <div className="container mx-auto px-6">
           <FadeIn>
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-200 rounded-3xl p-10 md:p-16 text-center"
-            >
-              <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 mb-6">
-                Prêt à Arrêter de Perdre de l'Argent ?
-              </h2>
-              <p className="text-xl text-neutral-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Commence par un <strong>Mini-Audit Flash gratuit</strong>.
-                <br />
-                Je te montre en 15 minutes où ton funnel fuit.
-              </p>
+            <div className="max-w-4xl mx-auto">
+              <div className="p-12 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl text-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+                  Parlons de ton funnel
+                </h2>
+                <p className="text-xl text-neutral-600 mb-8 max-w-2xl mx-auto">
+                  On prend 30 minutes. Tu me montres ton funnel, je te dis où je vois des fuites.
+                  Pas de pitch, pas de pression. Juste une discussion honnête.
+                </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.a
-                  href="/mini-audit-gratuit"
+                  href="https://calendly.com/hello-thibautgallien/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-5 bg-emerald-600 text-white font-bold rounded-full text-lg hover:bg-emerald-500 transition-colors shadow-xl flex items-center justify-center gap-2"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full text-lg transition-colors shadow-xl"
                 >
-                  Postuler pour un Mini-Audit Gratuit
+                  Réserver 30 minutes (gratuit)
                   <ArrowRight className="w-5 h-5" />
                 </motion.a>
 
-                <motion.a
-                  href="/services-new"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-5 border-2 border-neutral-900 text-neutral-900 font-bold rounded-full text-lg hover:bg-neutral-900 hover:text-white transition-colors flex items-center justify-center gap-2"
-                >
-                  Voir toutes mes offres
-                </motion.a>
+                <p className="text-sm text-neutral-500 mt-6">
+                  Pas de carte bancaire. Pas d'engagement. Juste une vraie discussion.
+                </p>
               </div>
 
-              <p className="text-sm text-neutral-500 mt-8">
-                Limité à 10 places/mois • Réponse sous 24h • Aucune vente forcée
-              </p>
-            </motion.div>
+              {/* FAQ rapide */}
+              <div className="mt-16 space-y-6">
+                <h3 className="text-2xl font-bold text-neutral-900 text-center mb-8">
+                  Questions fréquentes
+                </h3>
+
+                {[
+                  {
+                    q: "C'est vraiment gratuit ?",
+                    a: "Oui. L'appel de 30 min est gratuit. Si après on décide de bosser ensemble, là on parle tarifs. Mais la première discussion, c'est cadeau.",
+                  },
+                  {
+                    q: "Je dois avoir combien de trafic minimum ?",
+                    a: "Au moins 500 visiteurs/mois et un minimum de 5K€ de CA mensuel. En dessous, c'est trop tôt pour optimiser (mieux vaut focus sur l'acquisition).",
+                  },
+                  {
+                    q: "Tu fais quoi exactement ?",
+                    a: "Deux options : (1) Diagnostic complet avec plan d'action (tu implémentes), ou (2) Optimisation complète où je gère tout pendant 60 jours.",
+                  },
+                ].map((faq, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="p-6 bg-neutral-50 rounded-xl"
+                  >
+                    <h4 className="font-bold text-lg text-neutral-900 mb-2">
+                      {faq.q}
+                    </h4>
+                    <p className="text-neutral-600 leading-relaxed">{faq.a}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </FadeIn>
         </div>
       </section>

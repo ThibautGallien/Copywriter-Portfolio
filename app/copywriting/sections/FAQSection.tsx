@@ -44,9 +44,9 @@ export default function FAQSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
               whileHover={{ y: -4 }}
-              className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-emerald-200 transition-colors"
+              className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-blue-200 transition-colors"
             >
-              <h4 className="font-semibold text-emerald-600 mb-3 text-lg">
+              <h4 className="font-semibold text-blue-600 mb-3 text-lg">
                 {faq.question}
               </h4>
               <p className="text-neutral-600 leading-relaxed">{faq.answer}</p>

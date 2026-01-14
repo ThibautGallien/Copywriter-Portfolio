@@ -161,8 +161,8 @@ export default function BlogPage() {
             <Card
               className={`overflow-hidden group transition-all duration-300 h-full cursor-pointer border-2 ${
                 featured
-                  ? "bg-gradient-to-br from-emerald-50 to-white border-emerald-200 hover:border-emerald-400 hover:shadow-xl"
-                  : "bg-white border-neutral-200 hover:border-emerald-200 hover:shadow-lg"
+                  ? "bg-gradient-to-br from-blue-50 to-white border-blue-200 hover:border-blue-400 hover:shadow-xl"
+                  : "bg-white border-neutral-200 hover:border-blue-200 hover:shadow-lg"
               }`}
             >
               <CardContent
@@ -184,7 +184,7 @@ export default function BlogPage() {
 
                 {/* Title */}
                 <h3
-                  className={`font-bold leading-tight mb-4 group-hover:text-emerald-600 transition-colors ${
+                  className={`font-bold leading-tight mb-4 group-hover:text-blue-600 transition-colors ${
                     featured
                       ? "text-3xl text-neutral-900"
                       : "text-xl text-neutral-900 flex-grow"
@@ -208,14 +208,14 @@ export default function BlogPage() {
                     {post.categories.map((category: string, idx: number) => (
                       <span
                         key={category}
-                        className="px-3 py-1.5 text-xs font-medium rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200"
+                        className="px-3 py-1.5 text-xs font-medium rounded-full bg-blue-50 text-blue-700 border border-blue-200"
                       >
                         {category}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center text-emerald-600 font-semibold text-sm group-hover:text-emerald-700 transition-colors ml-4">
+                  <div className="flex items-center text-blue-600 font-semibold text-sm group-hover:text-blue-700 transition-colors ml-4">
                     Lire
                     <motion.div
                       className="ml-2"
@@ -230,8 +230,8 @@ export default function BlogPage() {
                 {/* Author */}
                 {!featured && (
                   <div className="flex items-center gap-2 mt-5 pt-5 border-t border-neutral-200">
-                    <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center">
-                      <User className="w-4 h-4 text-emerald-600" />
+                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                      <User className="w-4 h-4 text-blue-600" />
                     </div>
                     <span className="text-sm text-neutral-600 font-medium">
                       {post.author}
@@ -254,14 +254,14 @@ export default function BlogPage() {
           <div className="text-center mb-16 max-w-4xl mx-auto">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-full mb-6 cursor-default"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full mb-6 cursor-default"
             >
               <motion.span
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-2 bg-emerald-500 rounded-full"
+                className="w-2 h-2 bg-blue-500 rounded-full"
               />
-              <span className="text-sm font-semibold text-emerald-700">
+              <span className="text-sm font-semibold text-blue-700">
                 Blog
               </span>
             </motion.div>
@@ -269,13 +269,13 @@ export default function BlogPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-neutral-900 mb-6 leading-tight">
               Conseils{" "}
               <span className="relative inline-block">
-                <span className="text-emerald-600">Copywriting</span>
+                <span className="text-blue-600">Copywriting</span>
                 <motion.svg
                   initial={{ pathLength: 0 }}
                   whileInView={{ pathLength: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="absolute -bottom-2 left-0 w-full h-3 text-emerald-200"
+                  className="absolute -bottom-2 left-0 w-full h-3 text-blue-200"
                   viewBox="0 0 200 10"
                   fill="none"
                 >
@@ -309,7 +309,7 @@ export default function BlogPage() {
                   placeholder="Rechercher des articles..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 h-12 bg-neutral-50 border-neutral-200 focus:border-emerald-500 focus:ring-emerald-500 text-neutral-900 placeholder-neutral-400 rounded-xl"
+                  className="pl-12 h-12 bg-neutral-50 border-neutral-200 focus:border-blue-500 focus:ring-blue-500 text-neutral-900 placeholder-neutral-400 rounded-xl"
                 />
               </div>
 
@@ -323,7 +323,7 @@ export default function BlogPage() {
                     whileTap={{ scale: 0.95 }}
                     className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
                       selectedCategory === category
-                        ? "bg-emerald-600 text-white shadow-md"
+                        ? "bg-blue-600 text-white shadow-md"
                         : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
                     }`}
                   >
@@ -349,7 +349,7 @@ export default function BlogPage() {
                   <>
                     {" "}
                     pour{" "}
-                    <span className="font-semibold text-emerald-600">
+                    <span className="font-semibold text-blue-600">
                       &quot;{searchTerm}&quot;
                     </span>
                   </>
@@ -358,7 +358,7 @@ export default function BlogPage() {
                   <>
                     {" "}
                     dans{" "}
-                    <span className="font-semibold text-emerald-600">
+                    <span className="font-semibold text-blue-600">
                       &quot;{selectedCategory}&quot;
                     </span>
                   </>
@@ -377,7 +377,7 @@ export default function BlogPage() {
                 <FadeIn delay={0.2}>
                   <div className="mb-16">
                     <div className="flex items-center gap-3 mb-8">
-                      <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+                      <div className="h-1 w-12 bg-blue-500 rounded-full" />
                       <h2 className="text-2xl md:text-3xl font-bold text-neutral-900">
                         Articles en vedette
                       </h2>
@@ -442,7 +442,7 @@ export default function BlogPage() {
                 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-500 transition-colors"
+                className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-500 transition-colors"
               >
                 Réinitialiser les filtres
               </motion.button>
@@ -457,11 +457,11 @@ export default function BlogPage() {
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <Card className="bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-200 overflow-hidden">
+              <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 overflow-hidden">
                 <CardContent className="p-10 md:p-12 relative">
                   {/* Decorative elements */}
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-100 rounded-full blur-3xl opacity-30 -z-10" />
-                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-200 rounded-full blur-3xl opacity-20 -z-10" />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-30 -z-10" />
+                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-200 rounded-full blur-3xl opacity-20 -z-10" />
 
                   <div className="relative z-10 text-center max-w-3xl mx-auto">
                     <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
@@ -479,7 +479,7 @@ export default function BlogPage() {
                       <Button
                         asChild
                         size="lg"
-                        className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-8 py-6 rounded-full text-lg shadow-lg hover:shadow-xl transition-all"
+                        className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-6 rounded-full text-lg shadow-lg hover:shadow-xl transition-all"
                       >
                         <Link
                           href="/contact"

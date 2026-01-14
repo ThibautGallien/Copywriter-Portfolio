@@ -19,13 +19,13 @@ export default function ConclusionSection() {
             d'achat et la clarté du message.
           </p>
 
-          <div className="bg-emerald-50 rounded-2xl p-6 border border-emerald-200">
-            <h4 className="font-bold text-emerald-700 mb-4">
+          <div className="bg-blue-50 rounded-2xl p-6 border border-blue-200">
+            <h4 className="font-bold text-blue-700 mb-4">
               Trois choses comptent vraiment :
             </h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-1" />
+                <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                 <span className="text-neutral-600">
                   Parler de{" "}
                   <strong className="text-neutral-900">bénéfices</strong> (pas
@@ -33,7 +33,7 @@ export default function ConclusionSection() {
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-1" />
+                <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                 <span className="text-neutral-600">
                   Lever les{" "}
                   <strong className="text-neutral-900">objections</strong> avant
@@ -41,7 +41,7 @@ export default function ConclusionSection() {
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-1" />
+                <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                 <span className="text-neutral-600">
                   Rendre l'
                   <strong className="text-neutral-900">
@@ -56,7 +56,7 @@ export default function ConclusionSection() {
           <Highlight>
             Si tu retiens un seul truc de cet article, c'est celui-ci : un bon
             copy est un copy qui fait acheter, pas un copy qui "sonne bien".
-            <span className="text-emerald-600 font-bold">
+            <span className="text-blue-600 font-bold">
               {" "}
               Mesure tout. Teste systématiquement. Arrête de chercher la formule
               magique. Elle n'existe pas.
@@ -72,7 +72,7 @@ export default function ConclusionSection() {
 
           <p className="text-xl font-medium text-center text-neutral-900">
             Le copywriting, c'est ça :
-            <span className="text-emerald-600 font-bold">
+            <span className="text-blue-600 font-bold">
               {" "}
               des itérations constantes basées sur des données réelles.
             </span>

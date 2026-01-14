@@ -69,7 +69,7 @@ export function ArticleHeader({
       >
         <Link
           href="/blog"
-          className="inline-flex items-center text-neutral-500 hover:text-emerald-600 transition-colors duration-300"
+          className="inline-flex items-center text-neutral-500 hover:text-blue-600 transition-colors duration-300"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Retour au blog
@@ -138,9 +138,9 @@ export function KeyPointsSection({ points }: { points: KeyPoint[] }) {
           <motion.div
             key={index}
             whileHover={{ y: -4 }}
-            className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-emerald-200 transition-colors text-center"
+            className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-blue-200 transition-colors text-center"
           >
-            <point.icon className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+            <point.icon className="w-8 h-8 text-blue-600 mx-auto mb-3" />
             <h3 className="font-semibold mb-2 text-neutral-900">
               {point.title}
             </h3>
@@ -156,7 +156,7 @@ export function KeyPointsSection({ points }: { points: KeyPoint[] }) {
 export function TableOfContents({ items }: { items: TableOfContentsItem[] }) {
   return (
     <div className="py-12">
-      <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-200 rounded-2xl p-6">
+      <div className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 rounded-2xl p-6">
         <h2 className="text-xl font-bold font-sora mb-4 text-neutral-900">
           Sommaire
         </h2>
@@ -165,7 +165,7 @@ export function TableOfContents({ items }: { items: TableOfContentsItem[] }) {
             <a
               key={index}
               href={`#${item.id}`}
-              className="block text-neutral-600 hover:text-emerald-600 transition-colors duration-300 py-1 font-medium"
+              className="block text-neutral-600 hover:text-blue-600 transition-colors duration-300 py-1 font-medium"
             >
               {index + 1}. {item.title}
             </a>
@@ -211,12 +211,12 @@ export function BenefitsList({
   return (
     <div className={`${cardClassName} rounded-2xl p-6`}>
       {title && (
-        <h3 className="text-xl font-bold text-emerald-600 mb-4">{title}</h3>
+        <h3 className="text-xl font-bold text-blue-600 mb-4">{title}</h3>
       )}
       <ul className="space-y-3">
         {benefits.map((benefit, index) => (
           <li key={index} className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
+            <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
             <div className="text-neutral-600">
               <strong className="text-neutral-900">{benefit.title}:</strong>{" "}
               {benefit.description}
@@ -261,7 +261,7 @@ export function MistakesList({
 export function DetailedExample({ example }: { example: Example }) {
   return (
     <div className="bg-white rounded-2xl p-6 border border-neutral-200">
-      <h3 className="text-xl font-bold text-emerald-600 mb-4">
+      <h3 className="text-xl font-bold text-blue-600 mb-4">
         {example.title}
       </h3>
       <p className="text-neutral-600 mb-4">{example.description}</p>
@@ -270,7 +270,7 @@ export function DetailedExample({ example }: { example: Example }) {
       <ul className="space-y-2 mb-4">
         {example.points.map((point, index) => (
           <li key={index} className="flex items-start gap-2">
-            <CheckCircle className="w-4 h-4 text-emerald-600 mt-1 flex-shrink-0" />
+            <CheckCircle className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
             <span className="text-sm text-neutral-600">{point}</span>
           </li>
         ))}
@@ -287,8 +287,8 @@ export function DetailedExample({ example }: { example: Example }) {
 // Highlight
 export function Highlight({
   children,
-  color = "from-emerald-50 to-emerald-100",
-  borderColor = "border-emerald-200",
+  color = "from-blue-50 to-blue-100",
+  borderColor = "border-blue-200",
 }: {
   children: React.ReactNode;
   color?: string;
@@ -309,7 +309,7 @@ export function ArticleNavigation() {
     <div className="flex flex-col sm:flex-row justify-between items-center gap-4 border-t border-neutral-200 pt-8 mt-16">
       <Link
         href="/blog"
-        className="flex items-center text-neutral-500 hover:text-emerald-600 transition-colors duration-300"
+        className="flex items-center text-neutral-500 hover:text-blue-600 transition-colors duration-300"
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
         Retour au blog
@@ -318,13 +318,13 @@ export function ArticleNavigation() {
       <div className="flex gap-4">
         <Link
           href="/contact"
-          className="px-6 py-2.5 border-2 border-neutral-200 text-neutral-700 rounded-full hover:border-emerald-200 hover:text-emerald-600 transition-colors font-medium"
+          className="px-6 py-2.5 border-2 border-neutral-200 text-neutral-700 rounded-full hover:border-blue-200 hover:text-blue-600 transition-colors font-medium"
         >
           Me contacter
         </Link>
         <Link
           href="/services"
-          className="inline-flex items-center gap-2 px-6 py-2.5 bg-emerald-600 text-white rounded-full hover:bg-emerald-500 transition-colors font-medium"
+          className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition-colors font-medium"
         >
           Mes services
           <ArrowRight className="w-4 h-4" />
@@ -348,7 +348,7 @@ export function ArticleCTA({
 }) {
   return (
     <div className="py-12">
-      <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-200 rounded-2xl p-6 sm:p-8 text-center">
+      <div className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 rounded-2xl p-6 sm:p-8 text-center">
         <h2 className="text-xl sm:text-2xl font-bold font-sora mb-4 text-neutral-900">
           {title}
         </h2>
@@ -357,7 +357,7 @@ export function ArticleCTA({
         </p>
         <Link
           href={buttonLink}
-          className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-emerald-600 text-white rounded-full hover:bg-emerald-500 transition-colors font-semibold text-sm sm:text-base"
+          className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition-colors font-semibold text-sm sm:text-base"
         >
           <span className="hidden xs:inline">{buttonText}</span>
           <span className="xs:hidden">Discuter du projet</span>

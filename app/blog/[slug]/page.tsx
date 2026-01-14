@@ -106,7 +106,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <div className="mb-8">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-medium transition-colors"
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               Retour au blog
@@ -121,7 +121,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 {post.categories.map((category) => (
                   <span
                     key={category}
-                    className="px-4 py-2 text-sm font-semibold rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200"
+                    className="px-4 py-2 text-sm font-semibold rounded-full bg-blue-50 text-blue-700 border border-blue-200"
                   >
                     {category}
                   </span>
@@ -141,8 +141,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               {/* Meta info */}
               <div className="flex flex-wrap items-center gap-6 text-neutral-600 pb-8 border-b border-neutral-200">
                 <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
-                    <User className="w-5 h-5 text-emerald-600" />
+                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                    <User className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-neutral-900">
@@ -188,13 +188,13 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 {previousPost && (
                   <Link
                     href={previousPost.url}
-                    className="group p-6 bg-neutral-50 hover:bg-emerald-50 border-2 border-neutral-200 hover:border-emerald-200 rounded-2xl transition-all"
+                    className="group p-6 bg-neutral-50 hover:bg-blue-50 border-2 border-neutral-200 hover:border-blue-200 rounded-2xl transition-all"
                   >
                     <div className="flex items-center gap-2 text-sm text-neutral-500 mb-3">
                       <ArrowLeft className="w-4 h-4" />
                       <span>Article précédent</span>
                     </div>
-                    <h4 className="font-bold text-neutral-900 group-hover:text-emerald-600 transition-colors line-clamp-2">
+                    <h4 className="font-bold text-neutral-900 group-hover:text-blue-600 transition-colors line-clamp-2">
                       {previousPost.title}
                     </h4>
                   </Link>
@@ -203,13 +203,13 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 {nextPost && (
                   <Link
                     href={nextPost.url}
-                    className="group p-6 bg-neutral-50 hover:bg-emerald-50 border-2 border-neutral-200 hover:border-emerald-200 rounded-2xl transition-all md:ml-auto"
+                    className="group p-6 bg-neutral-50 hover:bg-blue-50 border-2 border-neutral-200 hover:border-blue-200 rounded-2xl transition-all md:ml-auto"
                   >
                     <div className="flex items-center gap-2 text-sm text-neutral-500 mb-3 md:justify-end">
                       <span>Article suivant</span>
                       <ArrowRight className="w-4 h-4" />
                     </div>
-                    <h4 className="font-bold text-neutral-900 group-hover:text-emerald-600 transition-colors line-clamp-2 md:text-right">
+                    <h4 className="font-bold text-neutral-900 group-hover:text-blue-600 transition-colors line-clamp-2 md:text-right">
                       {nextPost.title}
                     </h4>
                   </Link>
@@ -219,7 +219,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           )}
 
           {/* CTA Final */}
-          <div className="mt-16 p-10 bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-200 rounded-2xl text-center">
+          <div className="mt-16 p-10 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl text-center">
             <h3 className="text-3xl font-bold text-neutral-900 mb-4">
               Prêt à optimiser ton funnel ?
             </h3>
@@ -231,7 +231,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               href="https://calendly.com/hello-thibautgallien/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-full text-lg transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-full text-lg transition-colors"
             >
               Réserver un audit gratuit
               <ArrowRight className="w-5 h-5" />

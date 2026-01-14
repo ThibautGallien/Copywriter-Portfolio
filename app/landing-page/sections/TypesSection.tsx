@@ -69,7 +69,7 @@ function TypeCard({
         whileHover={{ y: -6 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
-        <Card className="bg-white border-2 border-neutral-200 hover:border-emerald-200 transition-all">
+        <Card className="bg-white border-2 border-neutral-200 hover:border-blue-200 transition-all">
           <CardContent className="p-8">
             {/* Header */}
             <div className="flex items-center gap-4 mb-6">
@@ -82,7 +82,7 @@ function TypeCard({
                   damping: 15,
                   delay: delay + 0.1,
                 }}
-                className="bg-emerald-600 text-white rounded-2xl w-12 h-12 flex items-center justify-center text-xl font-bold flex-shrink-0"
+                className="bg-blue-600 text-white rounded-2xl w-12 h-12 flex items-center justify-center text-xl font-bold flex-shrink-0"
               >
                 {number}
               </motion.div>
@@ -90,9 +90,9 @@ function TypeCard({
             </div>
 
             {/* Conversion Rate Badge */}
-            <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-2 mb-6">
+            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-2 mb-6">
               <svg
-                className="w-4 h-4 text-emerald-600"
+                className="w-4 h-4 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -104,7 +104,7 @@ function TypeCard({
                   d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                 />
               </svg>
-              <span className="font-bold text-emerald-700">
+              <span className="font-bold text-blue-700">
                 Conversion moyenne : {conversion}
               </span>
             </div>
@@ -131,7 +131,7 @@ function TypeCard({
                     transition={{ delay: delay + 0.2 + index * 0.05 }}
                     className="flex items-center gap-2 text-neutral-700"
                   >
-                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0" />
                     {useCase}
                   </motion.li>
                 ))}
@@ -153,7 +153,7 @@ function TypeCard({
                     className="flex items-start gap-3 text-neutral-700"
                   >
                     <svg
-                      className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0"
+                      className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -306,7 +306,7 @@ export default function TypesSection() {
           className="mt-16"
         >
           <h3 className="text-3xl font-bold text-neutral-900 mb-8">
-            Comment <span className="text-emerald-600">choisir</span> ?
+            Comment <span className="text-blue-600">choisir</span> ?
           </h3>
 
           {/* Desktop Table */}
@@ -344,7 +344,7 @@ export default function TypesSection() {
                     <td className="p-5 text-neutral-700">{row.type}</td>
                     <td className="p-5 text-neutral-700">{row.form}</td>
                     <td className="p-5">
-                      <span className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 font-bold px-3 py-1 rounded-full">
+                      <span className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 font-bold px-3 py-1 rounded-full">
                         <svg
                           className="w-3 h-3"
                           fill="none"
@@ -383,7 +383,7 @@ export default function TypesSection() {
                   <h4 className="font-bold text-neutral-900">
                     {row.objective}
                   </h4>
-                  <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 font-bold text-sm px-3 py-1 rounded-full">
+                  <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 font-bold text-sm px-3 py-1 rounded-full">
                     <svg
                       className="w-3 h-3"
                       fill="none"

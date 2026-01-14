@@ -81,7 +81,7 @@ function Button({
   const baseStyles =
     "inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-full transition-all";
   const variants = {
-    primary: "bg-emerald-600 text-white hover:bg-emerald-500",
+    primary: "bg-blue-600 text-white hover:bg-blue-500",
     secondary: "bg-neutral-100 text-neutral-700 hover:bg-neutral-200",
     outline:
       "border-2 border-neutral-200 text-neutral-700 hover:border-neutral-300",
@@ -234,7 +234,7 @@ export default function EmailBienvenuePage() {
           <FadeIn>
             <Link
               href="/blog"
-              className="inline-flex items-center text-neutral-500 hover:text-emerald-600 transition-colors mb-8"
+              className="inline-flex items-center text-neutral-500 hover:text-blue-600 transition-colors mb-8"
             >
               <svg
                 className="w-4 h-4 mr-2"
@@ -317,7 +317,7 @@ export default function EmailBienvenuePage() {
                 {articleMeta.categories.map((category) => (
                   <span
                     key={category}
-                    className="px-4 py-1.5 text-sm font-medium bg-emerald-50 text-emerald-600 rounded-full"
+                    className="px-4 py-1.5 text-sm font-medium bg-blue-50 text-blue-600 rounded-full"
                   >
                     {category}
                   </span>
@@ -356,7 +356,7 @@ export default function EmailBienvenuePage() {
 
           {/* Table of Contents */}
           <FadeIn delay={0.3}>
-            <div className="bg-emerald-50 rounded-2xl p-8 mb-12 border border-emerald-100">
+            <div className="bg-blue-50 rounded-2xl p-8 mb-12 border border-blue-100">
               <h2 className="text-xl font-bold text-neutral-900 mb-4">
                 Sommaire
               </h2>
@@ -365,7 +365,7 @@ export default function EmailBienvenuePage() {
                   <a
                     key={index}
                     href={`#${item.id}`}
-                    className="block text-neutral-700 hover:text-emerald-600 transition-colors py-1"
+                    className="block text-neutral-700 hover:text-blue-600 transition-colors py-1"
                   >
                     {index + 1}. {item.title}
                   </a>
@@ -404,7 +404,7 @@ export default function EmailBienvenuePage() {
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <svg
-                        className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0"
+                        className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -426,7 +426,7 @@ export default function EmailBienvenuePage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <svg
-                        className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0"
+                        className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -448,7 +448,7 @@ export default function EmailBienvenuePage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <svg
-                        className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0"
+                        className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -469,7 +469,7 @@ export default function EmailBienvenuePage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <svg
-                        className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0"
+                        className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -491,11 +491,11 @@ export default function EmailBienvenuePage() {
                   </ul>
                 </div>
 
-                <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6 mb-8">
+                <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 mb-8">
                   <p className="text-center text-neutral-700">
                     La séquence de bienvenue n'est pas une perte de temps. C'est
                     même l'inverse :{" "}
-                    <span className="font-bold text-emerald-600">
+                    <span className="font-bold text-blue-600">
                       l'email de bienvenue est le seul moment où votre lecteur
                       attend votre message
                     </span>
@@ -622,7 +622,7 @@ export default function EmailBienvenuePage() {
                       whileHover={{ y: -2 }}
                       className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200"
                     >
-                      <h3 className="text-lg font-bold text-emerald-600 mb-3">
+                      <h3 className="text-lg font-bold text-blue-600 mb-3">
                         {section.title}
                       </h3>
                       <p className="text-neutral-700 mb-3">
@@ -636,10 +636,10 @@ export default function EmailBienvenuePage() {
                   ))}
                 </div>
 
-                <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6">
+                <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
                   <p className="text-center text-neutral-700">
                     Un bon email de bienvenue, ce n'est pas un patchwork.
-                    <span className="font-bold text-emerald-600">
+                    <span className="font-bold text-blue-600">
                       {" "}
                       C'est une flèche : un seul message, une seule direction.
                     </span>
@@ -661,7 +661,7 @@ export default function EmailBienvenuePage() {
                   la relation, vous préparez la vente.
                 </p>
 
-                <p className="text-lg font-medium text-emerald-600 mb-8">
+                <p className="text-lg font-medium text-blue-600 mb-8">
                   Durée idéale : 5 à 7 jours. Court pour garder l'attention,
                   assez long pour installer la confiance.
                 </p>
@@ -674,7 +674,7 @@ export default function EmailBienvenuePage() {
                       className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200"
                     >
                       <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">
+                        <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">
                           {index + 1}
                         </div>
                         <div className="flex-1">
@@ -682,7 +682,7 @@ export default function EmailBienvenuePage() {
                             <h3 className="text-lg font-bold text-neutral-900">
                               {email.title}
                             </h3>
-                            <span className="text-xs bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full font-medium">
+                            <span className="text-xs bg-blue-100 text-blue-600 px-3 py-1 rounded-full font-medium">
                               {email.timing}
                             </span>
                           </div>
@@ -709,7 +709,7 @@ export default function EmailBienvenuePage() {
                     whileHover={{ y: -4 }}
                     className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200"
                   >
-                    <h3 className="text-xl font-bold text-emerald-600 mb-4">
+                    <h3 className="text-xl font-bold text-blue-600 mb-4">
                       Personnalisation
                     </h3>
                     <ul className="space-y-2 text-neutral-700">
@@ -725,7 +725,7 @@ export default function EmailBienvenuePage() {
                     whileHover={{ y: -4 }}
                     className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200"
                   >
-                    <h3 className="text-xl font-bold text-emerald-600 mb-4">
+                    <h3 className="text-xl font-bold text-blue-600 mb-4">
                       Design simple
                     </h3>
                     <ul className="space-y-2 text-neutral-700">
@@ -739,7 +739,7 @@ export default function EmailBienvenuePage() {
                     whileHover={{ y: -4 }}
                     className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200"
                   >
-                    <h3 className="text-xl font-bold text-emerald-600 mb-4">
+                    <h3 className="text-xl font-bold text-blue-600 mb-4">
                       Tests A/B
                     </h3>
                     <ul className="space-y-2 text-neutral-700">
@@ -756,7 +756,7 @@ export default function EmailBienvenuePage() {
                     whileHover={{ y: -4 }}
                     className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200"
                   >
-                    <h3 className="text-xl font-bold text-emerald-600 mb-4">
+                    <h3 className="text-xl font-bold text-blue-600 mb-4">
                       RGPD & Délivrabilité
                     </h3>
                     <ul className="space-y-2 text-neutral-700">
@@ -768,9 +768,9 @@ export default function EmailBienvenuePage() {
                   </motion.div>
                 </div>
 
-                <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6 mt-8">
+                <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 mt-8">
                   <p className="text-center text-neutral-700">
-                    <span className="font-bold text-emerald-600">
+                    <span className="font-bold text-blue-600">
                       Plus vous respectez votre lecteur, plus vos emails sont
                       lus.
                     </span>
@@ -800,7 +800,7 @@ export default function EmailBienvenuePage() {
                     whileHover={{ y: -4 }}
                     className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200"
                   >
-                    <h3 className="text-xl font-bold text-emerald-600 mb-4">
+                    <h3 className="text-xl font-bold text-blue-600 mb-4">
                       Cabaïa (e-commerce)
                     </h3>
                     <div className="bg-white rounded-xl p-4 mb-4 border border-neutral-200">
@@ -827,7 +827,7 @@ export default function EmailBienvenuePage() {
                     whileHover={{ y: -4 }}
                     className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200"
                   >
-                    <h3 className="text-xl font-bold text-emerald-600 mb-4">
+                    <h3 className="text-xl font-bold text-blue-600 mb-4">
                       HubSpot (SaaS)
                     </h3>
                     <div className="bg-white rounded-xl p-4 mb-4 border border-neutral-200">
@@ -851,7 +851,7 @@ export default function EmailBienvenuePage() {
                     whileHover={{ y: -4 }}
                     className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200"
                   >
-                    <h3 className="text-xl font-bold text-emerald-600 mb-4">
+                    <h3 className="text-xl font-bold text-blue-600 mb-4">
                       Coach fictif (infopreneur)
                     </h3>
                     <div className="bg-white rounded-xl p-4 mb-4 border border-neutral-200">
@@ -890,12 +890,12 @@ export default function EmailBienvenuePage() {
                 </p>
 
                 <div className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200 mb-8">
-                  <h3 className="text-xl font-bold text-emerald-600 mb-4">
+                  <h3 className="text-xl font-bold text-blue-600 mb-4">
                     Comment orienter doucement vers l'achat
                   </h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <span className="text-emerald-600 font-bold text-lg">
+                      <span className="text-blue-600 font-bold text-lg">
                         1.
                       </span>
                       <span className="text-neutral-700">
@@ -904,7 +904,7 @@ export default function EmailBienvenuePage() {
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
-                      <span className="text-emerald-600 font-bold text-lg">
+                      <span className="text-blue-600 font-bold text-lg">
                         2.
                       </span>
                       <span className="text-neutral-700">
@@ -913,7 +913,7 @@ export default function EmailBienvenuePage() {
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
-                      <span className="text-emerald-600 font-bold text-lg">
+                      <span className="text-blue-600 font-bold text-lg">
                         3.
                       </span>
                       <span className="text-neutral-700">
@@ -974,7 +974,7 @@ export default function EmailBienvenuePage() {
                   au crash test. Cochez chaque point ci-dessous :
                 </p>
 
-                <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-8">
+                <div className="bg-blue-50 border border-blue-100 rounded-2xl p-8">
                   <div className="grid md:grid-cols-2 gap-4 mb-8">
                     {checklistItems.map((item, index) => (
                       <label
@@ -983,19 +983,19 @@ export default function EmailBienvenuePage() {
                       >
                         <input
                           type="checkbox"
-                          className="mt-1 w-4 h-4 accent-emerald-600"
+                          className="mt-1 w-4 h-4 accent-blue-600"
                         />
                         <span className="text-neutral-700 text-sm">{item}</span>
                       </label>
                     ))}
                   </div>
 
-                  <div className="bg-white border border-emerald-200 rounded-xl p-6">
+                  <div className="bg-white border border-blue-200 rounded-xl p-6">
                     <p className="text-center text-neutral-700">
                       Si vous ne cochez pas toutes les cases, votre email de
                       bienvenue risque de passer inaperçu.
                       <br />
-                      <span className="font-bold text-emerald-600">
+                      <span className="font-bold text-blue-600">
                         Si vous les cochez toutes, vous posez la première brique
                         d'un système qui rapporte.
                       </span>
@@ -1021,7 +1021,7 @@ export default function EmailBienvenuePage() {
                   <div className="bg-neutral-50 rounded-2xl p-6 border border-neutral-200">
                     <ul className="space-y-4">
                       <li className="flex items-center gap-3">
-                        <span className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+                        <span className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
                           1
                         </span>
                         <span>
@@ -1031,7 +1031,7 @@ export default function EmailBienvenuePage() {
                         </span>
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+                        <span className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
                           2
                         </span>
                         <span>
@@ -1047,7 +1047,7 @@ export default function EmailBienvenuePage() {
                   <p className="text-xl font-medium text-center">
                     Votre email de bienvenue n'est pas un "bonus".
                     <br />
-                    <span className="text-emerald-600 font-bold">
+                    <span className="text-blue-600 font-bold">
                       C'est la fondation de votre système. Ne le ratez pas.
                     </span>
                   </p>
@@ -1060,7 +1060,7 @@ export default function EmailBienvenuePage() {
           <FadeIn>
             <motion.div
               whileHover={{ y: -4 }}
-              className="bg-emerald-50 border border-emerald-100 rounded-3xl p-8 text-center mb-16"
+              className="bg-blue-50 border border-blue-100 rounded-3xl p-8 text-center mb-16"
             >
               <h3 className="text-2xl font-bold text-neutral-900 mb-4">
                 📩 Vous voulez savoir si votre séquence actuelle tient la route
@@ -1094,7 +1094,7 @@ export default function EmailBienvenuePage() {
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 border-t border-neutral-200 pt-8">
               <Link
                 href="/blog"
-                className="flex items-center text-neutral-500 hover:text-emerald-600 transition-colors"
+                className="flex items-center text-neutral-500 hover:text-blue-600 transition-colors"
               >
                 <svg
                   className="w-4 h-4 mr-2"

@@ -204,7 +204,7 @@ export default function ContactPage() {
         {/* Header */}
         <FadeIn className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-sora mb-6 leading-[1.1] text-neutral-900">
-            <span className="text-emerald-600">Ton Business. Ma Méthode.</span>
+            <span className="text-blue-600">Ton Business. Ma Méthode.</span>
             <br />
             Des Résultats Mesurables.
           </h1>
@@ -221,28 +221,28 @@ export default function ContactPage() {
             {/* Réponse Garantie */}
             <motion.div
               whileHover={{ y: -4 }}
-              className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl p-6 border border-emerald-200"
+              className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200"
             >
-              <h3 className="font-semibold font-sora mb-4 text-emerald-700 flex items-center gap-2">
+              <h3 className="font-semibold font-sora mb-4 text-blue-700 flex items-center gap-2">
                 <Zap className="w-5 h-5" /> Réponse Garantie
               </h3>
               <ul className="space-y-3 text-sm text-neutral-600">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                   <span>Réponse sous 24h maximum</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                   <span>Analyse gratuite de ta situation</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                   <span>
                     Conseils personnalisés (même si on ne bosse pas ensemble)
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                   <span>
                     Transparence totale sur ce que je peux ou ne peux pas faire
                     pour toi
@@ -322,7 +322,7 @@ export default function ContactPage() {
                       }
                       placeholder="Ton nom"
                       required
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 placeholder-neutral-400 transition-colors"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-blue-500 focus:outline-none text-neutral-900 placeholder-neutral-400 transition-colors"
                     />
                   </div>
                   <div className="space-y-2">
@@ -341,7 +341,7 @@ export default function ContactPage() {
                       }
                       placeholder="ton@email.com"
                       required
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 placeholder-neutral-400 transition-colors"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-blue-500 focus:outline-none text-neutral-900 placeholder-neutral-400 transition-colors"
                     />
                   </div>
                 </div>
@@ -363,7 +363,7 @@ export default function ContactPage() {
                         handleInputChange("company", e.target.value)
                       }
                       placeholder="Nom de ton projet/entreprise"
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 placeholder-neutral-400 transition-colors"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-blue-500 focus:outline-none text-neutral-900 placeholder-neutral-400 transition-colors"
                     />
                   </div>
                   <div className="space-y-2">
@@ -380,7 +380,7 @@ export default function ContactPage() {
                         handleSelectChange("businessType", e.target.value)
                       }
                       required
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 transition-colors"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-blue-500 focus:outline-none text-neutral-900 transition-colors"
                     >
                       <option value="">Choisis ton secteur</option>
                       {businessTypes.map((type) => (
@@ -408,7 +408,7 @@ export default function ContactPage() {
                         handleSelectChange("caMonthly", e.target.value)
                       }
                       required
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 transition-colors"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-blue-500 focus:outline-none text-neutral-900 transition-colors"
                     >
                       <option value="">Ton CA/mois</option>
                       {caRanges.map((range) => (
@@ -432,7 +432,7 @@ export default function ContactPage() {
                         handleSelectChange("trafficMonthly", e.target.value)
                       }
                       required
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 transition-colors"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-blue-500 focus:outline-none text-neutral-900 transition-colors"
                     >
                       <option value="">Ton trafic/mois</option>
                       {trafficRanges.map((range) => (
@@ -461,7 +461,7 @@ export default function ContactPage() {
                     placeholder={`Ex: "Mon taux d'abandon panier est de 70%" ou "Je ne sais pas où je perds de l'argent exactement"`}
                     rows={4}
                     required
-                    className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 placeholder-neutral-400 resize-none transition-colors"
+                    className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-blue-500 focus:outline-none text-neutral-900 placeholder-neutral-400 resize-none transition-colors"
                   />
                 </div>
 
@@ -481,7 +481,7 @@ export default function ContactPage() {
                         handleSelectChange("budget", e.target.value)
                       }
                       required
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 transition-colors"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-blue-500 focus:outline-none text-neutral-900 transition-colors"
                     >
                       <option value="">Ton budget estimé</option>
                       {budgetOptions.map((option) => (
@@ -505,7 +505,7 @@ export default function ContactPage() {
                         handleSelectChange("analyticsAccess", e.target.value)
                       }
                       required
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 transition-colors"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-blue-500 focus:outline-none text-neutral-900 transition-colors"
                     >
                       <option value="">Accès aux données</option>
                       {analyticsOptions.map((option) => (
@@ -526,7 +526,7 @@ export default function ContactPage() {
                     onChange={(e) =>
                       handleInputChange("newsletter", e.target.checked)
                     }
-                    className="w-5 h-5 rounded border-neutral-300 text-emerald-600 focus:ring-emerald-500 focus:ring-offset-0 mt-0.5"
+                    className="w-5 h-5 rounded border-neutral-300 text-blue-600 focus:ring-blue-500 focus:ring-offset-0 mt-0.5"
                   />
                   <label
                     htmlFor="newsletter"
@@ -543,7 +543,7 @@ export default function ContactPage() {
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 px-6 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full py-4 px-6 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>

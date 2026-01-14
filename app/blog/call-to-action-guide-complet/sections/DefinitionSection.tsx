@@ -97,11 +97,11 @@ const stats = [
 
 const colorMap: any = {
   emerald: {
-    bg: "bg-emerald-50",
-    border: "border-emerald-200",
-    text: "text-emerald-700",
-    icon: "text-emerald-600",
-    badge: "bg-emerald-100 text-emerald-700",
+    bg: "bg-blue-50",
+    border: "border-blue-200",
+    text: "text-blue-700",
+    icon: "text-blue-600",
+    badge: "bg-blue-100 text-blue-700",
   },
   blue: {
     bg: "bg-blue-50",
@@ -199,7 +199,7 @@ function TunnelStep({ step, index }: any) {
       <motion.div
         whileHover={{ x: 4 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="flex items-center gap-4 p-5 bg-gradient-to-r from-emerald-50 to-white rounded-xl border-2 border-emerald-100 hover:border-emerald-200 transition-all"
+        className="flex items-center gap-4 p-5 bg-gradient-to-r from-blue-50 to-white rounded-xl border-2 border-blue-100 hover:border-blue-200 transition-all"
       >
         <span className="text-3xl flex-shrink-0">{step.icon}</span>
         <span className="text-neutral-700 font-medium leading-relaxed">
@@ -252,7 +252,7 @@ export default function DefinitionSection() {
         {/* Formats de CTA */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+            <div className="h-1 w-12 bg-blue-500 rounded-full" />
             <h3 className="text-2xl md:text-3xl font-bold text-neutral-900">
               Les formats les plus courants
             </h3>
@@ -267,7 +267,7 @@ export default function DefinitionSection() {
         {/* Rôle dans le tunnel de conversion */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+            <div className="h-1 w-12 bg-blue-500 rounded-full" />
             <h3 className="text-2xl md:text-3xl font-bold text-neutral-900">
               Son rôle dans le tunnel de conversion
             </h3>
@@ -283,7 +283,7 @@ export default function DefinitionSection() {
             ))}
           </div>
 
-          <p className="text-neutral-700 leading-relaxed bg-neutral-50 border-l-4 border-emerald-500 p-6 rounded-r-xl">
+          <p className="text-neutral-700 leading-relaxed bg-neutral-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
             Sans CTA, tes efforts pour attirer du trafic restent stériles. Avec
             un CTA, chaque contenu devient un levier de conversion mesurable.
           </p>
@@ -313,7 +313,7 @@ export default function DefinitionSection() {
         >
           <Highlight>
             Un site sans CTA, c'est comme un magasin sans caisse :{" "}
-            <span className="text-emerald-600 font-bold">
+            <span className="text-blue-600 font-bold">
               tes visiteurs regardent, mais ils repartent sans rien emporter.
             </span>
           </Highlight>

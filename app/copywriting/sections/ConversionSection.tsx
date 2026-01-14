@@ -33,13 +33,13 @@ export default function ConversionSection() {
         </div>
 
         {/* Solution */}
-        <div className="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-6 mb-8">
-          <p className="text-lg font-bold mb-4 text-emerald-700">
+        <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 mb-8">
+          <p className="text-lg font-bold mb-4 text-blue-700">
             Voici comment je booste tes conversions :
           </p>
           <div className="space-y-4">
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+              <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
               <p className="text-neutral-600">
                 <strong className="text-neutral-900">
                   J&apos;audite ton funnel complet
@@ -49,7 +49,7 @@ export default function ConversionSection() {
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+              <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
               <p className="text-neutral-600">
                 <strong className="text-neutral-900">
                   Je réécris tes éléments critiques
@@ -59,7 +59,7 @@ export default function ConversionSection() {
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+              <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
               <p className="text-neutral-600">
                 <strong className="text-neutral-900">
                   Tu reçois un plan d&apos;action priorisé
@@ -78,7 +78,7 @@ export default function ConversionSection() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-block bg-emerald-600 text-white font-bold py-4 px-8 rounded-full hover:bg-emerald-500 transition-colors text-lg"
+            className="inline-block bg-blue-600 text-white font-bold py-4 px-8 rounded-full hover:bg-blue-500 transition-colors text-lg"
           >
             Réserve ton audit conversion gratuit (30 min)
           </motion.a>

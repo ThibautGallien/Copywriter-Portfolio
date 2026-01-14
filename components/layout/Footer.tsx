@@ -91,7 +91,7 @@ export default function Footer() {
                   whileHover={{ scale: 1.05 }}
                   className="text-xl font-bold text-neutral-900"
                 >
-                  Thibaut Gallien<span className="text-emerald-600">.</span>
+                  Thibaut Gallien<span className="text-blue-600">.</span>
                 </motion.span>
               </Link>
               <p className="text-neutral-600 text-sm leading-relaxed mb-6">
@@ -108,9 +108,9 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 bg-neutral-50 rounded-full flex items-center justify-center hover:bg-emerald-50 transition-colors duration-300 group border border-neutral-200 hover:border-emerald-200"
+                    className="w-10 h-10 bg-neutral-50 rounded-full flex items-center justify-center hover:bg-blue-50 transition-colors duration-300 group border border-neutral-200 hover:border-blue-200"
                   >
-                    <social.icon className="w-4 h-4 text-neutral-600 group-hover:text-emerald-600 transition-colors" />
+                    <social.icon className="w-4 h-4 text-neutral-600 group-hover:text-blue-600 transition-colors" />
                   </motion.a>
                 ))}
               </div>
@@ -131,7 +131,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-neutral-600 hover:text-emerald-600 transition-colors duration-300 inline-block"
+                      className="text-sm text-neutral-600 hover:text-blue-600 transition-colors duration-300 inline-block"
                     >
                       {link.label}
                     </Link>
@@ -162,14 +162,14 @@ export default function Footer() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="ton@email.com"
                   required
-                  className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-emerald-500 focus:outline-none text-neutral-900 placeholder-neutral-400 text-sm transition-colors"
+                  className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:border-blue-500 focus:outline-none text-neutral-900 placeholder-neutral-400 text-sm transition-colors"
                 />
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full px-4 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full px-4 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
@@ -208,7 +208,7 @@ export default function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-sm text-neutral-500 hover:text-emerald-600 transition-colors duration-300"
+                  className="text-sm text-neutral-500 hover:text-blue-600 transition-colors duration-300"
                 >
                   {link.label}
                 </Link>

@@ -51,7 +51,7 @@ export default function ApplicationSection() {
           ton business dès aujourd'hui. Voici où commencer.
         </p>
 
-        <h3 className="text-2xl font-bold text-emerald-600 mb-6">
+        <h3 className="text-2xl font-bold text-blue-600 mb-6">
           Les 3 endroits où ton copy tue tes conversions
         </h3>
 
@@ -64,9 +64,9 @@ export default function ApplicationSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -4 }}
-              className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-emerald-200 transition-colors"
+              className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-blue-200 transition-colors"
             >
-              <h4 className="font-bold text-emerald-600 mb-3">{item.title}</h4>
+              <h4 className="font-bold text-blue-600 mb-3">{item.title}</h4>
               <p className="text-neutral-600 mb-4">{item.problem}</p>
 
               <div className="grid md:grid-cols-2 gap-4 mb-4">
@@ -76,8 +76,8 @@ export default function ApplicationSection() {
                   </p>
                   <p className="text-neutral-600 text-sm">{item.before}</p>
                 </div>
-                <div className="bg-emerald-50 rounded-xl p-4 border border-emerald-200">
-                  <p className="text-emerald-600 font-semibold text-sm mb-2">
+                <div className="bg-blue-50 rounded-xl p-4 border border-blue-200">
+                  <p className="text-blue-600 font-semibold text-sm mb-2">
                     ✅ Après
                   </p>
                   <p className="text-neutral-600 text-sm">{item.after}</p>
@@ -89,7 +89,7 @@ export default function ApplicationSection() {
           ))}
         </div>
 
-        <h3 className="text-2xl font-bold text-emerald-600 mb-4">
+        <h3 className="text-2xl font-bold text-blue-600 mb-4">
           L'exercice des 10 minutes qui change tout
         </h3>
 
@@ -98,11 +98,11 @@ export default function ApplicationSection() {
           page de service, landing page.
         </p>
 
-        <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-200 rounded-2xl p-6 mb-6">
-          <h4 className="font-bold text-emerald-700 mb-4">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 rounded-2xl p-6 mb-6">
+          <h4 className="font-bold text-blue-700 mb-4">
             Applique cette formule simple :
           </h4>
-          <p className="text-lg font-semibold text-center text-emerald-600 mb-6">
+          <p className="text-lg font-semibold text-center text-blue-600 mb-6">
             Bénéfice + Délai + Objection levée
           </p>
 
@@ -115,7 +115,7 @@ export default function ApplicationSection() {
             </div>
             <div>
               <p className="text-sm text-neutral-500 mb-2">Après :</p>
-              <p className="text-neutral-900 bg-white rounded-xl p-3 border border-emerald-200">
+              <p className="text-neutral-900 bg-white rounded-xl p-3 border border-blue-200">
                 "Triple ton trafic qualifié en 90 jours (sans dépenser plus en
                 ads)"
               </p>
@@ -124,7 +124,7 @@ export default function ApplicationSection() {
 
           <div className="mt-4 space-y-2 text-sm">
             <p className="text-neutral-600">
-              • <strong className="text-emerald-700">Bénéfice :</strong> Triple
+              • <strong className="text-blue-700">Bénéfice :</strong> Triple
               ton trafic qualifié
             </p>
             <p className="text-neutral-600">
@@ -140,14 +140,14 @@ export default function ApplicationSection() {
         <Highlight>
           Tu veux pas devenir expert copywriter ? Pas grave. Maîtrise juste
           cette formule sur tes 5 pages principales.
-          <span className="text-emerald-600 font-bold">
+          <span className="text-blue-600 font-bold">
             {" "}
             Ça suffit pour débloquer 30 à 40% de conversions en plus.
           </span>
         </Highlight>
 
-        <div className="bg-emerald-50 rounded-2xl p-6 border border-emerald-200 mt-8">
-          <h4 className="font-bold text-emerald-700 mb-3">
+        <div className="bg-blue-50 rounded-2xl p-6 border border-blue-200 mt-8">
+          <h4 className="font-bold text-blue-700 mb-3">
             💡 Exemple concret
           </h4>
           <p className="text-neutral-600 mb-3">
@@ -155,7 +155,7 @@ export default function ApplicationSection() {
             Titre produit initial : "Complément multivitamines bio". Nouveau
             titre : "Retrouve ton énergie en 15 jours (sans café ni excitants)".
           </p>
-          <p className="text-emerald-700 font-semibold">
+          <p className="text-blue-700 font-semibold">
             Résultat : taux de clic sur la fiche produit +187% en 3 semaines.
           </p>
           <p className="text-neutral-500 text-sm mt-2">

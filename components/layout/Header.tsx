@@ -48,7 +48,7 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 className="text-lg md:text-xl font-bold text-neutral-900"
               >
-                Thibaut Gallien<span className="text-emerald-600">.</span>
+                Thibaut Gallien<span className="text-blue-600">.</span>
               </motion.span>
             </Link>
 
@@ -60,7 +60,7 @@ export default function Header() {
                     href={item.href}
                     className={`text-sm font-medium transition-colors duration-300 ${
                       pathname === item.href
-                        ? "text-emerald-600"
+                        ? "text-blue-600"
                         : "text-neutral-600 hover:text-neutral-900"
                     }`}
                   >
@@ -126,7 +126,7 @@ export default function Header() {
                         onClick={() => setIsOpen(false)}
                         className={`block py-2 text-lg font-medium transition-colors duration-300 ${
                           pathname === item.href
-                            ? "text-emerald-600"
+                            ? "text-blue-600"
                             : "text-neutral-600 hover:text-neutral-900"
                         }`}
                       >

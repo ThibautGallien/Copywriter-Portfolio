@@ -46,10 +46,10 @@ const placements = [
       "Action simple et évidente",
     ],
     icon: Home,
-    color: "from-emerald-500 to-emerald-600",
-    bgColor: "bg-emerald-50",
-    borderColor: "border-emerald-200",
-    textColor: "text-emerald-700",
+    color: "from-blue-500 to-blue-600",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-200",
+    textColor: "text-blue-700",
   },
   {
     title: "Sur tes landing pages",
@@ -143,9 +143,9 @@ const popupTiming = [
     trigger: "50-70% de l'article lu",
     offer: "Contenu complémentaire",
     timing: "Quand l'engagement est confirmé",
-    color: "from-emerald-500 to-emerald-600",
-    bgColor: "bg-emerald-50",
-    borderColor: "border-emerald-200",
+    color: "from-blue-500 to-blue-600",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-200",
   },
   {
     type: "Time on Page",
@@ -299,9 +299,9 @@ export default function PlacementSection() {
         {/* Emplacements principaux */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-10">
-            <div className="h-1 w-12 bg-emerald-500 rounded-full" />
+            <div className="h-1 w-12 bg-blue-500 rounded-full" />
             <h3 className="text-2xl md:text-3xl font-bold text-neutral-900">
-              Les <span className="text-emerald-600">emplacements</span>{" "}
+              Les <span className="text-blue-600">emplacements</span>{" "}
               stratégiques
             </h3>
           </div>
@@ -321,11 +321,11 @@ export default function PlacementSection() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <Card className="bg-gradient-to-br from-teal-50 to-emerald-50 border-2 border-teal-200 overflow-hidden relative">
+          <Card className="bg-gradient-to-br from-teal-50 to-blue-50 border-2 border-teal-200 overflow-hidden relative">
             <CardContent className="p-8 text-center relative z-10">
               {/* Decorative elements */}
               <div className="absolute top-0 left-0 w-32 h-32 bg-teal-100 rounded-full blur-3xl opacity-50 -z-10" />
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-emerald-100 rounded-full blur-3xl opacity-50 -z-10" />
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-blue-100 rounded-full blur-3xl opacity-50 -z-10" />
 
               <div className="inline-block px-4 py-2 rounded-full bg-teal-600 text-white text-sm font-bold mb-4">
                 {emailRule.title}
@@ -373,7 +373,7 @@ export default function PlacementSection() {
           <Highlight>
             Chaque contenu doit servir à capter un lead ou pousser vers une
             ressource complémentaire.
-            <span className="text-emerald-600 font-bold">
+            <span className="text-blue-600 font-bold">
               {" "}
               Sans CTA, ton trafic reste stérile.
             </span>

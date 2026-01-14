@@ -39,7 +39,7 @@ export default function ElementsSection() {
           {/* Élément #1 */}
           <div className="bg-white rounded-2xl p-6 border-2 border-neutral-200">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-neutral-900">
-              <span className="bg-emerald-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
+              <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
                 1
               </span>
               Un titre qui vend un bénéfice, pas une fonctionnalité
@@ -53,7 +53,7 @@ export default function ElementsSection() {
             </div>
 
             <div className="mb-4">
-              <p className="text-emerald-600 mb-2 font-semibold">✅ Bon</p>
+              <p className="text-blue-600 mb-2 font-semibold">✅ Bon</p>
               <p className="text-neutral-700">
                 &quot;Gère 500+ leads sans perdre une vente&quot;
               </p>
@@ -69,7 +69,7 @@ export default function ElementsSection() {
           {/* Élément #2 */}
           <div className="bg-white rounded-2xl p-6 border-2 border-neutral-200">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-neutral-900">
-              <span className="bg-emerald-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
+              <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
                 2
               </span>
               Un sous-titre qui lève l&apos;objection #1
@@ -103,7 +103,7 @@ export default function ElementsSection() {
           {/* Élément #3 */}
           <div className="bg-white rounded-2xl p-6 border-2 border-neutral-200">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-neutral-900">
-              <span className="bg-emerald-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
+              <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
                 3
               </span>
               Un CTA qui dit exactement ce qui va se passer
@@ -118,7 +118,7 @@ export default function ElementsSection() {
             </div>
 
             <div className="mb-4">
-              <p className="text-emerald-600 mb-2 font-semibold">✅ Bon</p>
+              <p className="text-blue-600 mb-2 font-semibold">✅ Bon</p>
               <p className="text-neutral-700">
                 &quot;Télécharger la checklist&quot;, &quot;Voir une démo de 2
                 min&quot;, &quot;Commencer l&apos;essai gratuit&quot;
@@ -135,7 +135,7 @@ export default function ElementsSection() {
           {/* Élément #4 */}
           <div className="bg-white rounded-2xl p-6 border-2 border-neutral-200">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-neutral-900">
-              <span className="bg-emerald-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
+              <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
                 4
               </span>
               Un formulaire court (3 champs max pour du lead gen)
@@ -147,10 +147,10 @@ export default function ElementsSection() {
 
             <div className="space-y-2 mb-4">
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
                 <p className="text-neutral-700">
                   3 champs :{" "}
-                  <strong className="text-emerald-600">
+                  <strong className="text-blue-600">
                     10,4% de conversion
                   </strong>
                 </p>
@@ -191,7 +191,7 @@ export default function ElementsSection() {
           {/* Élément #5 */}
           <div className="bg-white rounded-2xl p-6 border-2 border-neutral-200">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-neutral-900">
-              <span className="bg-emerald-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
+              <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
                 5
               </span>
               La preuve sociale (avis, logos, chiffres)
@@ -246,7 +246,7 @@ export default function ElementsSection() {
           {/* Élément #6 */}
           <div className="bg-white rounded-2xl p-6 border-2 border-neutral-200">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-neutral-900">
-              <span className="bg-emerald-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
+              <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
                 6
               </span>
               Des visuels qui montrent le produit en action
@@ -280,7 +280,7 @@ export default function ElementsSection() {
           {/* Élément #7 */}
           <div className="bg-white rounded-2xl p-6 border-2 border-neutral-200">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-neutral-900">
-              <span className="bg-emerald-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
+              <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
                 7
               </span>
               Une section &quot;Comment ça marche&quot; en 3 étapes
@@ -290,7 +290,7 @@ export default function ElementsSection() {
 
             <div className="space-y-3 mb-4">
               <div className="flex items-start gap-3">
-                <span className="bg-emerald-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-1">
+                <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-1">
                   1
                 </span>
                 <div>
@@ -301,7 +301,7 @@ export default function ElementsSection() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="bg-emerald-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-1">
+                <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-1">
                   2
                 </span>
                 <div>
@@ -314,7 +314,7 @@ export default function ElementsSection() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="bg-emerald-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-1">
+                <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm flex-shrink-0 mt-1">
                   3
                 </span>
                 <div>
@@ -337,7 +337,7 @@ export default function ElementsSection() {
           {/* Élément #8 */}
           <div className="bg-white rounded-2xl p-6 border-2 border-neutral-200">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-neutral-900">
-              <span className="bg-emerald-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
+              <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">
                 8
               </span>
               Un seul objectif, un seul CTA

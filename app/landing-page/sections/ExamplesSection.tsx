@@ -24,14 +24,14 @@ export default function ExamplesSection() {
           {/* Exemple #1 : Mailchimp */}
           <div className="bg-white rounded-2xl p-6 border-2 border-neutral-200">
             <div className="flex items-center gap-3 mb-4">
-              <span className="bg-emerald-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-lg font-bold">
+              <span className="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-lg font-bold">
                 1
               </span>
               <div>
                 <h3 className="text-2xl font-bold text-neutral-900">
                   Mailchimp - Landing page lead magnet
                 </h3>
-                <p className="text-emerald-600 font-bold">
+                <p className="text-blue-600 font-bold">
                   14,2% de conversion
                 </p>
               </div>
@@ -63,7 +63,7 @@ export default function ExamplesSection() {
 
             <div className="space-y-4 mb-6">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     Titre bénéfice direct
@@ -79,7 +79,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     Formulaire ultra-court
@@ -93,7 +93,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     Illustration simple
@@ -108,7 +108,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     CTA sans friction
@@ -121,7 +121,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     Preuve sociale discrète
@@ -136,7 +136,7 @@ export default function ExamplesSection() {
               </div>
             </div>
 
-            <div className="bg-emerald-50 border-2 border-emerald-200 p-4 rounded-xl">
+            <div className="bg-blue-50 border-2 border-blue-200 p-4 rounded-xl">
               <p className="font-bold mb-2 text-neutral-900">Résultat</p>
               <p className="text-neutral-700">
                 14,2% de conversion selon leur rapport annuel 2023.
@@ -154,14 +154,14 @@ export default function ExamplesSection() {
           {/* Exemple #2 : HubSpot */}
           <div className="bg-white rounded-2xl p-6 border-2 border-neutral-200">
             <div className="flex items-center gap-3 mb-4">
-              <span className="bg-emerald-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-lg font-bold">
+              <span className="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-lg font-bold">
                 2
               </span>
               <div>
                 <h3 className="text-2xl font-bold text-neutral-900">
                   HubSpot - Landing page démo B2B
                 </h3>
-                <p className="text-emerald-600 font-bold">9,7% de conversion</p>
+                <p className="text-blue-600 font-bold">9,7% de conversion</p>
               </div>
             </div>
 
@@ -191,7 +191,7 @@ export default function ExamplesSection() {
 
             <div className="space-y-4 mb-6">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     Titre problème/solution
@@ -207,7 +207,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     Vidéo démo 60 secondes
@@ -221,7 +221,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     Formulaire qualifiant
@@ -238,7 +238,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">Chatbot visible</p>
                   <p className="text-neutral-700">
@@ -251,7 +251,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">Logos clients</p>
                   <p className="text-neutral-700">
@@ -264,7 +264,7 @@ export default function ExamplesSection() {
               </div>
             </div>
 
-            <div className="bg-emerald-50 border-2 border-emerald-200 p-4 rounded-xl">
+            <div className="bg-blue-50 border-2 border-blue-200 p-4 rounded-xl">
               <p className="font-bold mb-2 text-neutral-900">Résultat</p>
               <p className="text-neutral-700">
                 9,7% selon étude de cas HubSpot 2024.
@@ -281,14 +281,14 @@ export default function ExamplesSection() {
           {/* Exemple #3 : Shopify */}
           <div className="bg-white rounded-2xl p-6 border-2 border-neutral-200">
             <div className="flex items-center gap-3 mb-4">
-              <span className="bg-emerald-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-lg font-bold">
+              <span className="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-lg font-bold">
                 3
               </span>
               <div>
                 <h3 className="text-2xl font-bold text-neutral-900">
                   Shopify - Landing page e-commerce
                 </h3>
-                <p className="text-emerald-600 font-bold">
+                <p className="text-blue-600 font-bold">
                   11,3% de conversion
                 </p>
               </div>
@@ -320,7 +320,7 @@ export default function ExamplesSection() {
 
             <div className="space-y-4 mb-6">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     Urgence authentique
@@ -335,7 +335,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">Titre projection</p>
                   <p className="text-neutral-700">
@@ -349,7 +349,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     Témoignages avec chiffres
@@ -365,7 +365,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     Section &quot;Comment ça marche&quot;
@@ -378,7 +378,7 @@ export default function ExamplesSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-neutral-900">
                     CTA répété 4 fois
@@ -393,7 +393,7 @@ export default function ExamplesSection() {
               </div>
             </div>
 
-            <div className="bg-emerald-50 border-2 border-emerald-200 p-4 rounded-xl">
+            <div className="bg-blue-50 border-2 border-blue-200 p-4 rounded-xl">
               <p className="font-bold mb-2 text-neutral-900">Résultat</p>
               <p className="text-neutral-700">
                 11,3% selon leur blog officiel.
@@ -410,13 +410,13 @@ export default function ExamplesSection() {
         </div>
 
         {/* Synthèse */}
-        <div className="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-6 mt-10">
+        <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 mt-10">
           <h3 className="text-2xl font-bold mb-4 text-neutral-900">
             Ce que ces 3 landing pages ont en commun
           </h3>
           <div className="space-y-2">
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+              <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
               <p className="text-neutral-700">
                 <strong className="text-neutral-900">
                   Titre centré sur le bénéfice client
@@ -425,7 +425,7 @@ export default function ExamplesSection() {
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+              <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
               <p className="text-neutral-700">
                 <strong className="text-neutral-900">
                   Preuve sociale chiffrée
@@ -434,21 +434,21 @@ export default function ExamplesSection() {
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+              <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
               <p className="text-neutral-700">
                 <strong className="text-neutral-900">Friction minimale</strong>{" "}
                 (formulaire court ou essai gratuit)
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+              <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
               <p className="text-neutral-700">
                 <strong className="text-neutral-900">Visuel du produit</strong>{" "}
                 (capture d&apos;écran ou vidéo)
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+              <CheckCircle className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
               <p className="text-neutral-700">
                 <strong className="text-neutral-900">CTA ultra-clair</strong>{" "}
                 (&quot;Sign Up Free&quot;, &quot;Schedule Demo&quot;,

@@ -15,7 +15,7 @@ export default function DefinitionSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        <h3 className="text-2xl font-bold text-emerald-600 mb-4">
+        <h3 className="text-2xl font-bold text-blue-600 mb-4">
           La définition qui change tout
         </h3>
 
@@ -33,7 +33,7 @@ export default function DefinitionSection() {
           ont leur place. Mais confondre les deux, c'est perdre de l'argent.
         </p>
 
-        <h3 className="text-2xl font-bold text-emerald-600 mb-4">
+        <h3 className="text-2xl font-bold text-blue-600 mb-4">
           Copywriting vs rédaction web : la confusion mortelle
         </h3>
 
@@ -70,9 +70,9 @@ export default function DefinitionSection() {
 
           <motion.div
             whileHover={{ y: -4 }}
-            className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-emerald-200 transition-colors"
+            className="bg-white rounded-2xl p-6 border border-neutral-200 hover:border-blue-200 transition-colors"
           >
-            <h4 className="font-bold text-emerald-600 mb-3">Copywriting</h4>
+            <h4 className="font-bold text-blue-600 mb-3">Copywriting</h4>
             <ul className="space-y-2 text-sm text-neutral-600">
               <li>
                 • <strong className="text-neutral-900">Objectif :</strong>{" "}
@@ -97,14 +97,14 @@ export default function DefinitionSection() {
         <Highlight>
           Un bon rédacteur web n'est pas forcément un bon copywriter. Et
           vice-versa.
-          <span className="text-emerald-600 font-bold">
+          <span className="text-blue-600 font-bold">
             {" "}
             Les deux compétences sont complémentaires dans une stratégie
             marketing complète.
           </span>
         </Highlight>
 
-        <h3 className="text-2xl font-bold text-emerald-600 mb-4 mt-8">
+        <h3 className="text-2xl font-bold text-blue-600 mb-4 mt-8">
           Copywriter : métier ou compétence ?
         </h3>
 
@@ -115,12 +115,12 @@ export default function DefinitionSection() {
           écris juste pour TON business.
         </p>
 
-        <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-200 rounded-2xl p-6">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 rounded-2xl p-6">
           <p className="text-neutral-600">
             Voilà ce que personne ne te dit : tu n'as pas besoin de devenir
             copywriter pro pour booster tes conversions. Tu as besoin de
             maîtriser{" "}
-            <strong className="text-emerald-700">
+            <strong className="text-blue-700">
               20% des techniques pour obtenir 80% des résultats
             </strong>
             .
