@@ -159,11 +159,7 @@ export default function ContactPage() {
 
       if (response.ok && result.success) {
         // Track la conversion dans Google Analytics
-        trackContactForm({
-          form_location: "contact_page",
-          form_type: "contact",
-          service_interest: formData.businessType,
-        });
+        trackContactForm("contact", formData.businessType);
 
         toast.success("Demande envoyée avec succès !", {
           description:

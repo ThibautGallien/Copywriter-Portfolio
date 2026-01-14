@@ -2,13 +2,6 @@
  * Helper pour tracker des événements Google Analytics
  */
 
-// Déclaration TypeScript pour gtag
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-  }
-}
-
 /**
  * Track un événement personnalisé
  */
@@ -137,5 +130,25 @@ export const trackOutboundLink = (url: string, linkText: string) => {
   trackEvent("outbound_click", {
     url: url,
     link_text: linkText,
+  });
+};
+
+/**
+ * Track une soumission de formulaire de contact
+ */
+export const trackContactForm = (formType: string, source: string) => {
+  trackEvent("contact_form_submit", {
+    form_type: formType,
+    source: source,
+  });
+};
+
+/**
+ * Track la profondeur de scroll
+ */
+export const trackScrollDepth = (depth: number, pagePath: string) => {
+  trackEvent("scroll_depth", {
+    depth: depth,
+    page_path: pagePath,
   });
 };

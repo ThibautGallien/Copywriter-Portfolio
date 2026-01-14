@@ -25,10 +25,7 @@ export function useScrollTracking(pagePath: string) {
       for (const depth of depths) {
         if (scrollPercentage >= depth && !trackedDepths.current.has(depth)) {
           trackedDepths.current.add(depth);
-          trackScrollDepth({
-            depth_percentage: depth,
-            page_path: pagePath,
-          });
+          trackScrollDepth(depth, pagePath);
         }
       }
     };

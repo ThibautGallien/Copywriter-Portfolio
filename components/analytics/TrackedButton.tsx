@@ -26,11 +26,7 @@ export function TrackedButton({
 }: TrackedButtonProps) {
   const handleClick = () => {
     // Track le clic
-    trackCTAClick({
-      cta_text: ctaText,
-      cta_location: ctaLocation,
-      cta_destination: href || "action",
-    });
+    trackCTAClick(ctaText, ctaLocation);
 
     // Exécute le onClick si fourni
     if (onClick) {
