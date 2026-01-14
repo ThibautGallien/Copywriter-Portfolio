@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { validateAntiBot, getClientIp } from "@/lib/anti-bot";
 
 export const dynamic = "force-dynamic";
 
@@ -8,14 +9,34 @@ export const dynamic = "force-dynamic";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, name } = body;
+    const { email, name, _honeypot, _timestamp } = body;
+
+    // Protection anti-bot
+    const clientIp = getClientIp(request);
+    const antiBotCheck = validateAntiBot(_honeypot, _timestamp, clientIp);
+
+    if (!antiBotCheck.valid) {
+      return NextResponse.json(
+        { error: antiBotCheck.error },
+        { status: 429 }
+      );
+    }
 
     // 1. Validation basique
     if (!email) {
       return NextResponse.json({ error: "Email requis" }, { status: 400 });
     }
 
-    // 2. Vérification de la clé API Brevo
+    // 2. Validation email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: "Email invalide" },
+        { status: 400 }
+      );
+    }
+
+    // 3. Vérification de la clé API Brevo
     if (!process.env.BREVO_API_KEY) {
       console.error("Clé API Brevo manquante");
       return NextResponse.json(
@@ -24,21 +45,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 3. Appel à l'API Brevo pour ajouter le contact
+    // 4. Appel à l'API Brevo pour ajouter le contact
     const brevoResponse = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // IMPORTANT: Utiliser la clé API Brevo (Sendinblue)
-        "api-key": process.env.BREVO_API_KEY, 
+        "api-key": process.env.BREVO_API_KEY,
       },
       body: JSON.stringify({
         email: email,
         attributes: {
-          FIRSTNAME: name || "", // Ajoute le prénom comme attribut
+          FIRSTNAME: name || "",
         },
-        listIds: [3], // ID de ta liste Brevo (à modifier si besoin)
-        updateEnabled: true, // Met à jour si le contact existe déjà
+        listIds: [parseInt(process.env.BREVO_NEWSLETTER_LIST_ID || "3")],
+        updateEnabled: true,
       }),
     });
 
@@ -52,7 +72,7 @@ export async function POST(request: NextRequest) {
       const errorData = await brevoResponse.json();
       console.error("❌ Erreur Brevo:", errorData);
 
-      // 4. Gestion du cas 'déjà inscrit' (Brevo renvoie une erreur 'duplicate_parameter')
+      // 5. Gestion du cas 'déjà inscrit' (Brevo renvoie une erreur 'duplicate_parameter')
       if (errorData.code === "duplicate_parameter") {
         return NextResponse.json({
           success: true,
@@ -60,7 +80,6 @@ export async function POST(request: NextRequest) {
         });
       }
 
-      // Projeter une erreur pour le bloc catch
       throw new Error(`Erreur lors de l'ajout à Brevo: ${errorData.message}`);
     }
   } catch (error) {

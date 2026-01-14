@@ -1,9 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
+import { validateAntiBot, getClientIp } from "@/lib/anti-bot";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, leadMagnet, source } = body;
+    const { email, leadMagnet, source, name, _honeypot, _timestamp } = body;
+
+    // Protection anti-bot
+    const clientIp = getClientIp(request);
+    const antiBotCheck = validateAntiBot(_honeypot, _timestamp, clientIp);
+
+    if (!antiBotCheck.valid) {
+      return NextResponse.json(
+        { error: antiBotCheck.error },
+        { status: 429 }
+      );
+    }
 
     // Validation
     if (!email || !leadMagnet) {
@@ -22,68 +36,81 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Intégrer avec ton service d'email
-    // Options possibles :
-    // 1. SendGrid
-    // 2. Mailchimp
-    // 3. ConvertKit
-    // 4. Brevo (ex-Sendinblue)
-    // 5. Resend
+    // Vérification de la clé API Brevo
+    if (!process.env.BREVO_API_KEY) {
+      console.error("Clé API Brevo manquante");
+      return NextResponse.json(
+        { error: "Configuration Brevo manquante" },
+        { status: 500 }
+      );
+    }
 
-    // Pour l'instant, log en console (remplacer par vraie intégration)
-    console.log("📧 Nouveau lead magnet:", {
-      email,
-      leadMagnet,
-      source,
-      timestamp: new Date().toISOString(),
-    });
-
-    // Exemple d'intégration SendGrid (décommenter et configurer)
-    /*
-    const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-    const msg = {
-      to: email,
-      from: 'contact@thibautgallien.com',
-      subject: `Voici ton ${leadMagnet}`,
-      html: `
-        <p>Salut,</p>
-        <p>Comme promis, voici ton lead magnet : <strong>${leadMagnet}</strong></p>
-        <p>Tu peux le télécharger ici : [LIEN]</p>
-        <p>Thibaut</p>
-      `,
-    };
-
-    await sgMail.send(msg);
-    */
-
-    // Exemple d'intégration ConvertKit (décommenter et configurer)
-    /*
-    const response = await fetch('https://api.convertkit.com/v3/forms/[FORM_ID]/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    // Appel à l'API Brevo pour ajouter le contact et envoyer l'email
+    const brevoResponse = await fetch("https://api.brevo.com/v3/contacts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "api-key": process.env.BREVO_API_KEY,
+      },
       body: JSON.stringify({
-        api_key: process.env.CONVERTKIT_API_KEY,
         email: email,
-        tags: [leadMagnet, source],
+        attributes: {
+          FIRSTNAME: name || "",
+          LEAD_MAGNET: leadMagnet,
+          SOURCE: source || "website",
+        },
+        listIds: [parseInt(process.env.BREVO_LEAD_MAGNET_LIST_ID || "4")],
+        updateEnabled: true,
       }),
     });
-    */
 
-    // Réponse succès
-    return NextResponse.json(
-      {
+    if (brevoResponse.ok || brevoResponse.status === 400) {
+      const errorData = brevoResponse.ok ? null : await brevoResponse.json();
+
+      // Si le contact existe déjà, ce n'est pas grave
+      if (errorData?.code === "duplicate_parameter") {
+        console.log("Contact déjà existant, mise à jour effectuée");
+      }
+
+      // Envoyer l'email transactionnel via Brevo
+      const emailResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "api-key": process.env.BREVO_API_KEY,
+        },
+        body: JSON.stringify({
+          sender: {
+            name: "Thibaut Gallien",
+            email: process.env.BREVO_SENDER_EMAIL || "hello@thibautgallien.com",
+          },
+          to: [{ email: email, name: name || "" }],
+          templateId: parseInt(process.env.BREVO_LEAD_MAGNET_TEMPLATE_ID || "1"),
+          params: {
+            FIRSTNAME: name || "là",
+            LEAD_MAGNET: leadMagnet,
+          },
+        }),
+      });
+
+      if (!emailResponse.ok) {
+        console.error("Erreur envoi email Brevo:", await emailResponse.text());
+      }
+
+      console.log("✅ Lead magnet envoyé avec succès");
+      return NextResponse.json({
         success: true,
-        message: "Lead magnet envoyé avec succès"
-      },
-      { status: 200 }
-    );
-
+        message: "Lead magnet envoyé avec succès",
+      });
+    } else {
+      const errorData = await brevoResponse.json();
+      console.error("❌ Erreur Brevo:", errorData);
+      throw new Error(`Erreur lors de l'ajout à Brevo: ${errorData.message}`);
+    }
   } catch (error) {
     console.error("Erreur API lead-magnet:", error);
     return NextResponse.json(
-      { error: "Erreur serveur" },
+      { error: "Erreur lors de l'envoi du lead magnet" },
       { status: 500 }
     );
   }

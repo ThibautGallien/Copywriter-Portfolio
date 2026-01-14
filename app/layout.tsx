@@ -5,17 +5,24 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Toaster } from "sonner";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   weight: ["400", "500", "600"],
+  display: "swap",
+  preload: true,
+  fallback: ["system-ui", "arial"],
 });
 
 const sora = Sora({
   subsets: ["latin"],
   variable: "--font-sora",
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  preload: true,
+  fallback: ["system-ui", "arial"],
 });
 
 export const metadata: Metadata = {
@@ -136,13 +143,6 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${inter.variable} ${sora.variable}`}>
       <head>
-        {/* Preconnect pour optimiser les performances */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
 
         {/* Schema.org pour les données structurées - VERSION AMÉLIORÉE */}
         <script
@@ -255,6 +255,7 @@ export default function RootLayout({
       </head>
       <body className="font-inter bg-white text-neutral-900 antialiased">
         <GoogleAnalytics />
+        <MicrosoftClarity />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
