@@ -79,6 +79,16 @@ const nextConfig = {
       transform: 'lucide-react/dist/esm/icons/{{member}}',
     },
   },
+
+  // Optimisations expérimentales
+  experimental: {
+    optimizePackageImports: ['framer-motion', 'lucide-react'],
+  },
+
+  // Compiler optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
 };
 
 module.exports = withContentlayer(nextConfig);

@@ -2,15 +2,34 @@
 
 import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function GoogleAnalytics() {
   const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  // Charger GA seulement après interaction utilisateur
+  useEffect(() => {
+    const handleInteraction = () => {
+      setShouldLoad(true);
+    };
+
+    // Charger au scroll, au clic, ou après 3 secondes
+    const timer = setTimeout(() => setShouldLoad(true), 3000);
+    window.addEventListener("scroll", handleInteraction, { once: true });
+    window.addEventListener("click", handleInteraction, { once: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", handleInteraction);
+      window.removeEventListener("click", handleInteraction);
+    };
+  }, []);
 
   useEffect(() => {
-    if (!GA_MEASUREMENT_ID) return;
+    if (!GA_MEASUREMENT_ID || !shouldLoad) return;
 
     const url = pathname + searchParams.toString();
 
@@ -21,74 +40,36 @@ export default function GoogleAnalytics() {
         page_path: url,
       });
     }
-  }, [pathname, searchParams, GA_MEASUREMENT_ID]);
+  }, [pathname, searchParams, GA_MEASUREMENT_ID, shouldLoad]);
 
-  // Ne rien afficher si l'ID n'est pas configuré
-  if (!GA_MEASUREMENT_ID) {
-    console.warn("Google Analytics ID non configuré");
+  // Ne rien afficher si l'ID n'est pas configuré ou si on ne doit pas charger encore
+  if (!GA_MEASUREMENT_ID || !shouldLoad) {
     return null;
   }
 
   return (
     <>
-      {/* Preconnect pour Google Analytics */}
-      <link rel="preconnect" href="https://www.googletagmanager.com" />
-      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-
       <Script
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
       />
       <Script
         id="google-analytics"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            // Configuration GA4 avec tracking avancé
             gtag('config', '${GA_MEASUREMENT_ID}', {
               page_path: window.location.pathname,
               send_page_view: true,
-
-              // Tracking du scroll
-              scroll_tracking: true,
-
-              // Tracking des liens sortants
-              link_attribution: true,
-
-              // Tracking des fichiers téléchargés
-              file_downloads: true,
-
-              // Tracking vidéo
-              video_engagement: true,
-
-              // Enhanced measurement
               enhanced_measurement: {
                 scrolls: true,
                 outbound_clicks: true,
-                site_search: true,
-                video_engagement: true,
                 file_downloads: true,
-                page_changes: true,
               },
-
-              // Custom parameters
-              custom_map: {
-                dimension1: 'funnel_type',
-                dimension2: 'lead_source',
-                dimension3: 'article_category'
-              }
-            });
-
-            // Track erreurs JavaScript
-            window.addEventListener('error', function(e) {
-              gtag('event', 'exception', {
-                description: e.message,
-                fatal: false
-              });
             });
           `,
         }}

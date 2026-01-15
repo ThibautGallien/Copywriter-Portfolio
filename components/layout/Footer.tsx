@@ -106,6 +106,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.label}
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     className="w-10 h-10 bg-neutral-50 rounded-full flex items-center justify-center hover:bg-blue-50 transition-colors duration-300 group border border-neutral-200 hover:border-blue-200"

@@ -90,6 +90,8 @@ export default function Header() {
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                aria-expanded={isOpen}
                 className="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-neutral-200 hover:border-neutral-300 transition-colors duration-300"
               >
                 {isOpen ? (
