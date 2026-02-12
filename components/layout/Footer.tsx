@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const footerLinks = {
   company: [
-    { label: "Services", href: "/gratuit" },
+    { label: "Services", href: "/services" },
     { label: "À propos", href: "/about" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
@@ -95,9 +95,9 @@ export default function Footer() {
                 </motion.span>
               </Link>
               <p className="text-neutral-600 text-sm leading-relaxed mb-6">
-                Je trouve où tu perds de l&apos;argent dans ton funnel et je le
-                fixe. Diagnostic, implémentation, tracking. Pas de bullshit,
-                juste des chiffres.
+                J&apos;aide les business en ligne à performer grâce à l&apos;analyse
+                de données, l&apos;email marketing et le SEO. Pas de bullshit,
+                juste des résultats mesurables.
               </p>
               <div className="flex gap-3">
                 {socialLinks.map((social) => (

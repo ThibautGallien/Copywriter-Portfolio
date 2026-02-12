@@ -27,38 +27,37 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title:
-    "Thibaut Gallien - Optimisation Funnel | J'augmente le CA des business en ligne",
+    "Thibaut Gallien - Analyse Data, Email Marketing & SEO | Business en ligne",
 
   description:
-    "J'augmente le CA des business en ligne en trouvant les 2-3 endroits où ils perdent de l'argent. Analyse data → Fixes concrets → Résultats mesurables. Diagnostic complet ou optimisation totale (3 places gratuites disponibles).",
+    "J'aide les business en ligne à performer : analyse de données pour trouver où tu perds de l'argent, email marketing pour convertir ta liste, SEO pour devenir visible sur Google. Résultats mesurables.",
 
   keywords: [
+    "analyse données marketing",
     "optimisation funnel",
-    "audit funnel gratuit",
-    "conversion funnel",
+    "email marketing freelance",
+    "SEO freelance",
+    "audit funnel",
     "optimisation taux de conversion",
-    "analyse funnel marketing",
-    "CRO conversion rate optimization",
-    "freelance optimisation funnel",
-    "audit marketing digital",
-    "analyste funnel",
+    "séquence email automatisée",
+    "référencement naturel",
+    "consultant marketing digital",
+    "audit SEO",
+    "stratégie email marketing",
     "optimisation landing page",
     "améliorer conversion site",
-    "diagnostic funnel",
-    "consultant funnel marketing",
-    "optimisation checkout",
-    "audit ads facebook",
-    "améliorer ROI publicité",
-    "funnel marketing ecommerce",
-    "optimisation funnel infoproduit",
-    "audit email marketing",
-    "séquence email conversion",
+    "freelance SEO France",
+    "email marketing e-commerce",
+    "audit marketing digital",
     "augmenter CA en ligne",
-    "trouver fuites funnel",
-    "optimisation funnel coaching",
-    "optimisation funnel formation",
-    "tracking conversion funnel",
     "data driven marketing",
+    "newsletter conversion",
+    "optimisation site Google",
+    "welcome sequence email",
+    "mots-clés SEO",
+    "analyse trafic web",
+    "CRO conversion rate optimization",
+    "consultant email marketing",
   ].join(", "),
 
   authors: [{ name: "Thibaut Gallien", url: "https://thibautgallien.com" }],
@@ -81,10 +80,10 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://thibautgallien.com",
     title:
-      "Thibaut Gallien - Optimisation Funnel | J'augmente le CA des business en ligne",
+      "Thibaut Gallien - Analyse Data, Email Marketing & SEO | Business en ligne",
     description:
-      "J'augmente le CA des business en ligne en trouvant les 2-3 endroits où ils perdent de l'argent. Analyse data → Fixes concrets → Résultats mesurables. 3 places gratuites disponibles.",
-    siteName: "Thibaut Gallien - Optimisation Funnel",
+      "J'aide les business en ligne à performer : analyse de données, email marketing et SEO. Des résultats concrets et mesurables.",
+    siteName: "Thibaut Gallien - Data, Email & SEO",
     images: [
       {
         url: "/og-image.jpg",
@@ -100,9 +99,9 @@ export const metadata: Metadata = {
     site: "@thibautgallien",
     creator: "@thibautgallien",
     title:
-      "Thibaut Gallien - Optimisation Funnel | J'augmente le CA des business en ligne",
+      "Thibaut Gallien - Analyse Data, Email Marketing & SEO | Business en ligne",
     description:
-      "J'augmente le CA des business en ligne en trouvant les 2-3 endroits où ils perdent de l'argent. Analyse data → Fixes concrets → Résultats mesurables.",
+      "J'aide les business en ligne à performer : analyse de données, email marketing et SEO. Des résultats concrets et mesurables.",
     images: ["/og-image.jpg"],
   },
 
@@ -151,13 +150,13 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
-              name: "Thibaut Gallien - Optimisation Funnel",
+              name: "Thibaut Gallien - Data, Email Marketing & SEO",
               founder: {
                 "@type": "Person",
                 name: "Thibaut Gallien",
-                jobTitle: "Optimiseur de funnels marketing",
+                jobTitle: "Consultant Marketing Digital",
                 description:
-                  "Entrepreneur et optimiseur de funnels. 5 ans d'expérience en marketing digital. J'analyse les données pour trouver où les business perdent de l'argent et je fixe les problèmes.",
+                  "Consultant marketing digital spécialisé en analyse de données, email marketing et SEO. 5 ans d'expérience. J'aide les business en ligne à performer.",
                 url: "https://thibautgallien.com",
                 sameAs: [
                   "https://www.linkedin.com/in/thibaut-gallien",
@@ -165,24 +164,28 @@ export default function RootLayout({
                 ],
               },
               description:
-                "Service d'optimisation de funnels marketing. Diagnostic complet + implémentation + tracking pour augmenter le CA des business en ligne.",
+                "Services d'analyse de données, email marketing et SEO pour les business en ligne. Résultats concrets et mesurables.",
               url: "https://thibautgallien.com",
               areaServed: {
                 "@type": "Country",
                 name: "France",
               },
-              serviceType: "Optimisation de funnels marketing",
+              serviceType: [
+                "Analyse de données marketing",
+                "Email Marketing",
+                "SEO - Référencement Naturel",
+              ],
               hasOfferCatalog: {
                 "@type": "OfferCatalog",
-                name: "Services d'optimisation",
+                name: "Services Marketing Digital",
                 itemListElement: [
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "Diagnostic Complet",
+                      name: "Diagnostic Complet - Analyse de Données",
                       description:
-                        "Analyse complète de ton funnel avec rapport détaillé et plan d'action priorisé. Tu implémentes, je guide.",
+                        "Analyse complète de ton funnel avec rapport détaillé et plan d'action priorisé par impact.",
                     },
                     price: "800",
                     priceCurrency: "EUR",
@@ -191,17 +194,59 @@ export default function RootLayout({
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "Optimisation Complète",
+                      name: "Optimisation Complète - Analyse de Données",
                       description:
                         "Diagnostic + Implémentation + Tracking 60 jours. Je m'occupe de tout.",
                     },
                     price: "2000",
                     priceCurrency: "EUR",
                     availability: "https://schema.org/LimitedAvailability",
-                    availableAtOrFrom: {
-                      "@type": "Place",
-                      name: "En ligne",
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Setup Email Marketing",
+                      description:
+                        "Création de séquences email automatisées (welcome, vente), segmentation et templates.",
                     },
+                    price: "700",
+                    priceCurrency: "EUR",
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Gestion Email Marketing",
+                      description:
+                        "Gestion complète de l'email marketing : newsletters, séquences, A/B testing, rapports mensuels.",
+                    },
+                    price: "500",
+                    priceCurrency: "EUR",
+                    availability: "https://schema.org/LimitedAvailability",
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Audit SEO + Plan d'action",
+                      description:
+                        "Audit technique complet, recherche de mots-clés, analyse concurrentielle et plan d'action priorisé.",
+                    },
+                    price: "600",
+                    priceCurrency: "EUR",
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Accompagnement SEO",
+                      description:
+                        "Accompagnement SEO mensuel : optimisations techniques, contenu, suivi des positions.",
+                    },
+                    price: "500",
+                    priceCurrency: "EUR",
+                    availability: "https://schema.org/LimitedAvailability",
                   },
                 ],
               },
@@ -226,23 +271,23 @@ export default function RootLayout({
               mainEntity: [
                 {
                   "@type": "Question",
-                  name: "Combien coûte un diagnostic de funnel ?",
+                  name: "Quels services proposes-tu ?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Le Diagnostic Complet coûte 800€. L'Optimisation Complète (diagnostic + implémentation + tracking) coûte 2000€. Actuellement, 3 places gratuites sont disponibles pour l'offre complète en échange d'un témoignage et case study.",
+                    text: "Je propose trois services : (1) Analyse de données pour identifier où ton funnel perd de l'argent, (2) Email marketing pour transformer ta liste en source de revenus, (3) SEO pour rendre ton site visible sur Google.",
                   },
                 },
                 {
                   "@type": "Question",
-                  name: "Combien de temps prend l'optimisation d'un funnel ?",
+                  name: "Combien coûtent tes services ?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Le diagnostic prend 48-72h. L'implémentation complète prend 3 semaines. Le tracking se fait sur 60 jours. Total : environ 10-11 semaines du début à la fin.",
+                    text: "Analyse de données : 800€ (diagnostic) ou 2000€ (optimisation complète). Email marketing : 700€ (setup) ou 500€/mois (gestion complète). SEO : 600€ (audit) ou 500€/mois (accompagnement).",
                   },
                 },
                 {
                   "@type": "Question",
-                  name: "Quels types de business peuvent bénéficier de ce service ?",
+                  name: "Quels types de business peuvent bénéficier de ces services ?",
                   acceptedAnswer: {
                     "@type": "Answer",
                     text: "Tous les business 100% en ligne : coaching, formation, e-commerce, affiliation, SaaS. Conditions : minimum 5K€/mois de CA et 500 visiteurs/mois.",
