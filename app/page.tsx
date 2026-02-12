@@ -71,7 +71,7 @@ function FadeIn({
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* HERO - Focus problème */}
+      {/* HERO */}
       <section className="container mx-auto px-6 pt-32 pb-20">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
@@ -85,26 +85,25 @@ export default function HomePage() {
               >
                 <Target className="w-4 h-4 text-blue-600" />
                 <span className="text-sm font-medium text-blue-700">
-                  Optimisation de funnels basée sur la data
+                  Data, Email Marketing & SEO
                 </span>
               </motion.div>
 
-              {/* Titre centré sur le problème */}
+              {/* Titre */}
               <h1 className="text-4xl md:text-6xl font-bold text-neutral-900 leading-tight mb-6">
-                Tu sens que ton funnel
+                Ton business en ligne mérite de
                 <br />
-                <span className="text-blue-600">perd des clients en route</span>
+                <span className="text-blue-600">mieux performer</span>
               </h1>
 
               <p className="text-xl text-neutral-600 max-w-2xl mx-auto leading-relaxed mb-8">
-                Mais tu ne sais pas exactement <strong>où</strong> ni <strong>pourquoi</strong>.
-                <br />
-                Les visiteurs arrivent, mais trop peu achètent.
+                J'aide les business en ligne à <strong>trouver où ils perdent de l'argent</strong>,
+                à <strong>convertir leur liste email</strong> et à <strong>devenir visibles sur Google</strong>.
               </p>
 
               {/* Sous-titre rassurant */}
               <p className="text-lg text-neutral-700 mb-12">
-                C'est normal. Et c'est réparable.
+                Pas de bullshit. Des données, des actions concrètes et des résultats mesurables.
               </p>
 
               {/* CTA principal */}
@@ -117,17 +116,17 @@ export default function HomePage() {
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-full text-lg hover:bg-blue-500 transition-colors shadow-lg flex items-center gap-2"
                 >
-                  Discutons de ton funnel (gratuit)
+                  Discutons de ton projet (gratuit)
                   <ArrowRight className="w-5 h-5" />
                 </motion.a>
 
                 <motion.a
-                  href="#comment-ca-marche"
+                  href="#services"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 border-2 border-neutral-300 text-neutral-700 font-semibold rounded-full text-lg hover:border-neutral-400 transition-colors"
                 >
-                  Comprendre l'approche
+                  Voir mes services
                 </motion.a>
               </div>
             </div>
@@ -135,40 +134,150 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* LE PROBLÈME (empathie) */}
-      <section className="py-20 bg-neutral-50">
+      {/* MES 3 SERVICES */}
+      <section id="services" className="py-20 bg-neutral-50">
+        <div className="container mx-auto px-6">
+          <FadeIn>
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-4">
+                3 façons de faire grandir ton business
+              </h2>
+              <p className="text-xl text-neutral-600 text-center mb-12 max-w-2xl mx-auto">
+                Des expertises complémentaires pour couvrir tes vrais besoins
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    icon: BarChart3,
+                    title: "Analyse de Données",
+                    description:
+                      "Je trouve où ton funnel perd des clients et de l'argent. Diagnostic data-driven, plan d'action priorisé, résultats mesurables.",
+                    features: [
+                      "Audit complet du funnel",
+                      "Identification des fuites",
+                      "Plan d'action par impact",
+                    ],
+                    href: "/services/analyse-data",
+                    color: "blue",
+                    bgColor: "bg-blue-100",
+                    textColor: "text-blue-600",
+                    borderColor: "border-blue-200",
+                    hoverBorder: "hover:border-blue-300",
+                  },
+                  {
+                    icon: Mail,
+                    title: "Email Marketing",
+                    description:
+                      "Je transforme ta liste email en source de revenus. Séquences automatisées, newsletters qui convertissent, segmentation intelligente.",
+                    features: [
+                      "Séquences automatisées",
+                      "Newsletters qui vendent",
+                      "Segmentation avancée",
+                    ],
+                    href: "/services/email-marketing",
+                    color: "emerald",
+                    bgColor: "bg-emerald-100",
+                    textColor: "text-emerald-600",
+                    borderColor: "border-emerald-200",
+                    hoverBorder: "hover:border-emerald-300",
+                  },
+                  {
+                    icon: Search,
+                    title: "SEO",
+                    description:
+                      "Je rends ton site visible sur Google. Référencement naturel, optimisation technique, stratégie de contenu. Du trafic gratuit et durable.",
+                    features: [
+                      "Audit SEO technique",
+                      "Optimisation on-page",
+                      "Stratégie de contenu",
+                    ],
+                    href: "/services/seo",
+                    color: "purple",
+                    bgColor: "bg-purple-100",
+                    textColor: "text-purple-600",
+                    borderColor: "border-purple-200",
+                    hoverBorder: "hover:border-purple-300",
+                  },
+                ].map((service, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.15 }}
+                  >
+                    <motion.div
+                      whileHover={{ y: -4 }}
+                      className={`h-full p-6 bg-white rounded-xl border-2 ${service.borderColor} ${service.hoverBorder} hover:shadow-lg transition-all flex flex-col`}
+                    >
+                      <div className={`w-12 h-12 ${service.bgColor} rounded-lg flex items-center justify-center mb-4`}>
+                        <service.icon className={`w-6 h-6 ${service.textColor}`} />
+                      </div>
+                      <h3 className="text-xl font-bold text-neutral-900 mb-2">
+                        {service.title}
+                      </h3>
+                      <p className="text-neutral-600 leading-relaxed mb-4">
+                        {service.description}
+                      </p>
+                      <ul className="space-y-2 mb-6 flex-grow">
+                        {service.features.map((feature, i) => (
+                          <li key={i} className="flex items-center gap-2 text-sm text-neutral-700">
+                            <CheckCircle className={`w-4 h-4 ${service.textColor} flex-shrink-0`} />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <Link
+                        href={service.href}
+                        className="flex items-center justify-center gap-2 w-full py-3 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold rounded-xl transition-colors"
+                      >
+                        En savoir plus
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* LE PROBLÈME */}
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <FadeIn>
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-12">
-                Le problème que tu rencontres probablement
+                Les problèmes que tu rencontres probablement
               </h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 {[
                   {
                     icon: TrendingDown,
-                    title: "Trafic qui n'aboutit pas",
+                    title: "Tu perds des clients sans savoir où",
                     description:
-                      "Tu dépenses en pub ou en SEO, mais le taux de conversion est décevant. Quelque chose bloque entre l'arrivée et l'achat.",
-                  },
-                  {
-                    icon: Search,
-                    title: "Tu ne sais pas où chercher",
-                    description:
-                      "Google Analytics te donne des chiffres, mais tu ne sais pas quoi en faire. Où est le vrai problème ?",
+                      "Du trafic arrive mais trop peu achètent. Quelque chose bloque dans ton funnel, et tes données Analytics ne t'aident pas à trouver quoi.",
                   },
                   {
                     icon: Mail,
-                    title: "Emails qui convertissent peu",
+                    title: "Ta liste email ne rapporte rien",
                     description:
-                      "Tes emails s'ouvrent, mais peu de clics. Ou pire : les gens cliquent mais n'achètent pas derrière.",
+                      "Des centaines (ou milliers) d'abonnés, mais peu de ventes. Pas de séquences, pas de stratégie, des emails improvisés.",
+                  },
+                  {
+                    icon: Search,
+                    title: "Ton site est invisible sur Google",
+                    description:
+                      "Tes concurrents apparaissent en premier. Tu dépends de la pub payante pour avoir du trafic. Le jour où tu coupes, plus rien.",
                   },
                   {
                     icon: Target,
-                    title: "Optimisations au hasard",
+                    title: "Tu optimises au hasard",
                     description:
-                      "Tu testes des trucs (couleur de bouton, titre...) mais sans vraiment savoir si ça vaut le coup. C'est frustrant.",
+                      "Tu testes des trucs sans stratégie. Couleur de bouton, nouvel email, nouveau contenu... mais sans savoir si ça vaut vraiment le coup.",
                   },
                 ].map((item, index) => (
                   <motion.div
@@ -196,7 +305,7 @@ export default function HomePage() {
                 <p className="text-lg text-neutral-700">
                   <strong>Bonne nouvelle :</strong> Ces problèmes ont des solutions concrètes.
                   <br />
-                  Et elles ne demandent pas de refaire tout ton funnel.
+                  Et c'est exactement ce que je fais.
                 </p>
               </div>
             </div>
@@ -205,39 +314,39 @@ export default function HomePage() {
       </section>
 
       {/* COMMENT ÇA MARCHE */}
-      <section id="comment-ca-marche" className="py-20">
+      <section id="comment-ca-marche" className="py-20 bg-neutral-50">
         <div className="container mx-auto px-6">
           <FadeIn>
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-6">
-                Voilà comment je travaille
+                Comment je travaille
               </h2>
               <p className="text-xl text-neutral-600 text-center mb-16">
-                Approche simple, basée sur tes données réelles
+                Une approche simple, quel que soit le service
               </p>
 
               <div className="space-y-12">
                 {[
                   {
                     number: "1",
-                    title: "J'analyse tes données",
+                    title: "On discute de ta situation",
                     description:
-                      "Google Analytics, Clarity (heatmaps), tes campagnes pub, tes emails. Je regarde où les gens bloquent, où ils partent, ce qu'ils ne cliquent pas.",
-                    icon: BarChart3,
+                      "Appel de 30 minutes gratuit. Tu me montres ton business, tes chiffres, tes problèmes. On identifie ensemble ce qui a le plus d'impact.",
+                    icon: Lightbulb,
                   },
                   {
                     number: "2",
-                    title: "Je trouve les 2-3 vrais problèmes",
+                    title: "J'analyse et je propose",
                     description:
-                      "Pas une liste de 50 trucs à changer. Les 2-3 endroits qui, si on les corrige, vont vraiment impacter tes résultats. Priorisé par impact.",
-                    icon: Search,
+                      "Je plonge dans tes données (analytics, emails, SEO). Je trouve les vrais problèmes et je te propose un plan d'action clair, priorisé par impact.",
+                    icon: BarChart3,
                   },
                   {
                     number: "3",
-                    title: "Je te montre comment corriger",
+                    title: "On passe à l'action",
                     description:
-                      "Tu reçois un plan d'action clair avec des exemples concrets. Soit tu le fais toi-même, soit je peux m'en occuper. À toi de choisir.",
-                    icon: Lightbulb,
+                      "Soit tu implémentes avec mon guide, soit je m'en charge. Dans les deux cas : des résultats mesurables et un suivi régulier.",
+                    icon: Target,
                   },
                 ].map((step, index) => (
                   <motion.div
@@ -273,46 +382,25 @@ export default function HomePage() {
       </section>
 
       {/* POURQUOI MOI */}
-      <section className="py-20 bg-neutral-50">
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <FadeIn>
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-12">
-                Pourquoi cette approche ?
+                Pourquoi me faire confiance ?
               </h2>
 
               <div className="prose prose-lg max-w-none">
                 <p className="text-lg text-neutral-700 leading-relaxed mb-6">
-                  À la base, je voulais juste faire de l'email marketing. Mais j'étais constamment frustré :
-                  mes emails marchaient bien, mais si la landing page derrière était nulle, ou si les pubs
-                  touchaient mal, tout s'écroulait.
+                  J'ai commencé dans le marketing digital en 2020. D'abord l'email marketing,
+                  puis le SEO, puis l'analyse de données. J'ai vite compris que ces trois
+                  disciplines sont indissociables : un bon email ne sert à rien si ta page
+                  ne convertit pas, et un bon SEO ne sert à rien si ton funnel perd des clients.
                 </p>
 
                 <p className="text-lg text-neutral-700 leading-relaxed mb-6">
-                  J'avais deux options :
-                </p>
-
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                    <span className="text-lg text-neutral-700">
-                      <strong>Option 1 :</strong> Proposer de tout faire (emails, pages, pubs, etc.).
-                      Trop cher, trop long en solo.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                    <span className="text-lg text-neutral-700">
-                      <strong>Option 2 :</strong> T'aider à comprendre ce qui déconne dans ton funnel,
-                      te donner un plan d'action basé sur tes vraies données, et te laisser choisir si
-                      tu veux le faire toi-même ou que je m'en charge.
-                    </span>
-                  </li>
-                </ul>
-
-                <p className="text-lg text-neutral-700 leading-relaxed">
-                  J'ai choisi l'option 2. Parce que le vrai problème, c'est jamais "je n'ai pas assez
-                  d'outils". C'est "je ne sais pas où regarder en premier".
+                  Aujourd'hui, je combine ces trois expertises pour offrir une vision globale.
+                  Pas de silo. Une stratégie cohérente où data, emails et SEO travaillent ensemble.
                 </p>
               </div>
 
@@ -321,7 +409,7 @@ export default function HomePage() {
                   Mon parcours en bref
                 </h3>
                 <ul className="space-y-3 text-neutral-700">
-                  <li>→ Marketing depuis 2020 (infoproduits, e-commerce, SEO)</li>
+                  <li>→ Marketing digital depuis 2020 (email, SEO, data, e-commerce)</li>
                   <li>→ Ex-Community Manager chez Tugan.ai (1 an)</li>
                   <li>
                     → Actuellement Responsable E-commerce (email, SEO, SEA, CRO, analytics)
@@ -335,17 +423,17 @@ export default function HomePage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-20">
+      <section className="py-20 bg-neutral-50">
         <div className="container mx-auto px-6">
           <FadeIn>
             <div className="max-w-4xl mx-auto">
               <div className="p-12 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl text-center">
                 <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
-                  Parlons de ton funnel
+                  Parlons de ton business
                 </h2>
                 <p className="text-xl text-neutral-600 mb-8 max-w-2xl mx-auto">
-                  On prend 30 minutes. Tu me montres ton funnel, je te dis où je vois des fuites.
-                  Pas de pitch, pas de pression. Juste une discussion honnête.
+                  On prend 30 minutes. Tu me montres ta situation, je te dis comment
+                  je peux t'aider. Pas de pitch, pas de pression. Juste une discussion honnête.
                 </p>
 
                 <motion.a
@@ -377,12 +465,12 @@ export default function HomePage() {
                     a: "Oui. L'appel de 30 min est gratuit. Si après on décide de bosser ensemble, là on parle tarifs. Mais la première discussion, c'est cadeau.",
                   },
                   {
-                    q: "Je dois avoir combien de trafic minimum ?",
-                    a: "Au moins 500 visiteurs/mois et un minimum de 5K€ de CA mensuel. En dessous, c'est trop tôt pour optimiser (mieux vaut focus sur l'acquisition).",
+                    q: "Par quel service commencer ?",
+                    a: "Ça dépend de ta situation. Si tu as du trafic mais peu de ventes → analyse de données. Si tu as une liste email qui dort → email marketing. Si tu veux du trafic gratuit → SEO. On en discute pendant l'appel.",
                   },
                   {
                     q: "Tu fais quoi exactement ?",
-                    a: "Deux options : (1) Diagnostic complet avec plan d'action (tu implémentes), ou (2) Optimisation complète où je gère tout pendant 60 jours.",
+                    a: "Trois services : (1) Analyse de données pour trouver où tu perds de l'argent, (2) Email marketing pour convertir ta liste en revenus, (3) SEO pour devenir visible sur Google. Chaque service a des formules adaptées.",
                   },
                 ].map((faq, index) => (
                   <motion.div
@@ -391,7 +479,7 @@ export default function HomePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="p-6 bg-neutral-50 rounded-xl"
+                    className="p-6 bg-white rounded-xl"
                   >
                     <h4 className="font-bold text-lg text-neutral-900 mb-2">
                       {faq.q}
