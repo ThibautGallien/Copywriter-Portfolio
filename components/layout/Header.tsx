@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -10,7 +8,7 @@ const navItems = [
   { href: "/", label: "Accueil" },
   { href: "/services", label: "Services" },
   { href: "/blog", label: "Blog" },
-  { href: "/about", label: "À propos" },
+  { href: "/about", label: "A propos" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -20,164 +18,222 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/80 backdrop-blur-md border-b border-neutral-100"
-            : "bg-white/80 backdrop-blur-md border-b border-neutral-100"
-        }`}
+      <header
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          transition: "all 0.3s ease",
+          background: scrolled
+            ? "rgba(10, 10, 11, 0.85)"
+            : "rgba(10, 10, 11, 0.6)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          borderBottom: scrolled
+            ? "1px solid rgba(255,255,255,0.06)"
+            : "1px solid transparent",
+        }}
       >
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="container-main">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              height: 64,
+            }}
+          >
             {/* Logo */}
-            <Link href="/" className="group">
-              <motion.span
-                whileHover={{ scale: 1.05 }}
-                className="text-lg md:text-xl font-bold text-neutral-900"
-              >
-                Thibaut Gallien<span className="text-blue-600">.</span>
-              </motion.span>
+            <Link
+              href="/"
+              style={{
+                fontSize: 18,
+                fontWeight: 700,
+                letterSpacing: "-0.02em",
+                color: "var(--text)",
+              }}
+            >
+              thibautgallien
+              <span style={{ color: "var(--accent-blue)" }}>.</span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
+            {/* Desktop Nav */}
+            <nav
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 32,
+              }}
+              className="desktop-nav"
+            >
               {navItems.map((item) => (
-                <motion.div key={item.href} whileHover={{ y: -1 }}>
-                  <Link
-                    href={item.href}
-                    className={`text-sm font-medium transition-colors duration-300 ${
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 500,
+                    color:
                       pathname === item.href
-                        ? "text-blue-600"
-                        : "text-neutral-600 hover:text-neutral-900"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
+                        ? "var(--text)"
+                        : "var(--text-muted)",
+                    transition: "color 0.2s ease",
+                    letterSpacing: "-0.01em",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--text)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color =
+                      pathname === item.href
+                        ? "var(--text)"
+                        : "var(--text-muted)")
+                  }
+                >
+                  {item.label}
+                </Link>
               ))}
+              <Link href="https://calendly.com/hello-thibautgallien/30min" className="btn-primary" style={{ padding: "8px 18px", fontSize: 13 }}>
+                Reserver un appel
+              </Link>
             </nav>
 
-            {/* Desktop CTA Button & Mobile Menu */}
-            <div className="flex items-center gap-4">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="hidden sm:block"
-              >
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
-                >
-                  <span className="hidden lg:inline">Travailler avec moi</span>
-                  <span className="lg:hidden">Travailler ensemble</span>
-                  <ArrowRight className="w-4 h-4 flex-shrink-0" />
-                </Link>
-              </motion.div>
-
-              {/* Mobile Menu Toggle */}
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-                aria-expanded={isOpen}
-                className="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-neutral-200 hover:border-neutral-300 transition-colors duration-300"
-              >
-                {isOpen ? (
-                  <X className="w-5 h-5 text-neutral-900" />
-                ) : (
-                  <Menu className="w-5 h-5 text-neutral-900" />
-                )}
-              </button>
-            </div>
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-expanded={isOpen}
+              className="mobile-menu-btn"
+              style={{
+                display: "none",
+                width: 40,
+                height: 40,
+                alignItems: "center",
+                justifyContent: "center",
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: 4,
+                cursor: "pointer",
+                flexDirection: "column",
+                gap: 5,
+              }}
+            >
+              <span
+                style={{
+                  display: "block",
+                  width: 18,
+                  height: 1.5,
+                  background: "var(--text)",
+                  transition: "all 0.3s ease",
+                  transform: isOpen
+                    ? "rotate(45deg) translate(2.5px, 2.5px)"
+                    : "none",
+                }}
+              />
+              <span
+                style={{
+                  display: "block",
+                  width: 18,
+                  height: 1.5,
+                  background: "var(--text)",
+                  transition: "all 0.3s ease",
+                  opacity: isOpen ? 0 : 1,
+                }}
+              />
+              <span
+                style={{
+                  display: "block",
+                  width: 18,
+                  height: 1.5,
+                  background: "var(--text)",
+                  transition: "all 0.3s ease",
+                  transform: isOpen
+                    ? "rotate(-45deg) translate(2.5px, -2.5px)"
+                    : "none",
+                }}
+              />
+            </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden bg-white border-t border-neutral-100"
+        {/* Mobile menu */}
+        <div
+          style={{
+            display: isOpen ? "block" : "none",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+            background: "rgba(10, 10, 11, 0.95)",
+          }}
+          className="mobile-menu"
+        >
+          <div className="container-main" style={{ padding: "24px" }}>
+            <nav
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 20,
+              }}
             >
-              <div className="max-w-6xl mx-auto px-6 py-6">
-                <nav className="flex flex-col gap-4">
-                  {navItems.map((item, index) => (
-                    <motion.div
-                      key={item.href}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                    >
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className={`block py-2 text-lg font-medium transition-colors duration-300 ${
-                          pathname === item.href
-                            ? "text-blue-600"
-                            : "text-neutral-600 hover:text-neutral-900"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </motion.div>
-                  ))}
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
-                    className="pt-4 border-t border-neutral-100"
-                  >
-                    <Link
-                      href="/contact"
-                      onClick={() => setIsOpen(false)}
-                      className="flex items-center justify-center gap-2 w-full py-3 px-6 bg-neutral-900 text-white font-semibold rounded-full hover:bg-neutral-800 transition-colors"
-                    >
-                      <span className="truncate">Travailler avec moi</span>
-                      <ArrowRight className="w-4 h-4 flex-shrink-0" />
-                    </Link>
-                  </motion.div>
-                </nav>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.header>
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 500,
+                    color:
+                      pathname === item.href
+                        ? "var(--text)"
+                        : "var(--text-muted)",
+                    transition: "color 0.2s ease",
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                href="https://calendly.com/hello-thibautgallien/30min"
+                onClick={() => setIsOpen(false)}
+                className="btn-primary"
+                style={{
+                  justifyContent: "center",
+                  marginTop: 8,
+                }}
+              >
+                Reserver un appel
+              </Link>
+            </nav>
+          </div>
+        </div>
+      </header>
 
-      {/* Mobile CTA Button - Always at bottom, hidden when menu open */}
-      <AnimatePresence>
-        {!isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 100 }}
-            transition={{ duration: 0.3 }}
-            className="sm:hidden fixed bottom-4 left-4 right-4 z-40"
-          >
-            <Link
-              href="/contact"
-              className="flex items-center justify-center gap-2 w-full py-4 px-6 bg-neutral-900 text-white font-semibold rounded-full hover:bg-neutral-800 transition-colors shadow-lg"
-            >
-              <span className="truncate">Travailler avec moi</span>
-              <ArrowRight className="w-4 h-4 flex-shrink-0" />
-            </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Responsive styles */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .mobile-menu-btn { display: flex !important; }
+        }
+        @media (min-width: 769px) {
+          .mobile-menu { display: none !important; }
+        }
+      `,
+        }}
+      />
     </>
   );
 }
