@@ -28,10 +28,7 @@ export function ROICalculator({
   const [result, setResult] = useState<number | null>(null);
 
   const calculate = () => {
-    // Exemple de formule par défaut (personnalisable)
     const fieldValues = Object.values(values);
-
-    // Formule : (CA mensuel) * (taux de fuite %) / 100
     if (fieldValues.length >= 2) {
       const ca = fieldValues[0];
       const tauxFuite = fieldValues[1];
@@ -45,19 +42,26 @@ export function ROICalculator({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="my-8 p-8 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl"
+      className="my-8 p-8 rounded-xl"
+      style={{
+        background: "rgba(59, 130, 246, 0.04)",
+        border: "1px solid rgba(59, 130, 246, 0.15)",
+      }}
     >
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-          <Calculator className="w-6 h-6 text-blue-600" />
+        <div
+          className="w-12 h-12 rounded-xl flex items-center justify-center"
+          style={{ background: "rgba(59, 130, 246, 0.1)" }}
+        >
+          <Calculator className="w-6 h-6" style={{ color: "var(--accent-blue)" }} />
         </div>
-        <h3 className="text-2xl font-bold text-neutral-900">{title}</h3>
+        <h3 className="text-2xl font-bold" style={{ color: "var(--text)" }}>{title}</h3>
       </div>
 
       <div className="space-y-4 mb-6">
         {fields.map((field, idx) => (
           <div key={idx}>
-            <label className="block text-sm font-semibold text-neutral-900 mb-2">
+            <label className="block text-sm font-semibold mb-2" style={{ color: "var(--text)" }}>
               {field.label}
             </label>
             <Input
@@ -75,7 +79,8 @@ export function ROICalculator({
 
       <Button
         onClick={calculate}
-        className="w-full h-12 bg-blue-600 hover:bg-blue-500 text-white font-bold"
+        className="w-full h-12 text-white font-bold"
+        style={{ background: "var(--accent-blue)" }}
       >
         Calculer
       </Button>
@@ -84,14 +89,18 @@ export function ROICalculator({
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="mt-6 p-6 bg-white border-2 border-blue-200 rounded-xl text-center"
+          className="mt-6 p-6 rounded-xl text-center"
+          style={{
+            background: "rgba(20, 20, 22, 0.85)",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
+          }}
         >
-          <p className="text-sm text-neutral-600 mb-2">{resultLabel}</p>
-          <p className="text-4xl font-bold text-red-600">
+          <p className="text-sm mb-2" style={{ color: "var(--text-muted)" }}>{resultLabel}</p>
+          <p className="text-4xl font-bold" style={{ color: "#FF5F57" }}>
             -{result.toLocaleString("fr-FR")}
             {resultSuffix}
           </p>
-          <p className="text-sm text-neutral-500 mt-2">par mois</p>
+          <p className="text-sm mt-2" style={{ color: "var(--text-dim)" }}>par mois</p>
         </motion.div>
       )}
     </motion.div>
@@ -144,15 +153,23 @@ export function Quiz({
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="my-8 p-8 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl"
+        className="my-8 p-8 rounded-xl"
+        style={{
+          background: "rgba(59, 130, 246, 0.04)",
+          border: "1px solid rgba(59, 130, 246, 0.15)",
+        }}
       >
         <div className="text-center mb-6">
-          <h3 className="text-2xl font-bold text-neutral-900 mb-2">
+          <h3 className="text-2xl font-bold mb-2" style={{ color: "var(--text)" }}>
             Résultat : {result.title}
           </h3>
-          <p className="text-lg text-neutral-600">{result.description}</p>
+          <p className="text-lg" style={{ color: "var(--text-muted)" }}>{result.description}</p>
         </div>
-        <Button onClick={reset} className="w-full bg-blue-600 hover:bg-blue-500">
+        <Button
+          onClick={reset}
+          className="w-full text-white"
+          style={{ background: "var(--accent-blue)" }}
+        >
           Recommencer
         </Button>
       </motion.div>
@@ -166,29 +183,35 @@ export function Quiz({
       key={currentQuestion}
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
-      className="my-8 p-8 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl"
+      className="my-8 p-8 rounded-xl"
+      style={{
+        background: "rgba(59, 130, 246, 0.04)",
+        border: "1px solid rgba(59, 130, 246, 0.15)",
+      }}
     >
       <div className="mb-6">
         <div className="flex justify-between items-center mb-4">
-          <span className="text-sm font-semibold text-blue-600">
+          <span className="text-sm font-semibold" style={{ color: "var(--accent-blue)" }}>
             Question {currentQuestion + 1}/{questions.length}
           </span>
           <div className="flex gap-1">
             {questions.map((_, idx) => (
               <div
                 key={idx}
-                className={`w-2 h-2 rounded-full ${
-                  idx === currentQuestion
-                    ? "bg-blue-600"
-                    : idx < currentQuestion
-                    ? "bg-blue-500"
-                    : "bg-neutral-300"
-                }`}
+                className="w-2 h-2 rounded-full"
+                style={{
+                  background:
+                    idx === currentQuestion
+                      ? "var(--accent-blue)"
+                      : idx < currentQuestion
+                      ? "var(--accent-violet)"
+                      : "rgba(255, 255, 255, 0.1)",
+                }}
               />
             ))}
           </div>
         </div>
-        <h3 className="text-xl font-bold text-neutral-900">{question.question}</h3>
+        <h3 className="text-xl font-bold" style={{ color: "var(--text)" }}>{question.question}</h3>
       </div>
 
       <div className="space-y-3">
@@ -198,7 +221,12 @@ export function Quiz({
             onClick={() => handleAnswer(option.points)}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full p-4 text-left border-2 border-neutral-200 rounded-xl hover:border-blue-400 hover:bg-blue-50 transition-all"
+            className="w-full p-4 text-left rounded-xl transition-all"
+            style={{
+              border: "1px solid rgba(255, 255, 255, 0.08)",
+              background: "rgba(20, 20, 22, 0.5)",
+              color: "var(--text-muted)",
+            }}
           >
             {option.text}
           </motion.button>
@@ -220,7 +248,7 @@ export function Poll({
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [votes, setVotes] = useState<{ [key: number]: number }>(
     options.reduce((acc, _, idx) => {
-      acc[idx] = Math.floor(Math.random() * 50) + 10; // Mock data
+      acc[idx] = Math.floor(Math.random() * 50) + 10;
       return acc;
     }, {} as { [key: number]: number })
   );
@@ -240,9 +268,13 @@ export function Poll({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="my-8 p-8 bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200 rounded-2xl"
+      className="my-8 p-8 rounded-xl"
+      style={{
+        background: "rgba(139, 92, 246, 0.04)",
+        border: "1px solid rgba(139, 92, 246, 0.15)",
+      }}
     >
-      <h3 className="text-xl font-bold text-neutral-900 mb-6">{question}</h3>
+      <h3 className="text-xl font-bold mb-6" style={{ color: "var(--text)" }}>{question}</h3>
 
       <div className="space-y-3">
         {options.map((option, idx) => {
@@ -255,24 +287,30 @@ export function Poll({
               onClick={() => handleVote(idx)}
               disabled={voted}
               whileHover={!voted ? { scale: 1.02 } : {}}
-              className={`w-full p-4 text-left border-2 rounded-xl transition-all relative overflow-hidden ${
-                isSelected
-                  ? "border-purple-500 bg-purple-50"
-                  : "border-neutral-200 hover:border-purple-300"
-              } ${voted ? "cursor-default" : "cursor-pointer"}`}
+              className="w-full p-4 text-left rounded-xl transition-all relative overflow-hidden"
+              style={{
+                border: isSelected
+                  ? "1px solid rgba(139, 92, 246, 0.4)"
+                  : "1px solid rgba(255, 255, 255, 0.08)",
+                background: isSelected
+                  ? "rgba(139, 92, 246, 0.06)"
+                  : "rgba(20, 20, 22, 0.5)",
+                cursor: voted ? "default" : "pointer",
+              }}
             >
               {voted && (
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${percentage}%` }}
                   transition={{ duration: 0.5 }}
-                  className="absolute inset-0 bg-purple-100 opacity-50"
+                  className="absolute inset-0"
+                  style={{ background: "rgba(139, 92, 246, 0.1)" }}
                 />
               )}
               <div className="relative flex items-center justify-between">
-                <span className="font-medium text-neutral-900">{option}</span>
+                <span className="font-medium" style={{ color: "var(--text)" }}>{option}</span>
                 {voted && (
-                  <span className="text-sm font-bold text-purple-600">
+                  <span className="text-sm font-bold" style={{ color: "var(--accent-violet)" }}>
                     {percentage}%
                   </span>
                 )}
@@ -283,8 +321,8 @@ export function Poll({
       </div>
 
       {voted && (
-        <p className="text-sm text-neutral-500 mt-4 text-center">
-          {totalVotes} votes • Merci d'avoir participé !
+        <p className="text-sm mt-4 text-center" style={{ color: "var(--text-dim)" }}>
+          {totalVotes} votes • Merci d&apos;avoir participé !
         </p>
       )}
     </motion.div>
@@ -308,8 +346,8 @@ export function ReadingProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-blue-600 z-50"
-      style={{ width: `${progress}%` }}
+      className="fixed top-0 left-0 right-0 h-1 z-50"
+      style={{ width: `${progress}%`, background: "var(--accent-blue)" }}
     />
   );
 }

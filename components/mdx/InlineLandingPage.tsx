@@ -37,25 +37,25 @@ export function InlineLandingPage({
 
   const variants = {
     default: {
-      bg: "bg-gradient-to-br from-blue-50 to-white",
-      border: "border-blue-200",
-      button: "bg-blue-600 hover:bg-blue-500",
-      iconBg: "bg-blue-100",
-      iconColor: "text-blue-600",
+      bg: "rgba(59, 130, 246, 0.04)",
+      border: "1px solid rgba(59, 130, 246, 0.15)",
+      button: "var(--accent-blue)",
+      iconBg: "rgba(59, 130, 246, 0.1)",
+      iconColor: "var(--accent-blue)",
     },
     premium: {
-      bg: "bg-gradient-to-br from-amber-50 to-orange-50",
-      border: "border-amber-200",
-      button: "bg-amber-600 hover:bg-amber-500",
-      iconBg: "bg-amber-100",
-      iconColor: "text-amber-600",
+      bg: "rgba(245, 158, 11, 0.04)",
+      border: "1px solid rgba(245, 158, 11, 0.15)",
+      button: "#D97706",
+      iconBg: "rgba(245, 158, 11, 0.1)",
+      iconColor: "#F59E0B",
     },
     urgent: {
-      bg: "bg-gradient-to-br from-red-50 to-orange-50",
-      border: "border-red-200",
-      button: "bg-red-600 hover:bg-red-500",
-      iconBg: "bg-red-100",
-      iconColor: "text-red-600",
+      bg: "rgba(239, 68, 68, 0.04)",
+      border: "1px solid rgba(239, 68, 68, 0.15)",
+      button: "#DC2626",
+      iconBg: "rgba(239, 68, 68, 0.1)",
+      iconColor: "#EF4444",
     },
   };
 
@@ -103,15 +103,19 @@ export function InlineLandingPage({
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className={`my-10 p-8 ${style.bg} border-2 ${style.border} rounded-2xl text-center`}
+        className="my-10 p-8 rounded-xl text-center"
+        style={{ background: style.bg, border: style.border }}
       >
-        <div className={`w-16 h-16 ${style.iconBg} rounded-full flex items-center justify-center mx-auto mb-4`}>
-          <CheckCircle className={`w-8 h-8 ${style.iconColor}`} />
+        <div
+          className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+          style={{ background: style.iconBg }}
+        >
+          <CheckCircle className="w-8 h-8" style={{ color: style.iconColor }} />
         </div>
-        <h3 className="text-2xl font-bold text-neutral-900 mb-2">
-          C'est dans ta boîte !
+        <h3 className="text-2xl font-bold mb-2" style={{ color: "var(--text)" }}>
+          C&apos;est dans ta boîte !
         </h3>
-        <p className="text-neutral-600">
+        <p style={{ color: "var(--text-muted)" }}>
           Vérifie tes emails (et les spams si tu ne vois rien).
         </p>
       </motion.div>
@@ -123,18 +127,22 @@ export function InlineLandingPage({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`my-10 p-8 ${style.bg} border-2 ${style.border} rounded-2xl`}
+      className="my-10 p-8 rounded-xl"
+      style={{ background: style.bg, border: style.border }}
     >
       <div className="flex flex-col md:flex-row items-center gap-6">
         {/* Icon */}
-        <div className={`flex-shrink-0 w-16 h-16 ${style.iconBg} rounded-xl flex items-center justify-center`}>
-          <Icon className={`w-8 h-8 ${style.iconColor}`} />
+        <div
+          className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center"
+          style={{ background: style.iconBg }}
+        >
+          <Icon className="w-8 h-8" style={{ color: style.iconColor }} />
         </div>
 
         {/* Content */}
         <div className="flex-1 text-center md:text-left">
-          <h3 className="text-2xl font-bold text-neutral-900 mb-2">{title}</h3>
-          <p className="text-neutral-600">{description}</p>
+          <h3 className="text-2xl font-bold mb-2" style={{ color: "var(--text)" }}>{title}</h3>
+          <p style={{ color: "var(--text-muted)" }}>{description}</p>
         </div>
 
         {/* Form */}
@@ -151,13 +159,14 @@ export function InlineLandingPage({
             <Button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full h-12 ${style.button} text-white font-bold`}
+              className="w-full h-12 text-white font-bold"
+              style={{ background: style.button }}
             >
               {isSubmitting ? "Envoi..." : ctaText}
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </form>
-          <p className="text-xs text-neutral-500 mt-2 text-center">
+          <p className="text-xs mt-2 text-center" style={{ color: "var(--text-dim)" }}>
             Pas de spam. Promis.
           </p>
         </div>
@@ -223,9 +232,13 @@ export function InlineLandingPageCompact({
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="my-6 p-4 bg-blue-50 border-2 border-blue-200 rounded-xl text-center"
+        className="my-6 p-4 rounded-xl text-center"
+        style={{
+          background: "rgba(59, 130, 246, 0.06)",
+          border: "1px solid rgba(59, 130, 246, 0.15)",
+        }}
       >
-        <p className="text-blue-700 font-semibold flex items-center justify-center gap-2">
+        <p className="font-semibold flex items-center justify-center gap-2" style={{ color: "var(--accent-blue)" }}>
           <CheckCircle className="w-5 h-5" />
           Envoyé ! Check tes emails.
         </p>
@@ -238,10 +251,14 @@ export function InlineLandingPageCompact({
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="my-6 p-4 bg-blue-50 border-2 border-blue-200 rounded-xl"
+      className="my-6 p-4 rounded-xl"
+      style={{
+        background: "rgba(59, 130, 246, 0.06)",
+        border: "1px solid rgba(59, 130, 246, 0.15)",
+      }}
     >
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 items-center">
-        <p className="text-sm font-semibold text-neutral-900 flex-shrink-0">
+        <p className="text-sm font-semibold flex-shrink-0" style={{ color: "var(--text)" }}>
           {text}
         </p>
         <Input
@@ -255,7 +272,8 @@ export function InlineLandingPageCompact({
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="h-10 bg-blue-600 hover:bg-blue-500 text-white font-semibold whitespace-nowrap"
+          className="h-10 text-white font-semibold whitespace-nowrap"
+          style={{ background: "var(--accent-blue)" }}
         >
           {isSubmitting ? "..." : ctaText}
         </Button>

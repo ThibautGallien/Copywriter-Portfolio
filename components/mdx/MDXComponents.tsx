@@ -24,14 +24,23 @@ export function KeyPoint({
   const Icon = icons[icon];
 
   return (
-    <div className="my-6 p-6 bg-blue-50 border-2 border-blue-200 rounded-2xl">
+    <div
+      className="my-6 p-6 rounded-xl"
+      style={{
+        background: "rgba(59, 130, 246, 0.06)",
+        border: "1px solid rgba(59, 130, 246, 0.15)",
+      }}
+    >
       <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center">
-          <Icon className="w-6 h-6 text-blue-600" />
+        <div
+          className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+          style={{ background: "rgba(59, 130, 246, 0.1)" }}
+        >
+          <Icon className="w-6 h-6" style={{ color: "var(--accent-blue)" }} />
         </div>
         <div>
-          <h4 className="font-bold text-neutral-900 mb-2">{title}</h4>
-          <p className="text-neutral-600 leading-relaxed">{description}</p>
+          <h4 className="font-bold mb-2" style={{ color: "var(--text)" }}>{title}</h4>
+          <p className="leading-relaxed" style={{ color: "var(--text-muted)" }}>{description}</p>
         </div>
       </div>
     </div>
@@ -47,19 +56,30 @@ export function Callout({
   type?: "info" | "warning" | "success" | "danger";
 }) {
   const styles = {
-    info: "bg-blue-50 border-blue-200 text-blue-900",
-    warning: "bg-amber-50 border-amber-200 text-amber-900",
-    success: "bg-blue-50 border-blue-200 text-blue-900",
-    danger: "bg-red-50 border-red-200 text-red-900",
+    info: {
+      background: "rgba(59, 130, 246, 0.06)",
+      border: "1px solid rgba(59, 130, 246, 0.15)",
+      color: "var(--text-muted)",
+    },
+    warning: {
+      background: "rgba(245, 158, 11, 0.06)",
+      border: "1px solid rgba(245, 158, 11, 0.15)",
+      color: "var(--text-muted)",
+    },
+    success: {
+      background: "rgba(40, 200, 64, 0.06)",
+      border: "1px solid rgba(40, 200, 64, 0.15)",
+      color: "var(--text-muted)",
+    },
+    danger: {
+      background: "rgba(239, 68, 68, 0.06)",
+      border: "1px solid rgba(239, 68, 68, 0.15)",
+      color: "var(--text-muted)",
+    },
   };
 
   return (
-    <div
-      className={cn(
-        "my-6 p-6 border-2 rounded-2xl",
-        styles[type]
-      )}
-    >
+    <div className="my-6 p-6 rounded-xl" style={styles[type]}>
       {children}
     </div>
   );
@@ -78,36 +98,45 @@ export function Example({
   bad?: boolean;
 }) {
   const borderColor = good
-    ? "border-blue-500"
+    ? "rgba(59, 130, 246, 0.3)"
     : bad
-    ? "border-red-500"
-    : "border-neutral-300";
+    ? "rgba(239, 68, 68, 0.3)"
+    : "rgba(255, 255, 255, 0.1)";
   const bgColor = good
-    ? "bg-blue-50"
+    ? "rgba(59, 130, 246, 0.04)"
     : bad
-    ? "bg-red-50"
-    : "bg-neutral-50";
+    ? "rgba(239, 68, 68, 0.04)"
+    : "rgba(255, 255, 255, 0.02)";
   const badge = good ? (
-    <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full">
+    <span
+      className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold rounded-full text-white"
+      style={{ background: "var(--accent-blue)" }}
+    >
       <CheckCircle className="w-3 h-3" />À faire
     </span>
   ) : bad ? (
-    <span className="inline-flex items-center gap-1 px-3 py-1 bg-red-500 text-white text-xs font-semibold rounded-full">
+    <span
+      className="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold rounded-full text-white"
+      style={{ background: "#EF4444" }}
+    >
       <AlertCircle className="w-3 h-3" />À éviter
     </span>
   ) : null;
 
   return (
-    <div className={cn("my-6 p-6 border-2 rounded-2xl", borderColor, bgColor)}>
+    <div
+      className="my-6 p-6 rounded-xl"
+      style={{ border: `1px solid ${borderColor}`, background: bgColor }}
+    >
       {(title || badge) && (
         <div className="flex items-center justify-between mb-4">
           {title && (
-            <h4 className="font-bold text-neutral-900">{title}</h4>
+            <h4 className="font-bold" style={{ color: "var(--text)" }}>{title}</h4>
           )}
           {badge}
         </div>
       )}
-      <div className="text-neutral-700 leading-relaxed">{children}</div>
+      <div className="leading-relaxed" style={{ color: "var(--text-muted)" }}>{children}</div>
     </div>
   );
 }
@@ -116,8 +145,8 @@ export function Example({
 export function ChecklistItem({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-3 mb-3">
-      <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-      <span className="text-neutral-700">{children}</span>
+      <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "var(--accent-blue)" }} />
+      <span style={{ color: "var(--text-muted)" }}>{children}</span>
     </li>
   );
 }
@@ -127,9 +156,10 @@ const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
-        "mt-12 mb-6 text-4xl font-extrabold text-neutral-900 leading-tight scroll-mt-24",
+        "mt-12 mb-6 text-4xl font-extrabold leading-tight scroll-mt-24",
         className
       )}
+      style={{ color: "var(--text)" }}
       {...props}
     />
   ),
@@ -137,51 +167,57 @@ const components = {
     <h2
       id={props.children?.toString().toLowerCase().replace(/\s+/g, "-")}
       className={cn(
-        "mt-12 mb-4 text-3xl font-bold text-neutral-900 leading-tight scroll-mt-24",
+        "mt-12 mb-4 text-3xl font-bold leading-tight scroll-mt-24",
         className
       )}
+      style={{ color: "var(--text)" }}
       {...props}
     />
   ),
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        "mt-8 mb-3 text-2xl font-bold text-neutral-900 leading-tight scroll-mt-24",
+        "mt-8 mb-3 text-2xl font-bold leading-tight scroll-mt-24",
         className
       )}
+      style={{ color: "var(--text)" }}
       {...props}
     />
   ),
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
       className={cn(
-        "mt-6 mb-2 text-xl font-bold text-neutral-900 leading-tight",
+        "mt-6 mb-2 text-xl font-bold leading-tight",
         className
       )}
+      style={{ color: "var(--text)" }}
       {...props}
     />
   ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={cn(
-        "mb-6 text-neutral-700 leading-relaxed text-lg",
+        "mb-6 leading-relaxed text-lg",
         className
       )}
+      style={{ color: "var(--text-muted)" }}
       {...props}
     />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul
-      className={cn("mb-6 ml-6 list-disc text-neutral-700 space-y-2", className)}
+      className={cn("mb-6 ml-6 list-disc space-y-2", className)}
+      style={{ color: "var(--text-muted)" }}
       {...props}
     />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
     <ol
       className={cn(
-        "mb-6 ml-6 list-decimal text-neutral-700 space-y-2",
+        "mb-6 ml-6 list-decimal space-y-2",
         className
       )}
+      style={{ color: "var(--text-muted)" }}
       {...props}
     />
   ),
@@ -194,42 +230,57 @@ const components = {
   }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       className={cn(
-        "my-6 pl-6 border-l-4 border-blue-500 italic text-neutral-600",
+        "my-6 pl-6 italic",
         className
       )}
+      style={{
+        borderLeft: "4px solid var(--accent-blue)",
+        color: "var(--text-muted)",
+      }}
       {...props}
     />
   ),
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "px-2 py-1 bg-neutral-100 text-neutral-900 rounded text-sm font-mono",
+        "px-2 py-1 rounded text-sm font-mono",
         className
       )}
+      style={{
+        background: "rgba(255, 255, 255, 0.06)",
+        color: "var(--text)",
+      }}
       {...props}
     />
   ),
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
     <pre
       className={cn(
-        "my-6 p-4 bg-neutral-900 text-neutral-100 rounded-xl overflow-x-auto",
+        "my-6 p-4 rounded-xl overflow-x-auto",
         className
       )}
+      style={{
+        background: "rgba(20, 20, 22, 0.95)",
+        border: "1px solid rgba(255, 255, 255, 0.08)",
+        color: "var(--text-muted)",
+      }}
       {...props}
     />
   ),
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <a
       className={cn(
-        "text-blue-600 hover:text-blue-700 underline font-medium",
+        "underline font-medium",
         className
       )}
+      style={{ color: "var(--accent-blue)" }}
       {...props}
     />
   ),
   strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <strong
-      className={cn("font-bold text-neutral-900", className)}
+      className={cn("font-bold", className)}
+      style={{ color: "var(--text)" }}
       {...props}
     />
   ),
