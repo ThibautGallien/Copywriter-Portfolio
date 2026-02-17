@@ -46,10 +46,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ═══════ SERVICE 1 : SEO ═══════ */}
-      <section ref={revealSeo} className="reveal" style={{ padding: "80px 0" }}>
+      <section ref={revealSeo} className="reveal section-alt" style={{ padding: "80px 0" }}>
         <div className="container-main">
           <span className="section-number">01. Referencement naturel (SEO)</span>
           <h2 style={{ marginBottom: 16 }}>
@@ -213,7 +213,7 @@ export default function ServicesPage() {
       <div className="section-divider" />
 
       {/* ═══════ SERVICE 3 : DATA ═══════ */}
-      <section ref={revealData} className="reveal" style={{ padding: "80px 0" }}>
+      <section ref={revealData} className="reveal section-alt" style={{ padding: "80px 0" }}>
         <div className="container-main">
           <span className="section-number">03. Data &amp; Analytics</span>
           <h2 style={{ marginBottom: 16 }}>
@@ -305,10 +305,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ═══════ CTA ═══════ */}
-      <section ref={revealCta} className="reveal" style={{ padding: "80px 0", textAlign: "center" }}>
+      <section ref={revealCta} className="reveal section-cta" style={{ padding: "80px 0", textAlign: "center" }}>
         <div className="container-main" style={{ maxWidth: 600 }}>
           <span className="section-number">Prochaine etape</span>
           <h2 style={{ marginBottom: 16 }}>

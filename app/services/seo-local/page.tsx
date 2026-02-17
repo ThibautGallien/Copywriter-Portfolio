@@ -75,10 +75,10 @@ export default function SeoLocalPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ═══════ POURQUOI LE SEO LOCAL ═══════ */}
-      <section ref={revealWhy} className="reveal" style={{ padding: "80px 0" }}>
+      <section ref={revealWhy} className="reveal section-alt" style={{ padding: "80px 0" }}>
         <div className="container-main">
           <span className="section-number">01. Pourquoi c&apos;est important</span>
           <h2 style={{ marginBottom: 16 }}>
@@ -162,7 +162,7 @@ export default function SeoLocalPage() {
       <div className="section-divider" />
 
       {/* ═══════ POUR QUI ═══════ */}
-      <section ref={revealWho} className="reveal" style={{ padding: "80px 0" }}>
+      <section ref={revealWho} className="reveal section-alt" style={{ padding: "80px 0" }}>
         <div className="container-main">
           <span className="section-number">03. Pour qui</span>
           <h2 style={{ marginBottom: 16 }}>
@@ -233,10 +233,10 @@ export default function SeoLocalPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ═══════ CTA ═══════ */}
-      <section style={{ padding: "80px 0", textAlign: "center" }}>
+      <section className="section-cta" style={{ padding: "80px 0", textAlign: "center" }}>
         <div className="container-main" style={{ maxWidth: 600 }}>
           <h2 style={{ marginBottom: 16 }}>
             Pret a dominer le

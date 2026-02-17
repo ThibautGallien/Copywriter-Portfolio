@@ -60,10 +60,10 @@ export default function SeoGrowthPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ═══════ POURQUOI LE SEO ═══════ */}
-      <section ref={revealWhy} className="reveal" style={{ padding: "80px 0" }}>
+      <section ref={revealWhy} className="reveal section-alt" style={{ padding: "80px 0" }}>
         <div className="container-main">
           <span className="section-number">01. Pourquoi miser sur le SEO</span>
           <h2 style={{ marginBottom: 16 }}>
@@ -206,7 +206,7 @@ export default function SeoGrowthPage() {
       <div className="section-divider" />
 
       {/* ═══════ PROCESS ═══════ */}
-      <section ref={revealProcess} className="reveal" style={{ padding: "80px 0" }}>
+      <section ref={revealProcess} className="reveal section-alt" style={{ padding: "80px 0" }}>
         <div className="container-main">
           <span className="section-number">03. Comment ca se passe concretement</span>
           <h2 style={{ marginBottom: 48 }}>
@@ -289,10 +289,10 @@ export default function SeoGrowthPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ═══════ CTA ═══════ */}
-      <section style={{ padding: "80px 0", textAlign: "center" }}>
+      <section className="section-cta" style={{ padding: "80px 0", textAlign: "center" }}>
         <div className="container-main" style={{ maxWidth: 600 }}>
           <h2 style={{ marginBottom: 16 }}>
             Pret a faire de Google ton meilleur
