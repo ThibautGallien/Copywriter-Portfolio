@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import {
@@ -66,7 +66,7 @@ export default function AdminPage() {
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <Label htmlFor="password">Mot de passe</Label>
+              <label htmlFor="password">Mot de passe</label>
               <Input
                 id="password"
                 type="password"
@@ -198,7 +198,7 @@ Termine avec un CTA...
 
             <div className="space-y-4">
               <div>
-                <Label htmlFor="title">Titre *</Label>
+                <label htmlFor="title">Titre *</label>
                 <Input
                   id="title"
                   value={title}
@@ -208,7 +208,7 @@ Termine avec un CTA...
               </div>
 
               <div>
-                <Label htmlFor="excerpt">Description courte *</Label>
+                <label htmlFor="excerpt">Description courte *</label>
                 <Textarea
                   id="excerpt"
                   value={excerpt}
@@ -220,7 +220,7 @@ Termine avec un CTA...
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="categories">Catégories *</Label>
+                  <label htmlFor="categories">Catégories *</label>
                   <Input
                     id="categories"
                     value={categories}
@@ -233,7 +233,7 @@ Termine avec un CTA...
                 </div>
 
                 <div>
-                  <Label htmlFor="readingTime">Temps de lecture (min)</Label>
+                  <label htmlFor="readingTime">Temps de lecture (min)</label>
                   <Input
                     id="readingTime"
                     type="number"
@@ -245,7 +245,7 @@ Termine avec un CTA...
               </div>
 
               <div>
-                <Label htmlFor="keywords">Mots-clés SEO</Label>
+                <label htmlFor="keywords">Mots-clés SEO</label>
                 <Input
                   id="keywords"
                   value={keywords}
@@ -265,13 +265,13 @@ Termine avec un CTA...
                   onChange={(e) => setFeatured(e.target.checked)}
                   className="w-4 h-4"
                 />
-                <Label htmlFor="featured" className="cursor-pointer">
+                <label htmlFor="featured" className="cursor-pointer">
                   Article à la une
-                </Label>
+                </label>
               </div>
 
               <div>
-                <Label htmlFor="content">Contenu (optionnel)</Label>
+                <label htmlFor="content">Contenu (optionnel)</label>
                 <Textarea
                   id="content"
                   value={content}

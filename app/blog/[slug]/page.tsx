@@ -100,13 +100,14 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         ]}
       />
 
-      <div className="min-h-screen bg-white text-neutral-900 pt-24 pb-16">
+      <div className="min-h-screen pt-24 pb-16" style={{ background: "var(--bg)" }}>
         <div className="container mx-auto px-6 max-w-4xl">
           {/* Breadcrumb */}
           <div className="mb-8">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
+              className="inline-flex items-center gap-2 font-medium transition-colors"
+              style={{ color: "var(--accent-blue)" }}
             >
               <ArrowLeft className="w-4 h-4" />
               Retour au blog
@@ -121,7 +122,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 {post.categories.map((category) => (
                   <span
                     key={category}
-                    className="px-4 py-2 text-sm font-semibold rounded-full bg-blue-50 text-blue-700 border border-blue-200"
+                    className="px-4 py-2 text-sm font-semibold rounded-full"
+                    style={{
+                      background: "rgba(59, 130, 246, 0.1)",
+                      color: "var(--accent-blue)",
+                      border: "1px solid rgba(59, 130, 246, 0.2)",
+                    }}
                   >
                     {category}
                   </span>
@@ -129,31 +135,31 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </div>
 
               {/* Titre */}
-              <h1 className="text-4xl md:text-5xl font-extrabold text-neutral-900 leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6" style={{ color: "var(--text)" }}>
                 {post.title}
               </h1>
 
               {/* Excerpt */}
-              <p className="text-xl text-neutral-600 leading-relaxed mb-8">
+              <p className="text-xl leading-relaxed mb-8" style={{ color: "var(--text-muted)" }}>
                 {post.excerpt}
               </p>
 
               {/* Meta info */}
-              <div className="flex flex-wrap items-center gap-6 text-neutral-600 pb-8 border-b border-neutral-200">
+              <div className="flex flex-wrap items-center gap-6 pb-8" style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
                 <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                    <User className="w-5 h-5 text-blue-600" />
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "rgba(59, 130, 246, 0.1)" }}>
+                    <User className="w-5 h-5" style={{ color: "var(--accent-blue)" }} />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-neutral-900">
+                    <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>
                       {post.author}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-neutral-400" />
-                  <span className="text-sm">
+                  <Calendar className="w-5 h-5" style={{ color: "var(--text-dim)" }} />
+                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>
                     {new Date(post.publishedAt).toLocaleDateString("fr-FR", {
                       year: "numeric",
                       month: "long",
@@ -163,8 +169,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-neutral-400" />
-                  <span className="text-sm">
+                  <Clock className="w-5 h-5" style={{ color: "var(--text-dim)" }} />
+                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>
                     {post.estimatedReadingTime} min de lecture
                   </span>
                 </div>
@@ -172,15 +178,15 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             </header>
 
             {/* Article Content */}
-            <div className="prose prose-lg prose-neutral max-w-none">
+            <div className="mdx-content">
               <MDXContent code={post.body.code} />
             </div>
           </article>
 
           {/* Navigation entre articles */}
           {(previousPost || nextPost) && (
-            <div className="mt-16 pt-12 border-t border-neutral-200">
-              <h3 className="text-2xl font-bold text-neutral-900 mb-8">
+            <div className="mt-16 pt-12" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
+              <h3 className="text-2xl font-bold mb-8" style={{ color: "var(--text)" }}>
                 Continuer la lecture
               </h3>
 
@@ -188,13 +194,17 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 {previousPost && (
                   <Link
                     href={previousPost.url}
-                    className="group p-6 bg-neutral-50 hover:bg-blue-50 border-2 border-neutral-200 hover:border-blue-200 rounded-2xl transition-all"
+                    className="group p-6 rounded-xl transition-all"
+                    style={{
+                      background: "rgba(20, 20, 22, 0.85)",
+                      border: "1px solid rgba(255, 255, 255, 0.08)",
+                    }}
                   >
-                    <div className="flex items-center gap-2 text-sm text-neutral-500 mb-3">
+                    <div className="flex items-center gap-2 text-sm mb-3" style={{ color: "var(--text-dim)" }}>
                       <ArrowLeft className="w-4 h-4" />
                       <span>Article précédent</span>
                     </div>
-                    <h4 className="font-bold text-neutral-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                    <h4 className="font-bold transition-colors line-clamp-2" style={{ color: "var(--text)" }}>
                       {previousPost.title}
                     </h4>
                   </Link>
@@ -203,13 +213,17 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 {nextPost && (
                   <Link
                     href={nextPost.url}
-                    className="group p-6 bg-neutral-50 hover:bg-blue-50 border-2 border-neutral-200 hover:border-blue-200 rounded-2xl transition-all md:ml-auto"
+                    className="group p-6 rounded-xl transition-all md:ml-auto"
+                    style={{
+                      background: "rgba(20, 20, 22, 0.85)",
+                      border: "1px solid rgba(255, 255, 255, 0.08)",
+                    }}
                   >
-                    <div className="flex items-center gap-2 text-sm text-neutral-500 mb-3 md:justify-end">
+                    <div className="flex items-center gap-2 text-sm mb-3 md:justify-end" style={{ color: "var(--text-dim)" }}>
                       <span>Article suivant</span>
                       <ArrowRight className="w-4 h-4" />
                     </div>
-                    <h4 className="font-bold text-neutral-900 group-hover:text-blue-600 transition-colors line-clamp-2 md:text-right">
+                    <h4 className="font-bold transition-colors line-clamp-2 md:text-right" style={{ color: "var(--text)" }}>
                       {nextPost.title}
                     </h4>
                   </Link>
@@ -219,19 +233,25 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           )}
 
           {/* CTA Final */}
-          <div className="mt-16 p-10 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl text-center">
-            <h3 className="text-3xl font-bold text-neutral-900 mb-4">
+          <div
+            className="mt-16 p-10 rounded-xl text-center"
+            style={{
+              background: "linear-gradient(180deg, rgba(59, 130, 246, 0.06) 0%, rgba(20, 20, 22, 0.85) 100%)",
+              border: "1px solid rgba(59, 130, 246, 0.15)",
+            }}
+          >
+            <h3 className="text-3xl font-bold mb-4" style={{ color: "var(--text)" }}>
               Prêt à optimiser ton funnel ?
             </h3>
-            <p className="text-lg text-neutral-600 mb-8 max-w-2xl mx-auto">
-              Je t'aide à trouver les 2-3 endroits où tu perds de l'argent et à
+            <p className="text-lg mb-8 max-w-2xl mx-auto" style={{ color: "var(--text-muted)" }}>
+              Je t&apos;aide à trouver les 2-3 endroits où tu perds de l&apos;argent et à
               les corriger. Audit gratuit disponible.
             </p>
             <Link
               href="https://calendly.com/hello-thibautgallien/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-full text-lg transition-colors"
+              className="btn-primary inline-flex items-center gap-2 text-lg"
             >
               Réserver un audit gratuit
               <ArrowRight className="w-5 h-5" />

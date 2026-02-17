@@ -200,6 +200,7 @@ export default function HomePage() {
                     alt="Thibaut Gallien — Consultant Croissance Digitale"
                     width={380}
                     height={380}
+                    sizes="(max-width: 960px) 280px, 380px"
                     priority
                     style={{
                       width: "100%",
