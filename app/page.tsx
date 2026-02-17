@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 /* ═══════════════════════════════════════
    HOMEPAGE — thibautgallien.fr
@@ -90,70 +91,148 @@ export default function HomePage() {
         }}
       >
         <div className="container-main">
-          <div style={{ maxWidth: 720, animation: "fadeInUp 0.6s ease both" }}>
-            <span
-              className="mono"
-              style={{
-                fontSize: 13,
-                letterSpacing: "0.1em",
-                color: "var(--text-muted)",
-                textTransform: "uppercase",
-                marginBottom: 24,
-                display: "block",
-              }}
-            >
-              Consultant Croissance Digitale
-            </span>
-
-            <h1 style={{ marginBottom: 8, lineHeight: 1.1 }}>
-              Je rends ton business
-            </h1>
-            <h1
-              className="gradient-text"
-              style={{ marginBottom: 28, lineHeight: 1.1 }}
-            >
-              visible sur Google
-            </h1>
-
-            <p
-              style={{
-                fontSize: 19,
-                lineHeight: 1.7,
-                color: "var(--text-muted)",
-                maxWidth: 580,
-                marginBottom: 20,
-              }}
-            >
-              Tu as un bon produit mais pas assez de trafic ? Je t&apos;aide a attirer des visiteurs qualifies
-              grace au SEO, a les convertir avec l&apos;email marketing, et a piloter ta croissance avec la data.
-            </p>
-            <p
-              style={{
-                fontSize: 17,
-                color: "var(--text-dim)",
-                maxWidth: 520,
-                marginBottom: 40,
-              }}
-            >
-              Concretement : plus de monde sur ton site, plus de leads, plus de CA. Mesurable, previsible, durable.
-            </p>
-
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link
-                href="https://calendly.com/hello-thibautgallien/30min"
-                className="btn-primary"
+          <div className="hero-layout">
+            {/* Left — text */}
+            <div style={{ animation: "fadeInUp 0.6s ease both" }}>
+              <span
+                className="mono"
+                style={{
+                  fontSize: 13,
+                  letterSpacing: "0.1em",
+                  color: "var(--text-muted)",
+                  textTransform: "uppercase",
+                  marginBottom: 24,
+                  display: "block",
+                }}
               >
-                Reserver un appel decouverte
-                <ArrowIcon />
-              </Link>
-              <Link href="/services" className="btn-secondary">
-                Decouvrir mes services
-              </Link>
+                Consultant Croissance Digitale
+              </span>
+
+              <h1 style={{ marginBottom: 8, lineHeight: 1.1 }}>
+                Je rends ton business
+              </h1>
+              <h1
+                className="gradient-text"
+                style={{ marginBottom: 28, lineHeight: 1.1 }}
+              >
+                visible sur Google
+              </h1>
+
+              <p
+                style={{
+                  fontSize: 19,
+                  lineHeight: 1.7,
+                  color: "var(--text-muted)",
+                  maxWidth: 580,
+                  marginBottom: 20,
+                }}
+              >
+                Tu as un bon produit mais pas assez de trafic ? Je t&apos;aide a attirer des visiteurs qualifies
+                grace au SEO, a les convertir avec l&apos;email marketing, et a piloter ta croissance avec la data.
+              </p>
+              <p
+                style={{
+                  fontSize: 17,
+                  color: "var(--text-dim)",
+                  maxWidth: 520,
+                  marginBottom: 40,
+                }}
+              >
+                Concretement : plus de monde sur ton site, plus de leads, plus de CA. Mesurable, previsible, durable.
+              </p>
+
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <Link
+                  href="https://calendly.com/hello-thibautgallien/30min"
+                  className="btn-primary"
+                >
+                  Reserver un appel decouverte
+                  <ArrowIcon />
+                </Link>
+                <Link href="/services" className="btn-secondary">
+                  Decouvrir mes services
+                </Link>
+              </div>
+            </div>
+
+            {/* Right — photo */}
+            <div
+              className="hero-photo"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                animation: "fadeIn 0.8s ease 0.3s both",
+              }}
+            >
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  maxWidth: 380,
+                }}
+              >
+                {/* Glow behind photo */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: -2,
+                    borderRadius: 12,
+                    background: "linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3))",
+                    filter: "blur(24px)",
+                    opacity: 0.5,
+                    zIndex: 0,
+                  }}
+                />
+                {/* Photo container */}
+                <div
+                  style={{
+                    position: "relative",
+                    zIndex: 1,
+                    borderRadius: 10,
+                    overflow: "hidden",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    boxShadow: "0 8px 40px rgba(0, 0, 0, 0.4)",
+                  }}
+                >
+                  <Image
+                    src="/profile-pic.webp"
+                    alt="Thibaut Gallien — Consultant Croissance Digitale"
+                    width={380}
+                    height={380}
+                    priority
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      display: "block",
+                    }}
+                  />
+                </div>
+                {/* Small floating badge */}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: -12,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    zIndex: 2,
+                    background: "rgba(20, 20, 22, 0.95)",
+                    border: "1px solid rgba(59, 130, 246, 0.2)",
+                    borderRadius: 6,
+                    padding: "8px 16px",
+                    backdropFilter: "blur(12px)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  <span style={{ fontSize: 13, color: "var(--accent-blue)", fontWeight: 600 }}>Thibaut Gallien</span>
+                  <span style={{ fontSize: 13, color: "var(--text-dim)", marginLeft: 8 }}>SEO &middot; Email &middot; Data</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Hero metrics — right side on desktop */}
-          <div className="hero-metrics" style={{ marginTop: 64 }}>
+          {/* Hero metrics */}
+          <div style={{ marginTop: 64 }}>
             <div
               style={{
                 display: "grid",
@@ -613,6 +692,23 @@ export default function HomePage() {
 
       {/* ── Responsive ── */}
       <style dangerouslySetInnerHTML={{ __html: `
+        .hero-layout {
+          display: grid;
+          grid-template-columns: 1fr 380px;
+          gap: 64px;
+          align-items: center;
+        }
+        @media (max-width: 960px) {
+          .hero-layout {
+            grid-template-columns: 1fr !important;
+            gap: 48px !important;
+          }
+          .hero-photo {
+            order: -1;
+            max-width: 280px;
+            margin: 0 auto;
+          }
+        }
         @media (min-width: 769px) {
           .service-detail-grid {
             grid-template-columns: 1fr !important;
