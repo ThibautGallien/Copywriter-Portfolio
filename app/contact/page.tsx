@@ -61,7 +61,7 @@ export default function ContactPage() {
             Parlons de
             <span className="gradient-text"> ton projet</span>
           </h1>
-          <p style={{ maxWidth: 520, fontSize: 17 }}>
+          <p style={{ maxWidth: 520, fontSize: 19 }}>
             Un appel de 30 minutes pour analyser ta situation et identifier les quick wins. Ou envoie-moi un message directement.
           </p>
         </div>
@@ -83,8 +83,8 @@ export default function ContactPage() {
             {/* Left: Calendly + info */}
             <div>
               <span className="section-number">01. Appel decouverte</span>
-              <h3 style={{ marginBottom: 16 }}>Reserver un creneau</h3>
-              <p style={{ marginBottom: 24, fontSize: 15 }}>
+              <h3 style={{ marginBottom: 16, fontSize: 20 }}>Reserver un creneau</h3>
+              <p style={{ marginBottom: 24, fontSize: 17 }}>
                 30 minutes. Je regarde ton site en live, j&apos;identifie 3 quick wins et je te dis si on est un bon fit. Zero engagement.
               </p>
               <Link
@@ -121,7 +121,7 @@ export default function ContactPage() {
             {/* Right: Form */}
             <div>
               <span className="section-number">02. Message direct</span>
-              <h3 style={{ marginBottom: 24 }}>Envoyer un message</h3>
+              <h3 style={{ marginBottom: 24, fontSize: 20 }}>Envoyer un message</h3>
 
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                 <div>

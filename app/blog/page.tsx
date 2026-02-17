@@ -84,7 +84,7 @@ export default function BlogPage() {
                 onClick={() => setActiveCategory(cat)}
                 style={{
                   padding: "6px 14px",
-                  fontSize: 13,
+                  fontSize: 14,
                   fontWeight: 500,
                   borderRadius: 4,
                   cursor: "pointer",
@@ -114,7 +114,7 @@ export default function BlogPage() {
       <section ref={revealArticles} className="reveal section-alt" style={{ padding: "0 0 80px" }}>
         <div className="container-main">
           {filtered.length === 0 ? (
-            <p style={{ fontSize: 15, color: "var(--text-dim)", padding: "40px 0" }}>
+            <p style={{ fontSize: 16, color: "var(--text-dim)", padding: "40px 0" }}>
               Aucun article dans cette categorie pour le moment.
             </p>
           ) : (
@@ -157,7 +157,7 @@ export default function BlogPage() {
                         <span
                           className="mono"
                           style={{
-                            fontSize: 11,
+                            fontSize: 13,
                             letterSpacing: "0.1em",
                             color: "var(--accent-blue)",
                             textTransform: "uppercase",
@@ -165,20 +165,20 @@ export default function BlogPage() {
                         >
                           {article.category}
                         </span>
-                        <span style={{ fontSize: 12, color: "var(--text-dim)" }}>
+                        <span style={{ fontSize: 13, color: "var(--text-dim)" }}>
                           {article.readTime}
                         </span>
                       </div>
                       <h3 style={{ fontSize: 18, marginBottom: 6, fontWeight: 600 }}>
                         {article.title}
                       </h3>
-                      <p style={{ fontSize: 14, maxWidth: 500 }}>
+                      <p style={{ fontSize: 16, maxWidth: 500 }}>
                         {article.excerpt}
                       </p>
                     </div>
                     <span
                       className="mono"
-                      style={{ fontSize: 13, color: "var(--text-dim)", whiteSpace: "nowrap" }}
+                      style={{ fontSize: 14, color: "var(--text-dim)", whiteSpace: "nowrap" }}
                     >
                       {article.date}
                     </span>
