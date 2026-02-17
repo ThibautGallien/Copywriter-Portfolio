@@ -31,7 +31,7 @@ export default function SeoGrowthPage() {
         <div className="container-main">
           <Link
             href="/services"
-            style={{ fontSize: 13, color: "var(--text-dim)", display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 32, transition: "color 0.2s ease" }}
+            style={{ fontSize: 15, color: "var(--text-dim)", display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 32, transition: "color 0.2s ease" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-dim)")}
           >
@@ -47,12 +47,12 @@ export default function SeoGrowthPage() {
             Fais de Google ton premier
             <span className="gradient-text"> canal d&apos;acquisition</span>
           </h1>
-          <p style={{ maxWidth: 600, fontSize: 17, lineHeight: 1.7, marginBottom: 16 }}>
+          <p style={{ maxWidth: 600, fontSize: 19, lineHeight: 1.7, marginBottom: 16 }}>
             Tu veux que des centaines (ou des milliers) de personnes decouvrent ton business chaque mois
             via Google, sans payer de pub ? C&apos;est exactement ce que fait le SEO Growth :
             une strategie complete pour positionner ton site sur les requetes qui ramenent du business.
           </p>
-          <p style={{ maxWidth: 560, fontSize: 15, lineHeight: 1.7, color: "var(--text-dim)", marginBottom: 36 }}>
+          <p style={{ maxWidth: 560, fontSize: 17, lineHeight: 1.7, color: "var(--text-dim)", marginBottom: 36 }}>
             Contrairement au SEO local (qui cible une zone geographique), le SEO Growth attaque des requetes
             nationales ou thematiques : &quot;meilleur CRM pour freelances&quot;, &quot;comment creer une formation en ligne&quot;, etc.
             L&apos;objectif : devenir une reference dans ton domaine et generer du trafic qualifie en continu.
@@ -70,12 +70,12 @@ export default function SeoGrowthPage() {
             Le canal le plus rentable sur le
             <span className="gradient-text"> long terme</span>
           </h2>
-          <p style={{ maxWidth: 620, fontSize: 16, lineHeight: 1.7, marginBottom: 16 }}>
+          <p style={{ maxWidth: 620, fontSize: 17, lineHeight: 1.7, marginBottom: 16 }}>
             La pub payante (Google Ads, Facebook Ads), tu paies a chaque clic. Le jour ou tu coupes le budget,
             le trafic tombe a zero. Le SEO fonctionne differemment : tu investis dans du contenu et de l&apos;optimisation
             qui continuent a generer du trafic pendant des mois, voire des annees.
           </p>
-          <p style={{ maxWidth: 600, fontSize: 15, lineHeight: 1.7, marginBottom: 40, color: "var(--text-dim)" }}>
+          <p style={{ maxWidth: 600, fontSize: 17, lineHeight: 1.7, marginBottom: 40, color: "var(--text-dim)" }}>
             Un article bien positionne peut t&apos;amener 500+ visiteurs par mois. Pendant 2 ans. Sans depenser un centime
             de plus. C&apos;est pour ca que les entreprises qui investissent en SEO ont un cout d&apos;acquisition client
             3 a 5 fois inferieur a celles qui dependent de la pub.
@@ -87,9 +87,9 @@ export default function SeoGrowthPage() {
               { title: "Cout d'acquisition faible", desc: "Une fois positionne, le trafic est gratuit. Pas de cout par clic, pas de budget pub a maintenir." },
               { title: "Leads ultra qualifies", desc: "Les gens qui te trouvent via Google cherchent activement ce que tu proposes. Ils sont deja dans une intention d'achat." },
             ].map((item, i) => (
-              <div key={i} className="card" style={{ padding: 24 }}>
-                <h4 style={{ marginBottom: 8, fontSize: 15 }}>{item.title}</h4>
-                <p style={{ fontSize: 14, lineHeight: 1.6 }}>{item.desc}</p>
+              <div key={i} className="card card-accent-violet" style={{ padding: 24 }}>
+                <h4 style={{ marginBottom: 8, fontSize: 17 }}>{item.title}</h4>
+                <p style={{ fontSize: 16, lineHeight: 1.6 }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -106,19 +106,19 @@ export default function SeoGrowthPage() {
             Choisis la formule adaptee a
             <span className="gradient-text"> ton besoin</span>
           </h2>
-          <p style={{ maxWidth: 560, marginBottom: 48, fontSize: 16, lineHeight: 1.7 }}>
+          <p style={{ maxWidth: 560, marginBottom: 48, fontSize: 17, lineHeight: 1.7 }}>
             Tu veux juste savoir ou tu en es et quoi faire ? Prends l&apos;audit.
             Tu veux que je m&apos;occupe de tout de A a Z ? Prends l&apos;accompagnement.
           </p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 24 }}>
             {/* Audit */}
-            <div className="card" style={{ padding: 32 }}>
+            <div className="card card-accent-blue" style={{ padding: 32 }}>
               <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--accent-blue)", textTransform: "uppercase", marginBottom: 20, display: "block" }}>
                 Formule 1
               </span>
               <h3 style={{ marginBottom: 8 }}>Audit SEO Complet</h3>
-              <p style={{ fontSize: 15, lineHeight: 1.7, marginBottom: 16 }}>
+              <p style={{ fontSize: 17, lineHeight: 1.7, marginBottom: 16 }}>
                 Un diagnostic exhaustif de ton site avec un plan d&apos;action priorise.
                 Tu sais exactement quoi faire, dans quel ordre, et pourquoi.
                 Ideal si tu as une equipe pour executer ou si tu veux valider une strategie.
@@ -129,7 +129,7 @@ export default function SeoGrowthPage() {
                 <span className="price-period"> — prestation one-shot</span>
               </div>
 
-              <p style={{ fontSize: 13, fontWeight: 600, color: "var(--text)", marginBottom: 10 }}>Tu recois :</p>
+              <p style={{ fontSize: 15, fontWeight: 600, color: "var(--text)", marginBottom: 10 }}>Tu recois :</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
                 {[
                   { title: "Audit technique", desc: "Core Web Vitals, indexation, crawl, architecture du site" },
@@ -144,8 +144,8 @@ export default function SeoGrowthPage() {
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                     <div>
-                      <span style={{ fontSize: 14, color: "var(--text)", fontWeight: 500 }}>{item.title}</span>
-                      <span style={{ fontSize: 13, color: "var(--text-dim)" }}> — {item.desc}</span>
+                      <span style={{ fontSize: 16, color: "var(--text)", fontWeight: 500 }}>{item.title}</span>
+                      <span style={{ fontSize: 15, color: "var(--text-dim)" }}> — {item.desc}</span>
                     </div>
                   </div>
                 ))}
@@ -157,12 +157,12 @@ export default function SeoGrowthPage() {
             </div>
 
             {/* Accompagnement */}
-            <div className="card" style={{ padding: 32, borderColor: "rgba(139, 92, 246, 0.2)" }}>
+            <div className="card card-accent-violet" style={{ padding: 32, borderColor: "rgba(139, 92, 246, 0.2)" }}>
               <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--accent-violet)", textTransform: "uppercase", marginBottom: 20, display: "block" }}>
                 Formule 2 — Recommandee
               </span>
               <h3 style={{ marginBottom: 8 }}>Accompagnement SEO Mensuel</h3>
-              <p style={{ fontSize: 15, lineHeight: 1.7, marginBottom: 16 }}>
+              <p style={{ fontSize: 17, lineHeight: 1.7, marginBottom: 16 }}>
                 Je prends en charge ta strategie SEO de A a Z. Tu n&apos;as rien a faire sauf valider
                 le contenu et regarder ton trafic monter. Ideal si tu veux deleguer completement
                 et te concentrer sur ton coeur de metier.
@@ -173,7 +173,7 @@ export default function SeoGrowthPage() {
                 <span className="price-period">/mois</span>
               </div>
 
-              <p style={{ fontSize: 13, fontWeight: 600, color: "var(--text)", marginBottom: 10 }}>Tout ce qui est dans l&apos;audit, plus :</p>
+              <p style={{ fontSize: 15, fontWeight: 600, color: "var(--text)", marginBottom: 10 }}>Tout ce qui est dans l&apos;audit, plus :</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
                 {[
                   { title: "Implementation technique", desc: "Je corrige les problemes identifies et optimise en continu" },
@@ -188,8 +188,8 @@ export default function SeoGrowthPage() {
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                     <div>
-                      <span style={{ fontSize: 14, color: "var(--text)", fontWeight: 500 }}>{item.title}</span>
-                      <span style={{ fontSize: 13, color: "var(--text-dim)" }}> — {item.desc}</span>
+                      <span style={{ fontSize: 16, color: "var(--text)", fontWeight: 500 }}>{item.title}</span>
+                      <span style={{ fontSize: 15, color: "var(--text-dim)" }}> — {item.desc}</span>
                     </div>
                   </div>
                 ))}
@@ -239,10 +239,10 @@ export default function SeoGrowthPage() {
             ].map((item, i) => (
               <div key={i} style={{ padding: "24px 0", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                  <span className="mono" style={{ fontSize: 13, color: "var(--accent-violet)", letterSpacing: "0.1em", marginTop: 2, flexShrink: 0 }}>{item.step}</span>
+                  <span className="mono" style={{ fontSize: 15, color: "var(--accent-violet)", letterSpacing: "0.1em", marginTop: 2, flexShrink: 0 }}>{item.step}</span>
                   <div>
                     <h4 style={{ marginBottom: 6, fontSize: 16 }}>{item.title}</h4>
-                    <p style={{ fontSize: 15, lineHeight: 1.6 }}>{item.desc}</p>
+                    <p style={{ fontSize: 16, lineHeight: 1.6 }}>{item.desc}</p>
                   </div>
                 </div>
               </div>
@@ -282,8 +282,8 @@ export default function SeoGrowthPage() {
             },
           ].map((faq, i) => (
             <div key={i} style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "24px 0" }}>
-              <h4 style={{ marginBottom: 8, fontSize: 16 }}>{faq.q}</h4>
-              <p style={{ fontSize: 15, lineHeight: 1.6 }}>{faq.a}</p>
+              <h4 style={{ marginBottom: 8, fontSize: 18 }}>{faq.q}</h4>
+              <p style={{ fontSize: 16, lineHeight: 1.6 }}>{faq.a}</p>
             </div>
           ))}
         </div>
@@ -301,7 +301,7 @@ export default function SeoGrowthPage() {
           <p style={{ marginBottom: 12, fontSize: 17 }}>
             On analyse ton potentiel SEO ensemble.
           </p>
-          <p style={{ marginBottom: 32, fontSize: 15, color: "var(--text-dim)" }}>
+          <p style={{ marginBottom: 32, fontSize: 17, color: "var(--text-dim)" }}>
             30 minutes pour voir ou tu en es, quelles sont tes opportunites, et combien de trafic
             tu pourrais generer. Gratuit, sans engagement.
           </p>

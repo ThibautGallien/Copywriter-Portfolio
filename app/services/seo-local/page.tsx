@@ -32,7 +32,7 @@ export default function SeoLocalPage() {
         <div className="container-main">
           <Link
             href="/services"
-            style={{ fontSize: 13, color: "var(--text-dim)", display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 32, transition: "color 0.2s ease" }}
+            style={{ fontSize: 15, color: "var(--text-dim)", display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 32, transition: "color 0.2s ease" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-dim)")}
           >
@@ -40,7 +40,7 @@ export default function SeoLocalPage() {
             Retour aux services
           </Link>
 
-          <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--accent-blue)", textTransform: "uppercase", marginBottom: 16, display: "block" }}>
+          <span className="mono" style={{ fontSize: 12, letterSpacing: "0.15em", color: "var(--accent-blue)", textTransform: "uppercase", marginBottom: 16, display: "block" }}>
             SEO Local — 349&euro;/mois
           </span>
 
@@ -48,12 +48,12 @@ export default function SeoLocalPage() {
             Deviens le numero 1 sur Google
             <span className="gradient-text"> dans ta ville</span>
           </h1>
-          <p style={{ maxWidth: 580, fontSize: 17, lineHeight: 1.7, marginBottom: 16 }}>
+          <p style={{ maxWidth: 580, lineHeight: 1.7, marginBottom: 16 }}>
             Quand un client potentiel tape &quot;plombier Lyon&quot;, &quot;restaurant italien Bordeaux&quot; ou &quot;coach sportif Paris&quot;
             sur Google, est-ce que ton entreprise apparait ? Si tu n&apos;es pas dans les 3 premiers resultats du pack local,
             tu perds des clients tous les jours au profit de tes concurrents.
           </p>
-          <p style={{ maxWidth: 560, fontSize: 15, lineHeight: 1.7, color: "var(--text-dim)", marginBottom: 36 }}>
+          <p style={{ maxWidth: 560, lineHeight: 1.7, color: "var(--text-dim)", marginBottom: 36 }}>
             Le SEO local, c&apos;est l&apos;ensemble des techniques pour faire apparaitre ton business en haut des resultats
             Google quand quelqu&apos;un cherche un service dans ta zone geographique. C&apos;est le levier le plus rentable
             pour les business physiques ou locaux.
@@ -63,7 +63,7 @@ export default function SeoLocalPage() {
             <div className="card" style={{ padding: "24px 32px" }}>
               <span className="price-tag gradient-text">349&euro;</span>
               <span className="price-period">/mois</span>
-              <span style={{ display: "block", fontSize: 13, color: "var(--text-dim)", marginTop: 4 }}>
+              <span style={{ display: "block", fontSize: 15, color: "var(--text-dim)", marginTop: 4 }}>
                 Sans engagement — tu peux arreter quand tu veux
               </span>
             </div>
@@ -85,7 +85,7 @@ export default function SeoLocalPage() {
             46% des recherches Google ont une
             <span className="gradient-text"> intention locale</span>
           </h2>
-          <p style={{ maxWidth: 600, fontSize: 16, lineHeight: 1.7, marginBottom: 40 }}>
+          <p style={{ maxWidth: 600, fontSize: 17, lineHeight: 1.7, marginBottom: 40 }}>
             Presque la moitie des gens qui utilisent Google cherchent quelque chose pres de chez eux.
             Et 76% de ces personnes visitent un commerce dans les 24h. Si tu n&apos;apparais pas,
             c&apos;est ton concurrent qui recupere le client.
@@ -98,9 +98,9 @@ export default function SeoLocalPage() {
               { stat: "28%", label: "de ces recherches menent a un achat" },
               { stat: "0€", label: "de cout par clic (contrairement aux pubs)" },
             ].map((item, i) => (
-              <div key={i} className="card" style={{ padding: 24, textAlign: "center" }}>
+              <div key={i} className="card card-accent-blue" style={{ padding: 24, textAlign: "center" }}>
                 <div className="stat-value" style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", marginBottom: 6 }}>{item.stat}</div>
-                <p style={{ fontSize: 13 }}>{item.label}</p>
+                <p style={{ fontSize: 15 }}>{item.label}</p>
               </div>
             ))}
           </div>
@@ -117,7 +117,7 @@ export default function SeoLocalPage() {
             Un accompagnement complet,
             <span className="gradient-text"> pas juste des rapports</span>
           </h2>
-          <p style={{ maxWidth: 600, fontSize: 16, lineHeight: 1.7, marginBottom: 40 }}>
+          <p style={{ maxWidth: 600, fontSize: 17, lineHeight: 1.7, marginBottom: 40 }}>
             Je ne me contente pas de te donner des recommandations. Je fais le travail pour toi,
             je mesure les resultats, et je t&apos;explique clairement ce qui avance.
           </p>
@@ -145,12 +145,12 @@ export default function SeoLocalPage() {
                 desc: "Chaque mois, tu recois un rapport clair : tes positions sur Google, l'evolution de ton trafic, le nombre d'appels et de demandes de direction recus via ta fiche. On fait un point ensemble pour ajuster la strategie.",
               },
             ].map((item, i) => (
-              <div key={i} style={{ padding: "24px 0", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+              <div key={i} className="card card-accent-blue" style={{ padding: "24px 0", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
                 <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                   <span className="mono" style={{ fontSize: 12, color: "var(--accent-blue)", letterSpacing: "0.1em", marginTop: 2, flexShrink: 0 }}>0{i + 1}</span>
                   <div>
                     <h4 style={{ marginBottom: 6, fontSize: 16 }}>{item.title}</h4>
-                    <p style={{ fontSize: 14, lineHeight: 1.6 }}>{item.desc}</p>
+                    <p style={{ fontSize: 16, lineHeight: 1.6 }}>{item.desc}</p>
                   </div>
                 </div>
               </div>
@@ -168,7 +168,7 @@ export default function SeoLocalPage() {
           <h2 style={{ marginBottom: 16 }}>
             C&apos;est fait pour toi si...
           </h2>
-          <p style={{ maxWidth: 560, fontSize: 16, lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ maxWidth: 560, fontSize: 17, lineHeight: 1.7, marginBottom: 32 }}>
             Le SEO local fonctionne pour tout business qui a une zone de chalandise, c&apos;est-a-dire
             des clients qui te cherchent dans une ville ou une region specifique.
           </p>
@@ -185,10 +185,10 @@ export default function SeoLocalPage() {
               "Garages et concessionnaires auto",
             ].map((item, i) => (
               <div key={i} style={{ display: "flex", gap: 10, alignItems: "center", padding: "10px 0" }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" strokeWidth="2.5" style={{ flexShrink: 0 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" strokeWidth="2.5" style={{ flexShrink: 0 }}>
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                <span style={{ fontSize: 14, color: "var(--text-muted)" }}>{item}</span>
+                <span style={{ fontSize: 16, color: "var(--text-muted)" }}>{item}</span>
               </div>
             ))}
           </div>
@@ -226,8 +226,8 @@ export default function SeoLocalPage() {
             },
           ].map((faq, i) => (
             <div key={i} style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "24px 0" }}>
-              <h4 style={{ marginBottom: 8, fontSize: 16 }}>{faq.q}</h4>
-              <p style={{ fontSize: 15, lineHeight: 1.6 }}>{faq.a}</p>
+              <h4 style={{ marginBottom: 8, fontSize: 18 }}>{faq.q}</h4>
+              <p style={{ fontSize: 16, lineHeight: 1.6 }}>{faq.a}</p>
             </div>
           ))}
         </div>
@@ -245,7 +245,7 @@ export default function SeoLocalPage() {
           <p style={{ marginBottom: 12, fontSize: 17 }}>
             30 minutes pour analyser ta situation locale.
           </p>
-          <p style={{ marginBottom: 32, fontSize: 15, color: "var(--text-dim)" }}>
+          <p style={{ marginBottom: 32, fontSize: 17, color: "var(--text-dim)" }}>
             Je regarde ta fiche Google, tes positions actuelles, et je te dis honnetement
             ce qui est possible pour ton business. Gratuit, sans engagement.
           </p>

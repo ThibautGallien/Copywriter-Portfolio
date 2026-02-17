@@ -74,10 +74,10 @@ export default function AboutPage() {
           <h1 style={{ marginBottom: 16 }}>
             Thibaut Gallien
           </h1>
-          <p style={{ maxWidth: 560, fontSize: 17, marginBottom: 24 }}>
+          <p style={{ maxWidth: 560, fontSize: 19, marginBottom: 24 }}>
             Consultant en croissance digitale. J&apos;aide les business a devenir visibles sur Google et a transformer leur trafic en revenus. Basee sur la data, pas les intuitions.
           </p>
-          <p style={{ fontSize: 15, color: "var(--text-dim)", maxWidth: 540 }}>
+          <p style={{ fontSize: 17, color: "var(--text-dim)", maxWidth: 540 }}>
             Avant de devenir consultant, j&apos;ai lance, casse et repare des business en ligne pendant 4 ans. Chaque erreur m&apos;a appris quelque chose. Chaque succes m&apos;a montre ce qui marche vraiment.
           </p>
         </div>
@@ -111,7 +111,7 @@ export default function AboutPage() {
                 <span
                   className="mono"
                   style={{
-                    fontSize: 13,
+                    fontSize: 14,
                     color: "var(--accent-blue)",
                     letterSpacing: "0.05em",
                     paddingTop: 2,
@@ -148,7 +148,7 @@ export default function AboutPage() {
             }}
           >
             {values.map((v, i) => (
-              <div key={i} className="card" style={{ padding: 28 }}>
+              <div key={i} className="card card-accent-blue" style={{ padding: 28 }}>
                 <span
                   className="mono"
                   style={{
@@ -162,7 +162,7 @@ export default function AboutPage() {
                   0{i + 1}
                 </span>
                 <h4 style={{ marginBottom: 8, fontSize: 16 }}>{v.title}</h4>
-                <p style={{ fontSize: 14 }}>{v.desc}</p>
+                <p style={{ fontSize: 16 }}>{v.desc}</p>
               </div>
             ))}
           </div>
