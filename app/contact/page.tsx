@@ -67,10 +67,10 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ══════ CONTENT ══════ */}
-      <section style={{ padding: "60px 0 80px" }}>
+      <section className="section-alt" style={{ padding: "60px 0 80px" }}>
         <div className="container-main">
           <div
             style={{

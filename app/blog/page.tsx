@@ -72,10 +72,10 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ══════ FILTERS ══════ */}
-      <section style={{ padding: "32px 0" }}>
+      <section className="section-alt" style={{ padding: "32px 0" }}>
         <div className="container-main">
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             {categories.map((cat) => (
@@ -111,7 +111,7 @@ export default function BlogPage() {
       </section>
 
       {/* ══════ ARTICLES LIST ══════ */}
-      <section ref={revealArticles} className="reveal" style={{ padding: "0 0 80px" }}>
+      <section ref={revealArticles} className="reveal section-alt" style={{ padding: "0 0 80px" }}>
         <div className="container-main">
           {filtered.length === 0 ? (
             <p style={{ fontSize: 15, color: "var(--text-dim)", padding: "40px 0" }}>

@@ -184,10 +184,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ═══════ LE PROBLEME ═══════ */}
-      <section ref={revealProblem} className="reveal" style={{ padding: "100px 0" }}>
+      <section ref={revealProblem} className="reveal section-alt" style={{ padding: "100px 0" }}>
         <div className="container-main">
           <span className="section-number">01. Le constat</span>
           <h2 style={{ marginBottom: 16, maxWidth: 600 }}>
@@ -438,7 +438,7 @@ export default function HomePage() {
       <div className="section-divider" />
 
       {/* ═══════ PROCESS ═══════ */}
-      <section ref={revealProcess} className="reveal" style={{ padding: "100px 0" }}>
+      <section ref={revealProcess} className="reveal section-alt" style={{ padding: "100px 0" }}>
         <div className="container-main">
           <span className="section-number">03. Comment ca se passe</span>
           <h2 style={{ marginBottom: 16 }}>
@@ -564,10 +564,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ═══════ FINAL CTA ═══════ */}
-      <section ref={revealCta} className="reveal" style={{ padding: "100px 0", textAlign: "center" }}>
+      <section ref={revealCta} className="reveal section-cta" style={{ padding: "100px 0", textAlign: "center" }}>
         <div className="container-main" style={{ maxWidth: 640 }}>
           <span className="section-number">05. Prochaine etape</span>
           <h2 style={{ marginBottom: 16 }}>

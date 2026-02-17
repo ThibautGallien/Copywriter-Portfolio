@@ -83,10 +83,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ══════ TIMELINE / PARCOURS ══════ */}
-      <section ref={revealTimeline} className="reveal" style={{ padding: "80px 0" }}>
+      <section ref={revealTimeline} className="reveal section-alt" style={{ padding: "80px 0" }}>
         <div className="container-main">
           <span className="section-number">01. Parcours</span>
           <h2 style={{ marginBottom: 48 }}>
@@ -169,10 +169,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <div className="section-divider-accent" />
 
       {/* ══════ CTA ══════ */}
-      <section ref={revealCta} className="reveal" style={{ padding: "80px 0", textAlign: "center" }}>
+      <section ref={revealCta} className="reveal section-cta" style={{ padding: "80px 0", textAlign: "center" }}>
         <div className="container-main" style={{ maxWidth: 600 }}>
           <h2 style={{ marginBottom: 16 }}>
             Envie de
