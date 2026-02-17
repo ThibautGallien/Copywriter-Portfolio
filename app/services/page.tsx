@@ -1,265 +1,166 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  BarChart3,
-  Mail,
-  Search,
-} from "lucide-react";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
-function FadeIn({
-  children,
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-    >
-      {children}
-    </motion.div>
-  );
+function useReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) el.classList.add("revealed"); },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return ref;
 }
 
 const services = [
   {
-    icon: BarChart3,
-    title: "Analyse de Données",
-    subtitle: "Trouve où ton business perd de l'argent",
-    description:
-      "J'analyse ton funnel de A à Z (tracking, pages, emails, ads) pour identifier les 2-3 problèmes qui plombent tes conversions. Tu reçois un diagnostic clair avec un plan d'action priorisé par impact.",
-    features: [
-      "Audit complet du funnel de vente",
-      "Identification des fuites de conversion",
-      "Plan d'action priorisé par impact",
-      "Setup tracking (GA4, Clarity, pixels)",
-    ],
-    href: "/services/analyse-data",
-    color: "blue",
+    tag: "SERVICE PRINCIPAL",
+    title: "SEO Local",
+    desc: "Tu veux que les clients de ta zone te trouvent sur Google. Optimisation Google Business Profile, citations locales, contenu geolocalise, avis. Resultats des le premier mois.",
+    price: "349",
+    period: "/mois",
+    href: "/services/seo-local",
+    featured: true,
   },
   {
-    icon: Mail,
+    tag: "CROISSANCE",
+    title: "SEO Growth",
+    desc: "Strategie SEO complete pour scaler ton trafic organique. Audit technique, strategie de contenu, link building, suivi des positions. Pour les business qui veulent dominer leur marche.",
+    price: "897",
+    period: " audit + 1200/mois",
+    href: "/services/seo-growth",
+    featured: false,
+  },
+  {
+    tag: "CONVERSION",
     title: "Email Marketing",
-    subtitle: "Transforme ta liste en machine à revenus",
-    description:
-      "Je crée et optimise tes séquences email pour maximiser tes conversions : welcome series, séquences de vente, newsletters, segmentation. Des emails qui convertissent, pas qui finissent en spam.",
-    features: [
-      "Stratégie email complète",
-      "Séquences automatisées (welcome, vente, relance)",
-      "Segmentation et personnalisation",
-      "Optimisation des taux d'ouverture et de clic",
-    ],
-    href: "/services/email-marketing",
-    color: "emerald",
+    desc: "Sequences automatisees, welcome series, newsletters, segmentation avancee. Je transforme ta liste email en source de revenus previsibles et recurrents.",
+    price: "700",
+    period: " setup",
+    href: "/contact",
+    featured: false,
   },
   {
-    icon: Search,
-    title: "SEO",
-    subtitle: "Rends ton site visible sur Google",
-    description:
-      "J'optimise ton site existant pour qu'il remonte dans les résultats Google. Recherche de mots-clés, optimisation on-page, SEO technique, stratégie de contenu. Du trafic organique qualifié, sans payer de pub.",
-    features: [
-      "Audit SEO technique complet",
-      "Recherche de mots-clés stratégique",
-      "Optimisation on-page",
-      "Stratégie de contenu SEO",
-    ],
-    href: "/services/seo",
-    color: "purple",
+    tag: "OPTIMISATION",
+    title: "Data & Analytics",
+    desc: "Tracking propre, dashboards actionables, attribution multi-touch. Les chiffres qui te disent exactement ou investir et ou couper. Fini les decisions au feeling.",
+    price: "800",
+    period: " diagnostic",
+    href: "/contact",
+    featured: false,
   },
 ];
 
-const colorMap: Record<string, { bg: string; text: string; border: string; lightBg: string }> = {
-  blue: {
-    bg: "bg-blue-100",
-    text: "text-blue-600",
-    border: "hover:border-blue-300",
-    lightBg: "bg-blue-50",
-  },
-  emerald: {
-    bg: "bg-emerald-100",
-    text: "text-emerald-600",
-    border: "hover:border-emerald-300",
-    lightBg: "bg-emerald-50",
-  },
-  purple: {
-    bg: "bg-purple-100",
-    text: "text-purple-600",
-    border: "hover:border-purple-300",
-    lightBg: "bg-purple-50",
-  },
-};
-
 export default function ServicesPage() {
+  const revealGrid = useReveal();
+  const revealCta = useReveal();
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* HERO */}
-      <section className="container mx-auto px-6 pt-32 pb-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <FadeIn>
-            <h1 className="text-4xl md:text-6xl font-bold text-neutral-900 mb-6">
-              Comment je peux t'aider
-            </h1>
-            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-              Trois expertises complémentaires pour faire grandir ton business en ligne
-            </p>
-          </FadeIn>
+    <>
+      {/* ══════ HERO ══════ */}
+      <section style={{ paddingTop: 120, paddingBottom: 60 }}>
+        <div className="container-main">
+          <span className="section-number">Services</span>
+          <h1 style={{ marginBottom: 16 }}>
+            Des services concus pour
+            <span className="gradient-text"> ta croissance</span>
+          </h1>
+          <p style={{ maxWidth: 560, fontSize: 17 }}>
+            Chaque offre est un levier. SEO pour attirer du trafic qualifie, email pour convertir, data pour optimiser. Tu choisis ce dont tu as besoin, je m&apos;occupe du reste.
+          </p>
         </div>
       </section>
 
-      {/* LES SERVICES */}
-      <section className="container mx-auto px-6 pb-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const colors = colorMap[service.color];
-              return (
-                <FadeIn key={index} delay={index * 0.1}>
-                  <motion.div
-                    whileHover={{ y: -4 }}
-                    className={`h-full p-8 bg-white border-2 border-neutral-200 rounded-2xl ${colors.border} hover:shadow-xl transition-all flex flex-col`}
+      <div className="section-divider" />
+
+      {/* ══════ BENTO SERVICES ══════ */}
+      <section ref={revealGrid} className="reveal" style={{ padding: "80px 0" }}>
+        <div className="container-main">
+          <div className="bento-grid">
+            {services.map((s, i) => (
+              <div
+                key={i}
+                className="card bento-item"
+                style={{
+                  padding: 32,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div>
+                  <span
+                    className="mono"
+                    style={{
+                      fontSize: 11,
+                      letterSpacing: "0.15em",
+                      color: s.featured ? "var(--accent-blue)" : "var(--text-muted)",
+                      textTransform: "uppercase",
+                      marginBottom: 16,
+                      display: "block",
+                    }}
                   >
-                    <div className="flex items-center gap-3 mb-6">
-                      <div
-                        className={`w-12 h-12 ${colors.bg} rounded-xl flex items-center justify-center`}
-                      >
-                        <service.icon className={`w-6 h-6 ${colors.text}`} />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-neutral-900">
-                          {service.title}
-                        </h3>
-                        <p className="text-sm text-neutral-500">
-                          {service.subtitle}
-                        </p>
-                      </div>
-                    </div>
-
-                    <p className="text-neutral-600 leading-relaxed mb-6">
-                      {service.description}
-                    </p>
-
-                    <div className="space-y-3 mb-8 flex-grow">
-                      {service.features.map((feature, i) => (
-                        <div key={i} className="flex items-start gap-2">
-                          <div
-                            className={`w-1.5 h-1.5 rounded-full ${colors.bg} mt-2 flex-shrink-0`}
-                          />
-                          <span className="text-sm text-neutral-700">
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <Link
-                      href={service.href}
-                      className={`flex items-center justify-center gap-2 w-full py-4 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold rounded-xl text-center transition-colors`}
-                    >
-                      Découvrir cette offre
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </motion.div>
-                </FadeIn>
-              );
-            })}
+                    {s.tag}
+                  </span>
+                  <h3 style={{ marginBottom: 12 }}>{s.title}</h3>
+                  <p style={{ fontSize: 15, marginBottom: 24 }}>{s.desc}</p>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap",
+                    gap: 16,
+                  }}
+                >
+                  <div>
+                    <span className="price-tag gradient-text">{s.price}&euro;</span>
+                    <span className="price-period">{s.period}</span>
+                  </div>
+                  <Link
+                    href={s.href}
+                    className={s.featured ? "btn-primary" : "btn-secondary"}
+                    style={{ padding: "8px 18px", fontSize: 13 }}
+                  >
+                    {s.featured ? "Decouvrir l'offre" : "En savoir plus"}
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* POURQUOI MOI */}
-      <section className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-6">
-          <FadeIn>
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
-                Pourquoi bosser avec moi ?
-              </h2>
-              <p className="text-lg text-neutral-600 max-w-2xl mx-auto mb-12">
-                Je ne suis pas une agence. Je suis un freelance qui bosse en direct avec toi.
-                Pas d'intermédiaire, pas de bullshit, juste des résultats.
-              </p>
+      <div className="section-divider" />
 
-              <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  {
-                    title: "Approche data-driven",
-                    description:
-                      "Chaque décision est basée sur tes données réelles. Pas de devinettes, pas d'intuitions. Des faits.",
-                  },
-                  {
-                    title: "Vision globale",
-                    description:
-                      "Je comprends comment data, emails et SEO interagissent. Pas de silo, une stratégie cohérente.",
-                  },
-                  {
-                    title: "Résultats concrets",
-                    description:
-                      "Des livrables clairs, des actions précises, des métriques mesurables. Tu sais exactement ce que tu obtiens.",
-                  },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="p-6 bg-white rounded-xl border border-neutral-200"
-                  >
-                    <h3 className="text-xl font-bold text-neutral-900 mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-neutral-600 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
+      {/* ══════ CTA ══════ */}
+      <section ref={revealCta} className="reveal" style={{ padding: "80px 0", textAlign: "center" }}>
+        <div className="container-main" style={{ maxWidth: 600 }}>
+          <span className="section-number">Prochaine etape</span>
+          <h2 style={{ marginBottom: 16 }}>
+            Pas sur de ce qu&apos;il te faut ?
+          </h2>
+          <p style={{ marginBottom: 32, fontSize: 17 }}>
+            On en parle 30 minutes. Je regarde ton site, j&apos;identifie les quick wins et je te recommande le service adapte. Zero engagement.
+          </p>
+          <Link
+            href="https://calendly.com/hello-thibautgallien/30min"
+            className="btn-primary"
+          >
+            Reserver un appel
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
       </section>
-
-      {/* CTA FINAL */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <FadeIn>
-            <div className="max-w-4xl mx-auto">
-              <div className="p-12 bg-white border-2 border-blue-200 rounded-2xl text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
-                  Tu ne sais pas par où commencer ?
-                </h2>
-                <p className="text-xl text-neutral-600 mb-8">
-                  On prend 30 minutes pour en discuter. Je te dis quel service
-                  correspond le mieux à ta situation actuelle.
-                </p>
-
-                <Link
-                  href="https://calendly.com/hello-thibautgallien/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full text-lg transition-colors shadow-xl"
-                >
-                  Réserver un appel gratuit
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-
-                <p className="text-sm text-neutral-500 mt-6">
-                  Aucune obligation. Juste une discussion honnête sur ton projet.
-                </p>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-    </div>
+    </>
   );
 }

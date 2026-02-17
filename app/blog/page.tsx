@@ -1,502 +1,194 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowRight, Search, User } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
-// Custom useInView hook
-function useInView(ref: any, options = {}) {
-  const [isInView, setIsInView] = useState(false);
-  const { once = false, margin = "0px" }: any = options;
-
+function useReveal() {
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (!ref.current) return;
-
+    const el = ref.current;
+    if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          if (once) observer.disconnect();
-        } else if (!once) {
-          setIsInView(false);
-        }
-      },
-      { rootMargin: margin }
+      ([entry]) => { if (entry.isIntersecting) el.classList.add("revealed"); },
+      { threshold: 0.1 }
     );
-
-    observer.observe(ref.current);
+    observer.observe(el);
     return () => observer.disconnect();
-  }, [ref, once, margin]);
-
-  return isInView;
+  }, []);
+  return ref;
 }
 
-// Articles réels basés sur votre structure
-const blogPosts = [
+const articles = [
   {
-    id: "1",
-    title: "Call to Action (CTA) : Guide complet",
     slug: "call-to-action-guide-complet",
-    excerpt:
-      "Découvrez comment créer des CTA efficaces qui boostent vos conversions. Guide complet avec exemples concrets, erreurs à éviter et checklist pratique.",
-    publishedAt: "2024-06-30",
-    estimatedReadingTime: 10,
-    categories: ["Copywriting", "Conversion"],
-    categoryColors: ["#10b981", "#059669"],
-    author: "Thibaut Gallien",
-    featured: true,
+    title: "Call-to-action : le guide complet pour convertir",
+    excerpt: "Comment ecrire des CTA qui font cliquer. Psychologie, exemples concrets, et formules testees sur +100 landing pages.",
+    category: "Conversion",
+    date: "2025-01-15",
+    readTime: "12 min",
   },
   {
-    id: "2",
-    title: "Landing Page : définition, exemples et guide complet",
-    slug: "landing-page-guide-complet-conversion",
-    excerpt:
-      "Apprenez à créer des landing pages qui transforment vraiment vos visiteurs en prospects qualifiés. Structure, éléments clés et erreurs à éviter.",
-    publishedAt: "2024-06-20",
-    estimatedReadingTime: 10,
-    categories: ["Copywriting", "Conversion"],
-    categoryColors: ["#10b981", "#059669"],
-    author: "Thibaut Gallien",
-    featured: true,
-  },
-  {
-    id: "3",
-    title:
-      "Email de bienvenue : le guide complet pour convertir vos nouveaux abonnés",
     slug: "techniques-emails-bienvenue-conversion",
-    excerpt:
-      "Découvrez comment transformer vos nouveaux abonnés en clients fidèles dès le premier email avec ces stratégies éprouvées.",
-    publishedAt: "2024-06-25",
-    estimatedReadingTime: 8,
-    categories: ["Email Marketing", "Conversion"],
-    categoryColors: ["#14b8a6", "#0d9488"],
-    author: "Thibaut Gallien",
-    featured: false,
+    title: "Emails de bienvenue : 7 techniques pour convertir",
+    excerpt: "Ta welcome sequence est ta meilleure chance de transformer un abonne en client. Voici comment ne pas la gacher.",
+    category: "Email Marketing",
+    date: "2025-01-08",
+    readTime: "9 min",
+  },
+  {
+    slug: "127-funnels-analyses-94-pourcent-meme-probleme",
+    title: "127 funnels analyses : 94% ont le meme probleme",
+    excerpt: "J'ai audite plus de 100 funnels. Le probleme numero 1 n'est pas celui que tu crois. Data a l'appui.",
+    category: "Data",
+    date: "2024-12-20",
+    readTime: "8 min",
   },
 ];
 
-// Fade in component
-function FadeIn({ children, delay = 0, className = "" }: any) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+const categories = ["Tous", "SEO", "Email Marketing", "Data", "Conversion"];
 
 export default function BlogPage() {
-  const [filteredPosts, setFilteredPosts] = useState(blogPosts);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("Tous");
+  const [activeCategory, setActiveCategory] = useState("Tous");
+  const revealArticles = useReveal();
 
-  // Extraire toutes les catégories uniques
-  const allCategories = [
-    "Tous",
-    ...Array.from(new Set(blogPosts.flatMap((post) => post.categories))),
-  ];
-
-  // Filtrage des articles
-  useEffect(() => {
-    let filtered = blogPosts;
-
-    // Filtrage par catégorie
-    if (selectedCategory !== "Tous") {
-      filtered = filtered.filter((post) =>
-        post.categories.includes(selectedCategory)
-      );
-    }
-
-    // Filtrage par recherche
-    if (searchTerm.trim() !== "") {
-      filtered = filtered.filter(
-        (post) =>
-          post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          post.categories.some((cat) =>
-            cat.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-      );
-    }
-
-    setFilteredPosts(filtered);
-  }, [searchTerm, selectedCategory]);
-
-  const featuredPosts = filteredPosts.filter((post) => post.featured);
-  const regularPosts = filteredPosts.filter((post) => !post.featured);
-
-  // Composant Card cliquable
-  const ClickableArticleCard = ({
-    post,
-    featured = false,
-  }: {
-    post: any;
-    featured?: boolean;
-  }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-    return (
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
-      >
-        <Link href={`/blog/${post.slug}`} className="block h-full">
-          <motion.div
-            whileHover={{ y: -6 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="h-full"
-          >
-            <Card
-              className={`overflow-hidden group transition-all duration-300 h-full cursor-pointer border-2 ${
-                featured
-                  ? "bg-gradient-to-br from-blue-50 to-white border-blue-200 hover:border-blue-400 hover:shadow-xl"
-                  : "bg-white border-neutral-200 hover:border-blue-200 hover:shadow-lg"
-              }`}
-            >
-              <CardContent
-                className={featured ? "p-8" : "p-6 flex flex-col h-full"}
-              >
-                {/* Meta info */}
-                <div className="flex items-center gap-4 text-sm text-neutral-500 mb-4">
-                  <div className="flex items-center gap-1.5">
-                    <Calendar className="w-4 h-4" />
-                    <span>
-                      {new Date(post.publishedAt).toLocaleDateString("fr-FR")}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4" />
-                    <span>{post.estimatedReadingTime} min</span>
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h3
-                  className={`font-bold leading-tight mb-4 group-hover:text-blue-600 transition-colors ${
-                    featured
-                      ? "text-3xl text-neutral-900"
-                      : "text-xl text-neutral-900 flex-grow"
-                  }`}
-                >
-                  {post.title}
-                </h3>
-
-                {/* Excerpt */}
-                <p
-                  className={`text-neutral-600 leading-relaxed mb-6 ${
-                    featured ? "text-base" : "text-sm flex-grow"
-                  }`}
-                >
-                  {post.excerpt}
-                </p>
-
-                {/* Categories and CTA */}
-                <div className="flex items-center justify-between mt-auto">
-                  <div className="flex gap-2 flex-wrap">
-                    {post.categories.map((category: string, idx: number) => (
-                      <span
-                        key={category}
-                        className="px-3 py-1.5 text-xs font-medium rounded-full bg-blue-50 text-blue-700 border border-blue-200"
-                      >
-                        {category}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center text-blue-600 font-semibold text-sm group-hover:text-blue-700 transition-colors ml-4">
-                    Lire
-                    <motion.div
-                      className="ml-2"
-                      animate={{ x: [0, 4, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </motion.div>
-                  </div>
-                </div>
-
-                {/* Author */}
-                {!featured && (
-                  <div className="flex items-center gap-2 mt-5 pt-5 border-t border-neutral-200">
-                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                      <User className="w-4 h-4 text-blue-600" />
-                    </div>
-                    <span className="text-sm text-neutral-600 font-medium">
-                      {post.author}
-                    </span>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </motion.div>
-        </Link>
-      </motion.div>
-    );
-  };
+  const filtered =
+    activeCategory === "Tous"
+      ? articles
+      : articles.filter((a) => a.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 pt-24 pb-20">
-      <div className="container mx-auto px-6 max-w-7xl">
-        {/* Header */}
-        <FadeIn>
-          <div className="text-center mb-16 max-w-4xl mx-auto">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full mb-6 cursor-default"
-            >
-              <motion.span
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-2 bg-blue-500 rounded-full"
-              />
-              <span className="text-sm font-semibold text-blue-700">
-                Blog
-              </span>
-            </motion.div>
+    <>
+      {/* ══════ HERO ══════ */}
+      <section style={{ paddingTop: 120, paddingBottom: 60 }}>
+        <div className="container-main">
+          <span className="section-number">Blog</span>
+          <h1 style={{ marginBottom: 16 }}>
+            Articles &amp;
+            <span className="gradient-text"> ressources</span>
+          </h1>
+          <p style={{ maxWidth: 520, fontSize: 17 }}>
+            SEO, email marketing, data, conversion. Des articles actionables, pas de la theorie. Chaque piece est basee sur des donnees reelles.
+          </p>
+        </div>
+      </section>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-neutral-900 mb-6 leading-tight">
-              Conseils{" "}
-              <span className="relative inline-block">
-                <span className="text-blue-600">Copywriting</span>
-                <motion.svg
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                  className="absolute -bottom-2 left-0 w-full h-3 text-blue-200"
-                  viewBox="0 0 200 10"
-                  fill="none"
-                >
-                  <motion.path
-                    d="M0 5 Q50 0 100 5 T200 5"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </motion.svg>
-              </span>
-            </h1>
+      <div className="section-divider" />
 
-            <p className="text-lg md:text-xl text-neutral-600 leading-relaxed mb-10">
-              Techniques et stratégies pour transformer vos visiteurs en
-              clients.
-              <br />
-              <span className="font-semibold text-neutral-900">
-                Actionnable. Pas de blabla.
-              </span>
-            </p>
-
-            {/* Filtres et recherche */}
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
-              {/* Barre de recherche */}
-              <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
-                <Input
-                  type="text"
-                  placeholder="Rechercher des articles..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 h-12 bg-neutral-50 border-neutral-200 focus:border-blue-500 focus:ring-blue-500 text-neutral-900 placeholder-neutral-400 rounded-xl"
-                />
-              </div>
-
-              {/* Filtres par catégorie */}
-              <div className="flex gap-2 flex-wrap justify-center">
-                {allCategories.map((category) => (
-                  <motion.button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                      selectedCategory === category
-                        ? "bg-blue-600 text-white shadow-md"
-                        : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
-                    }`}
-                  >
-                    {category}
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </FadeIn>
-
-        {/* Résultats de recherche */}
-        {(searchTerm || selectedCategory !== "Tous") && (
-          <FadeIn delay={0.1}>
-            <div className="mb-10 text-center">
-              <p className="text-neutral-500 text-lg">
-                <span className="font-semibold text-neutral-900">
-                  {filteredPosts.length}
-                </span>{" "}
-                article{filteredPosts.length > 1 ? "s" : ""} trouvé
-                {filteredPosts.length > 1 ? "s" : ""}
-                {searchTerm && (
-                  <>
-                    {" "}
-                    pour{" "}
-                    <span className="font-semibold text-blue-600">
-                      &quot;{searchTerm}&quot;
-                    </span>
-                  </>
-                )}
-                {selectedCategory !== "Tous" && (
-                  <>
-                    {" "}
-                    dans{" "}
-                    <span className="font-semibold text-blue-600">
-                      &quot;{selectedCategory}&quot;
-                    </span>
-                  </>
-                )}
-              </p>
-            </div>
-          </FadeIn>
-        )}
-
-        {filteredPosts.length > 0 ? (
-          <>
-            {/* Articles en vedette */}
-            {featuredPosts.length > 0 &&
-              selectedCategory === "Tous" &&
-              !searchTerm && (
-                <FadeIn delay={0.2}>
-                  <div className="mb-16">
-                    <div className="flex items-center gap-3 mb-8">
-                      <div className="h-1 w-12 bg-blue-500 rounded-full" />
-                      <h2 className="text-2xl md:text-3xl font-bold text-neutral-900">
-                        Articles en vedette
-                      </h2>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-8">
-                      {featuredPosts.map((post) => (
-                        <ClickableArticleCard
-                          key={post.id}
-                          post={post}
-                          featured={true}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </FadeIn>
-              )}
-
-            {/* Tous les articles ou articles filtrés */}
-            <FadeIn delay={0.3}>
-              <div>
-                {selectedCategory === "Tous" &&
-                  !searchTerm &&
-                  featuredPosts.length > 0 && (
-                    <div className="flex items-center gap-3 mb-8">
-                      <div className="h-1 w-12 bg-neutral-300 rounded-full" />
-                      <h2 className="text-2xl md:text-3xl font-bold text-neutral-900">
-                        Tous les articles
-                      </h2>
-                    </div>
-                  )}
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {(featuredPosts.length > 0 &&
-                  selectedCategory === "Tous" &&
-                  !searchTerm
-                    ? regularPosts
-                    : filteredPosts
-                  ).map((post, index) => (
-                    <ClickableArticleCard key={post.id} post={post} />
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-          </>
-        ) : (
-          <FadeIn delay={0.2}>
-            <div className="text-center py-20">
-              <div className="w-20 h-20 bg-neutral-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Search className="w-10 h-10 text-neutral-400" />
-              </div>
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">
-                Aucun article trouvé
-              </h2>
-              <p className="text-neutral-500 mb-8 max-w-md mx-auto">
-                Aucun article ne correspond à vos critères de recherche. Essayez
-                d&apos;autres mots-clés ou réinitialisez les filtres.
-              </p>
-              <motion.button
-                onClick={() => {
-                  setSearchTerm("");
-                  setSelectedCategory("Tous");
+      {/* ══════ FILTERS ══════ */}
+      <section style={{ padding: "32px 0" }}>
+        <div className="container-main">
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                style={{
+                  padding: "6px 14px",
+                  fontSize: 13,
+                  fontWeight: 500,
+                  borderRadius: 4,
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                  border:
+                    activeCategory === cat
+                      ? "1px solid rgba(59,130,246,0.4)"
+                      : "1px solid rgba(255,255,255,0.08)",
+                  background:
+                    activeCategory === cat
+                      ? "rgba(59,130,246,0.1)"
+                      : "transparent",
+                  color:
+                    activeCategory === cat
+                      ? "var(--accent-blue)"
+                      : "var(--text-muted)",
                 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-500 transition-colors"
               >
-                Réinitialiser les filtres
-              </motion.button>
-            </div>
-          </FadeIn>
-        )}
-
-        {/* Call to action */}
-        <FadeIn delay={0.4}>
-          <div className="mt-20">
-            <motion.div
-              whileHover={{ y: -4 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 overflow-hidden">
-                <CardContent className="p-10 md:p-12 relative">
-                  {/* Decorative elements */}
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-30 -z-10" />
-                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-200 rounded-full blur-3xl opacity-20 -z-10" />
-
-                  <div className="relative z-10 text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
-                      Prêt à booster tes conversions ?
-                    </h2>
-                    <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
-                      Découvre comment je peux t&apos;aider à transformer ton
-                      funnel en machine à vendre. Audit gratuit pour identifier
-                      où tu perds de l&apos;argent.
-                    </p>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button
-                        asChild
-                        size="lg"
-                        className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-6 rounded-full text-lg shadow-lg hover:shadow-xl transition-all"
-                      >
-                        <Link
-                          href="/contact"
-                          className="inline-flex items-center gap-2"
-                        >
-                          Postuler pour un audit gratuit
-                          <ArrowRight className="w-5 h-5" />
-                        </Link>
-                      </Button>
-                    </motion.div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+                {cat}
+              </button>
+            ))}
           </div>
-        </FadeIn>
-      </div>
-    </div>
+        </div>
+      </section>
+
+      {/* ══════ ARTICLES LIST ══════ */}
+      <section ref={revealArticles} className="reveal" style={{ padding: "0 0 80px" }}>
+        <div className="container-main">
+          {filtered.length === 0 ? (
+            <p style={{ fontSize: 15, color: "var(--text-dim)", padding: "40px 0" }}>
+              Aucun article dans cette categorie pour le moment.
+            </p>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+              {filtered.map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/blog/${article.slug}`}
+                  style={{
+                    display: "block",
+                    padding: "28px 0",
+                    borderBottom: "1px solid rgba(255,255,255,0.06)",
+                    transition: "background 0.2s ease",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.background = "rgba(255,255,255,0.02)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.background = "transparent")
+                  }
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "flex-start",
+                      gap: 24,
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <div style={{ flex: 1, minWidth: 280 }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 12,
+                          marginBottom: 8,
+                        }}
+                      >
+                        <span
+                          className="mono"
+                          style={{
+                            fontSize: 11,
+                            letterSpacing: "0.1em",
+                            color: "var(--accent-blue)",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          {article.category}
+                        </span>
+                        <span style={{ fontSize: 12, color: "var(--text-dim)" }}>
+                          {article.readTime}
+                        </span>
+                      </div>
+                      <h3 style={{ fontSize: 18, marginBottom: 6, fontWeight: 600 }}>
+                        {article.title}
+                      </h3>
+                      <p style={{ fontSize: 14, maxWidth: 500 }}>
+                        {article.excerpt}
+                      </p>
+                    </div>
+                    <span
+                      className="mono"
+                      style={{ fontSize: 13, color: "var(--text-dim)", whiteSpace: "nowrap" }}
+                    >
+                      {article.date}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    </>
   );
 }

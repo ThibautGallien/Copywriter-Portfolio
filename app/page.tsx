@@ -1,497 +1,541 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { motion } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
-import {
-  ArrowRight,
-  CheckCircle,
-  Target,
-  TrendingDown,
-  Search,
-  Lightbulb,
-  BarChart3,
-  Mail,
-} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-// Custom useInView hook
-function useInView(
-  ref: React.RefObject<Element>,
-  options: { once?: boolean; margin?: string } = {}
-) {
-  const [isInView, setIsInView] = useState(false);
-  const { once = false, margin = "0px" } = options;
+/* ═══════════════════════════════════════
+   HOMEPAGE — thibautgallien.fr
+   Hero + Bento Services + Process + Stats + CTA
+   ═══════════════════════════════════════ */
+
+// ── Typing animation hook ─────────────
+function useTypingEffect(lines: string[], speed = 50, lineDelay = 400) {
+  const [displayed, setDisplayed] = useState<string[]>([]);
+  const [currentLine, setCurrentLine] = useState(0);
+  const [currentChar, setCurrentChar] = useState(0);
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (!ref.current) return;
+    if (currentLine >= lines.length) {
+      setDone(true);
+      return;
+    }
+    if (currentChar < lines[currentLine].length) {
+      const timer = setTimeout(() => {
+        setDisplayed((prev) => {
+          const copy = [...prev];
+          copy[currentLine] = (copy[currentLine] || "") + lines[currentLine][currentChar];
+          return copy;
+        });
+        setCurrentChar((c) => c + 1);
+      }, speed);
+      return () => clearTimeout(timer);
+    } else {
+      const timer = setTimeout(() => {
+        setCurrentLine((l) => l + 1);
+        setCurrentChar(0);
+      }, lineDelay);
+      return () => clearTimeout(timer);
+    }
+  }, [currentLine, currentChar, lines, speed, lineDelay]);
 
+  return { displayed, done };
+}
+
+// ── Count-up animation hook ───────────
+function useCountUp(target: number, duration = 2000) {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const start = performance.now();
+          const animate = (now: number) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setValue(Math.floor(eased * target));
+            if (progress < 1) requestAnimationFrame(animate);
+          };
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return { value, ref };
+}
+
+// ── Scroll reveal hook ────────────────
+function useReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsInView(true);
-          if (once) observer.disconnect();
-        } else if (!once) {
-          setIsInView(false);
+          el.classList.add("revealed");
         }
       },
-      { rootMargin: margin }
+      { threshold: 0.1 }
     );
-
-    observer.observe(ref.current);
+    observer.observe(el);
     return () => observer.disconnect();
-  }, [ref, once, margin]);
+  }, []);
 
-  return isInView;
+  return ref;
 }
 
-// Fade in animation
-function FadeIn({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+// ── Terminal component ────────────────
+function Terminal() {
+  const lines = [
+    "$ analyzing site...",
+    "✓ keywords found: 47",
+    "✓ ranking opportunities: 12",
+    "✓ estimated traffic gain: +340%",
+    "→ ready to grow",
+  ];
+
+  const { displayed, done } = useTypingEffect(lines, 35, 300);
+
+  const getLineClass = (line: string) => {
+    if (line.startsWith("$")) return "command";
+    if (line.startsWith("✓")) return "success";
+    if (line.startsWith("→")) return "arrow";
+    return "";
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      className={className}
-    >
-      {children}
-    </motion.div>
+    <div className="terminal" style={{ animation: "fadeInUp 0.8s ease 0.3s both" }}>
+      <div className="terminal-header">
+        <div className="terminal-dot red" />
+        <div className="terminal-dot yellow" />
+        <div className="terminal-dot green" />
+        <span style={{ marginLeft: 8, fontSize: 11, color: "var(--text-dim)" }}>
+          growth-analysis.sh
+        </span>
+      </div>
+      <div className="terminal-body">
+        {displayed.map((line, i) => (
+          <div key={i} className={getLineClass(lines[i] || "")}>
+            {line}
+          </div>
+        ))}
+        {done && <span className="cursor-blink" />}
+      </div>
+    </div>
   );
 }
 
+// ── Main page ─────────────────────────
 export default function HomePage() {
-  return (
-    <div className="min-h-screen bg-white">
-      {/* HERO */}
-      <section className="container mx-auto px-6 pt-32 pb-20">
-        <div className="max-w-4xl mx-auto">
-          <FadeIn>
-            <div className="text-center">
-              {/* Badge subtil */}
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full mb-8"
-              >
-                <Target className="w-4 h-4 text-blue-600" />
-                <span className="text-sm font-medium text-blue-700">
-                  Data, Email Marketing & SEO
-                </span>
-              </motion.div>
+  const revealServices = useReveal();
+  const revealProcess = useReveal();
+  const revealStats = useReveal();
+  const revealCta = useReveal();
 
-              {/* Titre */}
-              <h1 className="text-4xl md:text-6xl font-bold text-neutral-900 leading-tight mb-6">
-                Ton business en ligne mérite de
-                <br />
-                <span className="text-blue-600">mieux performer</span>
+  const stat1 = useCountUp(47, 2000);
+  const stat2 = useCountUp(340, 2000);
+  const stat3 = useCountUp(12, 1500);
+  const stat4 = useCountUp(98, 2000);
+
+  return (
+    <>
+      {/* ══════ HERO ══════ */}
+      <section
+        className="dot-grid"
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          paddingTop: 100,
+          paddingBottom: 60,
+        }}
+      >
+        <div className="container-main">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 48,
+              alignItems: "center",
+            }}
+            className="hero-grid"
+          >
+            {/* Left: text */}
+            <div style={{ animation: "fadeInUp 0.6s ease both" }}>
+              <span
+                className="mono"
+                style={{
+                  fontSize: 13,
+                  letterSpacing: "0.1em",
+                  color: "var(--text-muted)",
+                  textTransform: "uppercase",
+                  marginBottom: 20,
+                  display: "block",
+                }}
+              >
+                Consultant Croissance Digitale
+              </span>
+
+              <h1 style={{ marginBottom: 8, lineHeight: 1.1 }}>
+                Je rends ton business
+              </h1>
+              <h1
+                className="gradient-text"
+                style={{ marginBottom: 24, lineHeight: 1.1 }}
+              >
+                visible sur Google
               </h1>
 
-              <p className="text-xl text-neutral-600 max-w-2xl mx-auto leading-relaxed mb-8">
-                J'aide les business en ligne à <strong>trouver où ils perdent de l'argent</strong>,
-                à <strong>convertir leur liste email</strong> et à <strong>devenir visibles sur Google</strong>.
+              <p
+                style={{
+                  fontSize: 17,
+                  lineHeight: 1.6,
+                  color: "var(--text-muted)",
+                  maxWidth: 500,
+                  marginBottom: 36,
+                }}
+              >
+                SEO, email marketing et data pour transformer ton trafic en revenus concrets.
               </p>
 
-              {/* Sous-titre rassurant */}
-              <p className="text-lg text-neutral-700 mb-12">
-                Pas de bullshit. Des données, des actions concrètes et des résultats mesurables.
-              </p>
-
-              {/* CTA principal */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <motion.a
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <Link
                   href="https://calendly.com/hello-thibautgallien/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-full text-lg hover:bg-blue-500 transition-colors shadow-lg flex items-center gap-2"
+                  className="btn-primary"
                 >
-                  Discutons de ton projet (gratuit)
-                  <ArrowRight className="w-5 h-5" />
-                </motion.a>
-
-                <motion.a
-                  href="#services"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 border-2 border-neutral-300 text-neutral-700 font-semibold rounded-full text-lg hover:border-neutral-400 transition-colors"
-                >
-                  Voir mes services
-                </motion.a>
+                  Reserver un appel
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <Link href="/services" className="btn-secondary">
+                  Voir les services
+                </Link>
               </div>
             </div>
-          </FadeIn>
+
+            {/* Right: terminal */}
+            <div className="hero-terminal">
+              <Terminal />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* MES 3 SERVICES */}
-      <section id="services" className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-6">
-          <FadeIn>
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-4">
-                3 façons de faire grandir ton business
-              </h2>
-              <p className="text-xl text-neutral-600 text-center mb-12 max-w-2xl mx-auto">
-                Des expertises complémentaires pour couvrir tes vrais besoins
+      <div className="section-divider" />
+
+      {/* ══════ SERVICES — BENTO GRID ══════ */}
+      <section
+        ref={revealServices}
+        className="reveal"
+        style={{ padding: "100px 0" }}
+      >
+        <div className="container-main">
+          <span className="section-number">01. Services</span>
+          <h2 style={{ marginBottom: 12 }}>
+            Trois leviers, un objectif :
+            <span className="gradient-text"> ta croissance</span>
+          </h2>
+          <p style={{ maxWidth: 520, marginBottom: 48 }}>
+            Chaque service est concu pour s&apos;integrer aux autres. SEO pour attirer, email pour convertir, data pour optimiser.
+          </p>
+
+          <div className="bento-grid">
+            {/* SEO — large card */}
+            <div
+              className="card bento-item"
+              style={{ padding: 32 }}
+            >
+              <span
+                className="mono"
+                style={{
+                  fontSize: 11,
+                  letterSpacing: "0.15em",
+                  color: "var(--accent-blue)",
+                  textTransform: "uppercase",
+                  marginBottom: 16,
+                  display: "block",
+                }}
+              >
+                Service principal
+              </span>
+              <h3 style={{ marginBottom: 12 }}>SEO &amp; Referencement</h3>
+              <p style={{ marginBottom: 24, fontSize: 15 }}>
+                De l&apos;audit technique a la strategie de contenu. Je positionne ton site sur les requetes qui comptent, celles qui ramenent du business. SEO local et growth.
               </p>
-
-              <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  {
-                    icon: BarChart3,
-                    title: "Analyse de Données",
-                    description:
-                      "Je trouve où ton funnel perd des clients et de l'argent. Diagnostic data-driven, plan d'action priorisé, résultats mesurables.",
-                    features: [
-                      "Audit complet du funnel",
-                      "Identification des fuites",
-                      "Plan d'action par impact",
-                    ],
-                    href: "/services/analyse-data",
-                    color: "blue",
-                    bgColor: "bg-blue-100",
-                    textColor: "text-blue-600",
-                    borderColor: "border-blue-200",
-                    hoverBorder: "hover:border-blue-300",
-                  },
-                  {
-                    icon: Mail,
-                    title: "Email Marketing",
-                    description:
-                      "Je transforme ta liste email en source de revenus. Séquences automatisées, newsletters qui convertissent, segmentation intelligente.",
-                    features: [
-                      "Séquences automatisées",
-                      "Newsletters qui vendent",
-                      "Segmentation avancée",
-                    ],
-                    href: "/services/email-marketing",
-                    color: "emerald",
-                    bgColor: "bg-emerald-100",
-                    textColor: "text-emerald-600",
-                    borderColor: "border-emerald-200",
-                    hoverBorder: "hover:border-emerald-300",
-                  },
-                  {
-                    icon: Search,
-                    title: "SEO",
-                    description:
-                      "Je rends ton site visible sur Google. Référencement naturel, optimisation technique, stratégie de contenu. Du trafic gratuit et durable.",
-                    features: [
-                      "Audit SEO technique",
-                      "Optimisation on-page",
-                      "Stratégie de contenu",
-                    ],
-                    href: "/services/seo",
-                    color: "purple",
-                    bgColor: "bg-purple-100",
-                    textColor: "text-purple-600",
-                    borderColor: "border-purple-200",
-                    hoverBorder: "hover:border-purple-300",
-                  },
-                ].map((service, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.15 }}
-                  >
-                    <motion.div
-                      whileHover={{ y: -4 }}
-                      className={`h-full p-6 bg-white rounded-xl border-2 ${service.borderColor} ${service.hoverBorder} hover:shadow-lg transition-all flex flex-col`}
-                    >
-                      <div className={`w-12 h-12 ${service.bgColor} rounded-lg flex items-center justify-center mb-4`}>
-                        <service.icon className={`w-6 h-6 ${service.textColor}`} />
-                      </div>
-                      <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-neutral-600 leading-relaxed mb-4">
-                        {service.description}
-                      </p>
-                      <ul className="space-y-2 mb-6 flex-grow">
-                        {service.features.map((feature, i) => (
-                          <li key={i} className="flex items-center gap-2 text-sm text-neutral-700">
-                            <CheckCircle className={`w-4 h-4 ${service.textColor} flex-shrink-0`} />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                      <Link
-                        href={service.href}
-                        className="flex items-center justify-center gap-2 w-full py-3 bg-neutral-900 hover:bg-neutral-800 text-white font-semibold rounded-xl transition-colors"
-                      >
-                        En savoir plus
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </motion.div>
-                  </motion.div>
-                ))}
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <Link href="/services/seo-local" className="btn-secondary" style={{ padding: "8px 16px", fontSize: 13 }}>
+                  SEO Local — 349/mois
+                </Link>
+                <Link href="/services/seo-growth" className="btn-secondary" style={{ padding: "8px 16px", fontSize: 13 }}>
+                  SEO Growth
+                </Link>
               </div>
             </div>
-          </FadeIn>
-        </div>
-      </section>
 
-      {/* LE PROBLÈME */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <FadeIn>
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-12">
-                Les problèmes que tu rencontres probablement
-              </h2>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                {[
-                  {
-                    icon: TrendingDown,
-                    title: "Tu perds des clients sans savoir où",
-                    description:
-                      "Du trafic arrive mais trop peu achètent. Quelque chose bloque dans ton funnel, et tes données Analytics ne t'aident pas à trouver quoi.",
-                  },
-                  {
-                    icon: Mail,
-                    title: "Ta liste email ne rapporte rien",
-                    description:
-                      "Des centaines (ou milliers) d'abonnés, mais peu de ventes. Pas de séquences, pas de stratégie, des emails improvisés.",
-                  },
-                  {
-                    icon: Search,
-                    title: "Ton site est invisible sur Google",
-                    description:
-                      "Tes concurrents apparaissent en premier. Tu dépends de la pub payante pour avoir du trafic. Le jour où tu coupes, plus rien.",
-                  },
-                  {
-                    icon: Target,
-                    title: "Tu optimises au hasard",
-                    description:
-                      "Tu testes des trucs sans stratégie. Couleur de bouton, nouvel email, nouveau contenu... mais sans savoir si ça vaut vraiment le coup.",
-                  },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="p-6 bg-white rounded-xl border border-neutral-200"
-                  >
-                    <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                      <item.icon className="w-6 h-6 text-red-600" />
-                    </div>
-                    <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-neutral-600 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="mt-12 p-6 bg-blue-50 border border-blue-200 rounded-xl text-center">
-                <p className="text-lg text-neutral-700">
-                  <strong>Bonne nouvelle :</strong> Ces problèmes ont des solutions concrètes.
-                  <br />
-                  Et c'est exactement ce que je fais.
-                </p>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* COMMENT ÇA MARCHE */}
-      <section id="comment-ca-marche" className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-6">
-          <FadeIn>
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-6">
-                Comment je travaille
-              </h2>
-              <p className="text-xl text-neutral-600 text-center mb-16">
-                Une approche simple, quel que soit le service
+            {/* Email — small card */}
+            <div
+              className="card bento-item"
+              style={{ padding: 32 }}
+            >
+              <h3 style={{ marginBottom: 12 }}>Email Marketing</h3>
+              <p style={{ fontSize: 15 }}>
+                Sequences automatisees, newsletters, segmentation. Je transforme ta liste en machine a revenus recurrents.
               </p>
+            </div>
 
-              <div className="space-y-12">
-                {[
-                  {
-                    number: "1",
-                    title: "On discute de ta situation",
-                    description:
-                      "Appel de 30 minutes gratuit. Tu me montres ton business, tes chiffres, tes problèmes. On identifie ensemble ce qui a le plus d'impact.",
-                    icon: Lightbulb,
-                  },
-                  {
-                    number: "2",
-                    title: "J'analyse et je propose",
-                    description:
-                      "Je plonge dans tes données (analytics, emails, SEO). Je trouve les vrais problèmes et je te propose un plan d'action clair, priorisé par impact.",
-                    icon: BarChart3,
-                  },
-                  {
-                    number: "3",
-                    title: "On passe à l'action",
-                    description:
-                      "Soit tu implémentes avec mon guide, soit je m'en charge. Dans les deux cas : des résultats mesurables et un suivi régulier.",
-                    icon: Target,
-                  },
-                ].map((step, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 }}
-                    className="flex gap-6"
-                  >
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
-                        {step.number}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-3 mb-3">
-                        <step.icon className="w-6 h-6 text-blue-600" />
-                        <h3 className="text-2xl font-bold text-neutral-900">
-                          {step.title}
-                        </h3>
-                      </div>
-                      <p className="text-lg text-neutral-600 leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+            {/* Data — small card */}
+            <div
+              className="card bento-item"
+              style={{ padding: 32 }}
+            >
+              <h3 style={{ marginBottom: 12 }}>Data &amp; Analytics</h3>
+              <p style={{ fontSize: 15 }}>
+                Tracking, dashboards, attribution. Les chiffres qui te disent ou investir et ou couper.
+              </p>
+            </div>
+
+            {/* Stats — large card */}
+            <div
+              className="card bento-item"
+              style={{
+                padding: 32,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: 24,
+                }}
+              >
+                <div ref={stat1.ref}>
+                  <div className="stat-value">
+                    {stat1.value}+
+                  </div>
+                  <div className="stat-label">clients accompagnes</div>
+                </div>
+                <div>
+                  <div className="stat-value">+{stat2.value}%</div>
+                  <div className="stat-label">trafic moyen genere</div>
+                </div>
               </div>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
 
-      {/* POURQUOI MOI */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <FadeIn>
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-12">
-                Pourquoi me faire confiance ?
-              </h2>
+      <div className="section-divider" />
 
-              <div className="prose prose-lg max-w-none">
-                <p className="text-lg text-neutral-700 leading-relaxed mb-6">
-                  J'ai commencé dans le marketing digital en 2020. D'abord l'email marketing,
-                  puis le SEO, puis l'analyse de données. J'ai vite compris que ces trois
-                  disciplines sont indissociables : un bon email ne sert à rien si ta page
-                  ne convertit pas, et un bon SEO ne sert à rien si ton funnel perd des clients.
-                </p>
+      {/* ══════ PROCESS — TIMELINE ══════ */}
+      <section
+        ref={revealProcess}
+        className="reveal"
+        style={{ padding: "100px 0" }}
+      >
+        <div className="container-main">
+          <span className="section-number">02. Process</span>
+          <h2 style={{ marginBottom: 48 }}>
+            Comment on travaille
+            <span className="gradient-text"> ensemble</span>
+          </h2>
 
-                <p className="text-lg text-neutral-700 leading-relaxed mb-6">
-                  Aujourd'hui, je combine ces trois expertises pour offrir une vision globale.
-                  Pas de silo. Une stratégie cohérente où data, emails et SEO travaillent ensemble.
-                </p>
-              </div>
-
-              <div className="mt-12 p-8 bg-white border-2 border-blue-200 rounded-xl">
-                <h3 className="text-2xl font-bold text-neutral-900 mb-4">
-                  Mon parcours en bref
-                </h3>
-                <ul className="space-y-3 text-neutral-700">
-                  <li>→ Marketing digital depuis 2020 (email, SEO, data, e-commerce)</li>
-                  <li>→ Ex-Community Manager chez Tugan.ai (1 an)</li>
-                  <li>
-                    → Actuellement Responsable E-commerce (email, SEO, SEA, CRO, analytics)
-                  </li>
-                  <li>→ 127+ funnels analysés</li>
-                </ul>
-              </div>
+          <div className="timeline">
+            <div className="timeline-step">
+              <span
+                className="mono"
+                style={{
+                  fontSize: 12,
+                  color: "var(--accent-blue)",
+                  letterSpacing: "0.1em",
+                  display: "block",
+                  marginBottom: 8,
+                }}
+              >
+                01
+              </span>
+              <h4 style={{ marginBottom: 8 }}>Audit</h4>
+              <p style={{ fontSize: 14 }}>
+                Analyse complete de ton site, tes positions, ton marche. Je trouve les opportunites que tes concurrents ignorent.
+              </p>
             </div>
-          </FadeIn>
+
+            <div className="timeline-step">
+              <span
+                className="mono"
+                style={{
+                  fontSize: 12,
+                  color: "var(--accent-blue)",
+                  letterSpacing: "0.1em",
+                  display: "block",
+                  marginBottom: 8,
+                }}
+              >
+                02
+              </span>
+              <h4 style={{ marginBottom: 8 }}>Strategie</h4>
+              <p style={{ fontSize: 14 }}>
+                Plan d&apos;action priorise par impact. Pas de theorie, juste ce qu&apos;il faut faire, dans quel ordre et pourquoi.
+              </p>
+            </div>
+
+            <div className="timeline-step">
+              <span
+                className="mono"
+                style={{
+                  fontSize: 12,
+                  color: "var(--accent-blue)",
+                  letterSpacing: "0.1em",
+                  display: "block",
+                  marginBottom: 8,
+                }}
+              >
+                03
+              </span>
+              <h4 style={{ marginBottom: 8 }}>Execution</h4>
+              <p style={{ fontSize: 14 }}>
+                Implementation technique, contenu optimise, tracking en place. Je fais le boulot, tu vois les resultats.
+              </p>
+            </div>
+
+            <div className="timeline-step">
+              <span
+                className="mono"
+                style={{
+                  fontSize: 12,
+                  color: "var(--accent-blue)",
+                  letterSpacing: "0.1em",
+                  display: "block",
+                  marginBottom: 8,
+                }}
+              >
+                04
+              </span>
+              <h4 style={{ marginBottom: 8 }}>Optimisation</h4>
+              <p style={{ fontSize: 14 }}>
+                Suivi mensuel, rapports clairs, ajustements data-driven. On scale ce qui marche, on coupe ce qui ne marche pas.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-6">
-          <FadeIn>
-            <div className="max-w-4xl mx-auto">
-              <div className="p-12 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
-                  Parlons de ton business
-                </h2>
-                <p className="text-xl text-neutral-600 mb-8 max-w-2xl mx-auto">
-                  On prend 30 minutes. Tu me montres ta situation, je te dis comment
-                  je peux t'aider. Pas de pitch, pas de pression. Juste une discussion honnête.
-                </p>
+      <div className="section-divider" />
 
-                <motion.a
-                  href="https://calendly.com/hello-thibautgallien/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full text-lg transition-colors shadow-xl"
-                >
-                  Réserver 30 minutes (gratuit)
-                  <ArrowRight className="w-5 h-5" />
-                </motion.a>
+      {/* ══════ STATS ══════ */}
+      <section
+        ref={revealStats}
+        className="reveal"
+        style={{ padding: "100px 0" }}
+      >
+        <div className="container-main">
+          <span className="section-number">03. Resultats</span>
+          <h2 style={{ marginBottom: 48 }}>
+            Les chiffres parlent
+            <span className="gradient-text"> d&apos;eux-memes</span>
+          </h2>
 
-                <p className="text-sm text-neutral-500 mt-6">
-                  Pas de carte bancaire. Pas d'engagement. Juste une vraie discussion.
-                </p>
-              </div>
-
-              {/* FAQ rapide */}
-              <div className="mt-16 space-y-6">
-                <h3 className="text-2xl font-bold text-neutral-900 text-center mb-8">
-                  Questions fréquentes
-                </h3>
-
-                {[
-                  {
-                    q: "C'est vraiment gratuit ?",
-                    a: "Oui. L'appel de 30 min est gratuit. Si après on décide de bosser ensemble, là on parle tarifs. Mais la première discussion, c'est cadeau.",
-                  },
-                  {
-                    q: "Par quel service commencer ?",
-                    a: "Ça dépend de ta situation. Si tu as du trafic mais peu de ventes → analyse de données. Si tu as une liste email qui dort → email marketing. Si tu veux du trafic gratuit → SEO. On en discute pendant l'appel.",
-                  },
-                  {
-                    q: "Tu fais quoi exactement ?",
-                    a: "Trois services : (1) Analyse de données pour trouver où tu perds de l'argent, (2) Email marketing pour convertir ta liste en revenus, (3) SEO pour devenir visible sur Google. Chaque service a des formules adaptées.",
-                  },
-                ].map((faq, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="p-6 bg-white rounded-xl"
-                  >
-                    <h4 className="font-bold text-lg text-neutral-900 mb-2">
-                      {faq.q}
-                    </h4>
-                    <p className="text-neutral-600 leading-relaxed">{faq.a}</p>
-                  </motion.div>
-                ))}
-              </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: 32,
+            }}
+          >
+            <div ref={stat3.ref}>
+              <div className="stat-value">{stat3.value}+</div>
+              <div className="stat-label">mois d&apos;experience</div>
             </div>
-          </FadeIn>
+            <div>
+              <div className="stat-value">{stat4.value}%</div>
+              <div className="stat-label">clients satisfaits</div>
+            </div>
+            <div>
+              <div className="stat-value">+{stat2.value}%</div>
+              <div className="stat-label">trafic organique moyen</div>
+            </div>
+            <div>
+              <div className="stat-value">{stat1.value}+</div>
+              <div className="stat-label">projets livres</div>
+            </div>
+          </div>
         </div>
       </section>
-    </div>
+
+      <div className="section-divider" />
+
+      {/* ══════ FINAL CTA ══════ */}
+      <section
+        ref={revealCta}
+        className="reveal"
+        style={{ padding: "100px 0", textAlign: "center" }}
+      >
+        <div className="container-main" style={{ maxWidth: 640 }}>
+          <span className="section-number">04. Prochaine etape</span>
+          <h2 style={{ marginBottom: 16 }}>
+            Pret a rendre ton business
+            <span className="gradient-text"> visible</span> ?
+          </h2>
+          <p style={{ marginBottom: 36, fontSize: 17 }}>
+            30 minutes d&apos;appel, zero engagement. On regarde ton site ensemble, j&apos;identifie les quick wins et je te dis exactement ce que je ferais.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              gap: 12,
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <Link
+              href="https://calendly.com/hello-thibautgallien/30min"
+              className="btn-primary"
+            >
+              Reserver un appel
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <Link href="/contact" className="btn-secondary">
+              Envoyer un message
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Responsive hero grid ── */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          @media (min-width: 769px) {
+            .hero-grid {
+              grid-template-columns: 3fr 2fr !important;
+            }
+          }
+          @media (max-width: 768px) {
+            .hero-terminal {
+              order: -1;
+            }
+          }
+        `,
+        }}
+      />
+    </>
   );
 }
