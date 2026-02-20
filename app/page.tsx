@@ -226,7 +226,7 @@ export default function HomePage() {
                   }}
                 >
                   <span style={{ fontSize: 13, color: "var(--accent-blue)", fontWeight: 600 }}>Thibaut Gallien</span>
-                  <span style={{ fontSize: 13, color: "var(--text-dim)", marginLeft: 8 }}>SEO &middot; Email &middot; Data</span>
+                  <span style={{ fontSize: 13, color: "var(--text-dim)", marginLeft: 8 }}>SEO &middot; Sites &middot; Automations</span>
                 </div>
               </div>
             </div>
@@ -332,15 +332,15 @@ export default function HomePage() {
         <div className="container-main">
           <span className="section-number">02. Ce que je fais pour toi</span>
           <h2 style={{ marginBottom: 16 }}>
-            Trois leviers pour ta
+            Quatre offres pour ta
             <span className="gradient-text"> croissance</span>
           </h2>
           <p style={{ maxWidth: 580, marginBottom: 56 }}>
-            Chaque service repond a un probleme precis. Tu peux les prendre individuellement ou les combiner
-            pour creer un systeme d&apos;acquisition complet.
+            Du SEO local au systeme d&apos;acquisition complet, chaque offre repond a un besoin precis.
+            Choisis celle qui correspond a ta situation.
           </p>
 
-          {/* ── SERVICE 1 : SEO ── */}
+          {/* ── SERVICE 1 : SEO LOCAL (offre principale) ── */}
           <div style={{ marginBottom: 64 }}>
             <div
               className="card card-accent-blue"
@@ -365,30 +365,31 @@ export default function HomePage() {
                       borderRadius: 4,
                     }}
                   >
-                    Service principal — SEO
+                    Service principal — SEO Local
                   </span>
                   <h3 style={{ marginBottom: 14 }}>
-                    Referencement naturel : etre trouve par ceux qui cherchent
+                    Etre trouve en premier sur Google par les clients de ta ville
                   </h3>
                   <p style={{ fontSize: 17, lineHeight: 1.75, marginBottom: 20 }}>
-                    Le SEO, c&apos;est faire en sorte que ton site apparaisse en haut de Google quand quelqu&apos;un
-                    cherche ce que tu proposes. Pas de pub payante, pas de dependance — du trafic gratuit,
-                    qualifie, qui arrive tous les jours.
+                    On met ton entreprise en premiere page Google pour que les clients de Cherbourg
+                    (et de ta zone) te trouvent avant tes concurrents. Plus de visibilite,
+                    plus de clients, plus de chiffre d&apos;affaires.
                   </p>
                   <p style={{ fontSize: 16, lineHeight: 1.75, marginBottom: 28, color: "var(--text-dim)" }}>
-                    <strong style={{ color: "var(--accent-blue)" }}>Concretement :</strong> j&apos;audite ton site, je trouve les mots-cles sur
-                    lesquels tu dois te positionner, j&apos;optimise tes pages et je cree du contenu qui attire du trafic.
-                    Chaque mois, tu vois tes positions monter et ton trafic augmenter.
+                    <strong style={{ color: "var(--accent-blue)" }}>Concretement :</strong> j&apos;optimise ton site,
+                    ta fiche Google Business Profile, je cree du contenu cible et des liens locaux.
+                    Chaque mois, tu vois tes positions monter et tes clients augmenter.
+                    <strong style={{ color: "var(--accent-blue)" }}> Garantie 90 jours.</strong>
                   </p>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 32 }}>
                     <p style={{ fontSize: 15, fontWeight: 600, color: "var(--text)", marginBottom: 4 }}>Ce que tu recois :</p>
                     {[
-                      "Audit technique complet de ton site (indexation, vitesse, architecture)",
-                      "Recherche de mots-cles : les requetes que tes clients tapent sur Google",
-                      "Optimisation de tes pages existantes pour qu'elles rankent",
-                      "Creation de contenu SEO (articles, pages) chaque mois",
-                      "Rapport mensuel avec tes positions, ton trafic, tes leads",
+                      "Optimisation de 2-3 pages cles de ton site par mois",
+                      "1 article de blog cible sur une requete locale",
+                      "2-3 backlinks locaux de qualite",
+                      "Optimisation Google Business Profile",
+                      "Dashboard Looker Studio en temps reel + appel mensuel",
                     ].map((item, i) => (
                       <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" strokeWidth="2.5" style={{ marginTop: 3, flexShrink: 0 }}>
@@ -400,11 +401,11 @@ export default function HomePage() {
                   </div>
 
                   <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-                    <Link href="/services/seo-local" className="btn-primary">
-                      SEO Local — a partir de 349&euro;/mois
+                    <Link href="/services/seo" className="btn-primary">
+                      Programme complet — 500&euro;/mois
                     </Link>
-                    <Link href="/services/seo-growth" className="btn-secondary">
-                      SEO Growth — audit + accompagnement
+                    <Link href="/services/seo" className="btn-secondary">
+                      Version allegee — 300&euro;/mois
                     </Link>
                   </div>
                 </div>
@@ -412,7 +413,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* ── SERVICE 2 & 3 : Email + Data ── */}
+          {/* ── SERVICE 2 & 3 : Site+SEO+Email + Automations ── */}
           <div
             style={{
               display: "grid",
@@ -420,7 +421,7 @@ export default function HomePage() {
               gap: 16,
             }}
           >
-            {/* Email Marketing */}
+            {/* Site + SEO + Email */}
             <div className="card card-accent-violet" style={{ padding: 32 }}>
               <span
                 style={{
@@ -436,25 +437,25 @@ export default function HomePage() {
                   borderRadius: 4,
                 }}
               >
-                Email Marketing
+                Site + SEO + Email
               </span>
-              <h3 style={{ marginBottom: 14 }}>Transformer ta liste en revenus</h3>
+              <h3 style={{ marginBottom: 14 }}>Un systeme d&apos;acquisition complet</h3>
               <p style={{ fontSize: 16, lineHeight: 1.75, marginBottom: 16 }}>
-                Tu as des abonnes ou des contacts mais tu ne leur ecris pas (ou mal). L&apos;email marketing,
-                c&apos;est le canal avec le meilleur ROI : pour chaque euro investi, il en rapporte 36 en moyenne.
+                Tu es entrepreneur en ligne et tu veux un site qui attire du trafic,
+                qui convertit et qui transforme tes visiteurs en clients ?
               </p>
               <p style={{ fontSize: 16, lineHeight: 1.7, marginBottom: 24, color: "var(--text-dim)" }}>
-                <strong style={{ color: "var(--accent-violet)" }}>Concretement :</strong> je cree tes sequences automatisees
-                (bienvenue, vente, relance), j&apos;ecris tes newsletters, je segmente ta liste pour
-                envoyer le bon message a la bonne personne. Tu generes des ventes meme quand tu dors.
+                <strong style={{ color: "var(--accent-violet)" }}>Concretement :</strong> je cree ton site optimise
+                pour Google, je t&apos;amene du trafic qualifie, et je transforme ces visiteurs
+                en prospects chauds grace a une newsletter hebdomadaire.
               </p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 28 }}>
                 {[
-                  "Sequences automatisees (welcome, vente, relance panier)",
-                  "Newsletters regulieres qui engagent et convertissent",
-                  "Segmentation de ta liste par comportement",
-                  "A/B testing et optimisation continue",
+                  "Creation de site (WordPress ou React) — 2000-2500\u20AC",
+                  "Setup email + sequence de bienvenue — 500\u20AC",
+                  "SEO mensuel — 350\u20AC/mois",
+                  "Newsletter hebdomadaire (4 emails/mois) — 250\u20AC/mois",
                 ].map((item, i) => (
                   <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-violet)" strokeWidth="2.5" style={{ marginTop: 4, flexShrink: 0 }}>
@@ -465,12 +466,12 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <Link href="/contact" className="btn-secondary">
-                En savoir plus
+              <Link href="/services" className="btn-secondary">
+                Voir le detail
               </Link>
             </div>
 
-            {/* Data & Analytics */}
+            {/* Automations */}
             <div className="card card-accent-green" style={{ padding: 32 }}>
               <span
                 style={{
@@ -486,26 +487,26 @@ export default function HomePage() {
                   borderRadius: 4,
                 }}
               >
-                Data &amp; Analytics
+                Automations
               </span>
-              <h3 style={{ marginBottom: 14 }}>Prendre des decisions basees sur les chiffres</h3>
+              <h3 style={{ marginBottom: 14 }}>Automatiser ton administratif</h3>
               <p style={{ fontSize: 16, lineHeight: 1.75, marginBottom: 16 }}>
-                Tu investis dans du marketing mais tu ne sais pas ce qui marche vraiment ?
-                La data te donne les reponses. Quel canal rapporte le plus, quel contenu convertit,
-                ou tu perds tes visiteurs.
+                Tu passes des heures sur des taches repetitives ? Devis, factures, relances,
+                saisie de donnees... J&apos;automatise tes process pour que tu te concentres
+                sur ce qui rapporte.
               </p>
               <p style={{ fontSize: 16, lineHeight: 1.7, marginBottom: 24, color: "var(--text-dim)" }}>
-                <strong style={{ color: "#28C840" }}>Concretement :</strong> j&apos;installe un tracking propre
-                sur ton site, je cree des dashboards clairs, et je t&apos;explique ou investir ton budget
-                pour un maximum de retour. Fini les decisions au feeling.
+                <strong style={{ color: "#28C840" }}>Concretement :</strong> prestation one-shot.
+                Je fais, je livre, c&apos;est termine. Pas d&apos;abonnement.
+                Devis au forfait selon la complexite.
               </p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 28 }}>
                 {[
-                  "Tracking GA4 / GTM configure proprement",
-                  "Dashboards visuels avec tes KPIs",
-                  "Attribution : savoir d'ou viennent tes ventes",
-                  "Audit de funnel : ou tu perds tes visiteurs",
+                  "Devis & facturation automatises",
+                  "Relances clients automatiques",
+                  "Synchronisation d'outils (CRM, compta, email)",
+                  "Workflows sur mesure — 500-1500\u20AC",
                 ].map((item, i) => (
                   <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#28C840" strokeWidth="2.5" style={{ marginTop: 4, flexShrink: 0 }}>
@@ -516,8 +517,8 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <Link href="/contact" className="btn-secondary">
-                En savoir plus
+              <Link href="/services" className="btn-secondary">
+                Voir le detail
               </Link>
             </div>
           </div>
