@@ -119,14 +119,95 @@ export default function EmailMarketingPage() {
         <div className="max-w-6xl mx-auto">
           <FadeIn>
             <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-4">
-              Deux formules selon tes besoins
+              Trois formules selon tes besoins
             </h2>
             <p className="text-xl text-neutral-600 text-center mb-12">
-              Que tu veuilles un coup de main ponctuel ou un accompagnement complet
+              Du copywriting ponctuel à la gestion complète de ton email marketing
             </p>
           </FadeIn>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* OPTION 0 : RÉDACTION & SÉQUENCES */}
+            <FadeIn delay={0}>
+              <motion.div
+                whileHover={{ y: -4 }}
+                className="p-8 bg-white border-2 border-neutral-200 rounded-2xl hover:border-emerald-300 hover:shadow-xl transition-all"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-emerald-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-neutral-900">
+                      Rédaction & Séquences
+                    </h3>
+                    <p className="text-sm text-neutral-500">
+                      Le copywriting, je m&apos;en charge
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="text-4xl font-bold text-neutral-900">
+                      350€
+                    </span>
+                    <span className="text-neutral-500">TTC / séquence</span>
+                  </div>
+                  <p className="text-sm text-neutral-600">
+                    Par séquence de 5 à 8 emails
+                  </p>
+                </div>
+
+                <div className="space-y-4 mb-8">
+                  <h4 className="font-semibold text-neutral-900">
+                    Ce que tu reçois :
+                  </h4>
+                  {[
+                    "Rédaction complète de 5 à 8 emails",
+                    "Objets optimisés pour le taux d'ouverture",
+                    "Copywriting adapté à ton ton de voix",
+                    "CTA clairs et orientés conversion",
+                    "Livré prêt à importer dans ton outil",
+                    "1 révision incluse",
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-neutral-700">{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-center gap-2 text-sm text-neutral-600">
+                    <Clock className="w-4 h-4" />
+                    <span>Livraison en 3-5 jours</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-neutral-600">
+                    <Target className="w-4 h-4" />
+                    <span>Welcome, vente, relance, onboarding…</span>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl mb-6">
+                  <p className="text-sm text-neutral-700">
+                    <strong>Pour qui ?</strong> Tu as déjà un outil en place mais
+                    tu manques de temps ou d&apos;inspiration pour rédiger tes emails.
+                    Je livre les textes, tu n&apos;as plus qu&apos;à coller.
+                  </p>
+                </div>
+
+                <Link
+                  href="https://calendly.com/hello-thibautgallien/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl text-center transition-colors"
+                >
+                  Discutons de ton projet
+                </Link>
+              </motion.div>
+            </FadeIn>
+
             {/* OPTION 1 : SETUP */}
             <FadeIn delay={0.1}>
               <motion.div
@@ -209,7 +290,7 @@ export default function EmailMarketingPage() {
             </FadeIn>
 
             {/* OPTION 2 : GESTION COMPLÈTE */}
-            <FadeIn delay={0.2}>
+            <FadeIn delay={0.3}>
               <motion.div
                 whileHover={{ y: -4 }}
                 className="relative p-8 bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-300 rounded-2xl hover:shadow-xl transition-all"
